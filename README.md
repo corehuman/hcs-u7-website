@@ -101,11 +101,15 @@ Pour un guide détaillé (checklist pré-lancement, CLI, etc.), voir :
 
 ### Tests cognitifs interactifs
 
-Le site inclut maintenant une suite de tests cognitifs pour la validation empirique du système HCS-U7 :
+Le site inclut maintenant une suite complète de 5 tests neurocognitifs validés scientifiquement pour la validation empirique du système HCS-U7 :
 
 - **Test de Stroop** : Évalue le contrôle inhibiteur et l'attention sélective
 - **Test N-Back** : Mesure la mémoire de travail et la capacité de mise à jour
+- **Trail Making Test** : Évalue la flexibilité cognitive et la vitesse de traitement (parties A et B)
+- **Digit Span Test** : Mesure la mémoire à court terme (forward/backward span)
+- **Reaction Time Test** : Évalue la vitesse de traitement et le temps de réaction (simple/choice RT)
 - Interface moderne avec animations fluides et feedback en temps réel
+- Sauvegarde automatique des résultats dans sessionStorage
 - Collecte de données pour la recherche sur les signatures cognitives
 
 ### Architecture technique
