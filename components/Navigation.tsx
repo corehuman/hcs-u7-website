@@ -12,6 +12,8 @@ import { useLanguage } from "@/components/LanguageProvider";
 const navItems = [
   { href: "/", key: "home" },
   { href: "/generate", key: "generator" },
+  { href: "/cognitive-tests", key: "tests" },
+  { href: "/security", key: "security", badge: "NEW" },
   { href: "/docs", key: "docs" },
   { href: "/examples", key: "examples" },
   { href: "/integrations", key: "integrations" },
@@ -26,6 +28,8 @@ export function Navigation() {
   const labels: Record<string, { en: string; fr: string }> = {
     home: { en: "Home", fr: "Accueil" },
     generator: { en: "Generator", fr: "Générateur" },
+    tests: { en: "Tests", fr: "Tests" },
+    security: { en: "Security", fr: "Sécurité" },
     docs: { en: "Docs", fr: "Documentation" },
     examples: { en: "Examples", fr: "Exemples" },
     integrations: { en: "Integrations", fr: "Intégrations" },
@@ -56,11 +60,16 @@ export function Navigation() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "transition-colors hover:text-primary",
+                  "transition-colors hover:text-primary flex items-center gap-1",
                   active ? "text-primary" : "text-muted-foreground",
                 )}
               >
                 {label}
+                {item.badge && (
+                  <span className="bg-primary/10 text-primary text-[10px] px-1.5 py-0.5 rounded-full font-semibold">
+                    {item.badge}
+                  </span>
+                )}
               </Link>
             );
           })}
@@ -117,14 +126,19 @@ export function Navigation() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "rounded-md px-3 py-2 transition-colors",
+                    "rounded-md px-3 py-2 transition-colors flex items-center justify-between",
                     active
                       ? "bg-primary/10 text-primary"
                       : "text-muted-foreground hover:bg-muted hover:text-foreground",
                   )}
                   onClick={() => setOpen(false)}
                 >
-                  {label}
+                  <span>{label}</span>
+                  {item.badge && (
+                    <span className="bg-primary/10 text-primary text-[10px] px-1.5 py-0.5 rounded-full font-semibold ml-2">
+                      {item.badge}
+                    </span>
+                  )}
                 </Link>
               );
             })}

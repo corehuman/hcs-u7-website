@@ -13,7 +13,11 @@ import {
   Users, 
   CheckCircle2, 
   Github, 
-  Workflow 
+  Workflow,
+  Lock,
+  Fingerprint,
+  Bot,
+  AlertTriangle
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -302,6 +306,122 @@ export default function HomePage() {
                 Coupled with HCS-U7R (v8.0), adapt proxemics, motion and
                 feedback of robots to the human cognitive signature.
               </p>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* NEW Security Section */}
+        <motion.section
+          className="mt-20 space-y-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionVariants}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+          <div className="relative rounded-3xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-8 overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-0 right-0 -mt-4 -mr-4 h-32 w-32 rounded-full bg-primary/10 blur-3xl" />
+            <div className="absolute bottom-0 left-0 -mb-4 -ml-4 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl" />
+            
+            <div className="relative">
+              <div className="flex items-start justify-between">
+                <div className="space-y-4 max-w-2xl">
+                  <div className="flex items-center gap-3">
+                    <Badge className="gap-1.5 bg-primary/10 text-primary hover:bg-primary/20">
+                      <Shield className="h-3 w-3" />
+                      {isFr ? "NOUVEAU" : "NEW"}
+                    </Badge>
+                    <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                      {isFr ? "Sécurité Cognitive" : "Cognitive Security"}
+                    </h2>
+                  </div>
+                  <p className="text-base text-muted-foreground">
+                    {isFr
+                      ? "Utilisez les profils HCS-U7 pour l'authentification, la détection de fraude et la prévention des bots. Remplacez les mots de passe par des signatures cognitives biométriques."
+                      : "Use HCS-U7 profiles for authentication, fraud detection, and bot prevention. Replace passwords with cognitive biometric signatures."}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    <div className="flex items-center gap-2 text-sm">
+                      <Lock className="h-4 w-4 text-green-600" />
+                      <span>{isFr ? "Impossible à voler ou hameçonner" : "Impossible to steal or phish"}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Bot className="h-4 w-4 text-blue-600" />
+                      <span>{isFr ? "Détection de bots résistante à l'IA" : "AI-resistant bot detection"}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Fingerprint className="h-4 w-4 text-purple-600" />
+                      <span>{isFr ? "Vie privée (côté client)" : "Privacy-first (client-side)"}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-3 pt-4">
+                    <Button asChild className="gap-2">
+                      <Link href="/security">
+                        {isFr ? "Explorer la Sécurité" : "Explore Security"}
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="gap-2">
+                      <Link href="/security/auth-demo">
+                        {isFr ? "Essayer la Démo" : "Try Demo"}
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+                
+                {/* Security illustration/grid */}
+                <div className="hidden lg:block">
+                  <div className="grid grid-cols-2 gap-3">
+                    <Card className="p-4 bg-white/50 dark:bg-neutral-950/50 border-primary/20">
+                      <div className="space-y-2">
+                        <div className="rounded-lg bg-blue-100 dark:bg-blue-900/30 p-2 w-fit">
+                          <Shield className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <h4 className="font-medium text-sm">{isFr ? "Authentification" : "Authentication"}</h4>
+                        <p className="text-xs text-muted-foreground">
+                          {isFr ? "Tests cognitifs de 2 min" : "2-min cognitive tests"}
+                        </p>
+                      </div>
+                    </Card>
+                    <Card className="p-4 bg-white/50 dark:bg-neutral-950/50 border-primary/20">
+                      <div className="space-y-2">
+                        <div className="rounded-lg bg-purple-100 dark:bg-purple-900/30 p-2 w-fit">
+                          <Bot className="h-5 w-5 text-purple-600" />
+                        </div>
+                        <h4 className="font-medium text-sm">CAPTCHA</h4>
+                        <p className="text-xs text-muted-foreground">
+                          {isFr ? "Résistant GPT-4V" : "GPT-4V resistant"}
+                        </p>
+                      </div>
+                    </Card>
+                    <Card className="p-4 bg-white/50 dark:bg-neutral-950/50 border-primary/20">
+                      <div className="space-y-2">
+                        <div className="rounded-lg bg-green-100 dark:bg-green-900/30 p-2 w-fit">
+                          <Fingerprint className="h-5 w-5 text-green-600" />
+                        </div>
+                        <h4 className="font-medium text-sm">{isFr ? "Vérification" : "Verification"}</h4>
+                        <p className="text-xs text-muted-foreground">
+                          {isFr ? "Comparaison de profils" : "Profile comparison"}
+                        </p>
+                      </div>
+                    </Card>
+                    <Card className="p-4 bg-white/50 dark:bg-neutral-950/50 border-primary/20">
+                      <div className="space-y-2">
+                        <div className="rounded-lg bg-orange-100 dark:bg-orange-900/30 p-2 w-fit">
+                          <AlertTriangle className="h-5 w-5 text-orange-600" />
+                        </div>
+                        <h4 className="font-medium text-sm">{isFr ? "Détection Fraude" : "Fraud Detection"}</h4>
+                        <p className="text-xs text-muted-foreground">
+                          {isFr ? "Temps réel" : "Real-time"}
+                        </p>
+                      </div>
+                    </Card>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.section>
