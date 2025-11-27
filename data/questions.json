@@ -1,0 +1,914 @@
+[
+  {
+    "id": 1,
+    "category": "cognitive_style",
+    "question": {
+      "fr": "Quand vous résolvez un problème, vous préférez :",
+      "en": "When solving a problem, you prefer:"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Analyser logiquement toutes les variables",
+          "en": "Analyze all variables logically"
+        },
+        "scoring": { "element": "E", "cognition": { "logic": 12 } }
+      },
+      {
+        "text": {
+          "fr": "Suivre votre intuition",
+          "en": "Follow your intuition"
+        },
+        "scoring": { "element": "W", "cognition": { "synthesis": 12 } }
+      },
+      {
+        "text": {
+          "fr": "Visualiser des diagrammes ou des schémas",
+          "en": "Visualize diagrams or schemas"
+        },
+        "scoring": { "element": "E", "cognition": { "visual": 12 } }
+      },
+      {
+        "text": {
+          "fr": "Tester directement des solutions pratiques",
+          "en": "Directly test practical solutions"
+        },
+        "scoring": { "element": "F", "cognition": { "form": 12 } }
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "cognitive_style",
+    "question": {
+      "fr": "Face à un nouveau sujet complexe, vous commencez par :",
+      "en": "When facing a complex new topic, you start by:"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Lire la documentation détaillée du début à la fin",
+          "en": "Reading the detailed documentation from start to finish"
+        },
+        "scoring": { "element": "A", "cognition": { "form": 10, "logic": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Chercher une vue d'ensemble synthétique",
+          "en": "Looking for a high-level synthetic overview"
+        },
+        "scoring": { "element": "E", "cognition": { "synthesis": 10 } }
+      },
+      {
+        "text": {
+          "fr": "Explorer un exemple concret ou un tutoriel guidé",
+          "en": "Exploring a concrete example or guided tutorial"
+        },
+        "scoring": { "element": "F", "cognition": { "form": 8, "visual": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Discuter avec quelqu'un pour clarifier rapidement",
+          "en": "Discussing with someone to clarify quickly"
+        },
+        "scoring": { "element": "W", "cognition": { "synthesis": 8, "creativity": 4 } }
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "category": "cognitive_style",
+    "question": {
+      "fr": "Dans une conversation avec une IA, vous préférez que les réponses soient :",
+      "en": "In a conversation with an AI, you prefer answers to be:"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Très structurées, avec sections et sous-sections",
+          "en": "Highly structured, with sections and subsections"
+        },
+        "scoring": { "element": "E", "cognition": { "logic": 10, "form": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Synthétiques avec uniquement les points clés",
+          "en": "Synthetic with only the key points"
+        },
+        "scoring": { "element": "F", "cognition": { "synthesis": 10 } }
+      },
+      {
+        "text": {
+          "fr": "Illustrées par des analogies et des images mentales",
+          "en": "Illustrated with analogies and mental images"
+        },
+        "scoring": { "element": "W", "cognition": { "visual": 8, "creativity": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Progressives, en construisant petit à petit",
+          "en": "Progressive, building up step by step"
+        },
+        "scoring": { "element": "A", "cognition": { "form": 10 } }
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "category": "cognitive_style",
+    "question": {
+      "fr": "Quand vous planifiez une tâche complexe, vous :",
+      "en": "When planning a complex task, you:"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Construisez un modèle conceptuel avant d'agir",
+          "en": "Build a conceptual model before acting"
+        },
+        "scoring": { "element": "E", "cognition": { "logic": 8, "synthesis": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Commencez rapidement et ajustez en chemin",
+          "en": "Start quickly and adjust along the way"
+        },
+        "scoring": { "element": "F", "cognition": { "creativity": 8 } }
+      },
+      {
+        "text": {
+          "fr": "Cherchez d'abord à comprendre le contexte humain",
+          "en": "First try to understand the human context"
+        },
+        "scoring": { "element": "W", "cognition": { "synthesis": 6, "creativity": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Détaillez les étapes opérationnelles une par une",
+          "en": "Detail the operational steps one by one"
+        },
+        "scoring": { "element": "A", "cognition": { "form": 10 } }
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "category": "cognition",
+    "question": {
+      "fr": "Quel type d'explication vous aide le plus ?",
+      "en": "Which type of explanation helps you the most?"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Une définition formelle avec notations",
+          "en": "A formal definition with notation"
+        },
+        "scoring": { "cognition": { "form": 12, "logic": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Une démonstration logique pas à pas",
+          "en": "A step-by-step logical derivation"
+        },
+        "scoring": { "cognition": { "logic": 14 } }
+      },
+      {
+        "text": {
+          "fr": "Un schéma ou une carte mentale",
+          "en": "A diagram or mind map"
+        },
+        "scoring": { "cognition": { "visual": 14 } }
+      },
+      {
+        "text": {
+          "fr": "Plusieurs exemples concrets variés",
+          "en": "Several varied concrete examples"
+        },
+        "scoring": { "cognition": { "creativity": 8, "synthesis": 6 } }
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "category": "cognition",
+    "question": {
+      "fr": "Quand vous apprenez un nouveau concept technique, vous :",
+      "en": "When learning a new technical concept, you:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Cherchez d'abord la définition mathématique ou formelle",
+          "en": "First look for the mathematical or formal definition"
+        },
+        "scoring": { "cognition": { "form": 10, "logic": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Analysez les propriétés et cas limites",
+          "en": "Analyze properties and edge cases"
+        },
+        "scoring": { "cognition": { "logic": 12 } }
+      },
+      {
+        "text": {
+          "fr": "Construisez une image mentale ou métaphore",
+          "en": "Build a mental image or metaphor"
+        },
+        "scoring": { "cognition": { "visual": 10, "creativity": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Essayez directement en expérimental",
+          "en": "Try it directly in an experimental way"
+        },
+        "scoring": { "cognition": { "creativity": 8, "synthesis": 4 } }
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "category": "cognition",
+    "question": {
+      "fr": "Quand une explication est trop longue, vous préférez que l'IA :",
+      "en": "When an explanation is too long, you prefer the AI to:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Réorganise en plan structuré et hiérarchisé",
+          "en": "Reorganize it into a structured hierarchical plan"
+        },
+        "scoring": { "cognition": { "synthesis": 10, "logic": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Conserve uniquement les points logiques essentiels",
+          "en": "Keep only the essential logical points"
+        },
+        "scoring": { "cognition": { "logic": 12 } }
+      },
+      {
+        "text": {
+          "fr": "Transforme en schéma ou tableau synthétique",
+          "en": "Turn it into a schematic or summary table"
+        },
+        "scoring": { "cognition": { "visual": 12 } }
+      },
+      {
+        "text": {
+          "fr": "Donne un résumé sous forme d'histoire ou de cas d'usage",
+          "en": "Give a summary as a story or use case"
+        },
+        "scoring": { "cognition": { "creativity": 8, "synthesis": 4 } }
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "category": "cognition",
+    "question": {
+      "fr": "Globalement, vous vous décririez comme :",
+      "en": "Overall, you would describe yourself as:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Très structuré·e et axé·e sur la forme",
+          "en": "Very structured and form-oriented"
+        },
+        "scoring": { "cognition": { "form": 14 } }
+      },
+      {
+        "text": {
+          "fr": "Analytique et centré·e sur la logique",
+          "en": "Analytical and logic-centered"
+        },
+        "scoring": { "cognition": { "logic": 14 } }
+      },
+      {
+        "text": {
+          "fr": "Visuel·le et spatial·e",
+          "en": "Visual and spatial"
+        },
+        "scoring": { "cognition": { "visual": 14 } }
+      },
+      {
+        "text": {
+          "fr": "Créatif·ve, aimant combiner des idées",
+          "en": "Creative, liking to combine ideas"
+        },
+        "scoring": { "cognition": { "creativity": 10, "synthesis": 4 } }
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "category": "interaction_pace",
+    "question": {
+      "fr": "À quel rythme préférez-vous que l'IA réponde ?",
+      "en": "At what pace do you prefer the AI to respond?"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Très lentement, en détaillant chaque étape",
+          "en": "Very slowly, detailing every step"
+        },
+        "scoring": { "interaction": { "pace": "S" } }
+      },
+      {
+        "text": {
+          "fr": "Plutôt lentement, mais de manière fluide",
+          "en": "Rather slowly but smoothly"
+        },
+        "scoring": { "interaction": { "pace": "S" } }
+      },
+      {
+        "text": {
+          "fr": "Rythme équilibré, ni trop lent ni trop rapide",
+          "en": "Balanced pace, neither too slow nor too fast"
+        },
+        "scoring": { "interaction": { "pace": "B" } }
+      },
+      {
+        "text": {
+          "fr": "Rapide, avec des réponses condensées",
+          "en": "Fast, with condensed answers"
+        },
+        "scoring": { "interaction": { "pace": "F" } }
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "category": "interaction_pace",
+    "question": {
+      "fr": "Quand vous posez plusieurs questions à la suite, vous voulez que l'IA :",
+      "en": "When you ask several questions in a row, you want the AI to:"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Réponde à chaque question très en détail",
+          "en": "Answer each question in great detail"
+        },
+        "scoring": { "interaction": { "pace": "S" } }
+      },
+      {
+        "text": {
+          "fr": "Réponde de manière équilibrée, avec un niveau de détail moyen",
+          "en": "Answer in a balanced way, with medium detail"
+        },
+        "scoring": { "interaction": { "pace": "B" } }
+      },
+      {
+        "text": {
+          "fr": "Regroupe et synthétise les réponses",
+          "en": "Group and synthesize the answers"
+        },
+        "scoring": { "interaction": { "pace": "B" } }
+      },
+      {
+        "text": {
+          "fr": "Donne des réponses très concises et rapides",
+          "en": "Give very concise and fast answers"
+        },
+        "scoring": { "interaction": { "pace": "F" } }
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "category": "interaction_pace",
+    "question": {
+      "fr": "Comment devez-vous ajuster vos questions pour être à l'aise ?",
+      "en": "How do you need to adjust your questions to feel comfortable?"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Je préfère poser une seule question à la fois, très précise",
+          "en": "I prefer to ask one very precise question at a time"
+        },
+        "scoring": { "interaction": { "pace": "S" } }
+      },
+      {
+        "text": {
+          "fr": "Je peux enchaîner quelques questions, mais avec structure",
+          "en": "I can chain a few questions, but with structure"
+        },
+        "scoring": { "interaction": { "pace": "B" } }
+      },
+      {
+        "text": {
+          "fr": "Je pose plusieurs questions en bloc et je veux une synthèse",
+          "en": "I ask several questions in a block and want a synthesis"
+        },
+        "scoring": { "interaction": { "pace": "B" } }
+      },
+      {
+        "text": {
+          "fr": "Je n'ai pas besoin de beaucoup ajuster, j'aime la spontanéité",
+          "en": "I don't need much adjustment, I like spontaneity"
+        },
+        "scoring": { "interaction": { "pace": "F" } }
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "category": "interaction_pace",
+    "question": {
+      "fr": "Votre seuil d'ennui face à une réponse détaillée est :",
+      "en": "Your boredom threshold for detailed answers is:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Très bas : je me lasse vite si c'est trop long",
+          "en": "Very low: I get bored quickly if it's too long"
+        },
+        "scoring": { "interaction": { "pace": "F" } }
+      },
+      {
+        "text": {
+          "fr": "Plutôt bas : je préfère aller à l'essentiel",
+          "en": "Rather low: I prefer to get to the point"
+        },
+        "scoring": { "interaction": { "pace": "F" } }
+      },
+      {
+        "text": {
+          "fr": "Moyen : ça dépend du sujet",
+          "en": "Medium: it depends on the topic"
+        },
+        "scoring": { "interaction": { "pace": "B" } }
+      },
+      {
+        "text": {
+          "fr": "Assez haut : j'aime les explications complètes",
+          "en": "Quite high: I like complete explanations"
+        },
+        "scoring": { "interaction": { "pace": "S" } }
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "category": "interaction_sensitivity",
+    "question": {
+      "fr": "À quel point êtes-vous sensible au ton de l'IA ?",
+      "en": "How sensitive are you to the AI's tone?"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Très sensible : un ton sec me gêne beaucoup",
+          "en": "Very sensitive: a dry tone bothers me a lot"
+        },
+        "scoring": { "interaction": { "sensitivity": "H" } }
+      },
+      {
+        "text": {
+          "fr": "Plutôt sensible : je préfère un ton chaleureux",
+          "en": "Rather sensitive: I prefer a warm tone"
+        },
+        "scoring": { "interaction": { "sensitivity": "H" } }
+      },
+      {
+        "text": {
+          "fr": "Moyennement sensible : je m'adapte",
+          "en": "Moderately sensitive: I adapt"
+        },
+        "scoring": { "interaction": { "sensitivity": "M" } }
+      },
+      {
+        "text": {
+          "fr": "Peu sensible : tant que c'est clair, ça me va",
+          "en": "Little sensitive: as long as it's clear, it's fine"
+        },
+        "scoring": { "interaction": { "sensitivity": "L" } }
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "category": "interaction_sensitivity",
+    "question": {
+      "fr": "Comment réagissez-vous à une IA qui corrige vos erreurs ?",
+      "en": "How do you react to an AI that corrects your mistakes?"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Je préfère une grande douceur et beaucoup de précautions",
+          "en": "I prefer a lot of softness and precautions"
+        },
+        "scoring": { "interaction": { "sensitivity": "H" } }
+      },
+      {
+        "text": {
+          "fr": "Je préfère une correction diplomate mais directe",
+          "en": "I prefer a diplomatic but direct correction"
+        },
+        "scoring": { "interaction": { "sensitivity": "M" } }
+      },
+      {
+        "text": {
+          "fr": "Une correction factuelle et neutre me convient",
+          "en": "A factual and neutral correction is fine"
+        },
+        "scoring": { "interaction": { "sensitivity": "M" } }
+      },
+      {
+        "text": {
+          "fr": "Je préfère qu'elle aille droit au but, même si c'est sec",
+          "en": "I prefer it to go straight to the point, even if it's dry"
+        },
+        "scoring": { "interaction": { "sensitivity": "L" } }
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "category": "interaction_tolerance",
+    "question": {
+      "fr": "Votre tolérance aux imprécisions ou petites erreurs de l'IA est :",
+      "en": "Your tolerance for small inaccuracies from the AI is:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Très faible : je veux une grande précision",
+          "en": "Very low: I want high precision"
+        },
+        "scoring": { "interaction": { "tolerance": "L" } }
+      },
+      {
+        "text": {
+          "fr": "Plutôt faible : quelques erreurs me gênent vite",
+          "en": "Rather low: a few mistakes bother me quickly"
+        },
+        "scoring": { "interaction": { "tolerance": "L" } }
+      },
+      {
+        "text": {
+          "fr": "Moyenne : j'accepte quelques approximations",
+          "en": "Medium: I accept some approximations"
+        },
+        "scoring": { "interaction": { "tolerance": "M" } }
+      },
+      {
+        "text": {
+          "fr": "Assez élevée : je suis surtout sensible à la clarté globale",
+          "en": "Fairly high: I mostly care about overall clarity"
+        },
+        "scoring": { "interaction": { "tolerance": "H" } }
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "category": "interaction_tolerance",
+    "question": {
+      "fr": "Comment réagissez-vous si l'IA ne comprend pas bien votre demande ?",
+      "en": "How do you react if the AI does not fully understand your request?"
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Je suis vite frustré·e, j'ai besoin de haute précision",
+          "en": "I quickly get frustrated, I need high precision"
+        },
+        "scoring": { "interaction": { "tolerance": "L" } }
+      },
+      {
+        "text": {
+          "fr": "Je préfère qu'elle me pose plusieurs questions de clarification",
+          "en": "I prefer it to ask me several clarification questions"
+        },
+        "scoring": { "interaction": { "tolerance": "M" } }
+      },
+      {
+        "text": {
+          "fr": "Je peux reformuler sans problème",
+          "en": "I can rephrase without any problem"
+        },
+        "scoring": { "interaction": { "tolerance": "M" } }
+      },
+      {
+        "text": {
+          "fr": "Je suis très tolérant·e, tant que ça converge",
+          "en": "I am very tolerant as long as it converges"
+        },
+        "scoring": { "interaction": { "tolerance": "H" } }
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "category": "modal",
+    "question": {
+      "fr": "Lorsque vous démarrez un nouveau projet, vous êtes plutôt :",
+      "en": "When you start a new project, you are more:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Initiateur·rice, vous aimez lancer les choses",
+          "en": "An initiator, you like to kick things off"
+        },
+        "scoring": { "modal": "cardinal" }
+      },
+      {
+        "text": {
+          "fr": "Stabilisateur·rice, vous consolidez ce qui existe",
+          "en": "A stabilizer, you consolidate what exists"
+        },
+        "scoring": { "modal": "fixed" }
+      },
+      {
+        "text": {
+          "fr": "Adaptatif·ve, vous ajustez en fonction du contexte",
+          "en": "Adaptive, you adjust to the context"
+        },
+        "scoring": { "modal": "mutable" }
+      },
+      {
+        "text": {
+          "fr": "Un mélange des trois selon la situation",
+          "en": "A mix of all three depending on the situation"
+        },
+        "scoring": { "modal": "mutable" }
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "category": "modal",
+    "question": {
+      "fr": "Dans une équipe, votre rôle naturel est plutôt :",
+      "en": "In a team, your natural role is more:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Lanceur·se d'idées et d'initiatives",
+          "en": "Idea and initiative launcher"
+        },
+        "scoring": { "modal": "cardinal" }
+      },
+      {
+        "text": {
+          "fr": "Gardien·ne de la stabilité et des standards",
+          "en": "Guardian of stability and standards"
+        },
+        "scoring": { "modal": "fixed" }
+      },
+      {
+        "text": {
+          "fr": "Coordinateur·rice flexible entre les points de vue",
+          "en": "Flexible coordinator between viewpoints"
+        },
+        "scoring": { "modal": "mutable" }
+      },
+      {
+        "text": {
+          "fr": "Cela varie fortement selon le projet",
+          "en": "It varies strongly depending on the project"
+        },
+        "scoring": { "modal": "mutable" }
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "category": "modal",
+    "question": {
+      "fr": "Face au changement, vous avez tendance à :",
+      "en": "When facing change, you tend to:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Provoquer activement le changement",
+          "en": "Actively provoke change"
+        },
+        "scoring": { "modal": "cardinal" }
+      },
+      {
+        "text": {
+          "fr": "Résister pour protéger la stabilité",
+          "en": "Resist to protect stability"
+        },
+        "scoring": { "modal": "fixed" }
+      },
+      {
+        "text": {
+          "fr": "Vous adapter en ajustant progressivement",
+          "en": "Adapt by adjusting progressively"
+        },
+        "scoring": { "modal": "mutable" }
+      },
+      {
+        "text": {
+          "fr": "Observer, puis choisir selon l'impact",
+          "en": "Observe, then choose based on impact"
+        },
+        "scoring": { "modal": "mutable" }
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "category": "modal",
+    "question": {
+      "fr": "Quand un plan change soudainement, vous :",
+      "en": "When a plan suddenly changes, you:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Prenez les devants pour redéfinir le plan",
+          "en": "Take the lead to redefine the plan"
+        },
+        "scoring": { "modal": "cardinal" }
+      },
+      {
+        "text": {
+          "fr": "Essayez de revenir au plan initial",
+          "en": "Try to come back to the initial plan"
+        },
+        "scoring": { "modal": "fixed" }
+      },
+      {
+        "text": {
+          "fr": "Cherchez une nouvelle configuration équilibrée",
+          "en": "Look for a new balanced configuration"
+        },
+        "scoring": { "modal": "mutable" }
+      },
+      {
+        "text": {
+          "fr": "Laissez les choses se réorganiser puis vous ajustez",
+          "en": "Let things reorganize and then you adjust"
+        },
+        "scoring": { "modal": "mutable" }
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "category": "refinement",
+    "question": {
+      "fr": "Pour vous sentir compris·e par une IA, il est le plus important que :",
+      "en": "To feel understood by an AI, it's most important that:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "La structure logique corresponde à votre manière de raisonner",
+          "en": "The logical structure matches your way of reasoning"
+        },
+        "scoring": { "cognition": { "logic": 8 }, "interaction": { "pace": "B" } }
+      },
+      {
+        "text": {
+          "fr": "Le style soit humain, nuancé et sensible",
+          "en": "The style is human, nuanced and sensitive"
+        },
+        "scoring": { "cognition": { "synthesis": 6 }, "interaction": { "sensitivity": "H" } }
+      },
+      {
+        "text": {
+          "fr": "Les explications soient très concrètes et actionnables",
+          "en": "The explanations are very concrete and actionable"
+        },
+        "scoring": { "cognition": { "form": 6 }, "interaction": { "tolerance": "M" } }
+      },
+      {
+        "text": {
+          "fr": "Les idées soient créatives et ouvertes",
+          "en": "The ideas are creative and open"
+        },
+        "scoring": { "cognition": { "creativity": 8 } }
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "category": "refinement",
+    "question": {
+      "fr": "Quand vous manquez de temps, vous voulez que l'IA :",
+      "en": "When you are short on time, you want the AI to:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Aille droit au but avec uniquement la logique clé",
+          "en": "Go straight to the point with only the key logic"
+        },
+        "scoring": { "cognition": { "logic": 8 }, "interaction": { "pace": "F" } }
+      },
+      {
+        "text": {
+          "fr": "Donne un plan d'action minimal mais clair",
+          "en": "Give a minimal but clear action plan"
+        },
+        "scoring": { "cognition": { "form": 6, "synthesis": 4 }, "interaction": { "pace": "B" } }
+      },
+      {
+        "text": {
+          "fr": "Propose plusieurs options possibles très rapidement",
+          "en": "Propose several possible options very quickly"
+        },
+        "scoring": { "cognition": { "creativity": 8 }, "interaction": { "pace": "F" } }
+      },
+      {
+        "text": {
+          "fr": "Résume visuellement ou avec un tableau",
+          "en": "Summarize visually or with a table"
+        },
+        "scoring": { "cognition": { "visual": 8 } }
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "category": "refinement",
+    "question": {
+      "fr": "Quand vous disposez au contraire de beaucoup de temps, vous :",
+      "en": "When you have a lot of time instead, you:" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Aimez explorer la théorie en profondeur",
+          "en": "Like to explore theory in depth"
+        },
+        "scoring": { "cognition": { "logic": 8, "form": 4 }, "interaction": { "pace": "S" } }
+      },
+      {
+        "text": {
+          "fr": "Préférez voir de nombreux exemples concrets",
+          "en": "Prefer to see many concrete examples"
+        },
+        "scoring": { "cognition": { "creativity": 6, "form": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Préférez explorer différentes perspectives",
+          "en": "Prefer to explore different perspectives"
+        },
+        "scoring": { "cognition": { "synthesis": 6, "creativity": 4 } }
+      },
+      {
+        "text": {
+          "fr": "Aimez construire un schéma détaillé de compréhension",
+          "en": "Like to build a detailed understanding diagram"
+        },
+        "scoring": { "cognition": { "visual": 8 } }
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "category": "refinement",
+    "question": {
+      "fr": "Pour conclure, quelle phrase décrit le mieux votre besoin principal avec les IA ?",
+      "en": "Finally, which sentence best describes your main need with AIs?" 
+    },
+    "options": [
+      {
+        "text": {
+          "fr": "Qu'elles respectent ma manière logique d'aborder les problèmes",
+          "en": "That they respect my logical way of approaching problems"
+        },
+        "scoring": { "cognition": { "logic": 8 } }
+      },
+      {
+        "text": {
+          "fr": "Qu'elles s'adaptent à mon rythme et à ma sensibilité",
+          "en": "That they adapt to my pace and sensitivity"
+        },
+        "scoring": { "interaction": { "pace": "B", "sensitivity": "M" } }
+      },
+      {
+        "text": {
+          "fr": "Qu'elles me donnent rapidement des actions concrètes",
+          "en": "That they quickly give me concrete actions"
+        },
+        "scoring": { "cognition": { "form": 6 }, "interaction": { "pace": "F" } }
+      },
+      {
+        "text": {
+          "fr": "Qu'elles m'aident à explorer des idées nouvelles",
+          "en": "That they help me explore new ideas"
+        },
+        "scoring": { "cognition": { "creativity": 8 } }
+      }
+    ]
+  }
+]
