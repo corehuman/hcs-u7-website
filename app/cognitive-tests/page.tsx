@@ -22,6 +22,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/components/LanguageProvider';
 
 interface TestResult {
   score?: number;
@@ -32,11 +33,14 @@ interface TestResult {
 interface Test {
   id: string;
   name: string;
+  nameFr: string;
   icon: any;
   color: string;
   duration: string;
   measures: string;
+  measuresFr: string;
   description: string;
+  descriptionFr: string;
   status: 'available' | 'in-progress' | 'completed';
   href: string;
   result?: TestResult;
@@ -44,59 +48,77 @@ interface Test {
 
 export default function CognitiveTestsPage() {
   const router = useRouter();
+  const { lang } = useLanguage();
+  const isFr = lang === 'fr';
+  
   const [tests, setTests] = useState<Test[]>([
     {
       id: 'stroop',
       name: 'Stroop Task',
+      nameFr: 'Test de Stroop',
       icon: Brain,
       color: 'blue',
       duration: '3 min',
       measures: 'Inhibitory control',
+      measuresFr: 'Contrôle inhibiteur',
       description: 'Test your ability to inhibit cognitive interference',
+      descriptionFr: 'Testez votre capacité à inhiber les interférences cognitives',
       status: 'available',
       href: '/cognitive-tests/stroop'
     },
     {
       id: 'nback',
       name: 'N-Back Task',
+      nameFr: 'Test N-Back',
       icon: Brain,
       color: 'purple',
       duration: '5 min',
       measures: 'Working memory',
+      measuresFr: 'Mémoire de travail',
       description: 'Measure your working memory capacity',
+      descriptionFr: 'Mesurez votre capacité de mémoire de travail',
       status: 'available',
       href: '/cognitive-tests/nback'
     },
     {
       id: 'trail',
       name: 'Trail Making',
+      nameFr: 'Test du Tracé',
       icon: Workflow,
       color: 'green',
       duration: '4 min',
       measures: 'Cognitive flexibility',
+      measuresFr: 'Flexibilité cognitive',
       description: 'Assess visual search and processing speed',
+      descriptionFr: 'Évaluez la recherche visuelle et la vitesse de traitement',
       status: 'available',
       href: '/cognitive-tests/trail-making'
     },
     {
       id: 'digit',
       name: 'Digit Span',
+      nameFr: 'Empan de chiffres',
       icon: Hash,
       color: 'yellow',
       duration: '3 min',
       measures: 'Short-term memory',
+      measuresFr: 'Mémoire à court terme',
       description: 'Test your short-term and working memory',
+      descriptionFr: 'Testez votre mémoire à court terme et de travail',
       status: 'available',
       href: '/cognitive-tests/digit-span'
     },
     {
       id: 'reaction',
       name: 'Reaction Time',
+      nameFr: 'Temps de Réaction',
       icon: Zap,
       color: 'red',
       duration: '2 min',
       measures: 'Processing speed',
+      measuresFr: 'Vitesse de traitement',
       description: 'Measure your simple and choice reaction time',
+      descriptionFr: 'Mesurez vos temps de réaction simple et de choix',
       status: 'available',
       href: '/cognitive-tests/reaction-time'
     }
@@ -200,7 +222,7 @@ export default function CognitiveTestsPage() {
             className="gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Home
+            {isFr ? 'Retour à l\'accueil' : 'Back to Home'}
           </Button>
         </div>
 
@@ -212,10 +234,12 @@ export default function CognitiveTestsPage() {
                   <div className="rounded-xl bg-primary/10 p-3">
                     <FlaskConical className="h-8 w-8 text-primary" />
                   </div>
-                  Cognitive Tests Suite
+                  {isFr ? 'Suite de Tests Cognitifs' : 'Cognitive Tests Suite'}
                 </CardTitle>
                 <CardDescription className="text-lg">
-                  Complete validated neurocognitive tests to objectively measure your cognitive abilities
+                  {isFr 
+                    ? 'Complétez des tests neurocognitifs validés pour mesurer objectivement vos capacités cognitives'
+                    : 'Complete validated neurocognitive tests to objectively measure your cognitive abilities'}
                 </CardDescription>
               </div>
               {completedCount > 0 && (
@@ -225,7 +249,7 @@ export default function CognitiveTestsPage() {
                   onClick={clearAllResults}
                   className="text-muted-foreground"
                 >
-                  Clear Results
+                  {isFr ? 'Effacer les résultats' : 'Clear Results'}
                 </Button>
               )}
             </div>
@@ -234,8 +258,8 @@ export default function CognitiveTestsPage() {
             {completedCount > 0 && (
               <div className="mt-6 space-y-2">
                 <div className="flex justify-between text-sm text-muted-foreground">
-                  <span>Progress</span>
-                  <span>{completedCount} of {tests.length} completed</span>
+                  <span>{isFr ? 'Progression' : 'Progress'}</span>
+                  <span>{isFr ? `${completedCount} sur ${tests.length} complétés` : `${completedCount} of ${tests.length} completed`}</span>
                 </div>
                 <Progress value={progress} className="h-2" />
               </div>
@@ -247,10 +271,9 @@ export default function CognitiveTestsPage() {
             <Alert>
               <AlertCircle className="h-4 w-4" />
               <AlertDescription>
-                <strong>How it works:</strong> Each test measures different cognitive abilities. 
-                Complete all tests for a comprehensive cognitive profile. Tests are adaptive and 
-                typically take 2-5 minutes each. Your results are saved locally and can be 
-                used to enhance your HCS-U7 profile.
+                <strong>{isFr ? 'Comment ça marche :' : 'How it works:'}</strong> {isFr 
+                  ? 'Chaque test mesure différentes capacités cognitives. Complétez tous les tests pour obtenir un profil cognitif complet. Les tests sont adaptatifs et prennent généralement 2 à 5 minutes chacun. Vos résultats sont sauvegardés localement et peuvent être utilisés pour enrichir votre profil HCS-U7.'
+                  : 'Each test measures different cognitive abilities. Complete all tests for a comprehensive cognitive profile. Tests are adaptive and typically take 2-5 minutes each. Your results are saved locally and can be used to enhance your HCS-U7 profile.'}
               </AlertDescription>
             </Alert>
 
@@ -274,7 +297,7 @@ export default function CognitiveTestsPage() {
                         <div className="absolute top-2 right-2">
                           <Badge variant="outline" className="gap-1 bg-green-100 dark:bg-green-900/30">
                             <Check className="h-3 w-3" />
-                            Completed
+                            {isFr ? 'Complété' : 'Completed'}
                           </Badge>
                         </div>
                       )}
@@ -285,14 +308,14 @@ export default function CognitiveTestsPage() {
                             <Icon className="h-6 w-6" />
                           </div>
                           <div className="flex-1">
-                            <CardTitle className="text-lg">{test.name}</CardTitle>
+                            <CardTitle className="text-lg">{isFr ? test.nameFr : test.name}</CardTitle>
                             <div className="flex items-center gap-2 mt-1">
                               <Badge variant="secondary" className="text-xs">
                                 <Clock className="h-3 w-3 mr-1" />
                                 {test.duration}
                               </Badge>
                               <Badge variant="secondary" className="text-xs">
-                                {test.measures}
+                                {isFr ? test.measuresFr : test.measures}
                               </Badge>
                             </div>
                           </div>
@@ -301,35 +324,35 @@ export default function CognitiveTestsPage() {
                       
                       <CardContent className="space-y-4">
                         <p className="text-sm text-muted-foreground">
-                          {test.description}
+                          {isFr ? test.descriptionFr : test.description}
                         </p>
                         
                         {test.result && (
                           <div className="bg-muted/50 rounded-lg p-3 space-y-1">
-                            <p className="text-xs font-medium text-muted-foreground">Your Result:</p>
+                            <p className="text-xs font-medium text-muted-foreground">{isFr ? 'Votre résultat :' : 'Your Result:'}</p>
                             {test.result.score !== undefined && (
                               <p className="text-sm font-semibold">
-                                Score: {test.result.score}
+                                Score : {test.result.score}
                               </p>
                             )}
                             {test.result.accuracy !== undefined && (
                               <p className="text-sm">
-                                Accuracy: {test.result.accuracy}%
+                                {isFr ? 'Précision' : 'Accuracy'} : {test.result.accuracy}%
                               </p>
                             )}
                             {test.result.cognitiveFlexibility !== undefined && (
                               <p className="text-sm">
-                                Flexibility: {test.result.cognitiveFlexibility}
+                                {isFr ? 'Flexibilité' : 'Flexibility'} : {test.result.cognitiveFlexibility}
                               </p>
                             )}
                             {test.result.workingMemory !== undefined && (
                               <p className="text-sm">
-                                Memory Score: {test.result.workingMemory}
+                                {isFr ? 'Score de mémoire' : 'Memory Score'} : {test.result.workingMemory}
                               </p>
                             )}
                             {test.result.processingSpeed !== undefined && (
                               <p className="text-sm">
-                                Speed Score: {test.result.processingSpeed}
+                                {isFr ? 'Score de vitesse' : 'Speed Score'} : {test.result.processingSpeed}
                               </p>
                             )}
                           </div>
@@ -337,7 +360,9 @@ export default function CognitiveTestsPage() {
                         
                         <Link href={test.href}>
                           <Button className="w-full" variant={test.status === 'completed' ? 'outline' : 'default'}>
-                            {test.status === 'completed' ? 'Retake Test' : 'Start Test'}
+                            {test.status === 'completed' 
+                              ? (isFr ? 'Refaire le test' : 'Retake Test')
+                              : (isFr ? 'Commencer le test' : 'Start Test')}
                             <ChevronRight className="h-4 w-4 ml-2" />
                           </Button>
                         </Link>
@@ -352,9 +377,9 @@ export default function CognitiveTestsPage() {
             <Alert className="bg-primary/5">
               <Brain className="h-4 w-4" />
               <AlertDescription>
-                <strong>Pro tip:</strong> For best results, complete tests when you're well-rested 
-                and in a quiet environment. Avoid distractions and use a device with a stable 
-                internet connection. Tests automatically save your progress.
+                <strong>{isFr ? 'Conseil :' : 'Pro tip:'}</strong> {isFr
+                  ? 'Pour de meilleurs résultats, complétez les tests quand vous êtes bien reposé et dans un environnement calme. Évitez les distractions et utilisez un appareil avec une connexion internet stable. Les tests sauvegardent automatiquement votre progression.'
+                  : 'For best results, complete tests when you\'re well-rested and in a quiet environment. Avoid distractions and use a device with a stable internet connection. Tests automatically save your progress.'}
               </AlertDescription>
             </Alert>
 
@@ -365,7 +390,7 @@ export default function CognitiveTestsPage() {
                 size="lg"
                 onClick={() => router.push('/')}
               >
-                Return Home
+                {isFr ? 'Retour à l\'accueil' : 'Return Home'}
               </Button>
               {completedCount === tests.length && (
                 <Button
@@ -373,7 +398,7 @@ export default function CognitiveTestsPage() {
                   onClick={() => router.push('/generate')}
                   className="gap-2"
                 >
-                  Generate HCS-U7 Profile
+                  {isFr ? 'Générer le profil HCS-U7' : 'Generate HCS-U7 Profile'}
                   <ChevronRight className="h-4 w-4" />
                 </Button>
               )}

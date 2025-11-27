@@ -8,6 +8,7 @@ import { Progress } from '@/components/ui/progress';
 import { Brain, Clock, Check, X, ArrowLeft, AlertTriangle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/components/LanguageProvider';
 
 type TestPhase = 'instructions' | 'partA' | 'partB' | 'complete';
 
@@ -26,6 +27,9 @@ interface Connection {
 
 export default function TrailMakingTest() {
   const router = useRouter();
+  const { lang } = useLanguage();
+  const isFr = lang === 'fr';
+  
   const [phase, setPhase] = useState<TestPhase>('instructions');
   const [circles, setCircles] = useState<Circle[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -216,10 +220,17 @@ export default function TrailMakingTest() {
   };
 
   const interpretScore = (score: number): string => {
-    if (score >= 80) return "Excellent cognitive flexibility";
-    if (score >= 60) return "Good cognitive flexibility";
-    if (score >= 40) return "Average cognitive flexibility";
-    return "Below average (practice may improve)";
+    if (isFr) {
+      if (score >= 80) return "Excellente flexibilité cognitive";
+      if (score >= 60) return "Bonne flexibilité cognitive";
+      if (score >= 40) return "Flexibilité cognitive moyenne";
+      return "En dessous de la moyenne (la pratique peut améliorer)";
+    } else {
+      if (score >= 80) return "Excellent cognitive flexibility";
+      if (score >= 60) return "Good cognitive flexibility";
+      if (score >= 40) return "Average cognitive flexibility";
+      return "Below average (practice may improve)";
+    }
   };
 
   useEffect(() => {
@@ -242,35 +253,41 @@ export default function TrailMakingTest() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Brain className="h-6 w-6 text-primary" />
-              Trail Making Test
+              {isFr ? 'Test du Tracé' : 'Trail Making Test'}
             </CardTitle>
             <CardDescription>
-              Cognitive flexibility & processing speed
+              {isFr ? 'Flexibilité cognitive & vitesse de traitement' : 'Cognitive flexibility & processing speed'}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="bg-primary/10 rounded-lg p-4">
-              <h3 className="font-semibold mb-2">Measures:</h3>
+              <h3 className="font-semibold mb-2">{isFr ? 'Mesure :' : 'Measures:'}</h3>
               <p className="text-sm text-muted-foreground">
-                Visual search, processing speed, cognitive flexibility
+                {isFr 
+                  ? 'Recherche visuelle, vitesse de traitement, flexibilité cognitive'
+                  : 'Visual search, processing speed, cognitive flexibility'}
               </p>
             </div>
             
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-2">Part A: Numbers</h3>
+                <h3 className="font-semibold mb-2">{isFr ? 'Partie A : Nombres' : 'Part A: Numbers'}</h3>
                 <p className="text-sm text-muted-foreground mb-2">
-                  Connect circles containing numbers in ascending order (1→2→3→...→25).
-                  Click each circle in sequence as fast as possible.
+                  {isFr
+                    ? 'Connectez les cercles contenant des nombres dans l\'ordre croissant (1→ 2→ 3→...→ 25). Cliquez sur chaque cercle dans l\'ordre aussi vite que possible.'
+                    : 'Connect circles containing numbers in ascending order (1→ 2→ 3→...→ 25). Click each circle in sequence as fast as possible.'}
                 </p>
                 <div className="bg-muted/50 rounded-lg p-3">
-                  <p className="text-sm font-mono">Example: 1 → 2 → 3 → ...</p>
+                  <p className="text-sm font-mono">{isFr ? 'Exemple :' : 'Example:'} 1 → 2 → 3 → ...</p>
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold mb-2">Part B: Numbers & Letters</h3>
+                <h3 className="font-semibold mb-2">{isFr ? 'Partie B : Nombres et Lettres' : 'Part B: Numbers & Letters'}</h3>
                 <p className="text-sm text-muted-foreground mb-2">
+                  {isFr
+                    ? 'Alternez entre les nombres et les lettres (1→ A→ 2→ B→ 3→ C→...→ 13→ M).'
+                    : 'Alternate between numbers and letters (1→A→2→B→3→C→...→13→M).'}
                   Alternate between numbers and letters (1→A→2→B→3→C→...→13→M).
                 </p>
                 <div className="bg-muted/50 rounded-lg p-3">
