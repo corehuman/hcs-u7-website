@@ -41,6 +41,7 @@ export function NBackTest({ onComplete }: NBackTestProps) {
     correct: boolean;
   }[]>([]);
   const [showStimulus, setShowStimulus] = useState(false);
+  const [waitingForResponse, setWaitingForResponse] = useState(false);
 
   const generateSequence = () => {
     const seq: string[] = [];
@@ -67,30 +68,38 @@ export function NBackTest({ onComplete }: NBackTestProps) {
   }, [phase]);
 
   useEffect(() => {
-    if (phase === "test" && currentTrial < TRIALS && sequence.length > 0) {
+    if (phase === "test" && currentTrial < TRIALS && sequence.length > 0 && !waitingForResponse) {
       // Show stimulus
       setCurrentStimulus(sequence[currentTrial]);
       setShowStimulus(true);
 
       const hideTimer = setTimeout(() => {
         setShowStimulus(false);
+        // If this trial needs a response, wait for it
+        if (currentTrial >= N) {
+          setWaitingForResponse(true);
+        }
       }, STIMULUS_DURATION);
 
-      const nextTimer = setTimeout(() => {
-        setCurrentTrial(currentTrial + 1);
-      }, ISI);
+      // Only auto-advance if we don't need a response (first N trials)
+      let nextTimer: NodeJS.Timeout | null = null;
+      if (currentTrial < N) {
+        nextTimer = setTimeout(() => {
+          setCurrentTrial(currentTrial + 1);
+        }, ISI);
+      }
 
       return () => {
         clearTimeout(hideTimer);
-        clearTimeout(nextTimer);
+        if (nextTimer) clearTimeout(nextTimer);
       };
     } else if (currentTrial >= TRIALS) {
       setPhase("complete");
     }
-  }, [phase, currentTrial, sequence]);
+  }, [phase, currentTrial, sequence, waitingForResponse]);
 
   const handleResponse = (isMatch: boolean) => {
-    if (currentTrial < N) return; // Can't respond for first N trials
+    if (currentTrial < N || !waitingForResponse) return; // Can't respond for first N trials or if not waiting
 
     const actualMatch = sequence[currentTrial] === sequence[currentTrial - N];
     const correct = isMatch === actualMatch;
@@ -104,6 +113,12 @@ export function NBackTest({ onComplete }: NBackTestProps) {
         correct,
       },
     ]);
+
+    // Move to next trial
+    setWaitingForResponse(false);
+    setTimeout(() => {
+      setCurrentTrial(currentTrial + 1);
+    }, 500); // Small delay before next trial
   };
 
   const calculateScore = (): NBackResult => {
@@ -232,12 +247,19 @@ export function NBackTest({ onComplete }: NBackTestProps) {
 
           {/* Response buttons */}
           {currentTrial >= N ? (
-            <div className="grid grid-cols-2 gap-4">
-              <Button
+            <div className="space-y-4">
+              {waitingForResponse && (
+                <div className="text-center text-sm text-muted-foreground animate-pulse">
+                  {isFr ? "Cliquez sur votre réponse" : "Click your response"}
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-4">
+                <Button
                 onClick={() => handleResponse(true)}
                 className="h-20 text-lg"
                 variant="default"
                 size="lg"
+                disabled={!waitingForResponse}
               >
                 <ChevronRight className="mr-2 h-5 w-5" />
                 MATCH
@@ -247,10 +269,12 @@ export function NBackTest({ onComplete }: NBackTestProps) {
                 className="h-20 text-lg"
                 variant="outline"
                 size="lg"
+                disabled={!waitingForResponse}
               >
                 <X className="mr-2 h-5 w-5" />
                 NO MATCH
               </Button>
+              </div>
             </div>
           ) : (
             <div className="rounded-lg bg-muted/50 p-4 text-center text-sm text-muted-foreground">
