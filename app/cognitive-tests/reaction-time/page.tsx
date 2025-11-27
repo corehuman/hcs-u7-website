@@ -60,9 +60,13 @@ export default function ReactionTimeTest() {
   };
 
   useEffect(() => {
-    if (phase === 'simple' || phase === 'choice') {
+    if (phase === 'simple') {
       setCurrentTrial(0);
-      setTrials([]);
+      setTrials([]); // Clear trials only at the start of simple phase
+      startTrial();
+    } else if (phase === 'choice') {
+      setCurrentTrial(0);
+      // Don't clear trials here - keep the simple RT trials
       startTrial();
     }
     
@@ -106,7 +110,8 @@ export default function ReactionTimeTest() {
         response
       };
       
-      setTrials([...trials, trial]);
+      // Utiliser une fonction de mise à jour pour éviter les problèmes de closure
+      setTrials(prevTrials => [...prevTrials, trial]);
       
       setTimeout(() => {
         moveToNextTrial();
@@ -159,14 +164,10 @@ export default function ReactionTimeTest() {
   }, [phase, trialState, stimulusColor, trials]);
 
   const calculateResults = () => {
-    // Séparer simple et choice
-    const simpleStart = phase === 'complete' ? 0 : -1;
-    const simpleEnd = TRIALS_PER_PHASE;
-    const choiceStart = TRIALS_PER_PHASE;
-    const choiceEnd = trials.length;
-    
-    const simpleTrials = trials.slice(simpleStart, simpleEnd).filter(t => t.valid);
-    const choiceTrials = trials.slice(choiceStart, choiceEnd).filter(t => t.valid);
+    // Les premiers TRIALS_PER_PHASE trials sont simple RT
+    // Les suivants sont choice RT
+    const simpleTrials = trials.slice(0, TRIALS_PER_PHASE).filter(t => t.valid);
+    const choiceTrials = trials.slice(TRIALS_PER_PHASE).filter(t => t.valid);
     
     if (simpleTrials.length === 0 || choiceTrials.length === 0) {
       return {
