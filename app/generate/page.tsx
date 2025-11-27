@@ -5,11 +5,16 @@ import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { CheckCircle2, FlaskConical, Brain, FileText } from "lucide-react";
 
 import questionsJson from "@/data/questions.json";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { QuestionCard, type QuestionItem } from "@/components/QuestionCard";
+import { CognitiveTestsSuite } from "@/components/CognitiveTestsSuite";
 import {
   calculateHCSProfile,
   type HCSAnswer,
@@ -41,6 +46,9 @@ export default function GeneratePage() {
   const router = useRouter();
   const { lang } = useLanguage();
   const isFr = lang === "fr";
+  const [activeTab, setActiveTab] = useState("questionnaire");
+  const [questionnaireProfile, setQuestionnaireProfile] = useState<any>(null);
+  const [cognitiveTestResults, setCognitiveTestResults] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [localError, setLocalError] = useState<string | null>(null);
 
@@ -96,7 +104,24 @@ export default function GeneratePage() {
     });
 
     const profile = calculateHCSProfile(hcsAnswers);
-    saveProfile(profile);
+    setQuestionnaireProfile(profile);
+    setActiveTab("tests"); // Move to cognitive tests tab
+  }
+
+  function handleTestsComplete(results: any) {
+    setCognitiveTestResults(results);
+    setActiveTab("result");
+  }
+
+  function handleSkipTests() {
+    setActiveTab("result");
+  }
+
+  function finalizeProfile() {
+    const finalProfile = cognitiveTestResults
+      ? { ...questionnaireProfile, cognitiveTests: cognitiveTestResults }
+      : questionnaireProfile;
+    saveProfile(finalProfile);
     router.push("/generate/result");
   }
 
@@ -112,38 +137,79 @@ export default function GeneratePage() {
     : null;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
       <div className="mb-8 space-y-4">
-        <div className="space-y-2">
-          <p className="text-xs font-medium uppercase tracking-wide text-primary">
-            {isFr ? "Générateur de profil HCS-U7" : "HCS-U7 Profile Generator"}
-          </p>
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-            {isFr
-              ? "Questionnaire cognitif (24 questions)"
-              : "Cognitive questionnaire (24 questions)"}
+        <div className="text-center">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+            {isFr ? "Générateur de Profil Cognitif" : "Generate Your Cognitive Profile"}
           </h1>
-          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+          <p className="mt-2 text-muted-foreground">
             {isFr
-              ? "Répondez en fonction de votre manière naturelle de réfléchir et d'interagir. Il n'y a pas de bonne ou de mauvaise réponse : l'objectif est de capturer votre signature cognitive."
-              : "Answer according to your natural way of thinking and interacting. There are no right or wrong answers: the goal is to capture your cognitive signature."}
+              ? "Complétez l'évaluation en deux étapes pour une précision maximale"
+              : "Complete the assessment in two stages for maximum accuracy"}
           </p>
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
-            <span>
-              {isFr ? "Progression" : "Progress"}: {currentIndex + 1} / {TOTAL_QUESTIONS} questions
-            </span>
-            <span>{Math.round(progressValue)}%</span>
-          </div>
-          <Progress
-            value={progressValue}
-            aria-label={
-              isFr ? "Progression du questionnaire" : "Questionnaire progress"
-            }
-          />
         </div>
       </div>
+
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="questionnaire" className="gap-2">
+            <FileText className="h-4 w-4" />
+            {isFr ? "1. Questionnaire" : "1. Questionnaire"}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="tests" 
+            disabled={!questionnaireProfile}
+            className="gap-2"
+          >
+            <FlaskConical className="h-4 w-4" />
+            {isFr ? "2. Tests Cognitifs" : "2. Cognitive Tests"}
+            {!questionnaireProfile && (
+              <Badge variant="secondary" className="ml-1">
+                {isFr ? "Verrouillé" : "Locked"}
+              </Badge>
+            )}
+          </TabsTrigger>
+          <TabsTrigger 
+            value="result" 
+            disabled={!questionnaireProfile}
+            className="gap-2"
+          >
+            <CheckCircle2 className="h-4 w-4" />
+            {isFr ? "3. Votre Profil" : "3. Your Profile"}
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="questionnaire" className="space-y-6">
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Brain className="h-5 w-5 text-primary" />
+                <h2 className="text-xl font-semibold">
+                  {isFr ? "Questionnaire Psychométrique" : "Psychometric Questionnaire"}
+                </h2>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                {isFr
+                  ? "24 questions basées sur des modèles de personnalité établis (Big Five, HEXACO)"
+                  : "24 questions based on established personality models (Big Five, HEXACO)"}
+              </p>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <span>
+                  {isFr ? "Progression" : "Progress"}: {currentIndex + 1} / {TOTAL_QUESTIONS} questions
+                </span>
+                <span>{Math.round(progressValue)}%</span>
+              </div>
+              <Progress
+                value={progressValue}
+                aria-label={
+                  isFr ? "Progression du questionnaire" : "Questionnaire progress"
+                }
+              />
+            </div>
+          </div>
 
       <form
         onSubmit={form.handleSubmit(onSubmit)}
@@ -198,6 +264,62 @@ export default function GeneratePage() {
           </div>
         </div>
       </form>
+        </TabsContent>
+
+        <TabsContent value="tests" className="space-y-6">
+          {questionnaireProfile ? (
+            <CognitiveTestsSuite
+              onComplete={handleTestsComplete}
+              onSkip={handleSkipTests}
+            />
+          ) : (
+            <Alert>
+              <AlertDescription>
+                {isFr
+                  ? "Veuillez d'abord compléter le questionnaire."
+                  : "Please complete the questionnaire first."}
+              </AlertDescription>
+            </Alert>
+          )}
+        </TabsContent>
+
+        <TabsContent value="result" className="space-y-6">
+          {questionnaireProfile ? (
+            <div className="space-y-6">
+              <Alert>
+                <CheckCircle2 className="h-4 w-4" />
+                <AlertDescription>
+                  {isFr
+                    ? "Profil prêt ! Cliquez ci-dessous pour finaliser et voir votre code HCS-U7."
+                    : "Profile ready! Click below to finalize and see your HCS-U7 code."}
+                </AlertDescription>
+              </Alert>
+              {cognitiveTestResults && (
+                <Alert>
+                  <FlaskConical className="h-4 w-4" />
+                  <AlertDescription>
+                    {isFr
+                      ? "Tests cognitifs complétés. Votre profil inclut des mesures objectives."
+                      : "Cognitive tests completed. Your profile includes objective measures."}
+                  </AlertDescription>
+                </Alert>
+              )}
+              <Button onClick={finalizeProfile} size="lg" className="w-full">
+                <CheckCircle2 className="mr-2 h-4 w-4" />
+                {isFr ? "Voir mon profil HCS-U7" : "View My HCS-U7 Profile"}
+              </Button>
+            </div>
+          ) : (
+            <Alert>
+              <AlertDescription>
+                {isFr
+                  ? "Veuillez d'abord compléter le questionnaire."
+                  : "Please complete the questionnaire first."}
+              </AlertDescription>
+            </Alert>
+          )}
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }

@@ -1,132 +1,114 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Github,
-  Sparkles,
-  Workflow,
-  Zap,
+import { 
+  ArrowRight, 
+  Brain, 
+  Shield, 
+  Sparkles, 
+  Zap, 
+  FlaskConical, 
+  BookOpen, 
+  Award, 
+  Users, 
+  CheckCircle2, 
+  Github, 
+  Workflow 
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useLanguage } from "@/components/LanguageProvider";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
 
-export default function Home() {
+export default function HomePage() {
+  const { lang } = useLanguage();
+  const isFr = lang === "fr";
+
   return (
-    <div className="bg-gradient-to-b from-neutral-50 via-background to-background">
-      <div className="mx-auto max-w-6xl px-4 pb-16 pt-10 sm:px-6 sm:pt-14 lg:px-8">
-        {/* Hero */}
-        <motion.section
-          initial="hidden"
-          animate="visible"
-          variants={sectionVariants}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="grid gap-10 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:items-center"
-        >
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border bg-background/70 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-              <Sparkles className="h-3.5 w-3.5 text-primary" />
-              <span>Cognitive personalization for AI interactions</span>
-            </div>
-            <div className="space-y-4">
-              <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                Personalize your AI interactions to your cognitive profile
-              </h1>
-              <p className="max-w-xl text-pretty text-sm text-muted-foreground sm:text-base">
-                HCS-U7 encodes your communication preferences into a compact
-                code that AIs can interpret to adapt their responses. One
-                profile, reusable across ChatGPT, Claude, APIs and your own
-                applications.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <Button asChild size="lg" className="rounded-full px-6">
-                <Link href="/generate" aria-label="Generate my HCS-U7 profile">
-                  Generate my profile
-                  <ArrowRight className="ml-2 h-4 w-4" />
+    <div className="bg-background">
+      {/* Hero Section with Scientific Focus */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-neutral-50/50 to-background">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+        
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-20 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={sectionVariants}
+            transition={{ duration: 0.4 }}
+            className="text-center"
+          >
+            {/* Scientific Badge */}
+            <Badge variant="outline" className="mb-8 gap-2 px-4 py-1.5">
+              <FlaskConical className="h-3.5 w-3.5" />
+              Research-based cognitive profiling
+            </Badge>
+            
+            <h1 className="mx-auto max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
+              {isFr ? "Système de Profil Cognitif HCS-U7" : "HCS-U7: Cognitive Profile System"}
+            </h1>
+            
+            <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">
+              {isFr 
+                ? "Générez votre profil cognitif scientifiquement fondé à travers des questionnaires psychométriques validés et des tests neurocognitifs objectifs"
+                : "Generate your scientifically-grounded cognitive profile through validated psychometric questionnaires and objective neurocognitive tests"}
+            </p>
+            
+            <p className="mx-auto mt-4 max-w-2xl text-base font-medium text-primary">
+              {isFr
+                ? "Optimisez vos interactions IA avec des signatures cognitives personnalisées"
+                : "Optimize your AI interactions with personalized cognitive signatures"}
+            </p>
+            
+            {/* CTAs */}
+            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Button asChild size="lg" className="rounded-full px-8">
+                <Link href="/generate">
+                  <Brain className="mr-2 h-4 w-4" />
+                  {isFr ? "Générer mon profil" : "Generate My Profile"}
                 </Link>
               </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="rounded-full border-dashed px-5"
-              >
-                <a href="#how-it-works">How does it work?</a>
+              <Button asChild variant="outline" size="lg" className="rounded-full px-8">
+                <Link href="/docs">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  {isFr ? "Documentation scientifique" : "Scientific Documentation"}
+                </Link>
               </Button>
-              <p className="w-full text-xs text-muted-foreground sm:w-auto sm:text-sm">
-                10-minute questionnaire → one HCS-U7 code you can use everywhere.
-              </p>
             </div>
-            <dl className="grid gap-4 text-xs text-muted-foreground sm:grid-cols-3 sm:text-sm">
-              <div>
-                <dt className="font-medium text-foreground">Audience</dt>
-                <dd>AI developers, product teams, researchers, power users.</dd>
-              </div>
-              <div>
-                <dt className="font-medium text-foreground">Stack</dt>
-                <dd>Open source, parsers for Python / JS / ROS2.</dd>
-              </div>
-              <div>
-                <dt className="font-medium text-foreground">Usage</dt>
-                <dd>One profile for all your AI conversations.</dd>
-              </div>
-            </dl>
-          </div>
-
-          <div className="rounded-3xl border bg-white/70 p-5 shadow-sm backdrop-blur dark:bg-neutral-950/70">
-            <div className="space-y-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-primary">
-                Example HCS-U7 profile
-              </p>
-              <div className="rounded-2xl bg-neutral-950 p-4 text-xs text-neutral-50">
-                <p className="font-mono text-[11px] leading-relaxed">
-                  HCS-U7|V:7.0|ALG:QS|E:E|MOD:c30f40m30|
-                  <br />
-                  COG:F15C70V20S25Cr20|INT:PB=B,SM=M,TN=L|
-                  <br />
-                  QSIG:abc123ef90|B3:def456gh
-                </p>
-              </div>
-              <ul className="space-y-2 text-xs text-muted-foreground sm:text-sm">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>
-                    <span className="font-medium text-foreground">
-                      Dominant cognitive style: Analytical (Air).
-                    </span>{" "}
-                    Prefers structured explanations, few visuals.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>
-                    <span className="font-medium text-foreground">
-                      Pace: balanced.
-                    </span>{" "}
-                    Neither too slow nor too fast, with a controlled level of
-                    detail.
-                  </span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>
-                    Recommended responses: direct, technical, decision-oriented.
-                  </span>
-                </li>
-              </ul>
+            
+            {/* Credibility Badges */}
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Badge variant="secondary" className="gap-2">
+                <CheckCircle2 className="h-4 w-4" />
+                {isFr ? "Empiriquement fondé" : "Empirically grounded"}
+              </Badge>
+              <Badge variant="secondary" className="gap-2">
+                <Users className="h-4 w-4" />
+                {isFr ? "Étude de validation (N=50)" : "Validation study (N=50)"}
+              </Badge>
+              <Badge variant="secondary" className="gap-2">
+                <Github className="h-4 w-4" />
+                {isFr ? "Open source (GPL v3)" : "Open source (GPL v3)"}
+              </Badge>
+              <Badge variant="secondary" className="gap-2">
+                <BookOpen className="h-4 w-4" />
+                {isFr ? "Références académiques" : "Academic references"}
+              </Badge>
             </div>
-          </div>
-        </motion.section>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Le problème */}
+      {/* Problem Section */}
+      <div className="mx-auto max-w-6xl px-4 pb-16 pt-20 sm:px-6 lg:px-8">
         <motion.section
           id="problem"
           className="mt-16 grid gap-8 md:grid-cols-2"
