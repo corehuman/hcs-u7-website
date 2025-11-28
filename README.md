@@ -20,13 +20,14 @@ Site web officiel du système **HCS-U7 (Human Cognitive Signature)**, une platef
   - **Digit Span Test** : Mémoire à court terme (forward/backward)
   - **Reaction Time Test** : Vitesse de traitement (simple/choice RT)
 - Sauvegarde automatique des résultats en sessionStorage
-- Interface moderne avec animations et feedback en temps réel
+- Interface moderne avec animations, feedback en temps réel et contraste optimisé
 
 ### 🔐 Sécurité Cognitive (NOUVEAU)
 - **Authentification biométrique cognitive** : Remplacez les mots de passe
 - **CAPTCHA résistant à l'IA** : Détection de bots basée sur les patterns cognitifs
 - **Vérification de profil** : Comparaison cryptographique de signatures
 - **Détection de fraude** : Surveillance en temps réel des anomalies comportementales
+- **Démos interactives** : `/security/auth-demo`, `/security/captcha-demo`, `/security/verify`, `/security/fraud-demo`
 - API et SDKs pour intégration facile
 
 ### 🌐 Support Multilingue
@@ -68,8 +69,10 @@ Site web officiel du système **HCS-U7 (Human Cognitive Signature)**, une platef
 
 ### 🔒 Sécurité
 - `/security` – **Page sécurité** : Solutions d'authentification cognitive
-- `/security/auth-demo` – Démo d'authentification (à venir)
-- `/security/captcha-demo` – Démo CAPTCHA cognitif (à venir)
+- `/security/auth-demo` – Démo d'authentification biométrique cognitive
+- `/security/captcha-demo` – Démo CAPTCHA cognitif résistant à l'IA
+- `/security/verify` – Outil de vérification de profils HCS-U7
+- `/security/fraud-demo` – Démo de détection de fraude en temps réel
 
 ### 📚 Documentation & Ressources
 - `/docs` – Documentation technique complète
@@ -77,6 +80,9 @@ Site web officiel du système **HCS-U7 (Human Cognitive Signature)**, une platef
 - `/integrations` – OpenAI, Claude, LangChain, SDKs
 - `/research` – Protocole empirique, études, publications
 - `/pricing` – Gratuit & open-source + Enterprise
+
+### 🔌 API
+- `/api/generate-prompt` – Endpoint REST pour générer les prompts ChatGPT / Claude à partir d’un profil HCS-U7
 
 ---
 
@@ -247,19 +253,17 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 - **Site en production** : [hcs-u7.vercel.app](https://hcs-u7.vercel.app)
 - **GitHub** : [github.com/zefparis/HCS-U7-website](https://github.com/zefparis/HCS-U7-website)
-- **Documentation API** : [/docs/api](https://hcs-u7.vercel.app/docs/api) (à venir)
+- **API** : endpoint REST `/api/generate-prompt` (documentation détaillée à venir)
 - **Support** : Ouvrez une [issue sur GitHub](https://github.com/zefparis/HCS-U7-website/issues)
 
 ---
 
-## 📊 Statistiques
+## 📊 Statistiques (approx.)
 
-- **Pages** : 19 routes statiques + dynamiques
-- **Tests cognitifs** : 5 tests validés scientifiquement
+- **Pages** : une vingtaine de routes (statiques + dynamiques)
+- **Tests cognitifs** : 5 tests neurocognitifs principaux
 - **Composants** : 50+ composants React réutilisables
 - **Langues** : 2 (EN/FR) avec support complet
-- **Performance** : Score Lighthouse 95+
-- **Accessibilité** : WCAG 2.1 AA compliant
 
 ---
 
