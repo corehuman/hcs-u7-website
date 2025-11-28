@@ -11,7 +11,7 @@ import { useLanguage } from "@/components/LanguageProvider";
 const LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const N = 2; // 2-back task
 const TRIALS = 30;
-const STIMULUS_DURATION = 500; // ms
+const STIMULUS_DURATION = 800; // ms (légèrement plus long pour lire la lettre)
 const ISI = 2000; // inter-stimulus interval
 
 interface NBackResult {
@@ -209,8 +209,8 @@ export function NBackTest({ onComplete }: NBackTestProps) {
           <Alert variant="default">
             <AlertDescription className="text-sm">
               {isFr
-                ? "Les lettres apparaissent brièvement. Répondez pendant l'intervalle vide. 30 essais au total (~5 minutes)."
-                : "Letters appear briefly. Respond during the blank interval. 30 trials total (~5 minutes)."}
+                ? "Chaque lettre apparaît brièvement, puis un signe + s'affiche. C'est pendant ce + que vous cliquez MATCH ou NO MATCH : le fond devient VERT quand vous devez répondre. 30 essais au total (~5 minutes)."
+                : "Each letter appears briefly, then a + sign is shown. During this + you click MATCH or NO MATCH: the background turns GREEN when you should respond. 30 trials total (~5 minutes)."}
             </AlertDescription>
           </Alert>
 
@@ -238,8 +238,35 @@ export function NBackTest({ onComplete }: NBackTestProps) {
             <Progress value={((currentTrial + 1) / TRIALS) * 100} />
           </div>
 
-          {/* Stimulus */}
-          <div className="flex items-center justify-center py-20">
+          {/* Indicateur d'état du test */}
+          <div className="text-center text-sm text-foreground/85">
+            {currentTrial < N
+              ? (isFr
+                  ? `Phase de mémorisation (aucune réponse jusqu'à l'essai ${N + 1})`
+                  : `Memorization phase (no response until trial ${N + 1})`)
+              : showStimulus
+                ? (isFr
+                    ? "Nouvel essai : mémorisez la lettre"
+                    : "New trial: memorize the letter")
+                : waitingForResponse
+                  ? (isFr
+                      ? "Répondez maintenant : MATCH ou NO MATCH"
+                      : "Respond now: MATCH or NO MATCH")
+                  : (isFr
+                      ? "Préparation du prochain essai..."
+                      : "Preparing next trial...")}
+          </div>
+
+          {/* Stimulus avec code couleur */}
+          <div
+            className={`flex items-center justify-center py-20 rounded-2xl transition-colors ${
+              currentTrial < N
+                ? "bg-muted/40"
+                : waitingForResponse
+                  ? "bg-success-subtle"
+                  : "bg-muted/20"
+            }`}
+          >
             <div className="text-8xl font-bold">
               {showStimulus ? currentStimulus : "+"}
             </div>
