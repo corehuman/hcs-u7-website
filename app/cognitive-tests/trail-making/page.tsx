@@ -441,17 +441,17 @@ export default function TrailMakingTest() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Clock className="h-8 w-8 mx-auto mb-2 text-blue-500" />
-                  <p className="text-sm text-blue-800 dark:text-blue-200">Part A</p>
+                  <p className="text-sm text-foreground/85">Part A</p>
                   <p className="text-2xl font-bold">{result.partATime}s</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Clock className="h-8 w-8 mx-auto mb-2 text-orange-500" />
-                  <p className="text-sm text-red-800 dark:text-red-200">Part B</p>
+                  <p className="text-sm text-foreground/85">Part B</p>
                   <p className="text-2xl font-bold">{result.partBTime}s</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Brain className="h-8 w-8 mx-auto mb-2 text-primary" />
-                  <p className="text-sm text-orange-800 dark:text-orange-200">Flexibility</p>
+                  <p className="text-sm text-foreground/85">Flexibility</p>
                   <p className="text-2xl font-bold">{result.cognitiveFlexibility}</p>
                 </div>
               </div>

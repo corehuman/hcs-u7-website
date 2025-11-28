@@ -247,7 +247,7 @@ export default function CognitiveTestsPage() {
                   variant="outline"
                   size="sm"
                   onClick={clearAllResults}
-                  className="text-amber-800 dark:text-amber-200"
+                  className="text-amber-600 dark:text-amber-400"
                 >
                   {isFr ? 'Effacer les résultats' : 'Clear Results'}
                 </Button>
@@ -257,7 +257,7 @@ export default function CognitiveTestsPage() {
             {/* Progress */}
             {completedCount > 0 && (
               <div className="mt-6 space-y-2">
-                <div className="flex justify-between text-sm text-green-800 dark:text-green-200">
+                <div className="flex justify-between text-sm text-foreground/85">
                   <span>{isFr ? 'Progression' : 'Progress'}</span>
                   <span>{isFr ? `${completedCount} sur ${tests.length} complétés` : `${completedCount} of ${tests.length} completed`}</span>
                 </div>
@@ -323,13 +323,13 @@ export default function CognitiveTestsPage() {
                       </CardHeader>
                       
                       <CardContent className="space-y-4">
-                        <p className="text-sm text-green-800 dark:text-green-200">
+                        <p className="text-sm text-foreground/75">
                           {isFr ? test.descriptionFr : test.description}
                         </p>
                         
                         {test.result && (
                           <div className="bg-muted/50 rounded-lg p-3 space-y-1">
-                            <p className="text-xs font-medium text-blue-800 dark:text-blue-200">{isFr ? 'Votre résultat :' : 'Your Result:'}</p>
+                            <p className="text-xs font-medium text-foreground/85">{isFr ? 'Votre résultat :' : 'Your Result:'}</p>
                             {test.result.score !== undefined && (
                               <p className="text-sm font-semibold">
                                 Score : {test.result.score}

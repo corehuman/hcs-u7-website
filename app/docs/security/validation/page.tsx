@@ -58,7 +58,7 @@ export default function ValidationPage() {
               <Card className="bg-blue-100 dark:bg-blue-900/25 border border-blue-200 dark:border-blue-800/50">
                 <CardContent className="pt-4">
                   <h4 className="font-semibold text-sm mb-2 text-blue-900 dark:text-blue-100">Recommandations</h4>
-                  <ul className="space-y-1 text-xs text-blue-800 dark:text-blue-200">
+                  <ul className="space-y-1 text-xs text-foreground/85">
                     <li>• <strong>Seuil 70% :</strong> FRR {'<'} 5% (95% passent)</li>
                     <li>• <strong>Seuil 75% :</strong> FRR ~ 8% (haute sécurité)</li>
                     <li>• <strong>Seuil 85% :</strong> FRR ~ 45% (inacceptable)</li>

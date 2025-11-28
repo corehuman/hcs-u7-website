@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background py-8 text-sm text-foreground/85">
+    <footer className="border-t bg-background/90 backdrop-blur-sm py-8 text-sm text-foreground/85">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div className="space-y-1">
           <p className="font-medium text-foreground">HCS-U7 © 2025</p>

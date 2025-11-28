@@ -55,21 +55,38 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-foreground`}
       >
         <ThemeProvider>
           <LanguageProvider>
-            <a
-              href="#main"
-              className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:rounded-full focus-visible:bg-primary focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-primary-foreground shadow"
-            >
-              Skip to main content
-            </a>
-            <Navigation />
-            <main id="main" className="min-h-[calc(100vh-8rem)] bg-background">
-              {children}
-            </main>
-            <Footer />
+            {/* Background image with overlays for readability */}
+            <div className="fixed inset-0 z-0">
+              <div 
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: 'url(/images/background.png)' }}
+              />
+              {/* Light mode overlay - balanced for visibility */}
+              <div className="absolute inset-0 bg-white/80 dark:hidden backdrop-blur-[2px]" />
+              {/* Dark mode overlay - darker for better contrast */}
+              <div className="absolute inset-0 hidden dark:block bg-neutral-950/85 backdrop-blur-[2px]" />
+              {/* Additional gradient overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/60" />
+            </div>
+            
+            {/* Content wrapper */}
+            <div className="relative z-10">
+              <a
+                href="#main"
+                className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:rounded-full focus-visible:bg-primary focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-primary-foreground shadow"
+              >
+                Skip to main content
+              </a>
+              <Navigation />
+              <main id="main" className="min-h-[calc(100vh-8rem)]">
+                {children}
+              </main>
+              <Footer />
+            </div>
             <Analytics />
           </LanguageProvider>
         </ThemeProvider>

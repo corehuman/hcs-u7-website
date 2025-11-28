@@ -360,7 +360,7 @@ export default function DigitSpanTest() {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-center text-sm text-green-800 dark:text-green-200"
+                      className="text-center text-sm text-green-600 dark:text-green-400"
                     >
                       Correct answer: {(isBackward ? [...sequence].reverse() : sequence).join(' → ')}
                     </motion.div>
@@ -484,7 +484,7 @@ export default function DigitSpanTest() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <ArrowRight className="h-8 w-8 mx-auto mb-2 text-blue-500" />
-                  <p className="text-sm text-red-800 dark:text-red-200">Forward</p>
+                  <p className="text-sm text-foreground/85">Forward</p>
                   <p className="text-2xl font-bold">{result.forwardSpan}</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
