@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -30,6 +30,8 @@ export function MiniStroopTest({ onComplete }: MiniStroopTestProps) {
   const [startTime, setStartTime] = useState(0);
   const [results, setResults] = useState<StroopTrial[]>([]);
   const [showError, setShowError] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const errorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (currentTrial < TRIALS) {
@@ -54,14 +56,24 @@ export function MiniStroopTest({ onComplete }: MiniStroopTestProps) {
   };
 
   const handleResponse = (selectedColor: string) => {
-    if (!trial) return;
+    if (!trial || isProcessing) return;
     
+    setIsProcessing(true);
     const responseTime = performance.now() - startTime;
     const correct = selectedColor === trial.color;
 
     if (!correct) {
       setShowError(true);
-      setTimeout(() => setShowError(false), 300);
+      
+      // Clear any existing error timeout
+      if (errorTimeoutRef.current) {
+        clearTimeout(errorTimeoutRef.current);
+      }
+      
+      errorTimeoutRef.current = setTimeout(() => {
+        setShowError(false);
+        errorTimeoutRef.current = null;
+      }, 300);
     }
 
     const newResult: StroopTrial = {
@@ -71,8 +83,22 @@ export function MiniStroopTest({ onComplete }: MiniStroopTestProps) {
     };
 
     setResults(prev => [...prev, newResult]);
-    setCurrentTrial(currentTrial + 1);
+    
+    // Small delay to prevent rapid clicks
+    setTimeout(() => {
+      setCurrentTrial(currentTrial + 1);
+      setIsProcessing(false);
+    }, 150);
   };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (errorTimeoutRef.current) {
+        clearTimeout(errorTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const calculateResults = (trials: StroopTrial[]) => {
     const congruent = trials.filter(t => t.congruent);
@@ -142,7 +168,8 @@ export function MiniStroopTest({ onComplete }: MiniStroopTestProps) {
             <Button
               key={color}
               onClick={() => handleResponse(color)}
-              className={`h-16 text-lg font-bold text-white ${colorMap[color]}`}
+              disabled={isProcessing}
+              className={`h-16 text-lg font-bold text-white ${colorMap[color]} disabled:opacity-50 disabled:cursor-not-allowed`}
               variant="default"
             >
               {color.toUpperCase()}

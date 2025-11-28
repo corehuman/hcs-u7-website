@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Shield, Zap } from 'lucide-react';
@@ -27,6 +28,9 @@ export function BaselineEstablishment({ onComplete }: BaselineEstablishmentProps
   const [startTime, setStartTime] = useState(0);
   const [results, setResults] = useState<any[]>([]);
   const [rtState, setRtState] = useState<'waiting' | 'ready' | 'tooEarly'>('waiting');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Stroop Test
   useEffect(() => {
@@ -51,49 +55,95 @@ export function BaselineEstablishment({ onComplete }: BaselineEstablishmentProps
   useEffect(() => {
     if (phase === 'reaction-time' && currentTrial < TRIALS) {
       setRtState('waiting');
+      setIsProcessing(false);
       const delay = 1000 + Math.random() * 2000;
-      const timeout = setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setRtState('ready');
         setStartTime(performance.now());
       }, delay);
-      return () => clearTimeout(timeout);
+      return () => {
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = null;
+        }
+      };
     } else if (phase === 'reaction-time' && currentTrial === TRIALS) {
       // Générer baseline
       setPhase('generating');
-      setTimeout(() => {
+      const genTimeout = setTimeout(() => {
         const baseline = generateBaseline(results);
         onComplete(baseline);
       }, 1500);
+      return () => clearTimeout(genTimeout);
     }
   }, [phase, currentTrial, results, onComplete]);
 
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (transitionTimeoutRef.current) clearTimeout(transitionTimeoutRef.current);
+    };
+  }, []);
+
   const handleStroopResponse = (selectedColor: string) => {
-    if (!trial) return;
+    if (!trial || isProcessing) return;
     
+    setIsProcessing(true);
     const responseTime = performance.now() - startTime;
     const correct = selectedColor === trial.color;
 
-    setResults([...results, {
+    setResults(prev => [...prev, {
       type: 'stroop',
       congruent: trial.congruent,
       responseTime,
       correct
     }]);
 
-    setCurrentTrial(currentTrial + 1);
+    // Small delay to prevent rapid clicks
+    setTimeout(() => {
+      setCurrentTrial(prev => prev + 1);
+      setIsProcessing(false);
+    }, 100);
   };
 
   const handleRtClick = () => {
+    // Prevent multiple clicks during processing
+    if (isProcessing) return;
+    
     if (rtState === 'waiting') {
+      // Clear the waiting timeout to prevent green screen after "too early"
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      
+      setIsProcessing(true);
       setRtState('tooEarly');
-      setTimeout(() => setCurrentTrial(currentTrial + 1), 500);
+      
+      // Clear any existing transition timeout
+      if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+      }
+      
+      transitionTimeoutRef.current = setTimeout(() => {
+        setCurrentTrial(prev => prev + 1);
+        setIsProcessing(false);
+        transitionTimeoutRef.current = null;
+      }, 1000); // Give more time to see the message
     } else if (rtState === 'ready') {
+      setIsProcessing(true);
       const rt = performance.now() - startTime;
-      setResults([...results, {
+      setResults(prev => [...prev, {
         type: 'rt',
         responseTime: rt
       }]);
-      setCurrentTrial(currentTrial + 1);
+      
+      // Small delay before moving to next trial
+      setTimeout(() => {
+        setCurrentTrial(prev => prev + 1);
+        setIsProcessing(false);
+      }, 100);
     }
   };
 
@@ -180,7 +230,8 @@ export function BaselineEstablishment({ onComplete }: BaselineEstablishmentProps
               <button
                 key={color}
                 onClick={() => handleStroopResponse(color)}
-                className="h-16 text-lg font-bold rounded-lg transition-transform hover:scale-105 active:scale-95"
+                disabled={isProcessing}
+                className="h-16 text-lg font-bold rounded-lg transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   backgroundColor: color,
                   color: 'white'
@@ -204,7 +255,9 @@ export function BaselineEstablishment({ onComplete }: BaselineEstablishmentProps
           </div>
 
           <div 
-            className={`h-96 rounded-lg flex items-center justify-center text-4xl font-bold cursor-pointer transition-all ${
+            className={`h-96 rounded-lg flex items-center justify-center text-4xl font-bold transition-all ${
+              isProcessing ? 'cursor-not-allowed' : 'cursor-pointer'
+            } ${
               rtState === 'waiting' 
                 ? 'bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
                 : rtState === 'ready'

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
@@ -33,6 +33,8 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
   const [testStartTime] = useState(Date.now());
   const [results, setResults] = useState<Trial[]>([]);
   const [showError, setShowError] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const errorTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
 
   useEffect(() => {
@@ -66,14 +68,24 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
   };
 
   const handleResponse = (selectedColor: string) => {
-    if (!trial) return;
+    if (!trial || isProcessing) return;
     
+    setIsProcessing(true);
     const responseTime = performance.now() - startTime;
     const correct = selectedColor === trial.color;
 
     if (!correct) {
       setShowError(true);
-      setTimeout(() => setShowError(false), 300);
+      
+      // Clear any existing error timeout
+      if (errorTimeoutRef.current) {
+        clearTimeout(errorTimeoutRef.current);
+      }
+      
+      errorTimeoutRef.current = setTimeout(() => {
+        setShowError(false);
+        errorTimeoutRef.current = null;
+      }, 300);
     }
 
     const trialResult: Trial = {
@@ -84,8 +96,22 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
     };
 
     setResults(prev => [...prev, trialResult]);
-    setCurrentTrial(currentTrial + 1);
+    
+    // Small delay to prevent rapid clicks
+    setTimeout(() => {
+      setCurrentTrial(currentTrial + 1);
+      setIsProcessing(false);
+    }, 150);
   };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (errorTimeoutRef.current) {
+        clearTimeout(errorTimeoutRef.current);
+      }
+    };
+  }, []);
 
   if (analyzing) {
     return (
@@ -171,7 +197,8 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
             <Button
               key={color}
               onClick={() => handleResponse(color)}
-              className="h-16 text-lg font-bold transition-transform hover:scale-105 active:scale-95"
+              disabled={isProcessing}
+              className="h-16 text-lg font-bold transition-transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
                 backgroundColor: color,
                 color: 'white'
