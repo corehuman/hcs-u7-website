@@ -5,7 +5,7 @@ export default function DocsIndexPage() {
         <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           What is HCS-U7?
         </h1>
-        <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+        <p className="max-w-2xl text-sm text-foreground/85 sm:text-base">
           HCS-U7 (Human Cognitive Signature) is an open system for representing
           a user&apos;s cognitive and interaction preferences. It produces a compact
           code that AI systems can interpret to adapt their behaviour.
@@ -14,7 +14,7 @@ export default function DocsIndexPage() {
 
       <section className="space-y-2">
         <h2 className="text-lg font-semibold text-foreground">Why use it?</h2>
-        <ul className="space-y-1 text-sm text-muted-foreground">
+        <ul className="space-y-1 text-sm text-foreground/85">
           <li>
             <strong>Persistent personalization</strong>: one profile for all
             your AIs (ChatGPT, Claude, internal tools).
@@ -32,7 +32,7 @@ export default function DocsIndexPage() {
 
       <section className="space-y-3">
         <h2 className="text-lg font-semibold text-foreground">Quick Start</h2>
-        <ol className="list-decimal space-y-1 pl-5 text-sm text-muted-foreground">
+        <ol className="list-decimal space-y-1 pl-5 text-sm text-foreground/85">
           <li>Generate your profile via the /generate page.</li>
           <li>
             Copy the HCS-U7 code and the automatically generated prompt for

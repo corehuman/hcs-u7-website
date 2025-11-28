@@ -150,7 +150,7 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
         <CardContent className="space-y-3">
           <div className="flex gap-3">
             <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground/85">
               {isFr
                 ? "Patterns intrinsèques : Votre variabilité RT et effet Stroop sont des propriétés biologiques qui n'existent que lors d'une performance en direct"
                 : "Intrinsic patterns: Your RT variability and Stroop effect are biological properties that exist only during live performance"}
@@ -158,7 +158,7 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
           </div>
           <div className="flex gap-3">
             <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground/85">
               {isFr
                 ? "Ne peut être volé : Contrairement aux mots de passe, ces patterns ne peuvent être extraits d'une base de données ou interceptés"
                 : "Cannot be stolen: Unlike passwords, these patterns cannot be extracted from a database or intercepted"}
@@ -166,7 +166,7 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
           </div>
           <div className="flex gap-3">
             <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground/85">
               {isFr
                 ? "Résistant à l'IA : Les bots actuels n'ont pas la variabilité motrice et les effets d'interférence inhérents à la cognition humaine"
                 : "AI-resistant: Current bots lack the motor variability and interference effects inherent to human cognition"}
@@ -178,7 +178,7 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
       {/* CTA */}
       <Card>
         <CardContent className="pt-6 text-center space-y-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-foreground/85">
             {isFr
               ? "Maintenant, vérifions votre identité en répétant les mêmes tests"
               : "Now let's verify your identity by repeating the same tests"}
@@ -206,12 +206,12 @@ function MetricRow({
   highlight?: boolean;
 }) {
   return (
-    <div className={highlight ? 'bg-yellow-50 dark:bg-yellow-950/30 p-3 rounded-lg' : ''}>
+    <div className={highlight ? 'bg-amber-100 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40 p-3 rounded-lg' : ''}>
       <div className="flex justify-between items-center mb-1">
         <span className="text-sm font-medium">{label}</span>
         <span className="font-mono font-bold">{value}</span>
       </div>
-      <p className="text-xs text-foreground/80">{description}</p>
+      <p className="text-xs text-foreground/85">{description}</p>
     </div>
   );
 }

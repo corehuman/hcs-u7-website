@@ -86,7 +86,7 @@ export function MiniReactionTimeTest({ onComplete }: MiniReactionTimeTestProps) 
 
   const textColorClass =
     state === 'waiting'
-      ? 'text-gray-600 dark:text-gray-400'
+      ? 'text-gray-600 dark:text-foreground/70'
       : 'text-white';
 
   return (
@@ -98,13 +98,13 @@ export function MiniReactionTimeTest({ onComplete }: MiniReactionTimeTestProps) 
             <span className="font-medium">
               {isFr ? 'Test de Temps de Réaction' : 'Reaction Time Test'}
             </span>
-            <span className="text-muted-foreground">{currentTrial + 1} / {TRIALS}</span>
+            <span className="text-foreground/85">{currentTrial + 1} / {TRIALS}</span>
           </div>
           <Progress value={((currentTrial + 1) / TRIALS) * 100} className="h-2" />
         </div>
 
         {/* Instruction */}
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="text-center text-sm text-foreground/85">
           {isFr
             ? 'Cliquez dès que l\'écran devient VERT'
             : 'Click as soon as the screen turns GREEN'}
@@ -134,7 +134,7 @@ export function MiniReactionTimeTest({ onComplete }: MiniReactionTimeTestProps) 
 
         {/* Current stats */}
         {results.length > 0 && (
-          <div className="text-center text-xs text-muted-foreground">
+          <div className="text-center text-xs text-foreground/85">
             {isFr ? 'Moyenne actuelle' : 'Current average'}: {Math.round(
               results.reduce((sum, rt) => sum + rt, 0) / results.length
             )}ms

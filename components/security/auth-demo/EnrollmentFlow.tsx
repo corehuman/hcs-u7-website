@@ -69,7 +69,7 @@ export function EnrollmentFlow({ onComplete }: EnrollmentFlowProps) {
               ? 'Créez votre signature cognitive'
               : 'Create Your Cognitive Signature'}
           </CardDescription>
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="text-sm text-foreground/85 mt-2">
             {isFr
               ? 'Complétez deux tests rapides pour établir votre profil cognitif de base'
               : 'Complete two quick tests to establish your baseline cognitive profile'}
@@ -92,7 +92,7 @@ export function EnrollmentFlow({ onComplete }: EnrollmentFlowProps) {
                 </div>
                 <div>
                   <p className="font-medium">{isFr ? 'Test Stroop' : 'Stroop Test'}</p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-foreground/85">
                     {isFr ? 'Contrôle inhibiteur' : 'Inhibitory control'}
                   </p>
                 </div>
@@ -110,7 +110,7 @@ export function EnrollmentFlow({ onComplete }: EnrollmentFlowProps) {
                   <p className="font-medium">
                     {isFr ? 'Temps de Réaction' : 'Reaction Time'}
                   </p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-foreground/85">
                     {isFr ? 'Vitesse de traitement' : 'Processing speed'}
                   </p>
                 </div>
@@ -126,7 +126,7 @@ export function EnrollmentFlow({ onComplete }: EnrollmentFlowProps) {
                 </div>
                 <div>
                   <p className="font-medium">{isFr ? 'Génération' : 'Generation'}</p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-xs text-foreground/85">
                     {isFr ? 'Création signature' : 'Creating signature'}
                   </p>
                 </div>
@@ -159,7 +159,7 @@ export function EnrollmentFlow({ onComplete }: EnrollmentFlowProps) {
                   ? 'Génération de votre signature cognitive...'
                   : 'Generating Your Cognitive Signature...'}
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr
                   ? 'Analyse des patterns de réaction et effets d\'interférence'
                   : 'Analyzing reaction patterns and interference effects'}

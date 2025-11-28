@@ -107,9 +107,9 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
   };
 
   const getDeviationBg = (deviation: number) => {
-    if (deviation < 10) return 'bg-green-50 dark:bg-green-950/30';
-    if (deviation < 15) return 'bg-yellow-50 dark:bg-yellow-950/30';
-    return 'bg-red-50 dark:bg-red-950/30';
+    if (deviation < 10) return 'bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50';
+    if (deviation < 15) return 'bg-amber-100 dark:bg-amber-900/25 border border-amber-200 dark:border-amber-800/50';
+    return 'bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50';
   };
 
   return (
@@ -277,7 +277,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
               key={idx} 
               className={`flex items-center justify-between p-3 rounded text-sm ${
                 entry.anomaly 
-                  ? 'bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900' 
+                  ? 'bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50 border border-red-200 dark:border-red-900' 
                   : 'bg-gray-50 dark:bg-gray-900'
               }`}
             >
@@ -288,7 +288,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
                 ) : (
                   <Badge variant="secondary" className="text-xs">{isFr ? 'Normal' : 'Normal'}</Badge>
                 )}
-                <span className="text-xs text-foreground/70">
+                <span className="text-xs text-foreground/85">
                   RT: {Math.round(entry.avgRT)}ms
                 </span>
               </div>
@@ -302,7 +302,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
 
       {/* Detecting State */}
       {phase === 'detecting' && (
-        <Card className="p-8 bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-900">
+        <Card className="p-8 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50 border-red-200 dark:border-red-900">
           <div className="text-center">
             <div className="flex justify-center mb-4">
               <Shield className="w-12 h-12 text-red-600 animate-pulse" />

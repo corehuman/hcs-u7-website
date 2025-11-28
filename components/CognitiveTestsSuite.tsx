@@ -83,7 +83,7 @@ export function CognitiveTestsSuite({ onComplete, onSkip }: CognitiveTestsSuiteP
               <h2 className="text-2xl font-semibold">
                 {isFr ? "Tests Neurocognitifs" : "Neurocognitive Tests"}
               </h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr
                   ? "Complétez 5 tests validés pour mesurer objectivement vos capacités cognitives"
                   : "Complete 5 validated tests to objectively measure your cognitive abilities"}
@@ -118,7 +118,7 @@ export function CognitiveTestsSuite({ onComplete, onSkip }: CognitiveTestsSuiteP
                       {test.duration}
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-foreground/85">
                     {isFr ? test.measuresFr : test.measures}
                   </p>
                 </div>

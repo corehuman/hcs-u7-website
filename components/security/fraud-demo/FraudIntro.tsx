@@ -76,11 +76,11 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             <div className="grid grid-cols-2 gap-3">
               <Card className="p-3 text-center">
                 <p className="text-2xl font-bold text-red-600">$11B</p>
-                <p className="text-xs text-foreground/70">{isFr ? 'Pertes annuelles (account takeover, 2023)' : 'Annual losses (account takeover, 2023)'}</p>
+                <p className="text-xs text-foreground/85">{isFr ? 'Pertes annuelles (account takeover, 2023)' : 'Annual losses (account takeover, 2023)'}</p>
               </Card>
               <Card className="p-3 text-center">
                 <p className="text-2xl font-bold text-red-600">24%</p>
-                <p className="text-xs text-foreground/70">{isFr ? 'Augmentation en 2023 vs 2022' : 'Increase in 2023 vs 2022'}</p>
+                <p className="text-xs text-foreground/85">{isFr ? 'Augmentation en 2023 vs 2022' : 'Increase in 2023 vs 2022'}</p>
               </Card>
             </div>
           </div>
@@ -88,7 +88,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
       </Card>
 
       {/* La Solution */}
-      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30">
+      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Shield className="w-5 h-5 text-green-500" />
@@ -221,7 +221,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
         </Card>
       </div>
 
-      <Alert className="border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/30">
+      <Alert className="border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25">
         <Info className="h-4 w-4" />
         <AlertDescription>
           <span className="font-medium">{isFr ? 'Note :' : 'Note:'}</span> {isFr

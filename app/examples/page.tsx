@@ -50,7 +50,7 @@ export default function ExamplesPage() {
         <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           HCS-U7 profile examples
         </h1>
-        <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+        <p className="max-w-2xl text-sm text-foreground/85 sm:text-base">
           A few archetypes illustrating how HCS-U7 impacts the response style of
           AI assistants. Each card opens a detailed before/after example once
           the profile is activated.
@@ -67,14 +67,14 @@ export default function ExamplesPage() {
                 <button className="h-full w-full text-left">
                   <div className="flex h-full flex-col gap-3 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm transition hover:border-primary/60 hover:bg-primary/5 dark:bg-neutral-950/70">
                     <div>
-                      <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                      <p className="text-xs font-medium uppercase tracking-wide text-foreground/85">
                         Profile archetype
                       </p>
                       <h2 className="text-base font-semibold text-foreground">
                         {example.name.en}
                       </h2>
                     </div>
-                    <p className="flex-1 text-xs text-muted-foreground sm:text-sm">
+                    <p className="flex-1 text-xs text-foreground/85 sm:text-sm">
                       {example.description.en}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
@@ -91,7 +91,7 @@ export default function ExamplesPage() {
                 <DialogHeader>
                   <DialogTitle>{example.name.en}</DialogTitle>
                 </DialogHeader>
-                <div className="space-y-6 text-sm text-muted-foreground">
+                <div className="space-y-6 text-sm text-foreground/85">
                   <section className="space-y-2">
                     <h3 className="text-sm font-semibold text-foreground">
                       Full HCS code
@@ -137,7 +137,7 @@ export default function ExamplesPage() {
                     <h3 className="text-sm font-semibold text-foreground">
                       Recommended prompt (approach)
                     </h3>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-xs text-foreground/85">
                       Use the HCS-U7 generator to produce a full prompt adapted
                       to this profile, then paste it into your favourite AI
                       assistants (ChatGPT, Claude, etc.).

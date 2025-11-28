@@ -241,7 +241,7 @@ export default function ReactionTimeTest() {
           <CardContent className="space-y-6">
             <div className="bg-primary/10 rounded-lg p-4">
               <h3 className="font-semibold mb-2">Measures:</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 Simple & choice reaction time, processing speed
               </p>
             </div>
@@ -252,7 +252,7 @@ export default function ReactionTimeTest() {
                   <Timer className="h-4 w-4" />
                   Part 1: Simple Reaction
                 </h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="text-sm text-foreground/85 mb-2">
                   Wait for the screen to turn GREEN, then press SPACE as fast as possible.
                 </p>
                 <div className="bg-muted/50 rounded-lg p-3 space-y-2">
@@ -273,7 +273,7 @@ export default function ReactionTimeTest() {
                   <Timer className="h-4 w-4" />
                   Part 2: Choice Reaction
                 </h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="text-sm text-foreground/85 mb-2">
                   Press R for RED or B for BLUE as quickly as possible.
                 </p>
                 <div className="bg-muted/50 rounded-lg p-3 space-y-2">
@@ -328,7 +328,7 @@ export default function ReactionTimeTest() {
                 <Zap className="h-5 w-5" />
                 {isChoice ? 'Part 2: Choice Reaction' : 'Part 1: Simple Reaction'}
               </span>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-foreground/85">
                 Trial {currentTrial + 1} / {TRIALS_PER_PHASE}
               </span>
             </CardTitle>
@@ -347,9 +347,9 @@ export default function ReactionTimeTest() {
                   transition={{ duration: 0.2 }}
                   className={`w-80 h-80 rounded-2xl flex flex-col items-center justify-center text-4xl font-bold transition-all ${
                     trialState === 'ready' 
-                      ? 'bg-gray-200 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+                      ? 'bg-gray-200 dark:bg-gray-800 text-foreground/75 dark:text-foreground/70'
                       : trialState === 'waiting' 
-                      ? 'bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                      ? 'bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-foreground/70'
                       : trialState === 'stimulus' && !isChoice
                       ? 'bg-green-500 text-white shadow-lg shadow-green-500/50'
                       : trialState === 'stimulus' && isChoice && stimulusColor === 'red'
@@ -359,7 +359,7 @@ export default function ReactionTimeTest() {
                       : trialState === 'tooEarly'
                       ? 'bg-orange-500 text-white'
                       : trialState === 'responded'
-                      ? 'bg-gray-200 dark:bg-gray-800 text-gray-500'
+                      ? 'bg-gray-200 dark:bg-gray-800 text-foreground/75'
                       : ''
                   }`}
                 >
@@ -386,7 +386,7 @@ export default function ReactionTimeTest() {
                     <div className="text-center">
                       <Check className="h-16 w-16 mx-auto mb-2 text-green-600" />
                       {lastReactionTime && (
-                        <div className="text-2xl text-gray-700 dark:text-gray-300">
+                        <div className="text-2xl text-gray-700 dark:text-foreground/65">
                           {Math.round(lastReactionTime)} ms
                         </div>
                       )}
@@ -400,7 +400,7 @@ export default function ReactionTimeTest() {
             <div className="text-center space-y-4">
               {!isChoice ? (
                 <>
-                  <p className="text-muted-foreground">
+                  <p className="text-foreground/85">
                     Press SPACE when you see GREEN
                   </p>
                   <Button
@@ -414,7 +414,7 @@ export default function ReactionTimeTest() {
                 </>
               ) : (
                 <>
-                  <p className="text-muted-foreground">
+                  <p className="text-foreground/85">
                     Press R for RED | Press B for BLUE
                   </p>
                   <div className="flex justify-center gap-4">
@@ -441,7 +441,7 @@ export default function ReactionTimeTest() {
 
             {/* Quick stats */}
             {trials.length > 0 && (
-              <div className="flex justify-center gap-8 text-sm text-muted-foreground">
+              <div className="flex justify-center gap-8 text-sm text-foreground/85">
                 <div>
                   Valid: {trials.filter(t => t.valid).length}/{trials.length}
                 </div>
@@ -486,22 +486,22 @@ export default function ReactionTimeTest() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Timer className="h-8 w-8 mx-auto mb-2 text-green-500" />
-                  <p className="text-sm text-muted-foreground">Simple RT</p>
+                  <p className="text-sm text-foreground/85">Simple RT</p>
                   <p className="text-2xl font-bold">{result.simpleRT} ms</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Timer className="h-8 w-8 mx-auto mb-2 text-blue-500" />
-                  <p className="text-sm text-muted-foreground">Choice RT</p>
+                  <p className="text-sm text-foreground/85">Choice RT</p>
                   <p className="text-2xl font-bold">{result.choiceRT} ms</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Zap className="h-8 w-8 mx-auto mb-2 text-primary" />
-                  <p className="text-sm text-muted-foreground">Processing Speed</p>
+                  <p className="text-sm text-foreground/85">Processing Speed</p>
                   <p className="text-2xl font-bold">{result.processingSpeed}</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Brain className="h-8 w-8 mx-auto mb-2 text-purple-500" />
-                  <p className="text-sm text-muted-foreground">Accuracy</p>
+                  <p className="text-sm text-foreground/85">Accuracy</p>
                   <p className="text-2xl font-bold">{result.accuracy}%</p>
                 </div>
               </div>

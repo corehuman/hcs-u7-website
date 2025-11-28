@@ -29,7 +29,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
           {isFr ? 'Démo CAPTCHA Résistant à l’IA' : 'AI-Resistant CAPTCHA Demo'}
         </h1>
 
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-foreground/85 max-w-2xl mx-auto">
           {isFr
             ? 'Expérimentez la détection de bots nouvelle génération utilisant des modèles cognitifs. Efficace contre GPT-4V, les outils d’automatisation et les bots avancés.'
             : 'Experience next-generation bot detection using cognitive patterns. Effective against GPT-4V, automation tools, and advanced bots.'}
@@ -43,7 +43,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
             <Bot className="w-5 h-5 text-red-500" />
             <div>
               <h3 className="font-semibold text-lg">{isFr ? 'Les CAPTCHAs Traditionnels Sont Cassés' : 'Traditional CAPTCHAs Are Broken'}</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr
                   ? 'Les CAPTCHAs basés sur les images (reCAPTCHA, hCaptcha) sont maintenant facilement résolus par l’IA'
                   : 'Image-based CAPTCHAs (reCAPTCHA, hCaptcha) are now easily solved by AI'}
@@ -81,13 +81,13 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
       </Card>
 
       {/* HCS-Captcha Solution */}
-      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30">
+      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Shield className="w-5 h-5 text-green-500" />
             <div>
               <h3 className="font-semibold text-lg">{isFr ? 'HCS-Captcha : Détection Cognitive' : 'HCS-Captcha: Cognitive Detection'}</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr ? 'Détecte les bots en analysant des modèles que l’IA ne peut pas répliquer' : 'Detects bots by analyzing patterns AI cannot replicate'}
               </p>
             </div>
@@ -133,7 +133,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
             </div>
             <div className="flex-1">
               <p className="font-medium">{isFr ? 'Test Stroop Rapide (10 essais)' : 'Quick Stroop Test (10 trials)'}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr 
                   ? 'Vous verrez des mots colorés. Cliquez sur la COULEUR de l’encre (ignorez le mot). Prend ~30 secondes.'
                   : 'You’ll see colored words. Click the COLOR of the ink (ignore the word). Takes ~30 seconds.'}
@@ -147,7 +147,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
             </div>
             <div className="flex-1">
               <p className="font-medium">{isFr ? 'Analyse en Temps Réel' : 'Real-Time Analysis'}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr
                   ? 'Le système analyse vos temps de réaction, modèles d’interférence et distribution d’erreurs.'
                   : 'System analyzes your reaction times, interference patterns, and error distribution.'}
@@ -161,7 +161,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
             </div>
             <div className="flex-1">
               <p className="font-medium">{isFr ? 'Classification Humain/Bot' : 'Human/Bot Classification'}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr
                   ? 'Vous verrez si vous êtes classé comme humain (✅) ou bot (❌) avec explication détaillée.'
                   : 'You’ll see if you’re classified as human (✅) or bot (❌) with detailed explanation.'}
@@ -175,21 +175,21 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
       <div className="grid grid-cols-3 gap-4">
         <Card className="p-4 text-center">
           <p className="text-2xl font-bold">~30s</p>
-          <p className="text-sm text-muted-foreground">{isFr ? 'Temps moyen' : 'Avg completion time'}</p>
+          <p className="text-sm text-foreground/85">{isFr ? 'Temps moyen' : 'Avg completion time'}</p>
         </Card>
 
         <Card className="p-4 text-center">
           <p className="text-2xl font-bold">99.2%</p>
-          <p className="text-sm text-muted-foreground">{isFr ? 'Précision de détection' : 'Bot detection accuracy'}</p>
+          <p className="text-sm text-foreground/85">{isFr ? 'Précision de détection' : 'Bot detection accuracy'}</p>
         </Card>
 
         <Card className="p-4 text-center">
           <p className="text-2xl font-bold">&lt;1%</p>
-          <p className="text-sm text-muted-foreground">{isFr ? 'Taux de faux positifs' : 'False positive rate'}</p>
+          <p className="text-sm text-foreground/85">{isFr ? 'Taux de faux positifs' : 'False positive rate'}</p>
         </Card>
       </div>
 
-      <Alert className="border-yellow-200 dark:border-yellow-900 bg-yellow-50 dark:bg-yellow-950/30">
+      <Alert className="border-yellow-200 dark:border-yellow-900 bg-amber-100 dark:bg-amber-900/25">
         <Info className="h-4 w-4" />
         <AlertDescription>
           <span className="font-medium">{isFr ? 'Essayez de "tromper" le système :' : 'Try to "game" the system:'}</span> {isFr

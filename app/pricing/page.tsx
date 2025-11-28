@@ -10,7 +10,7 @@ export default function PricingPage() {
         <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           Free & Open Source
         </h1>
-        <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+        <p className="max-w-2xl text-sm text-foreground/85 sm:text-base">
           HCS-U7 is currently free for individual and research use. The code,
           parsers and documentation are available under the MIT license.
         </p>
@@ -19,7 +19,7 @@ export default function PricingPage() {
           <h2 className="text-sm font-semibold text-foreground">
             🎁 Free Forever (Individual)
           </h2>
-          <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+          <ul className="list-disc space-y-1 pl-5 text-sm text-foreground/85">
             <li>Unlimited profile generation.</li>
             <li>Open-source parsers (Python, JavaScript, ROS2).</li>
             <li>Full documentation.</li>
@@ -30,7 +30,7 @@ export default function PricingPage() {
           </Button>
         </section>
 
-        <section className="space-y-2 rounded-xl bg-muted p-4 text-sm text-muted-foreground">
+        <section className="space-y-2 rounded-xl bg-muted p-4 text-sm text-foreground/85">
           <h2 className="text-sm font-semibold text-foreground">
             💼 Enterprise (Coming soon)
           </h2>

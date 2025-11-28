@@ -63,7 +63,7 @@ const sections = [
 export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
     <div className="mx-auto flex max-w-6xl gap-8 px-4 pb-16 pt-10 sm:px-6 lg:px-8">
-      <aside className="sticky top-20 hidden h-[calc(100vh-6rem)] w-64 shrink-0 overflow-y-auto border-r pr-4 text-sm text-muted-foreground md:block">
+      <aside className="sticky top-20 hidden h-[calc(100vh-6rem)] w-64 shrink-0 overflow-y-auto border-r pr-4 text-sm text-foreground/85 md:block">
         <nav className="space-y-6">
           {sections.map((section) => (
             <div key={section.title} className="space-y-2">

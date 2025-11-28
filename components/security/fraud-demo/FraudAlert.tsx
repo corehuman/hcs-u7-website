@@ -46,7 +46,7 @@ export function FraudAlert({ baseline, monitoringHistory, onReset }: FraudAlertP
   return (
     <div className="space-y-6">
       {/* Alert Header */}
-      <Card className="p-8 text-center bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-900">
+      <Card className="p-8 text-center bg-red-100 dark:bg-red-900/25 border-red-200 dark:border-red-900">
         <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
           <AlertTriangle className="w-12 h-12 text-red-600" />
         </div>
@@ -112,13 +112,13 @@ export function FraudAlert({ baseline, monitoringHistory, onReset }: FraudAlertP
         </ResponsiveContainer>
 
         <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <Card className="p-4 bg-green-50 dark:bg-green-950/30">
+          <Card className="p-4 bg-green-100 dark:bg-green-900/25">
             <p className="font-medium">{isFr ? `Session Normale (0-${takeoverTime}s)` : `Normal Session (0-${takeoverTime}s)`}</p>
             <p className="text-sm text-foreground/70">
               {isFr ? 'Déviation moyenne' : 'Average deviation'}: {avgDeviationNormal.toFixed(1)}%
             </p>
           </Card>
-          <Card className="p-4 bg-red-50 dark:bg-red-950/30">
+          <Card className="p-4 bg-red-100 dark:bg-red-900/25">
             <p className="font-medium">{isFr ? `Après Prise de Contrôle (${takeoverTime}s+)` : `After Takeover (${takeoverTime}s+)`}</p>
             <p className="text-sm text-foreground/70">
               {isFr ? 'Déviation moyenne' : 'Average deviation'}: {avgDeviationCompromised.toFixed(1)}%
@@ -486,8 +486,8 @@ function AnomalyCard({
   const { lang } = useLanguage();
   const isFr = lang === 'fr';
   const severityColors = {
-    high: 'border-orange-200 dark:border-orange-900 bg-orange-50 dark:bg-orange-950/30',
-    critical: 'border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30'
+    high: 'border-orange-200 dark:border-orange-900 bg-orange-100 dark:bg-orange-900/25',
+    critical: 'border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25'
   };
 
   return (

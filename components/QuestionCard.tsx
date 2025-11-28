@@ -54,7 +54,7 @@ export function QuestionCard({
         >
           {isFr ? question.question.fr : question.question.en}
         </h2>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs text-foreground/85">
           {isFr
             ? "Cette question contribue à votre profil cognitif HCS-U7."
             : "This question contributes to your HCS-U7 cognitive profile."}
@@ -88,7 +88,7 @@ export function QuestionCard({
                       "mt-1 inline-flex h-4 w-4 items-center justify-center rounded-full border text-[10px]",
                       selected
                         ? "border-primary bg-primary text-primary-foreground"
-                        : "border-muted-foreground/40 text-muted-foreground",
+                        : "border-muted-foreground/40 text-foreground/85",
                     )}
                     aria-hidden="true"
                   >

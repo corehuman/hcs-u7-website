@@ -262,7 +262,7 @@ export default function TrailMakingTest() {
           <CardContent className="space-y-6">
             <div className="bg-primary/10 rounded-lg p-4">
               <h3 className="font-semibold mb-2">{isFr ? 'Mesure :' : 'Measures:'}</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr 
                   ? 'Recherche visuelle, vitesse de traitement, flexibilité cognitive'
                   : 'Visual search, processing speed, cognitive flexibility'}
@@ -272,7 +272,7 @@ export default function TrailMakingTest() {
             <div className="space-y-4">
               <div>
                 <h3 className="font-semibold mb-2">{isFr ? 'Partie A : Nombres' : 'Part A: Numbers'}</h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="text-sm text-foreground/85 mb-2">
                   {isFr
                     ? 'Connectez les cercles contenant des nombres dans l\'ordre croissant (1→ 2→ 3→...→ 25). Cliquez sur chaque cercle dans l\'ordre aussi vite que possible.'
                     : 'Connect circles containing numbers in ascending order (1→ 2→ 3→...→ 25). Click each circle in sequence as fast as possible.'}
@@ -284,7 +284,7 @@ export default function TrailMakingTest() {
 
               <div>
                 <h3 className="font-semibold mb-2">{isFr ? 'Partie B : Nombres et Lettres' : 'Part B: Numbers & Letters'}</h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="text-sm text-foreground/85 mb-2">
                   {isFr
                     ? 'Alternez entre les nombres et les lettres (1→ A→ 2→ B→ 3→ C→...→ 13→ M).'
                     : 'Alternate between numbers and letters (1→A→2→B→3→C→...→13→M).'}
@@ -333,7 +333,7 @@ export default function TrailMakingTest() {
                 <Brain className="h-6 w-6 text-primary" />
                 {isPartB ? 'Part B: Numbers & Letters' : 'Part A: Numbers'}
               </span>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-foreground/85">
                 Connect: {expectedValue}
               </span>
             </CardTitle>
@@ -351,7 +351,7 @@ export default function TrailMakingTest() {
             <div 
               ref={canvasRef}
               className={`relative w-full h-[600px] bg-gray-50 dark:bg-gray-900 rounded-lg border-2 ${
-                showError ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : 'border-gray-200 dark:border-gray-700'
+                showError ? 'border-red-500 bg-red-100 dark:bg-red-900/20' : 'border-gray-200 dark:border-gray-700'
               } transition-all duration-300`}
             >
               {/* SVG pour les connexions */}
@@ -441,17 +441,17 @@ export default function TrailMakingTest() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Clock className="h-8 w-8 mx-auto mb-2 text-blue-500" />
-                  <p className="text-sm text-muted-foreground">Part A</p>
+                  <p className="text-sm text-foreground/85">Part A</p>
                   <p className="text-2xl font-bold">{result.partATime}s</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Clock className="h-8 w-8 mx-auto mb-2 text-orange-500" />
-                  <p className="text-sm text-muted-foreground">Part B</p>
+                  <p className="text-sm text-foreground/85">Part B</p>
                   <p className="text-2xl font-bold">{result.partBTime}s</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Brain className="h-8 w-8 mx-auto mb-2 text-primary" />
-                  <p className="text-sm text-muted-foreground">Flexibility</p>
+                  <p className="text-sm text-foreground/85">Flexibility</p>
                   <p className="text-2xl font-bold">{result.cognitiveFlexibility}</p>
                 </div>
               </div>

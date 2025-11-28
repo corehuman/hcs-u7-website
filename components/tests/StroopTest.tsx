@@ -120,7 +120,7 @@ export function StroopTest({ onComplete }: StroopTestProps) {
             <h2 className="text-2xl font-semibold">
               {isFr ? "Test de Stroop" : "Stroop Task"}
             </h2>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-foreground/85">
               <Brain className="h-4 w-4" />
               {isFr ? "Mesure : Contrôle inhibiteur & attention sélective" : "Measures: Inhibitory control & selective attention"}
             </div>
@@ -140,13 +140,13 @@ export function StroopTest({ onComplete }: StroopTestProps) {
             <div className="space-y-3">
               <div className="flex items-center gap-4">
                 <span className="text-2xl font-bold text-blue-600">RED</span>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-foreground/85">
                   → {isFr ? "Cliquez BLEU (ignorez le mot)" : "Click BLUE (ignore the word)"}
                 </span>
               </div>
               <div className="flex items-center gap-4">
                 <span className="text-2xl font-bold text-green-600">GREEN</span>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-foreground/85">
                   → {isFr ? "Cliquez VERT (mot et couleur correspondent)" : "Click GREEN (word matches color)"}
                 </span>
               </div>
@@ -176,7 +176,7 @@ export function StroopTest({ onComplete }: StroopTestProps) {
         <div className="space-y-6">
           {/* Progress */}
           <div className="space-y-2">
-            <div className="flex justify-between text-sm text-muted-foreground">
+            <div className="flex justify-between text-sm text-foreground/85">
               <span>
                 {isFr ? "Essai" : "Trial"} {currentTrial + 1} / {TRIALS}
               </span>
@@ -193,7 +193,7 @@ export function StroopTest({ onComplete }: StroopTestProps) {
             >
               {trial.word}
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground/85">
               {isFr 
                 ? "Cliquez sur la COULEUR de l'encre (pas le mot)"
                 : "Click the COLOR of the ink (not the word)"}

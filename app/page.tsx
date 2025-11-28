@@ -234,7 +234,7 @@ export default function HomePage() {
               <p className="rounded-xl bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-50 overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-900">
                 HCS-U7|V:7.0|ALG:QS|E:E|MOD:c30f40m30|COG:F15C70V20S25Cr20|INT:PB=B,SM=M,TN=L|QSIG:...
               </p>
-              <p className="text-xs text-foreground/80">
+              <p className="text-xs text-foreground/90">
                 {isFr
                   ? 'Ce code encode votre élément dominant, modalité, profil cognitif et préférences d’interaction.'
                   : 'This code encodes your dominant element, modality, cognitive profile and interaction preferences.'}
@@ -392,7 +392,7 @@ export default function HomePage() {
                           <Shield className="h-5 w-5 text-blue-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Authentification" : "Authentication"}</h4>
-                        <p className="text-xs text-foreground/80">
+                        <p className="text-xs text-foreground/90">
                           {isFr ? "Tests cognitifs de 2 min" : "2-min cognitive tests"}
                         </p>
                       </div>
@@ -403,7 +403,7 @@ export default function HomePage() {
                           <Bot className="h-5 w-5 text-purple-600" />
                         </div>
                         <h4 className="font-medium text-sm">CAPTCHA</h4>
-                        <p className="text-xs text-foreground/80">
+                        <p className="text-xs text-foreground/90">
                           {isFr ? "Résistant GPT-4V" : "GPT-4V resistant"}
                         </p>
                       </div>
@@ -414,7 +414,7 @@ export default function HomePage() {
                           <Fingerprint className="h-5 w-5 text-green-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Vérification" : "Verification"}</h4>
-                        <p className="text-xs text-foreground/80">
+                        <p className="text-xs text-foreground/90">
                           {isFr ? "Comparaison de profils" : "Profile comparison"}
                         </p>
                       </div>
@@ -425,7 +425,7 @@ export default function HomePage() {
                           <AlertTriangle className="h-5 w-5 text-orange-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Détection Fraude" : "Fraud Detection"}</h4>
-                        <p className="text-xs text-foreground/80">
+                        <p className="text-xs text-foreground/90">
                           {isFr ? "Temps réel" : "Real-time"}
                         </p>
                       </div>

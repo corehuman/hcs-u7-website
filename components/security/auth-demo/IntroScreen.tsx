@@ -51,10 +51,10 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                 <h4 className="font-semibold">
                   {isFr ? 'Enrollment (~2 minutes)' : 'Enrollment (~2 minutes)'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/85">
                   {isFr ? 'Passez deux tests cognitifs rapides :' : 'Take two quick cognitive tests:'}
                 </p>
-                <ul className="space-y-1 text-sm text-muted-foreground ml-4">
+                <ul className="space-y-1 text-sm text-foreground/85 ml-4">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5" />
                     <span>
@@ -86,12 +86,12 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                 <h4 className="font-semibold">
                   {isFr ? 'Génération de Signature' : 'Signature Generation'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/85">
                   {isFr 
                     ? 'Le système crée votre signature cognitive unique basée sur :'
                     : 'System creates your unique cognitive signature based on:'}
                 </p>
-                <ul className="space-y-1 text-sm text-muted-foreground ml-4">
+                <ul className="space-y-1 text-sm text-foreground/85 ml-4">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="h-4 w-4 text-green-600 mt-0.5" />
                     <span>
@@ -131,7 +131,7 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                 <h4 className="font-semibold">
                   {isFr ? 'Vérification (~2 minutes)' : 'Verification (~2 minutes)'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/85">
                   {isFr
                     ? 'Répétez les mêmes tests. Le système compare votre performance en temps réel avec la signature enrollée. 85%+ de similarité = authentifié.'
                     : 'Repeat the same tests. System compares your live performance with the enrolled signature. 85%+ similarity = authenticated.'}
@@ -150,7 +150,7 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                 <h4 className="font-semibold">
                   {isFr ? 'Résultat' : 'Result'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/85">
                   {isFr
                     ? 'Voir la comparaison détaillée des signatures enrollées vs. vérification avec score de similarité et analyse dimension par dimension.'
                     : 'See detailed comparison of enrolled vs. verification signatures with similarity score and dimension-by-dimension analysis.'}
@@ -170,23 +170,23 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
 
           <div className="grid grid-cols-3 gap-4 text-center">
             <div className="space-y-1">
-              <Clock className="h-6 w-6 mx-auto text-muted-foreground" />
+              <Clock className="h-6 w-6 mx-auto text-foreground/85" />
               <div className="text-2xl font-bold">~4 min</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="text-xs text-foreground/85">
                 {isFr ? 'Durée totale' : 'Total time'}
               </div>
             </div>
             <div className="space-y-1">
-              <Shield className="h-6 w-6 mx-auto text-muted-foreground" />
+              <Shield className="h-6 w-6 mx-auto text-foreground/85" />
               <div className="text-2xl font-bold">100%</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="text-xs text-foreground/85">
                 {isFr ? 'Local' : 'Local'}
               </div>
             </div>
             <div className="space-y-1">
-              <CheckCircle2 className="h-6 w-6 mx-auto text-muted-foreground" />
+              <CheckCircle2 className="h-6 w-6 mx-auto text-foreground/85" />
               <div className="text-2xl font-bold">{isFr ? 'Temps réel' : 'Real-time'}</div>
-              <div className="text-xs text-muted-foreground">
+              <div className="text-xs text-foreground/85">
                 {isFr ? 'Résultats instantanés' : 'Instant results'}
               </div>
             </div>

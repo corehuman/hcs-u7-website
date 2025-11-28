@@ -62,7 +62,7 @@ export function SecurityHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-foreground/85 max-w-3xl mx-auto"
           >
             {isFr 
               ? 'Authentification et détection de fraude de nouvelle génération utilisant des signatures cognitives validées scientifiquement. Impossible à voler, deviner ou hameçonner.'
@@ -73,7 +73,7 @@ export function SecurityHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
+            className="text-lg text-foreground/85 max-w-2xl mx-auto"
           >
             {isFr
               ? 'Exploitez les profils cognitifs HCS-U7 pour l\'authentification, la détection de bots et la vérification d\'identité.'
@@ -108,7 +108,7 @@ export function SecurityHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-wrap gap-6 justify-center text-sm text-muted-foreground pt-8"
+            className="flex flex-wrap gap-6 justify-center text-sm text-foreground/85 pt-8"
           >
             <span className="flex items-center gap-2">
               <Shield className="h-4 w-4 text-green-600" />

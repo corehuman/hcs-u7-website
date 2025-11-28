@@ -84,7 +84,7 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
           <CardDescription>
             {isFr ? 'Authentifiez votre identité' : 'Authenticate Your Identity'}
           </CardDescription>
-          <p className="text-sm text-muted-foreground mt-2">
+          <p className="text-sm text-foreground/85 mt-2">
             {isFr
               ? "Répétez les mêmes tests. Nous comparerons votre performance en direct avec la signature enrollée."
               : "Repeat the same tests. We'll compare your live performance with the enrolled signature."}
@@ -103,7 +103,7 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
                   {isFr ? 'Progrès de Vérification' : 'Verification Progress'}
                 </span>
               </div>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-foreground/85">
                 {phase === 'intro' && (isFr ? 'Démarrage...' : 'Starting...')}
                 {phase === 'stroop' && (isFr ? 'Test Stroop' : 'Stroop Test')}
                 {phase === 'reaction-time' && (isFr ? 'Temps de Réaction' : 'Reaction Time')}
@@ -124,7 +124,7 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-center text-sm text-muted-foreground">
+            <p className="text-center text-sm text-foreground/85">
               {isFr
                 ? "Vous allez maintenant répéter les mêmes tests. Essayez de performer naturellement—ne réfléchissez pas trop ou n'essayez pas de correspondre à vos résultats précédents."
                 : "You'll now repeat the same tests. Try to perform naturally—don't overthink or try to match your previous results."}
@@ -136,7 +136,7 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
               </div>
             </div>
             
-            <p className="text-center text-sm text-muted-foreground">
+            <p className="text-center text-sm text-foreground/85">
               {isFr 
                 ? `Début dans ${countdown} seconde${countdown !== 1 ? 's' : ''}...`
                 : `Starting in ${countdown} second${countdown !== 1 ? 's' : ''}...`}
@@ -182,7 +182,7 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
               <h3 className="text-lg font-semibold">
                 {isFr ? 'Comparaison des Signatures...' : 'Comparing Signatures...'}
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr
                   ? 'Analyse des patterns cognitifs et calcul du score de similarité'
                   : 'Analyzing cognitive patterns and calculating similarity score'}
@@ -190,7 +190,7 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
               
               <div className="flex justify-center gap-6 mt-4">
                 <div className="text-center">
-                  <div className="text-xs text-muted-foreground mb-1">
+                  <div className="text-xs text-foreground/85 mb-1">
                     {isFr ? 'Variabilité RT' : 'RT variability'}
                   </div>
                   <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
@@ -198,7 +198,7 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-xs text-muted-foreground mb-1">
+                  <div className="text-xs text-foreground/85 mb-1">
                     {isFr ? 'Effet Stroop' : 'Stroop effect'}
                   </div>
                   <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
@@ -206,7 +206,7 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-xs text-muted-foreground mb-1">
+                  <div className="text-xs text-foreground/85 mb-1">
                     {isFr ? 'Précision' : 'Accuracy'}
                   </div>
                   <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">

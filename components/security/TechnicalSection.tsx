@@ -128,7 +128,7 @@ async function verifyUser(userId) {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {isFr ? 'Comment Fonctionne la Sécurité Cognitive' : 'How Cognitive Security Works'}
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-foreground/85 max-w-3xl mx-auto">
               {isFr
                 ? 'Trois couches de sécurité : signatures cryptographiques, modèles comportementaux et protocoles d\'intégration'
                 : 'Three layers of security: cryptographic signatures, behavioral patterns, and integration protocols'}
@@ -189,7 +189,7 @@ async function verifyUser(userId) {
                       <h4 className="font-semibold text-sm mb-1">
                         {isFr ? 'Intégrité' : 'Integrity'}
                       </h4>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-foreground/85">
                         {isFr
                           ? 'Toute modification invalide les signatures'
                           : 'Any modification invalidates the signatures'}
@@ -200,7 +200,7 @@ async function verifyUser(userId) {
                       <h4 className="font-semibold text-sm mb-1">
                         {isFr ? 'Non-répudiation' : 'Non-repudiation'}
                       </h4>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-foreground/85">
                         {isFr
                           ? 'Traçable à une session spécifique'
                           : 'Traceable to specific test session'}
@@ -211,7 +211,7 @@ async function verifyUser(userId) {
                       <h4 className="font-semibold text-sm mb-1">
                         {isFr ? 'Résistance aux collisions' : 'Collision resistance'}
                       </h4>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs text-foreground/85">
                         {isFr
                           ? 'Blake3 offre 128 bits de sécurité'
                           : 'Blake3 provides 128-bit security'}
@@ -256,8 +256,8 @@ async function verifyUser(userId) {
                           {humanVsBotMetrics.map((row, idx) => (
                             <tr key={idx} className="border-t text-sm">
                               <td className="p-2">{row.metric}</td>
-                              <td className="p-2 text-muted-foreground">{row.human}</td>
-                              <td className="p-2 text-muted-foreground">{row.bot}</td>
+                              <td className="p-2 text-foreground/85">{row.human}</td>
+                              <td className="p-2 text-foreground/85">{row.bot}</td>
                               <td className="p-2">
                                 <span className="text-green-600">✅ {row.detection}</span>
                               </td>
@@ -276,19 +276,19 @@ async function verifyUser(userId) {
                   <div className="grid grid-cols-3 gap-4 mt-6 text-center">
                     <div className="p-4 rounded-lg bg-green-100 dark:bg-green-900/30">
                       <div className="text-2xl font-bold text-green-600">99.2%</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-xs text-foreground/85">
                         {isFr ? 'Détection humaine' : 'Human detection'}
                       </div>
                     </div>
                     <div className="p-4 rounded-lg bg-blue-100 dark:bg-blue-900/30">
                       <div className="text-2xl font-bold text-blue-600">98.7%</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-xs text-foreground/85">
                         {isFr ? 'Détection de bot' : 'Bot detection'}
                       </div>
                     </div>
                     <div className="p-4 rounded-lg bg-purple-100 dark:bg-purple-900/30">
                       <div className="text-2xl font-bold text-purple-600">&lt;0.1%</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-xs text-foreground/85">
                         {isFr ? 'Faux positifs' : 'False positive rate'}
                       </div>
                     </div>

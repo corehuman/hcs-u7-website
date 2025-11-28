@@ -24,7 +24,7 @@ export default function DocsPage({ params }: DocsPageProps) {
             <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               What is HCS-U7?
             </h1>
-            <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+            <p className="max-w-2xl text-sm text-foreground/85 sm:text-base">
               HCS-U7 (Human Cognitive Signature) is an open system for
               representing a user&apos;s cognitive and interaction preferences. It
               produces a compact code that AI systems can interpret to adapt
@@ -34,7 +34,7 @@ export default function DocsPage({ params }: DocsPageProps) {
 
           <section className="space-y-2">
             <h2 className="text-lg font-semibold text-foreground">Why use it?</h2>
-            <ul className="space-y-1 text-sm text-muted-foreground">
+            <ul className="space-y-1 text-sm text-foreground/85">
               <li>
                 <strong>Persistent personalization</strong>: one profile for all
                 your AIs (ChatGPT, Claude, internal tools).
@@ -52,7 +52,7 @@ export default function DocsPage({ params }: DocsPageProps) {
 
           <section className="space-y-3">
             <h2 className="text-lg font-semibold text-foreground">Quick Start</h2>
-            <ol className="list-decimal space-y-1 pl-5 text-sm text-muted-foreground">
+            <ol className="list-decimal space-y-1 pl-5 text-sm text-foreground/85">
               <li>Generate your profile via the /generate page.</li>
               <li>
                 Copy the HCS-U7 code and the automatically generated prompt for
@@ -72,12 +72,12 @@ export default function DocsPage({ params }: DocsPageProps) {
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Why HCS-U7?
           </h1>
-          <p className="text-sm text-muted-foreground sm:text-base">
+          <p className="text-sm text-foreground/85 sm:text-base">
             Large language models are powerful but often impersonal. HCS-U7
             provides a stable, explicit and portable personalization layer
             across different AIs.
           </p>
-          <ul className="space-y-2 text-sm text-muted-foreground">
+          <ul className="space-y-2 text-sm text-foreground/85">
             <li>
               <strong>Less friction</strong>: fewer repetitive clarifications.
             </li>
@@ -98,7 +98,7 @@ export default function DocsPage({ params }: DocsPageProps) {
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Quick Start
           </h1>
-          <p className="text-sm text-muted-foreground sm:text-base">
+          <p className="text-sm text-foreground/85 sm:text-base">
             Cette section montre un flux minimal de bout en bout, depuis le
             questionnaire jusqu&apos;à l&apos;intégration dans une API.
           </p>
@@ -119,7 +119,7 @@ override HCS_U7_CODE="HCS-U7|V:7.0|..."
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             HCS-U7 code format
           </h1>
-          <p className="text-sm text-muted-foreground sm:text-base">
+          <p className="text-sm text-foreground/85 sm:text-base">
             The HCS-U7 code is a compact string made of segments separated by
             vertical bars <code>|</code>. Each segment carries information about
             your profile.
@@ -136,7 +136,7 @@ override HCS_U7_CODE="HCS-U7|V:7.0|..."
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Element (E/F/W/A)
           </h1>
-          <ul className="space-y-1 text-sm text-muted-foreground">
+          <ul className="space-y-1 text-sm text-foreground/85">
             <li>
               <strong>E (Air)</strong>: analytical, focused on concepts and
               structures.
@@ -160,7 +160,7 @@ override HCS_U7_CODE="HCS-U7|V:7.0|..."
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Modal (Cardinal / Fixed / Mutable)
           </h1>
-          <p className="text-sm text-muted-foreground sm:text-base">
+          <p className="text-sm text-foreground/85 sm:text-base">
             The modal describes how you move into action when facing change:
             initiation, stabilisation or adaptation.
           </p>
@@ -172,7 +172,7 @@ override HCS_U7_CODE="HCS-U7|V:7.0|..."
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Cognition (F/C/V/S/Cr)
           </h1>
-          <p className="text-sm text-muted-foreground sm:text-base">
+          <p className="text-sm text-foreground/85 sm:text-base">
             Five axes model your way of processing information: form, logic,
             visual, synthesis, creativity.
           </p>
@@ -184,7 +184,7 @@ override HCS_U7_CODE="HCS-U7|V:7.0|..."
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Interaction (PB / SM / TN)
           </h1>
-          <p className="text-sm text-muted-foreground sm:text-base">
+          <p className="text-sm text-foreground/85 sm:text-base">
             These parameters control pace (PB), sensitivity to tone (SM) and
             tolerance to inaccuracies (TN).
           </p>
@@ -196,7 +196,7 @@ override HCS_U7_CODE="HCS-U7|V:7.0|..."
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Signatures (QSIG / B3)
           </h1>
-          <p className="text-sm text-muted-foreground sm:text-base">
+          <p className="text-sm text-foreground/85 sm:text-base">
             Signatures condense your profile into short identifiers, enabling
             anonymised comparisons and statistical analyses.
           </p>
@@ -233,7 +233,7 @@ const completion = await client.chat.completions.create({
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Empirical validation protocol
           </h1>
-          <p className="text-sm text-muted-foreground sm:text-base">
+          <p className="text-sm text-foreground/85 sm:text-base">
             Randomized crossover study (N=50) comparing AI interactions with and
             without HCS-U7. Main metrics: time to solution, number of
             clarifications, subjective satisfaction.

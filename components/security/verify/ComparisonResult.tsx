@@ -65,7 +65,7 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
         </p>
 
         {match ? (
-          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30">
+          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25">
             <CheckCircle2 className="h-4 w-4" />
             <AlertDescription>
               These profiles show {Math.round(overallSimilarity * 100)}% similarity 
@@ -73,7 +73,7 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
             </AlertDescription>
           </Alert>
         ) : (
-          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30">
+          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25">
             <XCircle className="h-4 w-4" />
             <AlertDescription>
               Similarity below threshold ({Math.round(overallSimilarity * 100)}% &lt; 85%). 
@@ -86,7 +86,7 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
       {/* Signature Verification */}
       <Card className={`p-6 mb-6 ${
         signatureMatch 
-          ? 'border-orange-200 dark:border-orange-900 bg-orange-50 dark:bg-orange-950/30' 
+          ? 'border-orange-200 dark:border-orange-900 bg-orange-100 dark:bg-orange-900/25' 
           : 'border-blue-200 dark:border-blue-900'
       }`}>
         <div className="flex items-start gap-3">
@@ -172,10 +172,10 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
         {/* Interpretation */}
         <div className={`mt-4 p-4 rounded-lg border ${
           overallSimilarity >= 0.85 
-            ? 'bg-green-50 dark:bg-green-950/30'
+            ? 'bg-green-100 dark:bg-green-900/25'
             : overallSimilarity >= 0.70
-            ? 'bg-yellow-50 dark:bg-yellow-950/30'
-            : 'bg-red-50 dark:bg-red-950/30'
+            ? 'bg-amber-100 dark:bg-amber-900/25'
+            : 'bg-red-100 dark:bg-red-900/25'
         }`}>
           <h4 className="font-medium mb-2">Interpretation</h4>
           <p className="text-sm text-foreground/70">
@@ -479,7 +479,7 @@ function DimensionRow({
   return (
     <div className={`p-4 rounded-lg border ${
       importance === 'critical' 
-        ? 'border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/30' 
+        ? 'border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25' 
         : 'bg-gray-50 dark:bg-gray-900'
     }`}>
       <div className="flex justify-between items-start mb-2">
@@ -495,7 +495,7 @@ function DimensionRow({
           <span className={`font-bold ${getColor(similarity)}`}>
             {Math.round(similarity * 100)}%
           </span>
-          <div className="text-xs text-foreground/75">Weight: {weight}%</div>
+          <div className="text-xs text-foreground/85">Weight: {weight}%</div>
         </div>
       </div>
 

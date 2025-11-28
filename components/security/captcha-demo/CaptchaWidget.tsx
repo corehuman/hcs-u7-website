@@ -124,7 +124,7 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
           </div>
 
           <h2 className="text-2xl font-bold mb-4">{isFr ? 'Analyse de vos Réponses' : 'Analyzing Your Responses'}</h2>
-          <p className="text-muted-foreground mb-6">
+          <p className="text-foreground/85 mb-6">
             {isFr
               ? 'Évaluation de la variabilité du temps de réaction, modèles d’interférence et courbe d’apprentissage...'
               : 'Evaluating reaction time variability, interference patterns, and learning curve...'}
@@ -162,13 +162,13 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
             </div>
             <div>
               <h2 className="font-semibold">HCS-Captcha</h2>
-              <p className="text-sm text-muted-foreground">{isFr ? 'Vérifiez que vous êtes humain' : 'Verify you’re human'}</p>
+              <p className="text-sm text-foreground/85">{isFr ? 'Vérifiez que vous êtes humain' : 'Verify you’re human'}</p>
             </div>
           </div>
 
           <div className="text-right">
             <p className="text-2xl font-bold">{currentTrial + 1} / {TRIALS}</p>
-            <p className="text-sm text-muted-foreground">{isFr ? 'essais' : 'trials'}</p>
+            <p className="text-sm text-foreground/85">{isFr ? 'essais' : 'trials'}</p>
           </div>
         </div>
 
@@ -178,7 +178,7 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
         {/* Instruction */}
         <div className="text-center py-4 px-6 bg-secondary/50 rounded-lg">
           <p className="font-medium">{isFr ? 'Cliquez sur la COULEUR du texte' : 'Click the COLOR of the text'}</p>
-          <p className="text-sm text-muted-foreground">{isFr ? '(ignorez ce que le mot dit)' : '(ignore what the word says)'}</p>
+          <p className="text-sm text-foreground/85">{isFr ? '(ignorez ce que le mot dit)' : '(ignore what the word says)'}</p>
         </div>
 
         {/* Stimulus */}
@@ -210,7 +210,7 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
         </div>
 
         {/* Hint */}
-        <p className="text-sm text-center text-muted-foreground mt-4">
+        <p className="text-sm text-center text-foreground/85 mt-4">
           {isFr
             ? 'Conseil : Répondez naturellement. N’essayez pas d’être trop rapide ou trop parfait.'
             : 'Tip: Respond naturally. Don’t try to be too fast or too perfect.'}

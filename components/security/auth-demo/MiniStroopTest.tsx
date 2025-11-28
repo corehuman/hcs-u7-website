@@ -143,13 +143,13 @@ export function MiniStroopTest({ onComplete }: MiniStroopTestProps) {
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
             <span className="font-medium">{isFr ? 'Test Stroop' : 'Stroop Test'}</span>
-            <span className="text-muted-foreground">{currentTrial + 1} / {TRIALS}</span>
+            <span className="text-foreground/85">{currentTrial + 1} / {TRIALS}</span>
           </div>
           <Progress value={((currentTrial + 1) / TRIALS) * 100} className="h-2" />
         </div>
 
         {/* Instruction */}
-        <div className="text-center text-sm text-muted-foreground">
+        <div className="text-center text-sm text-foreground/85">
           {isFr 
             ? 'Cliquez sur la COULEUR de l\'encre (ignorez le mot)'
             : 'Click the COLOR of the ink (ignore the word)'}

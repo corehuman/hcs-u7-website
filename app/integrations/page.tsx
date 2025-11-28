@@ -10,7 +10,7 @@ export default function IntegrationsPage() {
         <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           Integrate HCS-U7 into your systems
         </h1>
-        <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+        <p className="max-w-2xl text-sm text-foreground/85 sm:text-base">
           HCS-U7 is designed to be easily integrated into your APIs, agents and
           higher-level frameworks.
         </p>
@@ -19,7 +19,7 @@ export default function IntegrationsPage() {
       <section className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
         <div className="space-y-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
           <h2 className="font-semibold text-foreground">OpenAI / ChatGPT</h2>
-          <ul className="list-disc space-y-1 pl-4 text-xs text-muted-foreground">
+          <ul className="list-disc space-y-1 pl-4 text-xs text-foreground/85">
             <li>Use as a system prompt.</li>
             <li>Simple TypeScript / Python wrapper.</li>
             <li>Compatible with GPT assistants.</li>
@@ -27,7 +27,7 @@ export default function IntegrationsPage() {
         </div>
         <div className="space-y-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
           <h2 className="font-semibold text-foreground">Anthropic / Claude</h2>
-          <ul className="list-disc space-y-1 pl-4 text-xs text-muted-foreground">
+          <ul className="list-disc space-y-1 pl-4 text-xs text-foreground/85">
             <li>Persistent system instruction.</li>
             <li>Adaptation of tone and pace.</li>
             <li>Support via Python / JS SDKs.</li>
@@ -35,7 +35,7 @@ export default function IntegrationsPage() {
         </div>
         <div className="space-y-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
           <h2 className="font-semibold text-foreground">LangChain</h2>
-          <ul className="list-disc space-y-1 pl-4 text-xs text-muted-foreground">
+          <ul className="list-disc space-y-1 pl-4 text-xs text-foreground/85">
             <li>Custom prompt templates.</li>
             <li>Agents with profile-aware memory.</li>
             <li>Composable with multi-AI toolchains.</li>
@@ -43,7 +43,7 @@ export default function IntegrationsPage() {
         </div>
         <div className="space-y-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
           <h2 className="font-semibold text-foreground">Robotics</h2>
-          <ul className="list-disc space-y-1 pl-4 text-xs text-muted-foreground">
+          <ul className="list-disc space-y-1 pl-4 text-xs text-foreground/85">
             <li>HCS-U7R extension (v8.0).</li>
             <li>ROS2 nodes for proxemics/motion.</li>
             <li>Adaptation to human preferences.</li>

@@ -117,7 +117,7 @@ export function SecurityFAQ() {
                 {isFr ? 'Questions Fréquentes' : 'Frequently Asked Questions'}
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-foreground/85 max-w-2xl mx-auto">
               {isFr
                 ? 'Questions courantes sur la sécurité cognitive'
                 : 'Common questions about cognitive security'}
@@ -132,7 +132,7 @@ export function SecurityFAQ() {
                     <AccordionTrigger className="text-left hover:no-underline">
                       <span className="font-medium pr-4">{faq.question}</span>
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground pt-2">
+                    <AccordionContent className="text-foreground/85 pt-2">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>

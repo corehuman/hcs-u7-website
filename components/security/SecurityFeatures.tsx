@@ -69,7 +69,7 @@ export function SecurityFeatures() {
                 {isFr ? 'Fonctionnalités de Sécurité' : 'Security Features'}
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-foreground/85 max-w-3xl mx-auto">
               {isFr
                 ? 'Protections intégrées que les méthodes traditionnelles ne peuvent pas fournir'
                 : 'Built-in protections that traditional methods cannot provide'}
@@ -94,7 +94,7 @@ export function SecurityFeatures() {
                         <Icon className="h-6 w-6 text-primary" />
                       </div>
                       <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-foreground/85">
                         {feature.description}
                       </p>
                     </CardContent>

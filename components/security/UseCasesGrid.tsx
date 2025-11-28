@@ -120,7 +120,7 @@ export function UseCasesGrid() {
               {isFr ? 'Applications de Sécurité' : 'Security Applications'}
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg text-foreground/85 max-w-3xl mx-auto">
             {isFr
               ? 'Exploitez les signatures cognitives HCS-U7 dans plusieurs cas d\'utilisation de sécurité'
               : 'Leverage HCS-U7 cognitive signatures across multiple security use cases'}
@@ -152,7 +152,7 @@ export function UseCasesGrid() {
                       )}
                     </div>
                     <CardTitle className="text-xl mt-4">{useCase.title}</CardTitle>
-                    <p className="text-sm text-muted-foreground mt-2">
+                    <p className="text-sm text-foreground/85 mt-2">
                       {useCase.description}
                     </p>
                   </CardHeader>

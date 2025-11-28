@@ -94,7 +94,7 @@ export function ProblemSolution() {
                 <CardTitle className="text-2xl">
                   {isFr ? 'L\'authentification Traditionnelle est Cassée' : 'Traditional Authentication is Broken'}
                 </CardTitle>
-                <p className="text-muted-foreground">
+                <p className="text-foreground/85">
                   {isFr
                     ? 'Les mots de passe et les méthodes 2FA actuelles ne protègent pas contre les menaces modernes'
                     : 'Passwords and current 2FA methods fail to protect against modern threats'}
@@ -109,10 +109,10 @@ export function ProblemSolution() {
                       <div className="text-2xl font-bold text-destructive">
                         {problem.stat}
                       </div>
-                      <div className="text-xs text-muted-foreground mt-1">
+                      <div className="text-xs text-foreground/85 mt-1">
                         {problem.description}
                       </div>
-                      <div className="text-[10px] text-muted-foreground/70 mt-1">
+                      <div className="text-[10px] text-foreground/85/70 mt-1">
                         {problem.source}
                       </div>
                     </div>
@@ -130,7 +130,7 @@ export function ProblemSolution() {
                         <div className="font-medium mb-2">{item.method}</div>
                         <ul className="space-y-1">
                           {item.issues.map((issue, i) => (
-                            <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                            <li key={i} className="flex items-start gap-2 text-sm text-foreground/85">
                               <X className="h-3 w-3 text-destructive mt-0.5 flex-shrink-0" />
                               {issue}
                             </li>
@@ -162,7 +162,7 @@ export function ProblemSolution() {
                 <CardTitle className="text-2xl">
                   {isFr ? 'Authentification Biométrique Cognitive' : 'Cognitive Biometric Authentication'}
                 </CardTitle>
-                <p className="text-muted-foreground">
+                <p className="text-foreground/85">
                   {isFr
                     ? 'HCS-U7 utilise vos modèles cognitifs uniques comme signature d\'identité infalsifiable'
                     : 'HCS-U7 uses your unique cognitive patterns as an unforgeable identity signature'}
@@ -193,19 +193,19 @@ export function ProblemSolution() {
                 <div className="grid grid-cols-3 gap-4 pt-4 border-t">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-primary">99.9%</div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-xs text-foreground/85">
                       {isFr ? 'Impossible à voler' : 'Unstealable'}
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-primary">0%</div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-xs text-foreground/85">
                       {isFr ? 'Risque de phishing' : 'Phishing risk'}
                     </div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-primary">100%</div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-xs text-foreground/85">
                       {isFr ? 'Vie privée' : 'Privacy'}
                     </div>
                   </div>

@@ -66,7 +66,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
         </p>
 
         {isHuman ? (
-          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30">
+          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25">
             <CheckCircle2 className="h-4 w-4" />
             <AlertDescription>
               Your cognitive patterns match expected human behavior. In a real system, 
@@ -74,7 +74,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             </AlertDescription>
           </Alert>
         ) : (
-          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30">
+          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25">
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription>
               Your response patterns are inconsistent with human cognition. 
@@ -94,7 +94,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
 
           <div className="space-y-3">
             {flags.map((flag, idx) => (
-              <Alert key={idx} className="border-yellow-200 dark:border-yellow-900 bg-yellow-50 dark:bg-yellow-950/30">
+              <Alert key={idx} className="border-yellow-200 dark:border-yellow-900 bg-amber-100 dark:bg-amber-900/25">
                 <AlertTriangle className="h-4 w-4" />
                 <AlertDescription>
                   <span className="font-medium">{formatFlagName(flag)}</span>
@@ -313,7 +313,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
                 </div>
 
                 {!isHuman && (
-                  <Alert className="border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/30">
+                  <Alert className="border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25">
                     <Info className="h-4 w-4" />
                     <AlertDescription>
                       <span className="font-medium">Were You Trying to Game the System?</span>
@@ -461,9 +461,9 @@ function MetricCard({
   children?: React.ReactNode;
 }) {
   const statusColors = {
-    good: 'border-green-200 dark:border-green-900 bg-green-50 dark:bg-green-950/30',
-    warning: 'border-yellow-200 dark:border-yellow-900 bg-yellow-50 dark:bg-yellow-950/30',
-    bad: 'border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30'
+    good: 'border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25',
+    warning: 'border-yellow-200 dark:border-yellow-900 bg-amber-100 dark:bg-amber-900/25',
+    bad: 'border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25'
   };
 
   const statusIcons = {
@@ -484,14 +484,14 @@ function MetricCard({
               </Badge>
             )}
           </h4>
-          <p className="text-xs text-foreground/80">{description}</p>
+          <p className="text-xs text-foreground/90">{description}</p>
         </div>
         {statusIcons[status]}
       </div>
 
       <div className="space-y-1">
         <p className="text-2xl font-bold">{value}</p>
-        <p className="text-xs text-foreground/80">Expected: {expected}</p>
+        <p className="text-xs text-foreground/90">Expected: {expected}</p>
       </div>
 
       {children}

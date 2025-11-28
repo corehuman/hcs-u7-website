@@ -211,7 +211,7 @@ export default function DigitSpanTest() {
           <CardContent className="space-y-6">
             <div className="bg-primary/10 rounded-lg p-4">
               <h3 className="font-semibold mb-2">Measures:</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 Short-term memory capacity, working memory
               </p>
             </div>
@@ -222,7 +222,7 @@ export default function DigitSpanTest() {
                   <ArrowRight className="h-4 w-4" />
                   Part 1: Forward
                 </h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="text-sm text-foreground/85 mb-2">
                   Digits will appear one at a time. After the sequence, 
                   repeat them in the SAME order.
                 </p>
@@ -239,7 +239,7 @@ export default function DigitSpanTest() {
                   <ArrowLeft className="h-4 w-4" />
                   Part 2: Backward
                 </h3>
-                <p className="text-sm text-muted-foreground mb-2">
+                <p className="text-sm text-foreground/85 mb-2">
                   After the sequence, repeat in REVERSE order.
                 </p>
                 <div className="bg-muted/50 rounded-lg p-3">
@@ -286,7 +286,7 @@ export default function DigitSpanTest() {
                 {isBackward ? <ArrowLeft className="h-5 w-5" /> : <ArrowRight className="h-5 w-5" />}
                 {isBackward ? 'Part 2: Backward Span' : 'Part 1: Forward Span'}
               </span>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-foreground/85">
                 Length: {currentSpan} | Attempt: {attemptNumber}/2
               </span>
             </CardTitle>
@@ -315,7 +315,7 @@ export default function DigitSpanTest() {
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="text-2xl text-muted-foreground"
+                      className="text-2xl text-foreground/85"
                     >
                       Get ready...
                     </motion.div>
@@ -360,7 +360,7 @@ export default function DigitSpanTest() {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-center text-sm text-muted-foreground"
+                      className="text-center text-sm text-foreground/85"
                     >
                       Correct answer: {(isBackward ? [...sequence].reverse() : sequence).join(' → ')}
                     </motion.div>
@@ -484,17 +484,17 @@ export default function DigitSpanTest() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <ArrowRight className="h-8 w-8 mx-auto mb-2 text-blue-500" />
-                  <p className="text-sm text-muted-foreground">Forward</p>
+                  <p className="text-sm text-foreground/85">Forward</p>
                   <p className="text-2xl font-bold">{result.forwardSpan}</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <ArrowLeft className="h-8 w-8 mx-auto mb-2 text-purple-500" />
-                  <p className="text-sm text-muted-foreground">Backward</p>
+                  <p className="text-sm text-foreground/85">Backward</p>
                   <p className="text-2xl font-bold">{result.backwardSpan}</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <Brain className="h-8 w-8 mx-auto mb-2 text-primary" />
-                  <p className="text-sm text-muted-foreground">Memory Score</p>
+                  <p className="text-sm text-foreground/85">Memory Score</p>
                   <p className="text-2xl font-bold">{result.workingMemory}</p>
                 </div>
               </div>

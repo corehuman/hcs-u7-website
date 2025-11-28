@@ -143,7 +143,7 @@ export default function GeneratePage() {
           <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {isFr ? "Générateur de Profil Cognitif" : "Generate Your Cognitive Profile"}
           </h1>
-          <p className="mt-2 text-muted-foreground">
+          <p className="mt-2 text-foreground/85">
             {isFr
               ? "Complétez l'évaluation en deux étapes pour une précision maximale"
               : "Complete the assessment in two stages for maximum accuracy"}
@@ -189,14 +189,14 @@ export default function GeneratePage() {
                   {isFr ? "Questionnaire Psychométrique" : "Psychometric Questionnaire"}
                 </h2>
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/85">
                 {isFr
                   ? "24 questions basées sur des modèles de personnalité établis (Big Five, HEXACO)"
                   : "24 questions based on established personality models (Big Five, HEXACO)"}
               </p>
             </div>
             <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs text-muted-foreground">
+              <div className="flex items-center justify-between text-xs text-foreground/85">
                 <span>
                   {isFr ? "Progression" : "Progress"}: {currentIndex + 1} / {TOTAL_QUESTIONS} questions
                 </span>
@@ -237,7 +237,7 @@ export default function GeneratePage() {
         ) : null}
 
         <div className="flex flex-col-reverse justify-between gap-3 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <div className="flex items-center gap-2 text-xs text-foreground/85">
             <span>
               {isFr ? "Catégorie" : "Category"}: {" "}
               <span className="font-medium">{currentQuestion.category}</span>

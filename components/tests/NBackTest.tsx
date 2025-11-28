@@ -175,7 +175,7 @@ export function NBackTest({ onComplete }: NBackTestProps) {
             <h2 className="text-2xl font-semibold">
               {isFr ? "Test N-Back" : "N-Back Task"}
             </h2>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-foreground/85">
               <Brain className="h-4 w-4" />
               {isFr ? "Mesure : Capacité de mémoire de travail" : "Measures: Working memory capacity"}
             </div>
@@ -229,7 +229,7 @@ export function NBackTest({ onComplete }: NBackTestProps) {
         <div className="space-y-6">
           {/* Progress */}
           <div className="space-y-2">
-            <div className="flex justify-between text-sm text-muted-foreground">
+            <div className="flex justify-between text-sm text-foreground/85">
               <span>
                 {isFr ? "Essai" : "Trial"} {currentTrial + 1} / {TRIALS}
               </span>
@@ -249,7 +249,7 @@ export function NBackTest({ onComplete }: NBackTestProps) {
           {currentTrial >= N ? (
             <div className="space-y-4">
               {waitingForResponse && (
-                <div className="text-center text-sm text-muted-foreground animate-pulse">
+                <div className="text-center text-sm text-foreground/85 animate-pulse">
                   {isFr ? "Cliquez sur votre réponse" : "Click your response"}
                 </div>
               )}
@@ -277,7 +277,7 @@ export function NBackTest({ onComplete }: NBackTestProps) {
               </div>
             </div>
           ) : (
-            <div className="rounded-lg bg-muted/50 p-4 text-center text-sm text-muted-foreground">
+            <div className="rounded-lg bg-muted/50 p-4 text-center text-sm text-foreground/85">
               {isFr
                 ? `En mémorisation... (répondez à partir de l'essai ${N + 1})`
                 : `Remembering... (respond starting from trial ${N + 1})`}

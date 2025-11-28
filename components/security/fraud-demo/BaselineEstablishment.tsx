@@ -259,7 +259,7 @@ export function BaselineEstablishment({ onComplete }: BaselineEstablishmentProps
               isProcessing ? 'cursor-not-allowed' : 'cursor-pointer'
             } ${
               rtState === 'waiting' 
-                ? 'bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                ? 'bg-gray-300 dark:bg-gray-700 text-gray-600 dark:text-foreground/70'
                 : rtState === 'ready'
                 ? 'bg-green-500 text-white'
                 : 'bg-red-500 text-white'

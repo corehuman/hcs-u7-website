@@ -46,7 +46,7 @@ export function Navigation() {
           </div>
           <div className="flex flex-col leading-tight">
             <span className="text-sm font-semibold tracking-tight">HCS-U7</span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-foreground/85">
               Human Cognitive Signature
             </span>
           </div>
@@ -62,7 +62,7 @@ export function Navigation() {
                 href={item.href}
                 className={cn(
                   "transition-colors hover:text-primary flex items-center gap-1",
-                  active ? "text-primary" : "text-muted-foreground",
+                  active ? "text-primary" : "text-foreground/85",
                 )}
               >
                 {label}
@@ -81,7 +81,7 @@ export function Navigation() {
                 onClick={() => setLang("en")}
                 className={cn(
                   "rounded-full px-2 py-0.5 transition-colors",
-                  lang === "en" ? "bg-primary text-primary-foreground" : "text-muted-foreground",
+                  lang === "en" ? "bg-primary text-primary-foreground" : "text-foreground/85",
                 )}
               >
                 EN
@@ -91,7 +91,7 @@ export function Navigation() {
                 onClick={() => setLang("fr")}
                 className={cn(
                   "rounded-full px-2 py-0.5 transition-colors",
-                  lang === "fr" ? "bg-primary text-primary-foreground" : "text-muted-foreground",
+                  lang === "fr" ? "bg-primary text-primary-foreground" : "text-foreground/85",
                 )}
               >
                 FR
@@ -134,7 +134,7 @@ export function Navigation() {
                     "rounded-md px-3 py-2 transition-colors flex items-center justify-between",
                     active
                       ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                      : "text-foreground/85 hover:bg-muted hover:text-foreground",
                   )}
                   onClick={() => setOpen(false)}
                 >

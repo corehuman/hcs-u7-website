@@ -27,7 +27,7 @@ export function SecurityCTA() {
                   ? 'Prêt à Améliorer Votre Sécurité ?'
                   : 'Ready to Upgrade Your Security?'}
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-lg text-foreground/85 mb-8 max-w-2xl mx-auto">
                 {isFr
                   ? 'Essayez nos démos interactives ou intégrez HCS-U7 dans votre application aujourd\'hui'
                   : 'Try our interactive demos or integrate HCS-U7 into your application today'}
@@ -49,7 +49,7 @@ export function SecurityCTA() {
               </div>
 
               <div className="rounded-lg bg-muted/50 p-6 mb-12">
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-foreground/85 mb-4">
                   {isFr
                     ? 'Besoins de sécurité d\'entreprise ? Intégration personnalisée requise ?'
                     : 'Enterprise security needs? Custom integration required?'}
@@ -72,7 +72,7 @@ export function SecurityCTA() {
                 <h3 className="font-semibold text-lg mb-2">
                   {isFr ? 'Pour les Développeurs' : 'For Developers'}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-foreground/85 mb-4">
                   {isFr ? 'Niveau gratuit : 100 auth/mois' : 'Free tier: 100 auths/month'}
                 </p>
                 <Link href="/developers/api-key">
@@ -88,7 +88,7 @@ export function SecurityCTA() {
                 <h3 className="font-semibold text-lg mb-2">
                   {isFr ? 'Pour les Chercheurs' : 'For Researchers'}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-foreground/85 mb-4">
                   {isFr ? 'Accès académique & ensembles de données' : 'Academic access & datasets'}
                 </p>
                 <Link href="/research/program">
@@ -104,7 +104,7 @@ export function SecurityCTA() {
                 <h3 className="font-semibold text-lg mb-2">
                   {isFr ? 'Pour les Entreprises' : 'For Enterprises'}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-foreground/85 mb-4">
                   {isFr ? 'SLA personnalisés & support' : 'Custom SLAs & support'}
                 </p>
                 <Link href="/pricing">

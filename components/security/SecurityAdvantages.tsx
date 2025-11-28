@@ -103,7 +103,7 @@ export function SecurityAdvantages() {
                 {isFr ? 'Pourquoi HCS-U7 est Supérieur' : 'Why HCS-U7 is Superior'}
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-foreground/85 max-w-3xl mx-auto">
               {isFr
                 ? 'Comparaison complète avec les méthodes d\'authentification traditionnelles'
                 : 'Comprehensive comparison with traditional authentication methods'}
@@ -167,23 +167,23 @@ export function SecurityAdvantages() {
             <Card className="border-primary/50 bg-primary/5">
               <CardContent className="p-6 text-center">
                 <div className="text-3xl font-bold text-primary">10/10</div>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-foreground/85 mt-2">
                   {isFr ? 'Score de Sécurité HCS-U7' : 'HCS-U7 Security Score'}
                 </p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-muted-foreground">4/10</div>
-                <p className="text-sm text-muted-foreground mt-2">
+                <div className="text-3xl font-bold text-foreground/85">4/10</div>
+                <p className="text-sm text-foreground/85 mt-2">
                   {isFr ? 'Moyenne Mots de passe' : 'Passwords Average'}
                 </p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-muted-foreground">6/10</div>
-                <p className="text-sm text-muted-foreground mt-2">
+                <div className="text-3xl font-bold text-foreground/85">6/10</div>
+                <p className="text-sm text-foreground/85 mt-2">
                   {isFr ? 'Moyenne Biométrie' : 'Biometric Average'}
                 </p>
               </CardContent>
