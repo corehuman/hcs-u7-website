@@ -14,6 +14,7 @@ const TRIALS = 30;
 const PRE_STIMULUS = 400; // ms d'écran neutre avant chaque lettre
 const STIMULUS_DURATION = 800; // ms (durée d'affichage de la lettre)
 const ISI = 2500; // ms (intervalle un peu plus long entre les essais initiaux)
+const DEMO_STEP_DURATION = 2500;
 
 interface NBackResult {
   accuracy: number;
@@ -125,7 +126,7 @@ export function NBackTest({ onComplete }: NBackTestProps) {
       } else {
         setDemoStep((prev) => prev + 1);
       }
-    }, 900);
+    }, DEMO_STEP_DURATION);
 
     return () => clearTimeout(timer);
   }, [isDemoRunning, demoStep, phase]);
