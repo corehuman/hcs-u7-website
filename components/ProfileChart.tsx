@@ -27,17 +27,18 @@ export function ProfileChart({ cognition }: ProfileChartProps) {
     <div className="h-72 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart data={data} outerRadius="80%">
-          <PolarGrid stroke="hsl(var(--border))" />
+          <PolarGrid stroke="var(--border)" />
           <PolarAngleAxis
             dataKey="dimension"
-            tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 11 }}
+            tick={{ fill: "var(--muted-foreground)", fontSize: 11 }}
           />
           <Radar
             name="Cognition"
             dataKey="value"
-            stroke="hsl(var(--primary))"
-            fill="hsl(var(--primary))"
-            fillOpacity={0.45}
+            stroke="var(--chart-3)"
+            fill="var(--chart-3)"
+            fillOpacity={0.6}
+            strokeWidth={2}
           />
         </RadarChart>
       </ResponsiveContainer>
