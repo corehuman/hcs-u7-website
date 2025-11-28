@@ -11,8 +11,9 @@ import { useLanguage } from "@/components/LanguageProvider";
 const LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const N = 2; // 2-back task
 const TRIALS = 30;
-const STIMULUS_DURATION = 800; // ms (légèrement plus long pour lire la lettre)
-const ISI = 2000; // inter-stimulus interval
+const PRE_STIMULUS = 400; // ms d'écran neutre avant chaque lettre
+const STIMULUS_DURATION = 800; // ms (durée d'affichage de la lettre)
+const ISI = 2500; // ms (intervalle un peu plus long entre les essais initiaux)
 
 interface NBackResult {
   accuracy: number;
@@ -70,34 +71,45 @@ export function NBackTest({ onComplete }: NBackTestProps) {
   }, [phase]);
 
   useEffect(() => {
-    if (phase === "test" && currentTrial < TRIALS && sequence.length > 0 && !waitingForResponse) {
-      // Show stimulus
+    if (phase !== "test") return;
+
+    if (currentTrial >= TRIALS) {
+      setPhase("complete");
+      return;
+    }
+
+    if (sequence.length === 0 || waitingForResponse) return;
+
+    let preTimer: NodeJS.Timeout | null = null;
+    let stimTimer: NodeJS.Timeout | null = null;
+    let nextTimer: NodeJS.Timeout | null = null;
+
+    // 1) Écran neutre (~400 ms)
+    preTimer = setTimeout(() => {
+      // 2) Affichage de la lettre
       setCurrentStimulus(sequence[currentTrial]);
       setShowStimulus(true);
 
-      const hideTimer = setTimeout(() => {
+      stimTimer = setTimeout(() => {
         setShowStimulus(false);
-        // If this trial needs a response, wait for it
+
         if (currentTrial >= N) {
+          // 3) Phase de réponse ("+" vert jusqu'au clic)
           setWaitingForResponse(true);
+        } else {
+          // Pour les premiers essais de mémorisation, on enchaîne automatiquement
+          nextTimer = setTimeout(() => {
+            setCurrentTrial((prev) => prev + 1);
+          }, ISI);
         }
       }, STIMULUS_DURATION);
+    }, PRE_STIMULUS);
 
-      // Only auto-advance if we don't need a response (first N trials)
-      let nextTimer: NodeJS.Timeout | null = null;
-      if (currentTrial < N) {
-        nextTimer = setTimeout(() => {
-          setCurrentTrial(currentTrial + 1);
-        }, ISI);
-      }
-
-      return () => {
-        clearTimeout(hideTimer);
-        if (nextTimer) clearTimeout(nextTimer);
-      };
-    } else if (currentTrial >= TRIALS) {
-      setPhase("complete");
-    }
+    return () => {
+      if (preTimer) clearTimeout(preTimer);
+      if (stimTimer) clearTimeout(stimTimer);
+      if (nextTimer) clearTimeout(nextTimer);
+    };
   }, [phase, currentTrial, sequence, waitingForResponse]);
 
   useEffect(() => {
@@ -392,14 +404,27 @@ export function NBackTest({ onComplete }: NBackTestProps) {
           <div
             className={`flex items-center justify-center py-20 rounded-2xl transition-colors ${
               currentTrial < N
-                ? "bg-muted/40"
+                ? "bg-muted/40" // phase de mémorisation initiale
                 : waitingForResponse
-                  ? "bg-success-subtle"
-                  : "bg-muted/20"
+                  ? "bg-success-subtle" // phase de réponse (MATCH / NO MATCH)
+                  : "bg-muted/20" // écran neutre entre les essais / pré-lettre
             }`}
           >
-            <div className="text-8xl font-bold">
-              {showStimulus ? currentStimulus : "+"}
+            <div
+              className={
+                showStimulus
+                  ? "text-8xl font-bold"
+                  : waitingForResponse
+                    ? "text-8xl font-bold"
+                    : "text-6xl font-bold opacity-60" // "+" neutre, plus petit et atténué
+              }
+            >
+              {showStimulus
+                ? currentStimulus
+                : waitingForResponse
+                  ? "+" // "+" de réponse (vert)
+                  : "·" // point neutre avant/après
+              }
             </div>
           </div>
 
