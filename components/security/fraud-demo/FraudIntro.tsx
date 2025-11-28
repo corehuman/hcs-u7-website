@@ -29,7 +29,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
           {isFr ? 'Détection de Fraude en Temps Réel' : 'Real-Time Fraud Detection'}
         </h1>
 
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
           {isFr
             ? "Surveillez les sessions utilisateur et détectez les prises de contrôle de compte grâce à l'analyse cognitive continue"
             : 'Monitor user sessions and detect account takeovers through continuous cognitive analysis'}
@@ -43,7 +43,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             <AlertTriangle className="w-5 h-5 text-red-500" />
             <div>
               <h3 className="font-semibold text-lg">{isFr ? 'Le Problème : Account Takeover' : 'The Problem: Account Takeover'}</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? "Un attaquant obtient les identifiants d'un utilisateur légitime (phishing, data breach, malware) et accède à son compte."
                   : 'An attacker obtains legitimate user credentials (phishing, data breach, malware) and accesses their account.'}
@@ -76,11 +76,11 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             <div className="grid grid-cols-2 gap-3">
               <Card className="p-3 text-center">
                 <p className="text-2xl font-bold text-red-600">$11B</p>
-                <p className="text-xs text-muted-foreground">{isFr ? 'Pertes annuelles (account takeover, 2023)' : 'Annual losses (account takeover, 2023)'}</p>
+                <p className="text-xs text-foreground/70">{isFr ? 'Pertes annuelles (account takeover, 2023)' : 'Annual losses (account takeover, 2023)'}</p>
               </Card>
               <Card className="p-3 text-center">
                 <p className="text-2xl font-bold text-red-600">24%</p>
-                <p className="text-xs text-muted-foreground">{isFr ? 'Augmentation en 2023 vs 2022' : 'Increase in 2023 vs 2022'}</p>
+                <p className="text-xs text-foreground/70">{isFr ? 'Augmentation en 2023 vs 2022' : 'Increase in 2023 vs 2022'}</p>
               </Card>
             </div>
           </div>
@@ -94,7 +94,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             <Shield className="w-5 h-5 text-green-500" />
             <div>
               <h3 className="font-semibold text-lg">{isFr ? 'Solution HCS : Monitoring Cognitif' : 'HCS Solution: Cognitive Monitoring'}</h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? 'Détection en temps réel basée sur les patterns cognitifs impossibles à imiter'
                   : 'Real-time detection based on cognitive patterns impossible to imitate'}
@@ -110,7 +110,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             </div>
             <div>
               <p className="font-medium">{isFr ? 'Baseline établi :' : 'Baseline established:'}</p>
-              <p className="text-sm text-muted-foreground">{isFr
+              <p className="text-sm text-foreground/70">{isFr
                 ? "Lors de la première connexion réussie, le système capture le profil cognitif de l'utilisateur (RT, Stroop, etc.)"
                 : 'During the first successful login, the system captures the user’s cognitive profile (RT, Stroop, etc.)'}</p>
             </div>
@@ -121,7 +121,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             </div>
             <div>
               <p className="font-medium">{isFr ? 'Surveillance continue :' : 'Continuous monitoring:'}</p>
-              <p className="text-sm text-muted-foreground">{isFr
+              <p className="text-sm text-foreground/70">{isFr
                 ? 'Pendant la session, micro-tests invisibles (mesures de RT, patterns de clic) sont collectés en arrière-plan'
                 : 'During the session, invisible micro-tests (RT measurements, click patterns) are collected in the background'}</p>
             </div>
@@ -132,7 +132,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             </div>
             <div>
               <p className="font-medium">{isFr ? 'Alerte anomalie :' : 'Anomaly alert:'}</p>
-              <p className="text-sm text-muted-foreground">{isFr
+              <p className="text-sm text-foreground/70">{isFr
                 ? 'Si déviation >15% du baseline (RT change, Stroop effect disparaît), alerte de fraude déclenchée'
                 : 'If deviation >15% from baseline (RT changes, Stroop effect disappears), fraud alert triggered'}</p>
             </div>
@@ -151,7 +151,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             </div>
             <div className="flex-1">
               <p className="font-medium">{isFr ? 'Établissement du Baseline (~1 min)' : 'Baseline Establishment (~1 min)'}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? 'Tests rapides pour créer votre profil cognitif de référence'
                   : 'Quick tests to create your cognitive reference profile'}
@@ -165,7 +165,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             </div>
             <div className="flex-1">
               <p className="font-medium">{isFr ? 'Session Normale (~30 secondes)' : 'Normal Session (~30 seconds)'}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? "Simulation d'activité avec monitoring temps réel. Métriques stables."
                   : 'Activity simulation with real-time monitoring. Stable metrics.'}
@@ -179,7 +179,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             </div>
             <div className="flex-1">
               <p className="font-medium">{isFr ? 'Prise de Contrôle Simulée' : 'Simulated Takeover'}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? 'Une "autre personne" prend le contrôle. Patterns cognitifs changent brusquement.'
                   : 'Another "person" takes control. Cognitive patterns change abruptly.'}
@@ -193,7 +193,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
             </div>
             <div className="flex-1">
               <p className="font-medium">{isFr ? 'Alerte Fraude Déclenchée' : 'Fraud Alert Triggered'}</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? "Système détecte l'anomalie et déclenche les protocoles de sécurité"
                   : 'System detects the anomaly and triggers security protocols'}
@@ -207,17 +207,17 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
       <div className="grid grid-cols-3 gap-4">
         <Card className="p-4 text-center">
           <p className="text-2xl font-bold">{isFr ? '~2 min' : '~2 min'}</p>
-          <p className="text-sm text-muted-foreground">{isFr ? 'Durée totale' : 'Total duration'}</p>
+          <p className="text-sm text-foreground/70">{isFr ? 'Durée totale' : 'Total duration'}</p>
         </Card>
 
         <Card className="p-4 text-center">
           <p className="text-2xl font-bold">&lt;2s</p>
-          <p className="text-sm text-muted-foreground">{isFr ? 'Temps de détection' : 'Detection time'}</p>
+          <p className="text-sm text-foreground/70">{isFr ? 'Temps de détection' : 'Detection time'}</p>
         </Card>
 
         <Card className="p-4 text-center">
           <p className="text-2xl font-bold">97%</p>
-          <p className="text-sm text-muted-foreground">{isFr ? 'Précision détection' : 'Detection accuracy'}</p>
+          <p className="text-sm text-foreground/70">{isFr ? 'Précision détection' : 'Detection accuracy'}</p>
         </Card>
       </div>
 

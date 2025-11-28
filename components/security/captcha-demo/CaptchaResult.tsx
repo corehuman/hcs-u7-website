@@ -61,7 +61,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             : (isFr ? '🤖 Comportement de Bot Détecté' : '🤖 Bot Behavior Detected')}
         </h2>
 
-        <p className="text-lg text-muted-foreground mb-4">
+        <p className="text-lg text-foreground/70 mb-4">
           {isFr ? 'Confiance' : 'Confidence'}: {Math.round(confidence * 100)}%
         </p>
 
@@ -125,7 +125,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             status={getMetricStatus(metrics.rtVariability, 50, 100)}
             importance="critical"
           >
-            <div className="flex justify-between text-xs text-muted-foreground mt-2">
+            <div className="flex justify-between text-xs text-foreground/70 mt-2">
               <span className="flex items-center gap-1">
                 Too consistent (&lt;40ms):
                 <Badge variant="outline" className="text-xs">Bot-like</Badge>
@@ -150,7 +150,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             status={getMetricStatus(metrics.stroopEffect, 50, 150)}
             importance="critical"
           >
-            <div className="flex justify-between text-xs text-muted-foreground mt-2">
+            <div className="flex justify-between text-xs text-foreground/70 mt-2">
               <span className="flex items-center gap-1">
                 No effect (&lt;20ms):
                 <Badge variant="outline" className="text-xs">Bot-like</Badge>
@@ -174,7 +174,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             expected="Positive (improvement)"
             status={metrics.learningSlope > 5 ? 'good' : metrics.learningSlope < -5 ? 'bad' : 'warning'}
           >
-            <div className="mt-2 text-xs text-muted-foreground">
+            <div className="mt-2 text-xs text-foreground/70">
               <p>
                 {metrics.learningSlope > 5 ? (
                   <>✅ You improved over time (typical human pattern)</>
@@ -195,7 +195,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             expected="Clustered (fatigue)"
             status={metrics.errorPattern === 'clustered' || metrics.errorPattern === 'distributed' ? 'good' : 'warning'}
           >
-            <div className="flex justify-between text-xs text-muted-foreground mt-2">
+            <div className="flex justify-between text-xs text-foreground/70 mt-2">
               <span className="flex items-center gap-1">
                 None/Perfect:
                 <Badge variant="destructive" className="text-xs">Suspicious</Badge>
@@ -215,23 +215,23 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
 
       {/* Raw Statistics */}
       <Card className="p-6">
-        <h3 className="text-sm font-medium text-muted-foreground mb-3">RAW STATISTICS</h3>
+        <h3 className="text-sm font-medium text-foreground/70 mb-3">RAW STATISTICS</h3>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">Avg Reaction Time</p>
+            <p className="text-sm text-foreground/70">Avg Reaction Time</p>
             <p className="text-2xl font-bold">{Math.round(rawData.avgRT)}ms</p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">Accuracy</p>
+            <p className="text-sm text-foreground/70">Accuracy</p>
             <p className="text-2xl font-bold">{Math.round(rawData.accuracy * 100)}%</p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">Total Time</p>
+            <p className="text-sm text-foreground/70">Total Time</p>
             <p className="text-2xl font-bold">{Math.round(rawData.totalTime / 1000)}s</p>
           </div>
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">Trials</p>
+            <p className="text-sm text-foreground/70">Trials</p>
             <p className="text-2xl font-bold">{rawData.trials}</p>
           </div>
         </div>
@@ -251,7 +251,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
               <div className="space-y-4">
                 <div>
                   <h4 className="font-medium mb-2">Detection Logic</h4>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-foreground/70">
                     {isHuman ? (
                       <>
                         Your cognitive patterns align with expected human behavior:
@@ -287,7 +287,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
 
                 <div>
                   <h4 className="font-medium mb-2">How Bots Fail This Test</h4>
-                  <div className="text-sm text-muted-foreground space-y-2">
+                  <div className="text-sm text-foreground/70 space-y-2">
                     <p className="flex items-start gap-2">
                       <span className="mt-1">•</span>
                       <span>
@@ -367,23 +367,23 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
                   <h4 className="font-medium mb-2">Accuracy (Pilot Study)</h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
                     <div className="text-center">
-                      <p className="text-sm text-muted-foreground">Human Detection</p>
+                      <p className="text-sm text-foreground/70">Human Detection</p>
                       <p className="text-xl font-bold">99.2%</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-sm text-muted-foreground">Bot Detection</p>
+                      <p className="text-sm text-foreground/70">Bot Detection</p>
                       <p className="text-xl font-bold">98.7%</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-sm text-muted-foreground">False Positive</p>
+                      <p className="text-sm text-foreground/70">False Positive</p>
                       <p className="text-xl font-bold">&lt;1%</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-sm text-muted-foreground">Test Set</p>
+                      <p className="text-sm text-foreground/70">Test Set</p>
                       <p className="text-xl font-bold">N=250</p>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-2">
+                  <p className="text-xs text-foreground/70 mt-2">
                     *Tested against: Selenium bots, Puppeteer scripts, GPT-4V automation, 
                     random click generators
                   </p>
@@ -484,14 +484,14 @@ function MetricCard({
               </Badge>
             )}
           </h4>
-          <p className="text-xs text-muted-foreground">{description}</p>
+          <p className="text-xs text-foreground/70">{description}</p>
         </div>
         {statusIcons[status]}
       </div>
 
       <div className="space-y-1">
         <p className="text-2xl font-bold">{value}</p>
-        <p className="text-xs text-muted-foreground">Expected: {expected}</p>
+        <p className="text-xs text-foreground/70">Expected: {expected}</p>
       </div>
 
       {children}

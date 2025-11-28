@@ -126,7 +126,7 @@ export default function HomePage() {
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
               {isFr ? 'Avant HCS-U7' : 'Before HCS-U7'}
             </h2>
-            <p className="text-sm text-muted-foreground sm:text-base">
+            <p className="text-sm text-foreground/70 sm:text-base">
               {isFr 
                 ? "Chaque nouvelle conversation avec l'IA est comme recommencer à zéro : vous devez expliquer, reconfigurer et affiner votre style encore et encore. Résultat : friction, perte de temps et frustration."
                 : "Every new AI conversation feels like starting over: you must explain, reconfigure and refine your style again. Result: friction, wasted time and frustration."}
@@ -153,7 +153,7 @@ export default function HomePage() {
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
               {isFr ? 'Avec HCS-U7' : 'With HCS-U7'}
             </h2>
-            <p className="text-sm text-muted-foreground sm:text-base">
+            <p className="text-sm text-foreground/70 sm:text-base">
               {isFr
                 ? "Un seul code compact décrit comment vous apprenez, raisonnez et interagissez. Les IA peuvent alors adapter automatiquement leur comportement."
                 : "A single compact code describes how you learn, reason and interact. AIs can then automatically adapt their behaviour."}
@@ -234,7 +234,7 @@ export default function HomePage() {
               <p className="rounded-xl bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-50 overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-900">
                 HCS-U7|V:7.0|ALG:QS|E:E|MOD:c30f40m30|COG:F15C70V20S25Cr20|INT:PB=B,SM=M,TN=L|QSIG:...
               </p>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-foreground/70">
                 {isFr
                   ? 'Ce code encode votre élément dominant, modalité, profil cognitif et préférences d’interaction.'
                   : 'This code encodes your dominant element, modality, cognitive profile and interaction preferences.'}

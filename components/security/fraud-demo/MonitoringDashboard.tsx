@@ -126,7 +126,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
           {phase === 'detecting' && (isFr ? '🚨 Fraude Détectée !' : '🚨 Fraud Detected!')}
         </Badge>
         <h2 className="text-2xl font-bold mb-2">{isFr ? 'Tableau de Bord de Surveillance' : 'Monitoring Dashboard'}</h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-foreground/70">
           {isFr ? 'Monitoring cognitif en temps réel' : 'Real-time cognitive monitoring'}
         </p>
       </div>
@@ -193,7 +193,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
 
           <Progress value={Math.min(metrics.deviation * 3.33, 100)} className="mb-4" />
 
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div className="flex justify-between text-xs text-foreground/70">
             <span>{isFr ? '0% (Normal)' : '0% (Normal)'}</span>
             <span>{isFr ? '15% (Seuil)' : '15% (Threshold)'}</span>
             <span>30%+</span>
@@ -257,7 +257,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
                 <AlertTriangle className="h-4 w-4" />
                 <AlertDescription>
                   <strong>{formatAlertName(alert, lang)}</strong>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-foreground/70 mt-1">
                     {getAlertDescription(alert, lang)}
                   </p>
                 </AlertDescription>
@@ -288,7 +288,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
                 ) : (
                   <Badge variant="secondary" className="text-xs">{isFr ? 'Normal' : 'Normal'}</Badge>
                 )}
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-foreground/70">
                   RT: {Math.round(entry.avgRT)}ms
                 </span>
               </div>
@@ -308,7 +308,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
               <Shield className="w-12 h-12 text-red-600 animate-pulse" />
             </div>
             <h3 className="text-xl font-bold mb-2">{isFr ? 'Analyse de Fraude en Cours...' : 'Fraud Analysis in Progress...'}</h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground/70">
               {isFr ? 'Vérification des anomalies détectées' : 'Verifying detected anomalies'}
             </p>
           </div>

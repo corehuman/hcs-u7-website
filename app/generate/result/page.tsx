@@ -57,7 +57,7 @@ export default function GenerateResultPage() {
   if (!profile) {
     return (
       <div className="mx-auto max-w-3xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-foreground/70">
           {isFr
             ? "Chargement de votre profil HCS-U7…"
             : "Loading your HCS-U7 profile…"}
@@ -80,7 +80,7 @@ export default function GenerateResultPage() {
               ? "Votre profil HCS-U7 est prêt"
               : "Your HCS-U7 profile is ready"}
           </h1>
-          <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+          <p className="max-w-2xl text-sm text-foreground/70 sm:text-base">
             {isFr
               ? "Ce code représente votre signature cognitive. Conservez-le et réutilisez-le dans toutes vos interactions avec l'IA."
               : "This code encodes your cognitive signature. Keep it and reuse it in all your AI interactions."}
@@ -90,7 +90,7 @@ export default function GenerateResultPage() {
         <section className="space-y-4 rounded-2xl border bg-white/70 p-5 shadow-sm dark:bg-neutral-950/70">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-1">
-              <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/60">
                 {isFr ? "Code HCS-U7" : "HCS-U7 code"}
               </p>
               <p className="break-all font-mono text-[11px] leading-relaxed text-foreground">
@@ -123,7 +123,7 @@ export default function GenerateResultPage() {
             <h2 className="text-lg font-semibold tracking-tight text-foreground">
               {isFr ? "Interprétation du profil" : "Profile interpretation"}
             </h2>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <div className="space-y-2 text-sm text-foreground/70">
               <p>
                 <span className="font-medium text-foreground">
                   {isFr
@@ -151,7 +151,7 @@ export default function GenerateResultPage() {
               <h2 className="text-lg font-semibold tracking-tight text-foreground">
                 {isFr ? "Utiliser votre profil" : "Use your profile"}
               </h2>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? "Choisissez une intégration et copiez le prompt recommandé."
                   : "Select an integration and copy the recommended prompt."}
@@ -167,7 +167,7 @@ export default function GenerateResultPage() {
             </TabsList>
 
             <TabsContent value="chatgpt" className="space-y-3">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? "1. Copiez ce prompt dans ChatGPT (en message système ou premier message)."
                   : "1. Copy this prompt into ChatGPT (as a system message or first message)."}
@@ -195,7 +195,7 @@ export default function GenerateResultPage() {
             </TabsContent>
 
             <TabsContent value="claude" className="space-y-3">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? "Utilisez ce texte comme instruction système persistante pour Claude."
                   : "Use this text as a persistent system instruction for Claude."}
@@ -211,7 +211,7 @@ export default function GenerateResultPage() {
             </TabsContent>
 
             <TabsContent value="api" className="space-y-4">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? "Exemple d'intégration côté serveur avec le point de terminaison "
                   : "Example of a server-side integration with the endpoint "}
@@ -242,7 +242,7 @@ console.log(data.chatgptPrompt);
           </h2>
           <div className="grid gap-4 sm:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 {isFr
                   ? "Vous pouvez stocker ce code où vous le souhaitez (gestionnaire de mots de passe, notes, outil de documentation). À l'avenir, un espace compte vous permettra de gérer plusieurs profils."
                   : "You can store this code wherever you want (password manager, notes, documentation tool). In the future, an account space will allow you to manage multiple profiles."}
@@ -267,7 +267,7 @@ console.log(data.chatgptPrompt);
                 </Button>
               </div>
             </div>
-            <div className="space-y-3 rounded-xl bg-muted p-4 text-sm text-muted-foreground">
+            <div className="space-y-3 rounded-xl bg-muted p-4 text-sm text-foreground/70">
               <p className="font-medium text-foreground">
                 {isFr ? "Repasser le test" : "Retake the test"}
               </p>

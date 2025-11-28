@@ -68,7 +68,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
             </Badge>
           </div>
           
-          <p className="text-center text-muted-foreground">
+          <p className="text-center text-foreground/70">
             {isFr 
               ? `Correspondance de signature cognitive : ${Math.round(comparison.similarity * 100)}%`
               : `Cognitive signature match: ${Math.round(comparison.similarity * 100)}%`}
@@ -111,7 +111,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
               <div className="text-4xl font-bold text-primary">
                 {Math.round(comparison.similarity * 100)}%
               </div>
-              <p className="text-sm text-muted-foreground mt-1">
+              <p className="text-sm text-foreground/70 mt-1">
                 {isFr ? 'Score de Similarité Global' : 'Overall Similarity Score'}
               </p>
             </div>
@@ -129,7 +129,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
               />
             </div>
 
-            <div className="flex justify-between text-xs text-muted-foreground">
+            <div className="flex justify-between text-xs text-foreground/70">
               <span>0%</span>
               <span>70%</span>
               <span className="font-bold">{isFr ? '85% (seuil)' : '85% (threshold)'}</span>
@@ -139,7 +139,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
 
           {/* Detailed Metrics Comparison */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-sm uppercase tracking-wide text-muted-foreground">
+            <h4 className="font-semibold text-sm uppercase tracking-wide text-foreground/60">
               {isFr ? 'COMPARAISON DES MÉTRIQUES' : 'METRIC COMPARISON'}
             </h4>
 
@@ -207,12 +207,12 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                 <h4 className="font-semibold text-sm mb-2">
                   {isFr ? 'Calcul de Similarité' : 'Similarity Calculation'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   {isFr
                     ? "Similarité cosinus à travers 6 dimensions normalisées avec importance pondérée:"
                     : "Cosine similarity across 6 normalized dimensions with weighted importance:"}
                 </p>
-                <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+                <ul className="mt-2 space-y-1 text-sm text-foreground/70">
                   <li>• {isFr ? "Variabilité RT (30% poids) - Identifiant le plus unique" : "RT Variability (30% weight) - Most unique identifier"}</li>
                   <li>• {isFr ? "Effet Stroop (25% poids) - Pattern d'interférence cognitive" : "Stroop Effect (25% weight) - Cognitive interference pattern"}</li>
                   <li>• {isFr ? "RT Moyen (15% poids) - Vitesse de traitement générale" : "Average RT (15% weight) - General processing speed"}</li>
@@ -225,7 +225,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                 <h4 className="font-semibold text-sm mb-2">
                   {isFr ? 'Signature Enrollée' : 'Enrolled Signature'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   Session: <span className="font-mono">{enrolled.sessionId}</span><br/>
                   {isFr ? 'Temps' : 'Time'}: {new Date(enrolled.timestamp).toLocaleString()}
                 </p>
@@ -235,7 +235,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                 <h4 className="font-semibold text-sm mb-2">
                   {isFr ? 'Signature de Vérification' : 'Verification Signature'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   Session: <span className="font-mono">{verify.sessionId}</span><br/>
                   {isFr ? 'Temps' : 'Time'}: {new Date(verify.timestamp).toLocaleString()}
                 </p>
@@ -245,7 +245,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                 <h4 className="font-semibold text-sm mb-2">
                   {isFr ? 'Pourquoi ' : 'Why '}{authenticated ? (isFr ? 'Authentifié' : 'Authenticated') : (isFr ? 'Rejeté' : 'Rejected')}?
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   {authenticated ? (
                     isFr ? (
                       <>
@@ -296,7 +296,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                 <h4 className="font-semibold text-sm mb-2">
                   {isFr ? 'Taux de Faux Positifs' : 'False Positive Rate'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   {isFr ? "Avec seuil 85% : <1% (basé sur étude pilote N=50)" : "With 85% threshold: <1% (based on pilot study N=50)"}
                 </p>
               </div>
@@ -304,7 +304,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                 <h4 className="font-semibold text-sm mb-2">
                   {isFr ? 'Taux de Faux Négatifs' : 'False Negative Rate'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   {isFr ? "~2-3% (utilisateurs légitimes rejetés à cause de fatigue ou stress extrême)" : "~2-3% (legitimate users rejected due to extreme fatigue or stress)"}
                 </p>
               </div>
@@ -312,7 +312,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                 <h4 className="font-semibold text-sm mb-2">
                   {isFr ? 'Détection de Bots' : 'Bot Detection'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   {isFr 
                     ? "99.2% de précision (N=200 tentatives de bots). Les bots échouent à cause de la consistance RT impossible (<10ms SD) ou du manque d'interférence Stroop."
                     : "99.2% accuracy (N=200 bot attempts). Bots fail due to impossible RT consistency (<10ms SD) or lack of Stroop interference."}
@@ -322,7 +322,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                 <h4 className="font-semibold text-sm mb-2">
                   {isFr ? 'Résistance aux Attaques' : 'Attack Resistance'}
                 </h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   {isFr
                     ? "Attaques par rejeu : Impossible (nécessite performance en direct). Attaques MitM : Inefficace (signatures changent à chaque session). Coercition : Détectable (le stress altère les patterns)."
                     : "Replay attacks: Impossible (requires live performance). MitM attacks: Ineffective (signatures change each session). Coercion: Detectable (stress alters patterns)."}
@@ -393,7 +393,7 @@ function ComparisonRow({
             )}
           </div>
           {tooltip && (
-            <Info className="h-3 w-3 text-muted-foreground mt-1" />
+            <Info className="h-3 w-3 text-foreground/60 mt-1" />
           )}
         </div>
         <div className="flex items-center gap-2">
@@ -406,11 +406,11 @@ function ComparisonRow({
 
       <div className="flex justify-between text-sm">
         <div>
-          <span className="text-muted-foreground">Enrolled: </span>
+          <span className="text-foreground/70">Enrolled: </span>
           <span className="font-mono">{Math.round(enrolled)}{unit}</span>
         </div>
         <div>
-          <span className="text-muted-foreground">Verification: </span>
+          <span className="text-foreground/70">Verification: </span>
           <span className="font-mono">{Math.round(verify)}{unit}</span>
         </div>
       </div>

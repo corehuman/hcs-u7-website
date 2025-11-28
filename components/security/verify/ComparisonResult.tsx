@@ -60,7 +60,7 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
           {match ? '✅ Same Person Confirmed' : '❌ Different Persons'}
         </h2>
 
-        <p className="text-lg text-muted-foreground mb-4">
+        <p className="text-lg text-foreground/70 mb-4">
           Similarity Score: {Math.round(overallSimilarity * 100)}%
         </p>
 
@@ -118,19 +118,19 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
                 </p>
                 <div className="grid md:grid-cols-2 gap-2 mt-2">
                   <div className="text-sm">
-                    <span className="text-muted-foreground">Profile 1 (B3):</span>
+                    <span className="text-foreground/70">Profile 1 (B3):</span>
                     <code className="ml-2 text-xs bg-secondary px-2 py-1 rounded">
                       {profile1.signatures.B3}
                     </code>
                   </div>
                   <div className="text-sm">
-                    <span className="text-muted-foreground">Profile 2 (B3):</span>
+                    <span className="text-foreground/70">Profile 2 (B3):</span>
                     <code className="ml-2 text-xs bg-secondary px-2 py-1 rounded">
                       {profile2.signatures.B3}
                     </code>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-foreground/70 mt-2">
                   Different signatures confirm these are independent profile generations
                 </p>
               </div>
@@ -145,7 +145,7 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
 
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-muted-foreground">Composite Score</span>
+            <span className="text-sm text-foreground/70">Composite Score</span>
             <Badge variant={overallSimilarity >= 0.85 ? 'default' : 'secondary'} className="text-lg px-3 py-1">
               {Math.round(overallSimilarity * 100)}%
             </Badge>
@@ -155,13 +155,13 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
             <Progress value={overallSimilarity * 100} className="h-8" />
             {/* Threshold marker */}
             <div className="absolute top-0 left-[85%] h-full w-px bg-primary">
-              <span className="absolute -top-6 -left-12 text-xs text-muted-foreground">
+              <span className="absolute -top-6 -left-12 text-xs text-foreground/70">
                 85% threshold
               </span>
             </div>
           </div>
 
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div className="flex justify-between text-xs text-foreground/70">
             <span>0% (Different)</span>
             <span>50% (Some similarity)</span>
             <span>85% (Match)</span>
@@ -282,31 +282,31 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
               <div className="space-y-4">
                 <div>
                   <h4 className="font-medium mb-2">Weighted Multi-Dimensional Comparison</h4>
-                  <p className="text-sm text-muted-foreground mb-3">
+                  <p className="text-sm text-foreground/70 mb-3">
                     Overall similarity is calculated using weighted components:
                   </p>
                   <div className="space-y-2 ml-4">
                     <div className="text-sm">
                       <span className="font-medium">Element similarity:</span>
-                      <span className="text-muted-foreground ml-2">
+                      <span className="text-foreground/70 ml-2">
                         {Math.round(dimensions.element * 100)}% × 0.15 = {Math.round(dimensions.element * 15)}%
                       </span>
                     </div>
                     <div className="text-sm">
                       <span className="font-medium">Modalities similarity:</span>
-                      <span className="text-muted-foreground ml-2">
+                      <span className="text-foreground/70 ml-2">
                         {Math.round(dimensions.modalities * 100)}% × 0.20 = {Math.round(dimensions.modalities * 20)}%
                       </span>
                     </div>
                     <div className="text-sm">
                       <span className="font-medium">Cognition similarity:</span>
-                      <span className="text-muted-foreground ml-2">
+                      <span className="text-foreground/70 ml-2">
                         {Math.round(dimensions.cognition * 100)}% × 0.45 = {Math.round(dimensions.cognition * 45)}%
                       </span>
                     </div>
                     <div className="text-sm">
                       <span className="font-medium">Interaction similarity:</span>
-                      <span className="text-muted-foreground ml-2">
+                      <span className="text-foreground/70 ml-2">
                         {Math.round(dimensions.interaction * 100)}% × 0.20 = {Math.round(dimensions.interaction * 20)}%
                       </span>
                     </div>
@@ -330,10 +330,10 @@ Similarity = dot(v1, v2) / (||v1|| × ||v2||)
 
                 <div>
                   <h4 className="font-medium mb-2">Threshold Rationale</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-sm text-foreground/70 mb-2">
                     The 85% threshold was established through pilot testing (N=50):
                   </p>
-                  <ul className="list-disc ml-5 text-sm text-muted-foreground space-y-1">
+                  <ul className="list-disc ml-5 text-sm text-foreground/70 space-y-1">
                     <li>Same person, different sessions: 87-95% similarity</li>
                     <li>Family members (siblings): 60-75% similarity</li>
                     <li>Unrelated individuals: 20-50% similarity</li>
@@ -354,11 +354,11 @@ Similarity = dot(v1, v2) / (||v1|| × ||v2||)
               <div className="space-y-4">
                 <div>
                   <h4 className="font-medium mb-2">1. Identity Verification (KYC)</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-sm text-foreground/70 mb-2">
                     <strong>Scenario:</strong> User claims to have lost access to their account 
                     and requests password reset. They generate a new HCS-U7 profile.
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-foreground/70">
                     <strong>Verification:</strong> Compare new profile with stored profile. 
                     If similarity ≥85%, high confidence it's the legitimate owner.
                   </p>
@@ -366,11 +366,11 @@ Similarity = dot(v1, v2) / (||v1|| × ||v2||)
 
                 <div>
                   <h4 className="font-medium mb-2">2. Duplicate Account Detection</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-sm text-foreground/70 mb-2">
                     <strong>Scenario:</strong> New registration triggers fraud alert. 
                     Compare with existing profiles in database.
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-foreground/70">
                     <strong>Detection:</strong> If any profile shows ≥85% similarity, 
                     likely duplicate account. Flag for review.
                   </p>
@@ -378,11 +378,11 @@ Similarity = dot(v1, v2) / (||v1|| × ||v2||)
 
                 <div>
                   <h4 className="font-medium mb-2">3. Compatibility Matching</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-sm text-foreground/70 mb-2">
                     <strong>Scenario:</strong> Team formation, mentorship pairing, 
                     or collaborative project matching.
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-foreground/70">
                     <strong>Matching:</strong> 50-70% similarity = complementary skills. 
                     &gt;85% similarity = too similar (less diverse perspectives).
                   </p>
@@ -390,11 +390,11 @@ Similarity = dot(v1, v2) / (||v1|| × ||v2||)
 
                 <div>
                   <h4 className="font-medium mb-2">4. Forensic Analysis</h4>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-sm text-foreground/70 mb-2">
                     <strong>Scenario:</strong> Investigate suspicious account activity. 
                     Compare historical profiles of the same user over time.
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-foreground/70">
                     <strong>Analysis:</strong> Sudden drop in similarity (&lt;70%) suggests 
                     account takeover or profile manipulation.
                   </p>
@@ -495,7 +495,7 @@ function DimensionRow({
           <span className={`font-bold ${getColor(similarity)}`}>
             {Math.round(similarity * 100)}%
           </span>
-          <div className="text-xs text-muted-foreground">Weight: {weight}%</div>
+          <div className="text-xs text-foreground/70">Weight: {weight}%</div>
         </div>
       </div>
 

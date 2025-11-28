@@ -57,7 +57,7 @@ export function FraudAlert({ baseline, monitoringHistory, onReset }: FraudAlertP
           {isFr ? 'Prise de Contrôle de Compte Détectée' : 'Account Takeover Detected'}
         </Badge>
 
-        <p className="text-muted-foreground">
+        <p className="text-foreground/70">
           {isFr ? 'Anomalies cognitives critiques - Action immédiate requise' : 'Critical cognitive anomalies - Immediate action required'}
         </p>
       </Card>
@@ -114,13 +114,13 @@ export function FraudAlert({ baseline, monitoringHistory, onReset }: FraudAlertP
         <div className="grid md:grid-cols-2 gap-4 mt-4">
           <Card className="p-4 bg-green-50 dark:bg-green-950/30">
             <p className="font-medium">{isFr ? `Session Normale (0-${takeoverTime}s)` : `Normal Session (0-${takeoverTime}s)`}</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground/70">
               {isFr ? 'Déviation moyenne' : 'Average deviation'}: {avgDeviationNormal.toFixed(1)}%
             </p>
           </Card>
           <Card className="p-4 bg-red-50 dark:bg-red-950/30">
             <p className="font-medium">{isFr ? `Après Prise de Contrôle (${takeoverTime}s+)` : `After Takeover (${takeoverTime}s+)`}</p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground/70">
               {isFr ? 'Déviation moyenne' : 'Average deviation'}: {avgDeviationCompromised.toFixed(1)}%
             </p>
           </Card>
@@ -276,7 +276,7 @@ if (deviation > 15 && consecutiveAnomalies >= 3) {
 
               <Card className="p-4">
                 <h4 className="font-semibold mb-2">{isFr ? 'Moment de la Prise de Contrôle' : 'Takeover Moment'}</h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-sm text-foreground/70">
                   {isFr
                     ? `Détectée à t = ${takeoverTime}s après l'établissement du baseline. Le système a mis ~2 secondes à confirmer l'anomalie et déclencher l'alerte.`
                     : `Detected at t = ${takeoverTime}s after baseline establishment. The system took ~2 seconds to confirm the anomaly and trigger the alert.`}
@@ -297,7 +297,7 @@ if (deviation > 15 && consecutiveAnomalies >= 3) {
             <div className="space-y-4">
               <Card className="p-4">
                 <h4 className="font-semibold mb-2">Architecture Système</h4>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-foreground/70 mb-4">
                   Dans un système de production, le monitoring cognitif serait implémenté comme suit :
                 </p>
                 <pre className="text-xs overflow-x-auto bg-muted p-3 rounded">
@@ -357,7 +357,7 @@ class CognitiveMonitor {
 
               <Card className="p-4">
                 <h4 className="font-semibold mb-2">Collecte de Métriques Sans Tests Explicites</h4>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-foreground/70 mb-4">
                   Pour ne pas perturber l'expérience utilisateur, les métriques sont collectées 
                   passivement lors d'interactions normales :
                 </p>
@@ -390,7 +390,7 @@ class CognitiveMonitor {
                     <span className="font-mono">0.5%</span>
                   </div>
                 </div>
-                <p className="text-xs text-muted-foreground mt-2">
+                <p className="text-xs text-foreground/70 mt-2">
                   *Données pilote (N=150 utilisateurs, 45 simulations takeover)
                 </p>
               </Card>
@@ -498,7 +498,7 @@ function AnomalyCard({
         }`} />
         <div className="flex-1">
           <h4 className="font-medium">{title}</h4>
-          <p className="text-sm text-muted-foreground mt-1">{description}</p>
+          <p className="text-sm text-foreground/70 mt-1">{description}</p>
         </div>
         <Badge variant={severity === 'critical' ? 'destructive' : 'outline'} className="ml-auto">
           {severity === 'critical' ? (isFr ? 'CRITIQUE' : 'CRITICAL') : (isFr ? 'ÉLEVÉ' : 'HIGH')}
@@ -531,7 +531,7 @@ function ActionCard({
         <Icon className={`w-5 h-5 ${priorityColors[priority]}`} />
         <div className="flex-1">
           <h4 className="font-medium text-sm">{title}</h4>
-          <p className="text-xs text-muted-foreground mt-1">{description}</p>
+          <p className="text-xs text-foreground/70 mt-1">{description}</p>
         </div>
         <Badge variant="outline" className="text-xs">
           {priority === 'critical' ? 'P1' : priority === 'high' ? 'P2' : 'P3'}
