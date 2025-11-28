@@ -59,23 +59,14 @@ export default function RootLayout({
       >
         <ThemeProvider>
           <LanguageProvider>
-            {/* Background image with overlays for readability */}
+            {/* Background image, very subtle, with theme-aware overlay for readability */}
             <div className="fixed inset-0 z-0">
-              <div 
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: 'url(/images/background.png)' }}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+                style={{ backgroundImage: "url(/images/background.png)" }}
               />
-              {/* Light mode overlay - high opacity for readability */}
-              <div className="absolute inset-0 bg-white/95 dark:hidden" />
-              {/* Dark mode overlay - high opacity for contrast */}
-              <div className="absolute inset-0 hidden dark:block bg-neutral-950/95" />
-              {/* Subtle pattern overlay */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: `radial-gradient(circle at 1px 1px, rgb(0 0 0 / 0.05) 1px, transparent 1px)`,
-                  backgroundSize: '40px 40px'
-                }} />
-              </div>
+              {/* Single overlay based on CSS variable background (works for light & dark) */}
+              <div className="absolute inset-0 bg-background/95" />
             </div>
             
             {/* Content wrapper */}

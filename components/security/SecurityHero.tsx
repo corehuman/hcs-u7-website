@@ -12,7 +12,7 @@ export function SecurityHero() {
   const isFr = lang === 'fr';
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-primary/5 to-transparent">
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-background">
       {/* Animated background elements */}
       <div className="absolute inset-0 -z-10">
         <motion.div
