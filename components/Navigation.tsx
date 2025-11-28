@@ -40,14 +40,42 @@ export function Navigation() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
-            <span className="text-sm font-bold">H7</span>
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-sm font-semibold tracking-tight">HCS-U7</span>
-            <span className="text-xs text-foreground/85">
-              Human Cognitive Signature
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition group">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 32 32"
+            fill="none"
+            className="logo-glow"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="header-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="rgb(56, 189, 248)" />
+                <stop offset="100%" stopColor="rgb(147, 51, 234)" />
+              </linearGradient>
+            </defs>
+            
+            <rect x="6" y="6" width="4" height="20" rx="2" fill="url(#header-grad)" />
+            <rect x="6" y="14" width="12" height="4" rx="2" fill="url(#header-grad)" />
+            <rect x="18" y="6" width="8" height="4" rx="2" fill="url(#header-grad)" />
+            <rect
+              x="19"
+              y="10"
+              width="4"
+              height="16"
+              rx="2"
+              transform="rotate(15 21 18)"
+              fill="url(#header-grad)"
+            />
+          </svg>
+
+          <div className="flex flex-col">
+            <span className="text-xl font-bold bg-linear-to-r from-sky-500 to-purple-600 bg-clip-text text-transparent">
+              HCS-U7
+            </span>
+            <span className="text-[10px] text-muted-foreground hidden sm:block">
+              Cognitive Profile
             </span>
           </div>
         </Link>
