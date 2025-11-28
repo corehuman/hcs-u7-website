@@ -44,13 +44,13 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
         <CardContent className="pt-8">
           <div className={`w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center ${
             authenticated 
-              ? 'bg-green-100 dark:bg-green-900/30' 
-              : 'bg-red-100 dark:bg-red-900/30'
+              ? 'bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50' 
+              : 'bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800/50'
           }`}>
             {authenticated ? (
-              <CheckCircle2 className="h-12 w-12 text-green-600" />
+              <CheckCircle2 className="h-12 w-12 text-green-900 dark:text-green-100" />
             ) : (
-              <XCircle className="h-12 w-12 text-red-600" />
+              <XCircle className="h-12 w-12 text-red-900 dark:text-red-100" />
             )}
           </div>
 
@@ -68,7 +68,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
             </Badge>
           </div>
           
-          <p className="text-center text-foreground/70">
+          <p className="text-center text-green-800 dark:text-green-200">
             {isFr 
               ? `Correspondance de signature cognitive : ${Math.round(comparison.similarity * 100)}%`
               : `Cognitive signature match: ${Math.round(comparison.similarity * 100)}%`}
@@ -111,7 +111,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
               <div className="text-4xl font-bold text-primary">
                 {Math.round(comparison.similarity * 100)}%
               </div>
-              <p className="text-sm text-foreground/70 mt-1">
+              <p className="text-sm text-red-800 dark:text-red-200 mt-1">
                 {isFr ? 'Score de Similarité Global' : 'Overall Similarity Score'}
               </p>
             </div>
@@ -122,7 +122,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                   comparison.similarity >= 0.85 
                     ? 'bg-green-600' 
                     : comparison.similarity >= 0.70 
-                    ? 'bg-yellow-600' 
+                    ? 'bg-amber-600' 
                     : 'bg-red-600'
                 }`}
                 style={{ width: `${comparison.similarity * 100}%` }}
@@ -378,10 +378,10 @@ function ComparisonRow({
   const trend = verify > enrolled ? 'up' : verify < enrolled ? 'down' : 'same';
 
   const TrendIcon = trend === 'up' ? TrendingUp : trend === 'down' ? TrendingDown : Minus;
-  const trendColor = percentDiff < 10 ? 'text-green-600' : percentDiff < 20 ? 'text-yellow-600' : 'text-red-600';
+  const trendColor = percentDiff < 10 ? 'text-green-900 dark:text-green-100' : percentDiff < 20 ? 'text-amber-600' : 'text-red-900 dark:text-red-100';
 
   return (
-    <div className={`p-4 rounded-lg ${importance === 'critical' ? 'bg-amber-100 dark:bg-amber-900/25 border-2 border-yellow-200 dark:border-yellow-900' : 'bg-gray-50 dark:bg-gray-900'}`}>
+    <div className={`p-4 rounded-lg ${importance === 'critical' ? 'bg-amber-100 dark:bg-amber-900/25 border-2 border-amber-200 dark:border-amber-900' : 'bg-gray-50 dark:bg-gray-900'}`}>
       <div className="flex justify-between items-start mb-2">
         <div className="flex items-start gap-2">
           <div>
@@ -393,7 +393,7 @@ function ComparisonRow({
             )}
           </div>
           {tooltip && (
-            <Info className="h-3 w-3 text-foreground/60 mt-1" />
+            <Info className="h-3 w-3 text-amber-800 dark:text-amber-200 mt-1" />
           )}
         </div>
         <div className="flex items-center gap-2">

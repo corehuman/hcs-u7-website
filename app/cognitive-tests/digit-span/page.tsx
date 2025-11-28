@@ -344,8 +344,8 @@ export default function DigitSpanTest() {
                           ${userInput[idx] !== undefined 
                             ? showFeedback 
                               ? (isBackward ? [...sequence].reverse() : sequence)[idx] === userInput[idx]
-                                ? 'bg-green-100 dark:bg-green-900 border-green-500 text-green-700 dark:text-green-300'
-                                : 'bg-red-100 dark:bg-red-900 border-red-500 text-red-700 dark:text-red-300'
+                                ? 'bg-green-100 dark:bg-green-900 border-green-500 text-green-900 dark:text-green-100 dark:text-green-300'
+                                : 'bg-red-100 dark:bg-red-900 border-red-500 text-red-900 dark:text-red-100 dark:text-red-300'
                               : 'bg-primary/10 border-primary text-primary'
                             : 'border-gray-300 dark:border-gray-600'
                           }`}
@@ -360,7 +360,7 @@ export default function DigitSpanTest() {
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-center text-sm text-foreground/85"
+                      className="text-center text-sm text-green-800 dark:text-green-200"
                     >
                       Correct answer: {(isBackward ? [...sequence].reverse() : sequence).join(' → ')}
                     </motion.div>
@@ -374,12 +374,12 @@ export default function DigitSpanTest() {
                       className="text-center"
                     >
                       {isCorrect ? (
-                        <span className="text-green-600 dark:text-green-400 font-semibold flex items-center justify-center gap-2">
+                        <span className="text-green-900 dark:text-green-100 dark:text-green-400 font-semibold flex items-center justify-center gap-2">
                           <Check className="h-5 w-5" />
                           Correct!
                         </span>
                       ) : (
-                        <span className="text-red-600 dark:text-red-400 font-semibold flex items-center justify-center gap-2">
+                        <span className="text-red-900 dark:text-red-100 dark:text-red-400 font-semibold flex items-center justify-center gap-2">
                           <X className="h-5 w-5" />
                           Incorrect
                         </span>
@@ -484,7 +484,7 @@ export default function DigitSpanTest() {
               <div className="grid grid-cols-3 gap-4">
                 <div className="bg-muted rounded-lg p-4 text-center">
                   <ArrowRight className="h-8 w-8 mx-auto mb-2 text-blue-500" />
-                  <p className="text-sm text-foreground/85">Forward</p>
+                  <p className="text-sm text-red-800 dark:text-red-200">Forward</p>
                   <p className="text-2xl font-bold">{result.forwardSpan}</p>
                 </div>
                 <div className="bg-muted rounded-lg p-4 text-center">

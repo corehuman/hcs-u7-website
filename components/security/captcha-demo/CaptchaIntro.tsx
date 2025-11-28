@@ -81,13 +81,13 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
       </Card>
 
       {/* HCS-Captcha Solution */}
-      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25">
+      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Shield className="w-5 h-5 text-green-500" />
             <div>
               <h3 className="font-semibold text-lg">{isFr ? 'HCS-Captcha : Détection Cognitive' : 'HCS-Captcha: Cognitive Detection'}</h3>
-              <p className="text-sm text-foreground/85">
+              <p className="text-sm text-green-800 dark:text-green-200">
                 {isFr ? 'Détecte les bots en analysant des modèles que l’IA ne peut pas répliquer' : 'Detects bots by analyzing patterns AI cannot replicate'}
               </p>
             </div>
@@ -189,7 +189,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
         </Card>
       </div>
 
-      <Alert className="border-yellow-200 dark:border-yellow-900 bg-amber-100 dark:bg-amber-900/25">
+      <Alert className="border-amber-200 dark:border-amber-900 bg-amber-100 dark:bg-amber-900/25 border border-amber-200 dark:border-amber-800/40">
         <Info className="h-4 w-4" />
         <AlertDescription>
           <span className="font-medium">{isFr ? 'Essayez de "tromper" le système :' : 'Try to "game" the system:'}</span> {isFr

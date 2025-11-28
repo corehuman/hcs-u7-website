@@ -22,8 +22,8 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
       {/* Header */}
       <Card>
         <CardHeader className="text-center">
-          <div className="mx-auto mb-4 rounded-full bg-green-100 dark:bg-green-900/30 p-3 w-fit">
-            <CheckCircle2 className="h-8 w-8 text-green-600" />
+          <div className="mx-auto mb-4 rounded-full bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 p-3 w-fit">
+            <CheckCircle2 className="h-8 w-8 text-green-900 dark:text-green-100" />
           </div>
           <Badge variant="default" className="mb-2 w-fit mx-auto">
             {isFr ? 'Enrollment Complété' : 'Enrollment Complete'}
@@ -117,7 +117,7 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
           <div className="border-t pt-4">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-foreground/70">{isFr ? "ID Session:" : "Session ID:"}</span>
+                <span className="text-green-800 dark:text-green-200">{isFr ? "ID Session:" : "Session ID:"}</span>
                 <p className="font-mono text-xs mt-1 text-foreground/80">{signature.sessionId}</p>
               </div>
               <div>
@@ -149,7 +149,7 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
         </CardHeader>
         <CardContent className="space-y-3">
           <div className="flex gap-3">
-            <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+            <CheckCircle2 className="h-5 w-5 text-green-900 dark:text-green-100 flex-shrink-0 mt-0.5" />
             <p className="text-sm text-foreground/85">
               {isFr
                 ? "Patterns intrinsèques : Votre variabilité RT et effet Stroop sont des propriétés biologiques qui n'existent que lors d'une performance en direct"
@@ -157,7 +157,7 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
             </p>
           </div>
           <div className="flex gap-3">
-            <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+            <CheckCircle2 className="h-5 w-5 text-green-900 dark:text-green-100 flex-shrink-0 mt-0.5" />
             <p className="text-sm text-foreground/85">
               {isFr
                 ? "Ne peut être volé : Contrairement aux mots de passe, ces patterns ne peuvent être extraits d'une base de données ou interceptés"
@@ -165,7 +165,7 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
             </p>
           </div>
           <div className="flex gap-3">
-            <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+            <CheckCircle2 className="h-5 w-5 text-green-900 dark:text-green-100 flex-shrink-0 mt-0.5" />
             <p className="text-sm text-foreground/85">
               {isFr
                 ? "Résistant à l'IA : Les bots actuels n'ont pas la variabilité motrice et les effets d'interférence inhérents à la cognition humaine"
@@ -208,10 +208,10 @@ function MetricRow({
   return (
     <div className={highlight ? 'bg-amber-100 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40 p-3 rounded-lg' : ''}>
       <div className="flex justify-between items-center mb-1">
-        <span className="text-sm font-medium">{label}</span>
-        <span className="font-mono font-bold">{value}</span>
+        <span className={`text-sm font-medium ${highlight ? 'text-amber-900 dark:text-amber-100' : ''}`}>{label}</span>
+        <span className={`font-mono font-bold ${highlight ? 'text-amber-950 dark:text-amber-50' : ''}`}>{value}</span>
       </div>
-      <p className="text-xs text-foreground/85">{description}</p>
+      <p className={`text-xs ${highlight ? 'text-amber-800 dark:text-amber-200' : 'text-foreground/85'}`}>{description}</p>
     </div>
   );
 }

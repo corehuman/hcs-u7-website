@@ -151,15 +151,15 @@ export function EnrollmentFlow({ onComplete }: EnrollmentFlowProps) {
         <Card>
           <CardContent className="py-12">
             <div className="text-center space-y-4">
-              <div className="mx-auto w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center animate-pulse">
-                <Shield className="h-8 w-8 text-purple-600" />
+              <div className="mx-auto w-16 h-16 rounded-full bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-800/50 flex items-center justify-center animate-pulse">
+                <Shield className="h-8 w-8 text-purple-900 dark:text-purple-100" />
               </div>
               <h3 className="text-lg font-semibold">
                 {isFr 
                   ? 'Génération de votre signature cognitive...'
                   : 'Generating Your Cognitive Signature...'}
               </h3>
-              <p className="text-sm text-foreground/85">
+              <p className="text-sm text-purple-800 dark:text-purple-200">
                 {isFr
                   ? 'Analyse des patterns de réaction et effets d\'interférence'
                   : 'Analyzing reaction patterns and interference effects'}

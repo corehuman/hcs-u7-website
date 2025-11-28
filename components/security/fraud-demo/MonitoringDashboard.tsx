@@ -101,9 +101,9 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
   }, [phase, sessionTime, baseline, history, alerts.length, onFraudDetected]);
 
   const getDeviationColor = (deviation: number) => {
-    if (deviation < 10) return 'text-green-600';
-    if (deviation < 15) return 'text-yellow-600';
-    return 'text-red-600';
+    if (deviation < 10) return 'text-green-900 dark:text-green-100';
+    if (deviation < 15) return 'text-amber-600';
+    return 'text-red-900 dark:text-red-100';
   };
 
   const getDeviationBg = (deviation: number) => {
@@ -126,7 +126,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
           {phase === 'detecting' && (isFr ? '🚨 Fraude Détectée !' : '🚨 Fraud Detected!')}
         </Badge>
         <h2 className="text-2xl font-bold mb-2">{isFr ? 'Tableau de Bord de Surveillance' : 'Monitoring Dashboard'}</h2>
-        <p className="text-sm text-foreground/70">
+        <p className="text-sm text-amber-800 dark:text-amber-200">
           {isFr ? 'Monitoring cognitif en temps réel' : 'Real-time cognitive monitoring'}
         </p>
       </div>
@@ -193,7 +193,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
 
           <Progress value={Math.min(metrics.deviation * 3.33, 100)} className="mb-4" />
 
-          <div className="flex justify-between text-xs text-foreground/70">
+          <div className="flex justify-between text-xs text-green-800 dark:text-green-200">
             <span>{isFr ? '0% (Normal)' : '0% (Normal)'}</span>
             <span>{isFr ? '15% (Seuil)' : '15% (Threshold)'}</span>
             <span>30%+</span>
@@ -202,12 +202,12 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
           <div className={`mt-4 p-3 rounded-lg ${getDeviationBg(metrics.deviation)}`}>
             {metrics.deviation < 15 ? (
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-green-600" />
+                <CheckCircle2 className="w-4 h-4 text-green-900 dark:text-green-100" />
                 <span className="text-sm">{isFr ? 'Patterns normaux' : 'Normal patterns'}</span>
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-red-600" />
+                <AlertTriangle className="w-4 h-4 text-red-900 dark:text-red-100" />
                 <span className="text-sm font-medium">{isFr ? 'Anomalie détectée !' : 'Anomaly detected!'}</span>
               </div>
             )}
@@ -245,7 +245,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
       {alerts.length > 0 && (
         <Card className="p-6 border-red-200 dark:border-red-900">
           <div className="flex items-center gap-2 mb-4">
-            <AlertTriangle className="w-5 h-5 text-red-600" />
+            <AlertTriangle className="w-5 h-5 text-red-900 dark:text-red-100" />
             <h3 className="font-semibold">
               {isFr ? `Alertes de Sécurité (${alerts.length})` : `Security Alerts (${alerts.length})`}
             </h3>
@@ -257,7 +257,7 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
                 <AlertTriangle className="h-4 w-4" />
                 <AlertDescription>
                   <strong>{formatAlertName(alert, lang)}</strong>
-                  <p className="text-sm text-foreground/70 mt-1">
+                  <p className="text-sm text-red-800 dark:text-red-200 mt-1">
                     {getAlertDescription(alert, lang)}
                   </p>
                 </AlertDescription>
@@ -288,11 +288,11 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
                 ) : (
                   <Badge variant="secondary" className="text-xs">{isFr ? 'Normal' : 'Normal'}</Badge>
                 )}
-                <span className="text-xs text-foreground/85">
+                <span className="text-xs text-red-800 dark:text-red-200">
                   RT: {Math.round(entry.avgRT)}ms
                 </span>
               </div>
-              <span className={`text-sm font-medium ${entry.anomaly ? 'text-red-600' : 'text-green-600'}`}>
+              <span className={`text-sm font-medium ${entry.anomaly ? 'text-red-900 dark:text-red-100' : 'text-green-900 dark:text-green-100'}`}>
                 {isFr ? 'Déviation' : 'Deviation'}: {entry.deviation.toFixed(1)}%
               </span>
             </div>
@@ -305,10 +305,10 @@ export function MonitoringDashboard({ baseline, onFraudDetected }: MonitoringDas
         <Card className="p-8 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50 border-red-200 dark:border-red-900">
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              <Shield className="w-12 h-12 text-red-600 animate-pulse" />
+              <Shield className="w-12 h-12 text-red-900 dark:text-red-100 animate-pulse" />
             </div>
             <h3 className="text-xl font-bold mb-2">{isFr ? 'Analyse de Fraude en Cours...' : 'Fraud Analysis in Progress...'}</h3>
-            <p className="text-sm text-foreground/70">
+            <p className="text-sm text-red-800 dark:text-red-200">
               {isFr ? 'Vérification des anomalies détectées' : 'Verifying detected anomalies'}
             </p>
           </div>
@@ -340,7 +340,7 @@ function MetricRow({
         <span className="font-bold">
           {Math.round(current)}{unit}
         </span>
-        <span className={`text-xs ml-2 ${diff >= 0 ? 'text-red-600' : 'text-green-600'}`}>
+        <span className={`text-xs ml-2 ${diff >= 0 ? 'text-red-900 dark:text-red-100' : 'text-green-900 dark:text-green-100'}`}>
           {diff >= 0 ? '+' : ''}{Math.round(diff)}{unit} ({percentDiff.toFixed(1)}%)
         </span>
       </div>

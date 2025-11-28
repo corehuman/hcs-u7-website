@@ -84,7 +84,7 @@ export function SecurityAdvantages() {
 
   const StatusIcon = ({ status }: { status: boolean | 'partial' }) => {
     if (status === true) return <CheckCircle2 className="h-5 w-5 text-green-600" />;
-    if (status === 'partial') return <AlertCircle className="h-5 w-5 text-yellow-600" />;
+    if (status === 'partial') return <AlertCircle className="h-5 w-5 text-amber-600" />;
     return <XCircle className="h-5 w-5 text-destructive" />;
   };
 

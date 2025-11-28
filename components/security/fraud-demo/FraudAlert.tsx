@@ -47,8 +47,8 @@ export function FraudAlert({ baseline, monitoringHistory, onReset }: FraudAlertP
     <div className="space-y-6">
       {/* Alert Header */}
       <Card className="p-8 text-center bg-red-100 dark:bg-red-900/25 border-red-200 dark:border-red-900">
-        <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
-          <AlertTriangle className="w-12 h-12 text-red-600" />
+        <div className="w-24 h-24 rounded-full mx-auto mb-4 bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800/50 flex items-center justify-center">
+          <AlertTriangle className="w-12 h-12 text-red-900 dark:text-red-100" />
         </div>
 
         <h1 className="text-3xl font-bold mb-2">🚨 {isFr ? 'Fraude Détectée' : 'Fraud Detected'}</h1>
@@ -57,7 +57,7 @@ export function FraudAlert({ baseline, monitoringHistory, onReset }: FraudAlertP
           {isFr ? 'Prise de Contrôle de Compte Détectée' : 'Account Takeover Detected'}
         </Badge>
 
-        <p className="text-foreground/70">
+        <p className="text-red-800 dark:text-red-200">
           {isFr ? 'Anomalies cognitives critiques - Action immédiate requise' : 'Critical cognitive anomalies - Immediate action required'}
         </p>
       </Card>
@@ -112,15 +112,15 @@ export function FraudAlert({ baseline, monitoringHistory, onReset }: FraudAlertP
         </ResponsiveContainer>
 
         <div className="grid md:grid-cols-2 gap-4 mt-4">
-          <Card className="p-4 bg-green-100 dark:bg-green-900/25">
+          <Card className="p-4 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50">
             <p className="font-medium">{isFr ? `Session Normale (0-${takeoverTime}s)` : `Normal Session (0-${takeoverTime}s)`}</p>
-            <p className="text-sm text-foreground/70">
+            <p className="text-sm text-green-800 dark:text-green-200">
               {isFr ? 'Déviation moyenne' : 'Average deviation'}: {avgDeviationNormal.toFixed(1)}%
             </p>
           </Card>
-          <Card className="p-4 bg-red-100 dark:bg-red-900/25">
+          <Card className="p-4 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50">
             <p className="font-medium">{isFr ? `Après Prise de Contrôle (${takeoverTime}s+)` : `After Takeover (${takeoverTime}s+)`}</p>
-            <p className="text-sm text-foreground/70">
+            <p className="text-sm text-red-800 dark:text-red-200">
               {isFr ? 'Déviation moyenne' : 'Average deviation'}: {avgDeviationCompromised.toFixed(1)}%
             </p>
           </Card>
@@ -487,18 +487,18 @@ function AnomalyCard({
   const isFr = lang === 'fr';
   const severityColors = {
     high: 'border-orange-200 dark:border-orange-900 bg-orange-100 dark:bg-orange-900/25',
-    critical: 'border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25'
+    critical: 'border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50'
   };
 
   return (
     <Card className={`p-4 ${severityColors[severity]}`}>
       <div className="flex items-start gap-3">
         <AlertTriangle className={`w-5 h-5 mt-0.5 flex-shrink-0 ${
-          severity === 'critical' ? 'text-red-600' : 'text-orange-600'
+          severity === 'critical' ? 'text-red-900 dark:text-red-100' : 'text-orange-900 dark:text-orange-100'
         }`} />
         <div className="flex-1">
           <h4 className="font-medium">{title}</h4>
-          <p className="text-sm text-foreground/70 mt-1">{description}</p>
+          <p className="text-sm text-red-800 dark:text-red-200 mt-1">{description}</p>
         </div>
         <Badge variant={severity === 'critical' ? 'destructive' : 'outline'} className="ml-auto">
           {severity === 'critical' ? (isFr ? 'CRITIQUE' : 'CRITICAL') : (isFr ? 'ÉLEVÉ' : 'HIGH')}
@@ -520,9 +520,9 @@ function ActionCard({
   priority: 'critical' | 'high' | 'medium';
 }) {
   const priorityColors = {
-    critical: 'text-red-600',
-    high: 'text-orange-600',
-    medium: 'text-yellow-600'
+    critical: 'text-red-900 dark:text-red-100',
+    high: 'text-orange-900 dark:text-orange-100',
+    medium: 'text-amber-600'
   };
 
   return (
@@ -531,7 +531,7 @@ function ActionCard({
         <Icon className={`w-5 h-5 ${priorityColors[priority]}`} />
         <div className="flex-1">
           <h4 className="font-medium text-sm">{title}</h4>
-          <p className="text-xs text-foreground/80 mt-1">{description}</p>
+          <p className="text-xs text-orange-800 dark:text-orange-200 mt-1">{description}</p>
         </div>
         <Badge variant="outline" className="text-xs">
           {priority === 'critical' ? 'P1' : priority === 'high' ? 'P2' : 'P3'}

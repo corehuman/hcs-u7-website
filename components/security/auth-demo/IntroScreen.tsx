@@ -22,7 +22,7 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
             <Shield className="h-8 w-8 text-primary" />
           </div>
           <div className="mb-2">
-            <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium">
+            <span className="px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/25 text-blue-900 dark:text-blue-100 text-sm font-medium border border-blue-200 dark:border-blue-800/50">
               {isFr ? 'Démo Interactive' : 'Interactive Demo'}
             </span>
           </div>
@@ -51,7 +51,7 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
                 <h4 className="font-semibold">
                   {isFr ? 'Enrollment (~2 minutes)' : 'Enrollment (~2 minutes)'}
                 </h4>
-                <p className="text-sm text-foreground/85">
+                <p className="text-sm text-blue-800 dark:text-blue-200">
                   {isFr ? 'Passez deux tests cognitifs rapides :' : 'Take two quick cognitive tests:'}
                 </p>
                 <ul className="space-y-1 text-sm text-foreground/85 ml-4">

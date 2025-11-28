@@ -54,10 +54,10 @@ export function CodeInputs({ onCompare }: CodeInputsProps) {
       <div className="grid md:grid-cols-3 gap-4 mb-6">
         <Card className="p-4 bg-blue-100 dark:bg-blue-900/25 border-blue-200 dark:border-blue-900">
           <h3 className="font-semibold text-sm flex items-center gap-2 mb-2">
-            <Shield className="w-4 h-4 text-blue-600" />
+            <Shield className="w-4 h-4 text-blue-900 dark:text-blue-100" />
             {isFr ? 'Vérification d’Identité' : 'Identity Verification'}
           </h3>
-          <p className="text-sm text-foreground/70">
+          <p className="text-sm text-blue-800 dark:text-blue-200">
             {isFr
               ? 'Confirmez que deux profils appartiennent à la même personne (85%+ similarité = correspondance)'
               : 'Confirm two profiles belong to the same person (85%+ similarity = match)'}
@@ -66,10 +66,10 @@ export function CodeInputs({ onCompare }: CodeInputsProps) {
 
         <Card className="p-4 bg-purple-100 dark:bg-purple-900/25 border-purple-200 dark:border-purple-900">
           <h3 className="font-semibold text-sm flex items-center gap-2 mb-2">
-            <Copy className="w-4 h-4 text-purple-600" />
+            <Copy className="w-4 h-4 text-purple-900 dark:text-purple-100" />
             {isFr ? 'Détection de Doublons' : 'Duplicate Detection'}
           </h3>
-          <p className="text-sm text-foreground/70">
+          <p className="text-sm text-purple-800 dark:text-purple-200">
             {isFr
               ? 'Trouvez les comptes en double ou les inscriptions frauduleuses'
               : 'Find duplicate accounts or fraudulent registrations'}
@@ -78,10 +78,10 @@ export function CodeInputs({ onCompare }: CodeInputsProps) {
 
         <Card className="p-4 bg-green-100 dark:bg-green-900/25 border-green-200 dark:border-green-900">
           <h3 className="font-semibold text-sm flex items-center gap-2 mb-2">
-            <Fingerprint className="w-4 h-4 text-green-600" />
+            <Fingerprint className="w-4 h-4 text-green-900 dark:text-green-100" />
             {isFr ? 'Analyse de Similarité' : 'Similarity Analysis'}
           </h3>
-          <p className="text-sm text-foreground/70">
+          <p className="text-sm text-green-800 dark:text-green-200">
             {isFr
               ? 'Mesurez la compatibilité cognitive entre utilisateurs'
               : 'Measure cognitive compatibility between users'}
@@ -90,7 +90,7 @@ export function CodeInputs({ onCompare }: CodeInputsProps) {
       </div>
 
       {/* Info Alert */}
-      <Alert className="border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25">
+      <Alert className="border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25 border border-blue-200 dark:border-blue-800/50">
         <Info className="h-4 w-4" />
         <AlertDescription>
           <span className="font-medium">{isFr ? 'Comment ça fonctionne :' : 'How it works:'}</span> {isFr
@@ -116,7 +116,7 @@ export function CodeInputs({ onCompare }: CodeInputsProps) {
             className="font-mono text-xs h-32 mb-3"
           />
 
-          <p className="text-xs text-foreground/85">
+          <p className="text-xs text-blue-800 dark:text-blue-200">
             Format: HCS-U7|V:7.0|ALG:QS|E:E|MOD:...|COG:...|INT:...|QSIG:...|B3:...
           </p>
         </Card>

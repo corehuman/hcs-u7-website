@@ -193,24 +193,24 @@ export function VerificationFlow({ enrolledSignature, onComplete }: Verification
                   <div className="text-xs text-foreground/85 mb-1">
                     {isFr ? 'Variabilité RT' : 'RT variability'}
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                    <CheckCircle2 className="h-6 w-6 text-green-600" />
+                  <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 flex items-center justify-center">
+                    <CheckCircle2 className="h-6 w-6 text-green-900 dark:text-green-100" />
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-xs text-foreground/85 mb-1">
+                  <div className="text-xs text-green-800 dark:text-green-200 mb-1">
                     {isFr ? 'Effet Stroop' : 'Stroop effect'}
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                    <CheckCircle2 className="h-6 w-6 text-green-600" />
+                  <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 flex items-center justify-center">
+                    <CheckCircle2 className="h-6 w-6 text-green-900 dark:text-green-100" />
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-xs text-foreground/85 mb-1">
+                  <div className="text-xs text-green-800 dark:text-green-200 mb-1">
                     {isFr ? 'Précision' : 'Accuracy'}
                   </div>
-                  <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                    <CheckCircle2 className="h-6 w-6 text-green-600" />
+                  <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 flex items-center justify-center">
+                    <CheckCircle2 className="h-6 w-6 text-green-900 dark:text-green-100" />
                   </div>
                 </div>
               </div>

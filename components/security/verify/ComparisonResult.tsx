@@ -42,13 +42,13 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
       <Card className="p-8 text-center">
         <div className={`w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center ${
           match 
-            ? 'bg-green-100 dark:bg-green-900/30' 
-            : 'bg-red-100 dark:bg-red-900/30'
+            ? 'bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50' 
+            : 'bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800/50'
         }`}>
           {match ? (
-            <CheckCircle2 className="w-12 h-12 text-green-600 dark:text-green-400" />
+            <CheckCircle2 className="w-12 h-12 text-green-900 dark:text-green-100 dark:text-green-400" />
           ) : (
-            <XCircle className="w-12 h-12 text-red-600 dark:text-red-400" />
+            <XCircle className="w-12 h-12 text-red-900 dark:text-red-100 dark:text-red-400" />
           )}
         </div>
 
@@ -60,12 +60,12 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
           {match ? '✅ Same Person Confirmed' : '❌ Different Persons'}
         </h2>
 
-        <p className="text-lg text-foreground/70 mb-4">
+        <p className="text-lg text-green-800 dark:text-green-200 mb-4">
           Similarity Score: {Math.round(overallSimilarity * 100)}%
         </p>
 
         {match ? (
-          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25">
+          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50">
             <CheckCircle2 className="h-4 w-4" />
             <AlertDescription>
               These profiles show {Math.round(overallSimilarity * 100)}% similarity 
@@ -73,7 +73,7 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
             </AlertDescription>
           </Alert>
         ) : (
-          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25">
+          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50">
             <XCircle className="h-4 w-4" />
             <AlertDescription>
               Similarity below threshold ({Math.round(overallSimilarity * 100)}% &lt; 85%). 
@@ -91,34 +91,34 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
       }`}>
         <div className="flex items-start gap-3">
           {signatureMatch ? (
-            <AlertTriangle className="w-5 h-5 text-orange-600 mt-1" />
+            <AlertTriangle className="w-5 h-5 text-orange-900 dark:text-orange-100 mt-1" />
           ) : (
-            <Shield className="w-5 h-5 text-blue-600 mt-1" />
+            <Shield className="w-5 h-5 text-blue-900 dark:text-blue-100 mt-1" />
           )}
           <div className="flex-1">
             <h3 className="font-semibold mb-2">Cryptographic Signature Verification</h3>
             {signatureMatch ? (
               <div className="space-y-2">
-                <p className="font-medium text-orange-600">
+                <p className="font-medium text-orange-900 dark:text-orange-100">
                   ⚠️ Identical B3 signatures detected!
                 </p>
-                <p className="text-sm text-foreground/70">
+                <p className="text-sm text-green-800 dark:text-green-200">
                   This means these codes were generated from the exact same 
                   questionnaire session. They are either:
                 </p>
-                <ul className="list-disc ml-5 text-sm text-foreground/70">
+                <ul className="list-disc ml-5 text-sm text-red-800 dark:text-red-200">
                   <li>Perfect duplicates (same person, same session)</li>
                   <li>One profile was copied/cloned from the other</li>
                 </ul>
               </div>
             ) : (
               <div className="space-y-2">
-                <p className="font-medium text-green-600">
+                <p className="font-medium text-green-900 dark:text-green-100">
                   ✅ Different B3 signatures (as expected)
                 </p>
                 <div className="grid md:grid-cols-2 gap-2 mt-2">
                   <div className="text-sm">
-                    <span className="text-foreground/70">Profile 1 (B3):</span>
+                    <span className="text-orange-800 dark:text-orange-200">Profile 1 (B3):</span>
                     <code className="ml-2 text-xs bg-secondary px-2 py-1 rounded">
                       {profile1.signatures.B3}
                     </code>
@@ -174,11 +174,11 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
           overallSimilarity >= 0.85 
             ? 'bg-green-100 dark:bg-green-900/25'
             : overallSimilarity >= 0.70
-            ? 'bg-amber-100 dark:bg-amber-900/25'
-            : 'bg-red-100 dark:bg-red-900/25'
+            ? 'bg-amber-100 dark:bg-amber-900/25 border border-amber-200 dark:border-amber-800/40'
+            : 'bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50'
         }`}>
           <h4 className="font-medium mb-2">Interpretation</h4>
-          <p className="text-sm text-foreground/70">
+          <p className="text-sm text-amber-800 dark:text-amber-200">
             {overallSimilarity >= 0.85 ? (
               <>
                 High confidence match. These profiles show strong similarity 
@@ -282,13 +282,13 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
               <div className="space-y-4">
                 <div>
                   <h4 className="font-medium mb-2">Weighted Multi-Dimensional Comparison</h4>
-                  <p className="text-sm text-foreground/70 mb-3">
+                  <p className="text-sm text-green-800 dark:text-green-200 mb-3">
                     Overall similarity is calculated using weighted components:
                   </p>
                   <div className="space-y-2 ml-4">
                     <div className="text-sm">
                       <span className="font-medium">Element similarity:</span>
-                      <span className="text-foreground/70 ml-2">
+                      <span className="text-red-800 dark:text-red-200 ml-2">
                         {Math.round(dimensions.element * 100)}% × 0.15 = {Math.round(dimensions.element * 15)}%
                       </span>
                     </div>
@@ -471,15 +471,15 @@ function DimensionRow({
   importance?: 'critical';
 }) {
   const getColor = (sim: number) => {
-    if (sim >= 0.85) return 'text-green-600';
-    if (sim >= 0.70) return 'text-yellow-600';
-    return 'text-red-600';
+    if (sim >= 0.85) return 'text-green-900 dark:text-green-100';
+    if (sim >= 0.70) return 'text-amber-600';
+    return 'text-red-900 dark:text-red-100';
   };
 
   return (
     <div className={`p-4 rounded-lg border ${
       importance === 'critical' 
-        ? 'border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25' 
+        ? 'border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25 border border-blue-200 dark:border-blue-800/50' 
         : 'bg-gray-50 dark:bg-gray-900'
     }`}>
       <div className="flex justify-between items-start mb-2">
@@ -495,7 +495,7 @@ function DimensionRow({
           <span className={`font-bold ${getColor(similarity)}`}>
             {Math.round(similarity * 100)}%
           </span>
-          <div className="text-xs text-foreground/85">Weight: {weight}%</div>
+          <div className="text-xs text-blue-800 dark:text-blue-200">Weight: {weight}%</div>
         </div>
       </div>
 
@@ -520,7 +520,7 @@ function CognitionDimensionRow({ label, p1, p2 }: { label: string; p1: number; p
   const trend = p2 > p1 ? 'up' : p2 < p1 ? 'down' : 'same';
   
   const TrendIcon = trend === 'up' ? TrendingUp : trend === 'down' ? TrendingDown : Minus;
-  const trendColor = diff < 10 ? 'text-green-600' : diff < 20 ? 'text-yellow-600' : 'text-red-600';
+  const trendColor = diff < 10 ? 'text-green-900 dark:text-green-100' : diff < 20 ? 'text-amber-600' : 'text-red-900 dark:text-red-100';
 
   return (
     <div className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">

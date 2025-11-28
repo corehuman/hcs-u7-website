@@ -88,13 +88,13 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
       </Card>
 
       {/* La Solution */}
-      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25">
+      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Shield className="w-5 h-5 text-green-500" />
             <div>
               <h3 className="font-semibold text-lg">{isFr ? 'Solution HCS : Monitoring Cognitif' : 'HCS Solution: Cognitive Monitoring'}</h3>
-              <p className="text-sm text-foreground/70">
+              <p className="text-sm text-green-800 dark:text-green-200">
                 {isFr
                   ? 'Détection en temps réel basée sur les patterns cognitifs impossibles à imiter'
                   : 'Real-time detection based on cognitive patterns impossible to imitate'}
@@ -221,7 +221,7 @@ export function FraudIntro({ onStart }: FraudIntroProps) {
         </Card>
       </div>
 
-      <Alert className="border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25">
+      <Alert className="border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25 border border-blue-200 dark:border-blue-800/50">
         <Info className="h-4 w-4" />
         <AlertDescription>
           <span className="font-medium">{isFr ? 'Note :' : 'Note:'}</span> {isFr

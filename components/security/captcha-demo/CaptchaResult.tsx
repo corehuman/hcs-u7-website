@@ -41,13 +41,13 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
       <Card className="p-8 text-center">
         <div className={`w-24 h-24 rounded-full mx-auto mb-4 flex items-center justify-center ${
           isHuman 
-            ? 'bg-green-100 dark:bg-green-900/30' 
-            : 'bg-red-100 dark:bg-red-900/30'
+            ? 'bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50' 
+            : 'bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800/50'
         }`}>
           {isHuman ? (
-            <CheckCircle2 className="w-12 h-12 text-green-600 dark:text-green-400" />
+            <CheckCircle2 className="w-12 h-12 text-green-900 dark:text-green-100 dark:text-green-400" />
           ) : (
-            <XCircle className="w-12 h-12 text-red-600 dark:text-red-400" />
+            <XCircle className="w-12 h-12 text-red-900 dark:text-red-100 dark:text-red-400" />
           )}
         </div>
 
@@ -61,12 +61,12 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             : (isFr ? '🤖 Comportement de Bot Détecté' : '🤖 Bot Behavior Detected')}
         </h2>
 
-        <p className="text-lg text-foreground/70 mb-4">
+        <p className="text-lg text-green-800 dark:text-green-200 mb-4">
           {isFr ? 'Confiance' : 'Confidence'}: {Math.round(confidence * 100)}%
         </p>
 
         {isHuman ? (
-          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25">
+          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50">
             <CheckCircle2 className="h-4 w-4" />
             <AlertDescription>
               Your cognitive patterns match expected human behavior. In a real system, 
@@ -74,7 +74,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             </AlertDescription>
           </Alert>
         ) : (
-          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25">
+          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50">
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription>
               Your response patterns are inconsistent with human cognition. 
@@ -88,13 +88,13 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
       {flags.length > 0 && (
         <Card className="p-6">
           <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-yellow-500" />
+            <AlertTriangle className="w-5 h-5 text-amber-500" />
             Detection Flags ({flags.length})
           </h3>
 
           <div className="space-y-3">
             {flags.map((flag, idx) => (
-              <Alert key={idx} className="border-yellow-200 dark:border-yellow-900 bg-amber-100 dark:bg-amber-900/25">
+              <Alert key={idx} className="border-amber-200 dark:border-amber-900 bg-amber-100 dark:bg-amber-900/25 border border-amber-200 dark:border-amber-800/40">
                 <AlertTriangle className="h-4 w-4" />
                 <AlertDescription>
                   <span className="font-medium">{formatFlagName(flag)}</span>
@@ -125,7 +125,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             status={getMetricStatus(metrics.rtVariability, 50, 100)}
             importance="critical"
           >
-            <div className="flex justify-between text-xs text-foreground/80 mt-2">
+            <div className="flex justify-between text-xs text-amber-800 dark:text-amber-200 mt-2">
               <span className="flex items-center gap-1">
                 Too consistent (&lt;40ms):
                 <Badge variant="outline" className="text-xs">Bot-like</Badge>
@@ -150,7 +150,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             status={getMetricStatus(metrics.stroopEffect, 50, 150)}
             importance="critical"
           >
-            <div className="flex justify-between text-xs text-foreground/80 mt-2">
+            <div className="flex justify-between text-xs text-green-800 dark:text-green-200 mt-2">
               <span className="flex items-center gap-1">
                 No effect (&lt;20ms):
                 <Badge variant="outline" className="text-xs">Bot-like</Badge>
@@ -174,7 +174,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             expected="Positive (improvement)"
             status={metrics.learningSlope > 5 ? 'good' : metrics.learningSlope < -5 ? 'bad' : 'warning'}
           >
-            <div className="mt-2 text-xs text-foreground/80">
+            <div className="mt-2 text-xs text-red-800 dark:text-red-200">
               <p>
                 {metrics.learningSlope > 5 ? (
                   <>✅ You improved over time (typical human pattern)</>
@@ -313,7 +313,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
                 </div>
 
                 {!isHuman && (
-                  <Alert className="border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25">
+                  <Alert className="border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25 border border-blue-200 dark:border-blue-800/50">
                     <Info className="h-4 w-4" />
                     <AlertDescription>
                       <span className="font-medium">Were You Trying to Game the System?</span>
@@ -367,7 +367,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
                   <h4 className="font-medium mb-2">Accuracy (Pilot Study)</h4>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
                     <div className="text-center">
-                      <p className="text-sm text-foreground/70">Human Detection</p>
+                      <p className="text-sm text-blue-800 dark:text-blue-200">Human Detection</p>
                       <p className="text-xl font-bold">99.2%</p>
                     </div>
                     <div className="text-center">
@@ -462,13 +462,13 @@ function MetricCard({
 }) {
   const statusColors = {
     good: 'border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25',
-    warning: 'border-yellow-200 dark:border-yellow-900 bg-amber-100 dark:bg-amber-900/25',
-    bad: 'border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25'
+    warning: 'border-amber-200 dark:border-amber-900 bg-amber-100 dark:bg-amber-900/25',
+    bad: 'border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50'
   };
 
   const statusIcons = {
     good: <CheckCircle2 className="w-5 h-5 text-green-500" />,
-    warning: <AlertTriangle className="w-5 h-5 text-yellow-500" />,
+    warning: <AlertTriangle className="w-5 h-5 text-amber-500" />,
     bad: <XCircle className="w-5 h-5 text-red-500" />
   };
 
@@ -484,14 +484,14 @@ function MetricCard({
               </Badge>
             )}
           </h4>
-          <p className="text-xs text-foreground/90">{description}</p>
+          <p className="text-xs text-amber-800 dark:text-amber-200">{description}</p>
         </div>
         {statusIcons[status]}
       </div>
 
       <div className="space-y-1">
         <p className="text-2xl font-bold">{value}</p>
-        <p className="text-xs text-foreground/90">Expected: {expected}</p>
+        <p className="text-xs text-green-800 dark:text-green-200">Expected: {expected}</p>
       </div>
 
       {children}

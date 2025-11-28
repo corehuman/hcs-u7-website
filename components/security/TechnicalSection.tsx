@@ -259,7 +259,7 @@ async function verifyUser(userId) {
                               <td className="p-2 text-foreground/85">{row.human}</td>
                               <td className="p-2 text-foreground/85">{row.bot}</td>
                               <td className="p-2">
-                                <span className="text-green-600">✅ {row.detection}</span>
+                                <span className="text-green-900 dark:text-green-100">✅ {row.detection}</span>
                               </td>
                             </tr>
                           ))}
@@ -274,21 +274,21 @@ async function verifyUser(userId) {
 
                   {/* Performance Metrics */}
                   <div className="grid grid-cols-3 gap-4 mt-6 text-center">
-                    <div className="p-4 rounded-lg bg-green-100 dark:bg-green-900/30">
-                      <div className="text-2xl font-bold text-green-600">99.2%</div>
-                      <div className="text-xs text-foreground/85">
+                    <div className="p-4 rounded-lg bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50">
+                      <div className="text-2xl font-bold text-green-900 dark:text-green-100">99.2%</div>
+                      <div className="text-xs text-green-800 dark:text-green-200">
                         {isFr ? 'Détection humaine' : 'Human detection'}
                       </div>
                     </div>
-                    <div className="p-4 rounded-lg bg-blue-100 dark:bg-blue-900/30">
-                      <div className="text-2xl font-bold text-blue-600">98.7%</div>
-                      <div className="text-xs text-foreground/85">
+                    <div className="p-4 rounded-lg bg-blue-100 dark:bg-blue-900/25 border border-blue-200 dark:border-blue-800/50">
+                      <div className="text-2xl font-bold text-blue-900 dark:text-blue-100">98.7%</div>
+                      <div className="text-xs text-blue-800 dark:text-blue-200">
                         {isFr ? 'Détection de bot' : 'Bot detection'}
                       </div>
                     </div>
-                    <div className="p-4 rounded-lg bg-purple-100 dark:bg-purple-900/30">
-                      <div className="text-2xl font-bold text-purple-600">&lt;0.1%</div>
-                      <div className="text-xs text-foreground/85">
+                    <div className="p-4 rounded-lg bg-purple-100 dark:bg-purple-900/25 border border-purple-200 dark:border-purple-800/50">
+                      <div className="text-2xl font-bold text-purple-900 dark:text-purple-100">&lt;0.1%</div>
+                      <div className="text-xs text-purple-800 dark:text-purple-200">
                         {isFr ? 'Faux positifs' : 'False positive rate'}
                       </div>
                     </div>

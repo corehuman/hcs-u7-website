@@ -126,14 +126,14 @@ export function MiniStroopTest({ onComplete }: MiniStroopTestProps) {
     red: 'bg-red-500 hover:bg-red-600',
     blue: 'bg-blue-500 hover:bg-blue-600',
     green: 'bg-green-500 hover:bg-green-600',
-    yellow: 'bg-yellow-500 hover:bg-yellow-600'
+    yellow: 'bg-amber-500 hover:bg-amber-600'
   };
 
   const textColorMap: Record<string, string> = {
     red: 'text-red-600',
     blue: 'text-blue-600',
     green: 'text-green-600',
-    yellow: 'text-yellow-600'
+    yellow: 'text-amber-600'
   };
 
   return (

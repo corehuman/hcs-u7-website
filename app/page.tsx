@@ -160,13 +160,13 @@ export default function HomePage() {
             </p>
             <ul className="space-y-2 text-sm text-foreground/80">
               <li className="flex gap-2">
-                <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
+                <span className="mt-1 text-green-900 dark:text-green-100 dark:text-green-400">✔</span>
                 <span>
                   {isFr ? "L'IA adapte son style de réponse à votre profil cognitif." : "The AI adapts its response style to your cognitive profile."}
                 </span>
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
+                <span className="mt-1 text-green-900 dark:text-green-100 dark:text-green-400">✔</span>
                 <span>
                   {isFr 
                     ? "Les réponses sont alignées avec votre besoin de structure, de visuels, de synthèse ou de créativité."
@@ -174,7 +174,7 @@ export default function HomePage() {
                 </span>
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
+                <span className="mt-1 text-green-900 dark:text-green-100 dark:text-green-400">✔</span>
                 <span>
                   {isFr
                     ? "Configurez une fois, réutilisez avec ChatGPT, Claude, LangChain, robots physiques, etc."
@@ -355,15 +355,15 @@ export default function HomePage() {
                   
                   <div className="flex flex-wrap gap-3 pt-2">
                     <div className="flex items-center gap-2 text-sm">
-                      <Lock className="h-4 w-4 text-green-600" />
+                      <Lock className="h-4 w-4 text-green-900 dark:text-green-100" />
                       <span>{isFr ? "Impossible à voler ou hameçonner" : "Impossible to steal or phish"}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <Bot className="h-4 w-4 text-blue-600" />
+                      <Bot className="h-4 w-4 text-blue-900 dark:text-blue-100" />
                       <span>{isFr ? "Détection de bots résistante à l'IA" : "AI-resistant bot detection"}</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm">
-                      <Fingerprint className="h-4 w-4 text-purple-600" />
+                      <Fingerprint className="h-4 w-4 text-purple-900 dark:text-purple-100" />
                       <span>{isFr ? "Vie privée (côté client)" : "Privacy-first (client-side)"}</span>
                     </div>
                   </div>
@@ -388,44 +388,44 @@ export default function HomePage() {
                   <div className="grid grid-cols-2 gap-3">
                     <Card className="p-4 bg-card/90 border-primary/20">
                       <div className="space-y-2">
-                        <div className="rounded-lg bg-blue-100 dark:bg-blue-900/30 p-2 w-fit">
-                          <Shield className="h-5 w-5 text-blue-600" />
+                        <div className="rounded-lg bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800/50 p-2 w-fit">
+                          <Shield className="h-5 w-5 text-blue-900 dark:text-blue-100" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Authentification" : "Authentication"}</h4>
-                        <p className="text-xs text-foreground/90">
+                        <p className="text-xs text-blue-800 dark:text-blue-200">
                           {isFr ? "Tests cognitifs de 2 min" : "2-min cognitive tests"}
                         </p>
                       </div>
                     </Card>
                     <Card className="p-4 bg-card/90 border-primary/20">
                       <div className="space-y-2">
-                        <div className="rounded-lg bg-purple-100 dark:bg-purple-900/30 p-2 w-fit">
-                          <Bot className="h-5 w-5 text-purple-600" />
+                        <div className="rounded-lg bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-800/50 p-2 w-fit">
+                          <Bot className="h-5 w-5 text-purple-900 dark:text-purple-100" />
                         </div>
                         <h4 className="font-medium text-sm">CAPTCHA</h4>
-                        <p className="text-xs text-foreground/90">
+                        <p className="text-xs text-purple-800 dark:text-purple-200">
                           {isFr ? "Résistant GPT-4V" : "GPT-4V resistant"}
                         </p>
                       </div>
                     </Card>
                     <Card className="p-4 bg-card/90 border-primary/20">
                       <div className="space-y-2">
-                        <div className="rounded-lg bg-green-100 dark:bg-green-900/30 p-2 w-fit">
-                          <Fingerprint className="h-5 w-5 text-green-600" />
+                        <div className="rounded-lg bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 p-2 w-fit">
+                          <Fingerprint className="h-5 w-5 text-green-900 dark:text-green-100" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Vérification" : "Verification"}</h4>
-                        <p className="text-xs text-foreground/90">
+                        <p className="text-xs text-green-800 dark:text-green-200">
                           {isFr ? "Comparaison de profils" : "Profile comparison"}
                         </p>
                       </div>
                     </Card>
                     <Card className="p-4 bg-card/90 border-primary/20">
                       <div className="space-y-2">
-                        <div className="rounded-lg bg-orange-100 dark:bg-orange-900/30 p-2 w-fit">
-                          <AlertTriangle className="h-5 w-5 text-orange-600" />
+                        <div className="rounded-lg bg-orange-100 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800/50 p-2 w-fit">
+                          <AlertTriangle className="h-5 w-5 text-orange-900 dark:text-orange-100" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Détection Fraude" : "Fraud Detection"}</h4>
-                        <p className="text-xs text-foreground/90">
+                        <p className="text-xs text-orange-800 dark:text-orange-200">
                           {isFr ? "Temps réel" : "Real-time"}
                         </p>
                       </div>

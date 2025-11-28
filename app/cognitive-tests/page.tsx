@@ -187,11 +187,11 @@ export default function CognitiveTestsPage() {
 
   const getColorClasses = (color: string) => {
     const colorMap: Record<string, string> = {
-      blue: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300',
-      purple: 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300',
-      green: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300',
-      yellow: 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300',
-      red: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300',
+      blue: 'bg-blue-100 dark:bg-blue-900/30 text-blue-900 dark:text-blue-100 dark:text-blue-300',
+      purple: 'bg-purple-100 dark:bg-purple-900/30 text-purple-900 dark:text-purple-100 dark:text-purple-300',
+      green: 'bg-green-100 dark:bg-green-900/30 text-green-900 dark:text-green-100 dark:text-green-300',
+      yellow: 'bg-amber-100 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-800/40 text-amber-900 dark:text-amber-100 dark:text-amber-300',
+      red: 'bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800/50 text-red-900 dark:text-red-100 dark:text-red-300',
     };
     return colorMap[color] || colorMap.blue;
   };
@@ -247,7 +247,7 @@ export default function CognitiveTestsPage() {
                   variant="outline"
                   size="sm"
                   onClick={clearAllResults}
-                  className="text-foreground/85"
+                  className="text-amber-800 dark:text-amber-200"
                 >
                   {isFr ? 'Effacer les résultats' : 'Clear Results'}
                 </Button>
@@ -257,7 +257,7 @@ export default function CognitiveTestsPage() {
             {/* Progress */}
             {completedCount > 0 && (
               <div className="mt-6 space-y-2">
-                <div className="flex justify-between text-sm text-foreground/85">
+                <div className="flex justify-between text-sm text-green-800 dark:text-green-200">
                   <span>{isFr ? 'Progression' : 'Progress'}</span>
                   <span>{isFr ? `${completedCount} sur ${tests.length} complétés` : `${completedCount} of ${tests.length} completed`}</span>
                 </div>
@@ -295,7 +295,7 @@ export default function CognitiveTestsPage() {
                     }`}>
                       {test.status === 'completed' && (
                         <div className="absolute top-2 right-2">
-                          <Badge variant="outline" className="gap-1 bg-green-100 dark:bg-green-900/30">
+                          <Badge variant="outline" className="gap-1 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50">
                             <Check className="h-3 w-3" />
                             {isFr ? 'Complété' : 'Completed'}
                           </Badge>
@@ -323,13 +323,13 @@ export default function CognitiveTestsPage() {
                       </CardHeader>
                       
                       <CardContent className="space-y-4">
-                        <p className="text-sm text-foreground/85">
+                        <p className="text-sm text-green-800 dark:text-green-200">
                           {isFr ? test.descriptionFr : test.description}
                         </p>
                         
                         {test.result && (
                           <div className="bg-muted/50 rounded-lg p-3 space-y-1">
-                            <p className="text-xs font-medium text-foreground/85">{isFr ? 'Votre résultat :' : 'Your Result:'}</p>
+                            <p className="text-xs font-medium text-blue-800 dark:text-blue-200">{isFr ? 'Votre résultat :' : 'Your Result:'}</p>
                             {test.result.score !== undefined && (
                               <p className="text-sm font-semibold">
                                 Score : {test.result.score}

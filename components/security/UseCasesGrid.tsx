@@ -16,7 +16,7 @@ export function UseCasesGrid() {
     {
       id: 'auth',
       icon: Shield,
-      iconColor: 'text-blue-600',
+      iconColor: 'text-blue-900 dark:text-blue-100',
       bgColor: 'bg-blue-100 dark:bg-blue-900/30',
       title: isFr ? 'Authentification Cognitive' : 'Cognitive Authentication',
       description: isFr
@@ -40,7 +40,7 @@ export function UseCasesGrid() {
     {
       id: 'captcha',
       icon: Bot,
-      iconColor: 'text-purple-600',
+      iconColor: 'text-purple-900 dark:text-purple-100',
       bgColor: 'bg-purple-100 dark:bg-purple-900/30',
       title: isFr ? 'CAPTCHA Résistant à l\'IA' : 'AI-Resistant CAPTCHA',
       description: isFr
@@ -64,8 +64,8 @@ export function UseCasesGrid() {
     {
       id: 'verify',
       icon: Fingerprint,
-      iconColor: 'text-green-600',
-      bgColor: 'bg-green-100 dark:bg-green-900/30',
+      iconColor: 'text-green-900 dark:text-green-100',
+      bgColor: 'bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50',
       title: isFr ? 'Vérification de Profil' : 'Profile Verification',
       description: isFr
         ? 'Vérifiez si deux codes HCS appartiennent à la même personne. Détectez les comptes en double et la fraude d\'identité.'
@@ -88,8 +88,8 @@ export function UseCasesGrid() {
     {
       id: 'fraud',
       icon: AlertTriangle,
-      iconColor: 'text-orange-600',
-      bgColor: 'bg-orange-100 dark:bg-orange-900/30',
+      iconColor: 'text-orange-900 dark:text-orange-100',
+      bgColor: 'bg-orange-100 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800/50',
       title: isFr ? 'Détection de Fraude' : 'Fraud Detection',
       description: isFr
         ? 'Surveillez les sessions en temps réel. Détectez la prise de contrôle de compte lorsque les modèles cognitifs s\'écartent de la base.'
@@ -120,7 +120,7 @@ export function UseCasesGrid() {
               {isFr ? 'Applications de Sécurité' : 'Security Applications'}
             </span>
           </h2>
-          <p className="text-lg text-foreground/85 max-w-3xl mx-auto">
+          <p className="text-lg text-green-800 dark:text-green-200 max-w-3xl mx-auto">
             {isFr
               ? 'Exploitez les signatures cognitives HCS-U7 dans plusieurs cas d\'utilisation de sécurité'
               : 'Leverage HCS-U7 cognitive signatures across multiple security use cases'}
@@ -152,7 +152,7 @@ export function UseCasesGrid() {
                       )}
                     </div>
                     <CardTitle className="text-xl mt-4">{useCase.title}</CardTitle>
-                    <p className="text-sm text-foreground/85 mt-2">
+                    <p className="text-sm text-blue-800 dark:text-blue-200 mt-2">
                       {useCase.description}
                     </p>
                   </CardHeader>
@@ -161,7 +161,7 @@ export function UseCasesGrid() {
                     <ul className="space-y-2 mb-6">
                       {useCase.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center gap-2 text-sm">
-                          <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
+                          <Check className="h-4 w-4 text-green-900 dark:text-green-100 flex-shrink-0" />
                           <span>{feature}</span>
                         </li>
                       ))}
