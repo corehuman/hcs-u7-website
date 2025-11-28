@@ -166,7 +166,7 @@ export function compareProfiles(profile1: HCSProfile, profile2: HCSProfile): Com
 
   return {
     overallSimilarity,
-    match: overallSimilarity >= 0.85,
+    match: overallSimilarity >= 0.75, // Seuil vérification identité : 75%
     dimensions: {
       element: elementSimilarity,
       modalities: modalitiesSimilarity,
