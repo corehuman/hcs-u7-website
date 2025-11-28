@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
 import { Shield, Loader2 } from 'lucide-react';
+import { useLanguage } from '@/components/LanguageProvider';
 
 const COLORS = ['red', 'blue', 'green', 'yellow'];
 const WORDS = ['RED', 'BLUE', 'GREEN', 'YELLOW'];
@@ -24,6 +25,8 @@ interface CaptchaWidgetProps {
 }
 
 export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
+  const { lang } = useLanguage();
+  const isFr = lang === 'fr';
   const [currentTrial, setCurrentTrial] = useState(0);
   const [trial, setTrial] = useState<{ word: string; color: string; congruent: boolean } | null>(null);
   const [startTime, setStartTime] = useState(0);
@@ -94,23 +97,25 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
             </div>
           </div>
 
-          <h2 className="text-2xl font-bold">Analyzing Cognitive Patterns...</h2>
-          <p className="text-muted-foreground">
-            Checking reaction time variability, Stroop effect, and learning curve
+          <h2 className="text-2xl font-bold mb-4">{isFr ? 'Analyse de vos Réponses' : 'Analyzing Your Responses'}</h2>
+          <p className="text-muted-foreground mb-6">
+            {isFr
+              ? 'Évaluation de la variabilité du temps de réaction, modèles d’interférence et courbe d’apprentissage...'
+              : 'Evaluating reaction time variability, interference patterns, and learning curve...'}
           </p>
 
           <div className="grid grid-cols-3 gap-4 mt-6">
             <div className="p-3 rounded-lg bg-secondary/50">
               <div className="w-2 h-2 rounded-full bg-primary mx-auto mb-2 animate-pulse" />
-              RT Analysis
+              {isFr ? 'Analyse TR' : 'RT Analysis'}
             </div>
             <div className="p-3 rounded-lg bg-secondary/50">
               <div className="w-2 h-2 rounded-full bg-primary mx-auto mb-2 animate-pulse delay-100" />
-              Stroop Effect
+              {isFr ? 'Effet Stroop' : 'Stroop Effect'}
             </div>
             <div className="p-3 rounded-lg bg-secondary/50">
               <div className="w-2 h-2 rounded-full bg-primary mx-auto mb-2 animate-pulse delay-200" />
-              Pattern Match
+              {isFr ? 'Correspondance Modèles' : 'Pattern Match'}
             </div>
           </div>
         </div>
@@ -131,13 +136,13 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
             </div>
             <div>
               <h2 className="font-semibold">HCS-Captcha</h2>
-              <p className="text-sm text-muted-foreground">Verify you're human</p>
+              <p className="text-sm text-muted-foreground">{isFr ? 'Vérifiez que vous êtes humain' : 'Verify you’re human'}</p>
             </div>
           </div>
 
           <div className="text-right">
             <p className="text-2xl font-bold">{currentTrial + 1} / {TRIALS}</p>
-            <p className="text-sm text-muted-foreground">trials</p>
+            <p className="text-sm text-muted-foreground">{isFr ? 'essais' : 'trials'}</p>
           </div>
         </div>
 
@@ -146,8 +151,8 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
 
         {/* Instruction */}
         <div className="text-center py-4 px-6 bg-secondary/50 rounded-lg">
-          <p className="font-medium">Click the COLOR of the text</p>
-          <p className="text-sm text-muted-foreground">(ignore what the word says)</p>
+          <p className="font-medium">{isFr ? 'Cliquez sur la COULEUR du texte' : 'Click the COLOR of the text'}</p>
+          <p className="text-sm text-muted-foreground">{isFr ? '(ignorez ce que le mot dit)' : '(ignore what the word says)'}</p>
         </div>
 
         {/* Stimulus */}
@@ -179,7 +184,9 @@ export function CaptchaWidget({ onComplete }: CaptchaWidgetProps) {
 
         {/* Hint */}
         <p className="text-sm text-center text-muted-foreground mt-4">
-          Tip: Respond naturally. Don't try to be too fast or too perfect.
+          {isFr
+            ? 'Conseil : Répondez naturellement. N’essayez pas d’être trop rapide ou trop parfait.'
+            : 'Tip: Respond naturally. Don’t try to be too fast or too perfect.'}
         </p>
       </div>
     </Card>

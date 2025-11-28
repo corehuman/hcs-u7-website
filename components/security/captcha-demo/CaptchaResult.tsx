@@ -22,6 +22,7 @@ import {
   Activity
 } from 'lucide-react';
 import Link from 'next/link';
+import { useLanguage } from '@/components/LanguageProvider';
 import type { CaptchaAnalysis } from './CaptchaDemoContainer';
 
 interface CaptchaResultProps {
@@ -30,6 +31,8 @@ interface CaptchaResultProps {
 }
 
 export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
+  const { lang } = useLanguage();
+  const isFr = lang === 'fr';
   const { isHuman, confidence, metrics, flags, rawData } = analysis;
 
   return (
@@ -49,15 +52,17 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
         </div>
 
         <Badge variant={isHuman ? 'default' : 'destructive'} className="mb-2">
-          {isHuman ? 'Human Verified' : 'Bot Detected'}
+          {isHuman ? (isFr ? 'Humain Vérifié' : 'Human Verified') : (isFr ? 'Bot Détecté' : 'Bot Detected')}
         </Badge>
 
         <h2 className="text-3xl font-bold mb-2">
-          {isHuman ? '✅ You Are Human!' : '🤖 Bot Behavior Detected'}
+          {isHuman 
+            ? (isFr ? '✅ Vous Êtes Humain !' : '✅ You Are Human!')
+            : (isFr ? '🤖 Comportement de Bot Détecté' : '🤖 Bot Behavior Detected')}
         </h2>
 
         <p className="text-lg text-muted-foreground mb-4">
-          Confidence: {Math.round(confidence * 100)}%
+          {isFr ? 'Confiance' : 'Confidence'}: {Math.round(confidence * 100)}%
         </p>
 
         {isHuman ? (

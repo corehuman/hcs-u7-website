@@ -53,7 +53,7 @@ export default function HomePage() {
             {/* Scientific Badge */}
             <Badge variant="outline" className="mb-8 gap-2 px-4 py-1.5">
               <FlaskConical className="h-3.5 w-3.5" />
-              Research-based cognitive profiling
+              {isFr ? 'Profilage cognitif basé sur la recherche' : 'Research-based cognitive profiling'}
             </Badge>
             
             <h1 className="mx-auto max-w-4xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
@@ -124,26 +124,26 @@ export default function HomePage() {
         >
           <div className="space-y-4">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              Before HCS-U7
+              {isFr ? 'Avant HCS-U7' : 'Before HCS-U7'}
             </h2>
             <p className="text-sm text-muted-foreground sm:text-base">
-              Every new AI conversation feels like starting over: you must
-              explain, reconfigure and refine your style again. Result: friction,
-              wasted time and frustration.
+              {isFr 
+                ? "Chaque nouvelle conversation avec l'IA est comme recommencer à zéro : vous devez expliquer, reconfigurer et affiner votre style encore et encore. Résultat : friction, perte de temps et frustration."
+                : "Every new AI conversation feels like starting over: you must explain, reconfigure and refine your style again. Result: friction, wasted time and frustration."}
             </p>
             <ul className="space-y-2 text-sm text-foreground/80">
               <li className="flex gap-2">
                 <span className="mt-1 text-red-600 dark:text-red-400">✕</span>
-                <span>The AI gives too many details… or not enough.</span>
+                <span>{isFr ? "L'IA donne trop de détails… ou pas assez." : "The AI gives too many details… or not enough."}</span>
               </li>
               <li className="flex gap-2">
                 <span className="mt-1 text-red-600 dark:text-red-400">✕</span>
-                <span>The pace does not match your cognitive style.</span>
+                <span>{isFr ? "Le rythme ne correspond pas à votre style cognitif." : "The pace does not match your cognitive style."}</span>
               </li>
               <li className="flex gap-2">
                 <span className="mt-1 text-red-600 dark:text-red-400">✕</span>
                 <span>
-                  You must repeat your preferences in every new session.
+                  {isFr ? "Vous devez répéter vos préférences à chaque nouvelle session." : "You must repeat your preferences in every new session."}
                 </span>
               </li>
             </ul>
@@ -151,31 +151,34 @@ export default function HomePage() {
 
           <div className="space-y-4 rounded-2xl border bg-card p-6 shadow-sm">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-              With HCS-U7
+              {isFr ? 'Avec HCS-U7' : 'With HCS-U7'}
             </h2>
             <p className="text-sm text-muted-foreground sm:text-base">
-              A single compact code describes how you learn, reason and
-              interact. AIs can then automatically adapt their behaviour.
+              {isFr
+                ? "Un seul code compact décrit comment vous apprenez, raisonnez et interagissez. Les IA peuvent alors adapter automatiquement leur comportement."
+                : "A single compact code describes how you learn, reason and interact. AIs can then automatically adapt their behaviour."}
             </p>
             <ul className="space-y-2 text-sm text-foreground/80">
               <li className="flex gap-2">
                 <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
                 <span>
-                  The AI adapts its response style to your cognitive profile.
+                  {isFr ? "L'IA adapte son style de réponse à votre profil cognitif." : "The AI adapts its response style to your cognitive profile."}
                 </span>
               </li>
               <li className="flex gap-2">
                 <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
                 <span>
-                  Responses are aligned with your need for structure, visuals,
-                  synthesis or creativity.
+                  {isFr 
+                    ? "Les réponses sont alignées avec votre besoin de structure, de visuels, de synthèse ou de créativité."
+                    : "Responses are aligned with your need for structure, visuals, synthesis or creativity."}
                 </span>
               </li>
               <li className="flex gap-2">
                 <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
                 <span>
-                  Configure once, reuse across ChatGPT, Claude, LangChain,
-                  physical robots, etc.
+                  {isFr
+                    ? "Configurez une fois, réutilisez avec ChatGPT, Claude, LangChain, robots physiques, etc."
+                    : "Configure once, reuse across ChatGPT, Claude, LangChain, physical robots, etc."}
                 </span>
               </li>
             </ul>
@@ -194,11 +197,12 @@ export default function HomePage() {
         >
           <div className="space-y-3">
             <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-              How does it work?
+              {isFr ? 'Comment ça fonctionne ?' : 'How does it work?'}
             </h2>
             <p className="mx-auto max-w-2xl text-center text-sm text-foreground/70 sm:text-base">
-              Three simple steps: a 24-question survey, an automatically
-              generated HCS-U7 code, then direct integration into your AI tools.
+              {isFr
+                ? 'Trois étapes simples : un questionnaire de 24 questions, un code HCS-U7 généré automatiquement, puis l’intégration directe dans vos outils IA.'
+                : 'Three simple steps: a 24-question survey, an automatically generated HCS-U7 code, then direct integration into your AI tools.'}
             </p>
           </div>
 
@@ -208,11 +212,12 @@ export default function HomePage() {
                 1
               </div>
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
-                Questionnaire (10 min)
+                {isFr ? 'Questionnaire (10 min)' : 'Questionnaire (10 min)'}
               </h3>
               <p className="text-sm text-foreground/70">
-                Answer 24 questions about your cognitive style, preferred pace,
-                tone sensitivity and tolerance to inaccuracies.
+                {isFr
+                  ? 'Répondez à 24 questions sur votre style cognitif, votre rythme préféré, votre sensibilité au ton et votre tolérance aux inexactitudes.'
+                  : 'Answer 24 questions about your cognitive style, preferred pace, tone sensitivity and tolerance to inaccuracies.'}
               </p>
             </div>
 
@@ -221,17 +226,18 @@ export default function HomePage() {
                 2
               </div>
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
-                Code generation
+                {isFr ? 'Génération du code' : 'Code generation'}
               </h3>
               <p className="text-sm text-foreground/70">
-                Get a unique HCS-U7 code such as:
+                {isFr ? 'Obtenez un code HCS-U7 unique tel que :' : 'Get a unique HCS-U7 code such as:'}
               </p>
               <p className="rounded-xl bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-50">
                 HCS-U7|V:7.0|ALG:QS|E:E|MOD:c30f40m30|COG:F15C70V20S25Cr20|INT:PB=B,SM=M,TN=L|QSIG:...
               </p>
               <p className="text-xs text-muted-foreground">
-                This code encodes your dominant element, modality, cognitive
-                profile and interaction preferences.
+                {isFr
+                  ? 'Ce code encode votre élément dominant, modalité, profil cognitif et préférences d’interaction.'
+                  : 'This code encodes your dominant element, modality, cognitive profile and interaction preferences.'}
               </p>
             </div>
 
@@ -240,12 +246,12 @@ export default function HomePage() {
                 3
               </div>
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
-                Immediate use
+                {isFr ? 'Utilisation immédiate' : 'Immediate use'}
               </h3>
               <p className="text-sm text-foreground/70">
-                Inject your HCS-U7 code into your system prompts (ChatGPT,
-                Claude, API) or applications. Responses are automatically
-                adapted.
+                {isFr
+                  ? 'Injectez votre code HCS-U7 dans vos prompts système (ChatGPT, Claude, API) ou applications. Les réponses sont automatiquement adaptées.'
+                  : 'Inject your HCS-U7 code into your system prompts (ChatGPT, Claude, API) or applications. Responses are automatically adapted.'}
               </p>
             </div>
           </div>
@@ -263,16 +269,17 @@ export default function HomePage() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                Use cases
+                {isFr ? 'Cas d’usage' : 'Use cases'}
               </h2>
               <p className="mt-1 max-w-xl text-sm text-foreground/70 sm:text-base">
-                HCS-U7 is designed to cover the full spectrum: from R&D to
-                consumer apps, including education and robotics.
+                {isFr
+                  ? 'HCS-U7 est conçu pour couvrir tout le spectre : de la R&D aux applications grand public, incluant l’éducation et la robotique.'
+                  : 'HCS-U7 is designed to cover the full spectrum: from R&D to consumer apps, including education and robotics.'}
               </p>
             </div>
             <Button asChild variant="ghost" size="sm" className="gap-2">
               <Link href="/examples">
-                Browse example profiles
+                {isFr ? 'Parcourir les profils exemples' : 'Browse example profiles'}
                 <Workflow className="h-4 w-4" />
               </Link>
             </Button>
@@ -280,31 +287,35 @@ export default function HomePage() {
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             <div className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-sm shadow-sm">
-              <h3 className="font-semibold text-foreground">🧑‍💻 AI developers</h3>
+              <h3 className="font-semibold text-foreground">🧑‍💻 {isFr ? 'Développeurs IA' : 'AI developers'}</h3>
               <p className="text-foreground/70">
-                Integrate HCS-U7 into your agents, assistants and copilots to
-                dynamically adapt the response style to each user.
+                {isFr
+                  ? 'Intégrez HCS-U7 dans vos agents, assistants et copilotes pour adapter dynamiquement le style de réponse à chaque utilisateur.'
+                  : 'Integrate HCS-U7 into your agents, assistants and copilots to dynamically adapt the response style to each user.'}
               </p>
             </div>
             <div className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-sm shadow-sm">
-              <h3 className="font-semibold text-foreground">📚 Students & mentors</h3>
+              <h3 className="font-semibold text-foreground">📚 {isFr ? 'Étudiants & mentors' : 'Students & mentors'}</h3>
               <p className="text-foreground/70">
-                Adjust the level of detail, pace and supports (text, diagrams,
-                examples) to each learning style.
+                {isFr
+                  ? 'Ajustez le niveau de détail, le rythme et les supports (texte, diagrammes, exemples) à chaque style d’apprentissage.'
+                  : 'Adjust the level of detail, pace and supports (text, diagrams, examples) to each learning style.'}
               </p>
             </div>
             <div className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-sm shadow-sm">
-              <h3 className="font-semibold text-foreground">💼 Professionals</h3>
+              <h3 className="font-semibold text-foreground">💼 {isFr ? 'Professionnels' : 'Professionals'}</h3>
               <p className="text-foreground/70">
-                Optimize code reviews, meeting notes, analyses and summaries to
-                your way of deciding and prioritizing.
+                {isFr
+                  ? 'Optimisez les revues de code, notes de réunion, analyses et résumés selon votre façon de décider et prioriser.'
+                  : 'Optimize code reviews, meeting notes, analyses and summaries to your way of deciding and prioritizing.'}
               </p>
             </div>
             <div className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-sm shadow-sm">
-              <h3 className="font-semibold text-foreground">🤖 Robotics & HRI</h3>
+              <h3 className="font-semibold text-foreground">🤖 {isFr ? 'Robotique & IHR' : 'Robotics & HRI'}</h3>
               <p className="text-foreground/70">
-                Coupled with HCS-U7R (v8.0), adapt proxemics, motion and
-                feedback of robots to the human cognitive signature.
+                {isFr
+                  ? 'Couplé avec HCS-U7R (v8.0), adaptez la proxémie, le mouvement et le feedback des robots à la signature cognitive humaine.'
+                  : 'Coupled with HCS-U7R (v8.0), adapt proxemics, motion and feedback of robots to the human cognitive signature.'}
               </p>
             </div>
           </div>
@@ -438,12 +449,12 @@ export default function HomePage() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-2">
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
-                Open source & empirically validated
+                {isFr ? 'Open source & validé empiriquement' : 'Open source & empirically validated'}
               </h2>
               <p className="max-w-2xl text-sm text-foreground/70 sm:text-base">
-                HCS-U7 is distributed under the MIT license with official
-                parsers (Python, JavaScript, ROS2) and an experimental
-                validation protocol focused on human–AI interaction quality.
+                {isFr
+                  ? 'HCS-U7 est distribué sous licence MIT avec des parseurs officiels (Python, JavaScript, ROS2) et un protocole de validation expérimental axé sur la qualité de l’interaction humain-IA.'
+                  : 'HCS-U7 is distributed under the MIT license with official parsers (Python, JavaScript, ROS2) and an experimental validation protocol focused on human–AI interaction quality.'}
               </p>
             </div>
             <Button asChild variant="outline" size="sm" className="gap-2">
@@ -453,20 +464,20 @@ export default function HomePage() {
                 rel="noreferrer"
               >
                 <Github className="h-4 w-4" />
-                View repository
+                {isFr ? 'Voir le dépôt' : 'View repository'}
               </a>
             </Button>
           </div>
           <div className="mt-6 grid gap-4 text-sm text-foreground/70 sm:grid-cols-4">
             <div className="space-y-1">
               <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
-                License
+                {isFr ? 'Licence' : 'License'}
               </p>
-              <p>100% Open source (MIT)</p>
+              <p>{isFr ? '100% Open source (MIT)' : '100% Open source (MIT)'}</p>
             </div>
             <div className="space-y-1">
               <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
-                Official parsers
+                {isFr ? 'Parseurs officiels' : 'Official parsers'}
               </p>
               <p>Python, JavaScript, ROS2 (HCS-U7R)</p>
             </div>
@@ -474,13 +485,13 @@ export default function HomePage() {
               <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
                 Validation
               </p>
-              <p>Empirical protocol N=50 (randomized crossover)</p>
+              <p>{isFr ? 'Protocole empirique N=50 (croisé randomisé)' : 'Empirical protocol N=50 (randomized crossover)'}</p>
             </div>
             <div className="space-y-1">
               <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
-                Social signal
+                {isFr ? 'Signal social' : 'Social signal'}
               </p>
-              <p>GitHub ~1.2k⭐ · preprint available on arXiv</p>
+              <p>{isFr ? 'GitHub ~1.2k⭐ · prépublication disponible sur arXiv' : 'GitHub ~1.2k⭐ · preprint available on arXiv'}</p>
             </div>
           </div>
         </motion.section>
@@ -498,16 +509,17 @@ export default function HomePage() {
             <div className="space-y-1">
               <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary">
                 <Zap className="h-4 w-4" />
-                Ready to personalize your AI interactions?
+                {isFr ? 'Prêt à personnaliser vos interactions IA ?' : 'Ready to personalize your AI interactions?'}
               </p>
               <p className="max-w-xl text-sm text-foreground/70 sm:text-base">
-                Start the HCS-U7 generator, get your cognitive code in a few
-                minutes and begin tailoring your prompts right away.
+                {isFr
+                  ? 'Démarrez le générateur HCS-U7, obtenez votre code cognitif en quelques minutes et commencez à adapter vos prompts immédiatement.'
+                  : 'Start the HCS-U7 generator, get your cognitive code in a few minutes and begin tailoring your prompts right away.'}
               </p>
             </div>
             <Button asChild size="lg" className="rounded-full px-6">
               <Link href="/generate">
-                Start questionnaire
+                {isFr ? 'Commencer le questionnaire' : 'Start questionnaire'}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
