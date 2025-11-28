@@ -79,12 +79,12 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
       </Card>
 
       {/* HCS-Captcha Solution */}
-      <Card className="p-6 bg-green-100/95 dark:bg-green-900/40 border-2 border-green-200 dark:border-green-800/70 backdrop-blur-sm">
+      <Card className="card-success p-6">
         <div className="flex items-center gap-3">
-          <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
+          <Shield className="w-5 h-5 text-current opacity-80" />
           <div>
-            <h3 className="font-semibold text-lg text-green-900 dark:text-green-100">{isFr ? 'HCS-Captcha : Détection Cognitive' : 'HCS-Captcha: Cognitive Detection'}</h3>
-            <p className="text-sm text-green-800 dark:text-green-200">
+            <h3 className="font-semibold text-lg mb-1">{isFr ? 'HCS-Captcha : Détection Cognitive' : 'HCS-Captcha: Cognitive Detection'}</h3>
+            <p className="text-sm opacity-85">
               {isFr ? "Détecte les bots en analysant des modèles que l'IA ne peut pas répliquer" : 'Detects bots by analyzing patterns AI cannot replicate'}
             </p>
           </div>
@@ -92,25 +92,25 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
 
         <div className="grid md:grid-cols-2 gap-3 mt-4">
           <div className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 mt-1 flex-shrink-0 text-current" />
             <p className="text-sm">
               <span className="font-medium">{isFr ? 'Variabilité TR :' : 'RT Variability:'}</span> {isFr ? 'Humains varient 50-100ms, bots <10ms ou erratique' : 'Humans vary 50-100ms, bots <10ms or erratic'}
             </p>
           </div>
           <div className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 mt-1 flex-shrink-0 text-current" />
             <p className="text-sm">
               <span className="font-medium">{isFr ? 'Effet Stroop :' : 'Stroop Effect:'}</span> {isFr ? 'Les humains montrent 50-150ms d’interférence, pas les bots' : 'Humans show 50-150ms interference, bots don’t'}
             </p>
           </div>
           <div className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 mt-1 flex-shrink-0 text-current" />
             <p className="text-sm">
               <span className="font-medium">{isFr ? 'Courbe d’Apprentissage :' : 'Learning Curve:'}</span> {isFr ? 'Les humains s’améliorent graduellement, bots plats ou aléatoires' : 'Humans improve gradually, bots flat or random'}
             </p>
           </div>
           <div className="flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+            <CheckCircle2 className="w-4 h-4 mt-1 flex-shrink-0 text-current" />
             <p className="text-sm">
               <span className="font-medium">{isFr ? 'Accessible :' : 'Accessible:'}</span> {isFr ? 'Fonctionne avec toute méthode d’entrée (clavier, souris, tactile)' : 'Works with any input method (keyboard, mouse, touch'}
             </p>
