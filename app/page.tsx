@@ -126,7 +126,7 @@ export default function HomePage() {
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
               {isFr ? 'Avant HCS-U7' : 'Before HCS-U7'}
             </h2>
-            <p className="text-sm text-foreground/70 sm:text-base">
+            <p className="text-sm text-foreground/75 sm:text-base">
               {isFr 
                 ? "Chaque nouvelle conversation avec l'IA est comme recommencer à zéro : vous devez expliquer, reconfigurer et affiner votre style encore et encore. Résultat : friction, perte de temps et frustration."
                 : "Every new AI conversation feels like starting over: you must explain, reconfigure and refine your style again. Result: friction, wasted time and frustration."}
@@ -153,7 +153,7 @@ export default function HomePage() {
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
               {isFr ? 'Avec HCS-U7' : 'With HCS-U7'}
             </h2>
-            <p className="text-sm text-foreground/70 sm:text-base">
+            <p className="text-sm text-foreground/75 sm:text-base">
               {isFr
                 ? "Un seul code compact décrit comment vous apprenez, raisonnez et interagissez. Les IA peuvent alors adapter automatiquement leur comportement."
                 : "A single compact code describes how you learn, reason and interact. AIs can then automatically adapt their behaviour."}
@@ -199,7 +199,7 @@ export default function HomePage() {
             <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {isFr ? 'Comment ça fonctionne ?' : 'How does it work?'}
             </h2>
-            <p className="mx-auto max-w-2xl text-center text-sm text-foreground/70 sm:text-base">
+            <p className="mx-auto max-w-2xl text-center text-sm text-foreground/75 sm:text-base">
               {isFr
                 ? 'Trois étapes simples : un questionnaire de 24 questions, un code HCS-U7 généré automatiquement, puis l’intégration directe dans vos outils IA.'
                 : 'Three simple steps: a 24-question survey, an automatically generated HCS-U7 code, then direct integration into your AI tools.'}
@@ -214,7 +214,7 @@ export default function HomePage() {
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
                 {isFr ? 'Questionnaire (10 min)' : 'Questionnaire (10 min)'}
               </h3>
-              <p className="text-sm text-foreground/70">
+              <p className="text-sm text-foreground/75">
                 {isFr
                   ? 'Répondez à 24 questions sur votre style cognitif, votre rythme préféré, votre sensibilité au ton et votre tolérance aux inexactitudes.'
                   : 'Answer 24 questions about your cognitive style, preferred pace, tone sensitivity and tolerance to inaccuracies.'}
@@ -228,13 +228,13 @@ export default function HomePage() {
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
                 {isFr ? 'Génération du code' : 'Code generation'}
               </h3>
-              <p className="text-sm text-foreground/70">
+              <p className="text-sm text-foreground/75">
                 {isFr ? 'Obtenez un code HCS-U7 unique tel que :' : 'Get a unique HCS-U7 code such as:'}
               </p>
               <p className="rounded-xl bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-50 overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-900">
                 HCS-U7|V:7.0|ALG:QS|E:E|MOD:c30f40m30|COG:F15C70V20S25Cr20|INT:PB=B,SM=M,TN=L|QSIG:...
               </p>
-              <p className="text-xs text-foreground/70">
+              <p className="text-xs text-foreground/80">
                 {isFr
                   ? 'Ce code encode votre élément dominant, modalité, profil cognitif et préférences d’interaction.'
                   : 'This code encodes your dominant element, modality, cognitive profile and interaction preferences.'}
@@ -248,7 +248,7 @@ export default function HomePage() {
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
                 {isFr ? 'Utilisation immédiate' : 'Immediate use'}
               </h3>
-              <p className="text-sm text-foreground/70">
+              <p className="text-sm text-foreground/75">
                 {isFr
                   ? 'Injectez votre code HCS-U7 dans vos prompts système (ChatGPT, Claude, API) ou applications. Les réponses sont automatiquement adaptées.'
                   : 'Inject your HCS-U7 code into your system prompts (ChatGPT, Claude, API) or applications. Responses are automatically adapted.'}
@@ -271,7 +271,7 @@ export default function HomePage() {
               <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                 {isFr ? 'Cas d’usage' : 'Use cases'}
               </h2>
-              <p className="mt-1 max-w-xl text-sm text-foreground/70 sm:text-base">
+              <p className="mt-1 max-w-xl text-sm text-foreground/75 sm:text-base">
                 {isFr
                   ? 'HCS-U7 est conçu pour couvrir tout le spectre : de la R&D aux applications grand public, incluant l’éducation et la robotique.'
                   : 'HCS-U7 is designed to cover the full spectrum: from R&D to consumer apps, including education and robotics.'}
@@ -392,7 +392,7 @@ export default function HomePage() {
                           <Shield className="h-5 w-5 text-blue-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Authentification" : "Authentication"}</h4>
-                        <p className="text-xs text-foreground/70">
+                        <p className="text-xs text-foreground/80">
                           {isFr ? "Tests cognitifs de 2 min" : "2-min cognitive tests"}
                         </p>
                       </div>
@@ -403,7 +403,7 @@ export default function HomePage() {
                           <Bot className="h-5 w-5 text-purple-600" />
                         </div>
                         <h4 className="font-medium text-sm">CAPTCHA</h4>
-                        <p className="text-xs text-foreground/70">
+                        <p className="text-xs text-foreground/80">
                           {isFr ? "Résistant GPT-4V" : "GPT-4V resistant"}
                         </p>
                       </div>
@@ -414,7 +414,7 @@ export default function HomePage() {
                           <Fingerprint className="h-5 w-5 text-green-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Vérification" : "Verification"}</h4>
-                        <p className="text-xs text-foreground/70">
+                        <p className="text-xs text-foreground/80">
                           {isFr ? "Comparaison de profils" : "Profile comparison"}
                         </p>
                       </div>
@@ -425,7 +425,7 @@ export default function HomePage() {
                           <AlertTriangle className="h-5 w-5 text-orange-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Détection Fraude" : "Fraud Detection"}</h4>
-                        <p className="text-xs text-foreground/70">
+                        <p className="text-xs text-foreground/80">
                           {isFr ? "Temps réel" : "Real-time"}
                         </p>
                       </div>
@@ -451,7 +451,7 @@ export default function HomePage() {
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                 {isFr ? 'Open source & validé empiriquement' : 'Open source & empirically validated'}
               </h2>
-              <p className="max-w-2xl text-sm text-foreground/70 sm:text-base">
+              <p className="max-w-2xl text-sm text-foreground/75 sm:text-base">
                 {isFr
                   ? 'HCS-U7 est distribué sous licence MIT avec des parseurs officiels (Python, JavaScript, ROS2) et un protocole de validation expérimental axé sur la qualité de l’interaction humain-IA.'
                   : 'HCS-U7 is distributed under the MIT license with official parsers (Python, JavaScript, ROS2) and an experimental validation protocol focused on human–AI interaction quality.'}
@@ -468,7 +468,7 @@ export default function HomePage() {
               </a>
             </Button>
           </div>
-          <div className="mt-6 grid gap-4 text-sm text-foreground/70 sm:grid-cols-4">
+          <div className="mt-6 grid gap-4 text-sm text-foreground/75 sm:grid-cols-4">
             <div className="space-y-1">
               <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
                 {isFr ? 'Licence' : 'License'}
@@ -511,7 +511,7 @@ export default function HomePage() {
                 <Zap className="h-4 w-4" />
                 {isFr ? 'Prêt à personnaliser vos interactions IA ?' : 'Ready to personalize your AI interactions?'}
               </p>
-              <p className="max-w-xl text-sm text-foreground/70 sm:text-base">
+              <p className="max-w-xl text-sm text-foreground/75 sm:text-base">
                 {isFr
                   ? 'Démarrez le générateur HCS-U7, obtenez votre code cognitif en quelques minutes et commencez à adapter vos prompts immédiatement.'
                   : 'Start the HCS-U7 generator, get your cognitive code in a few minutes and begin tailoring your prompts right away.'}

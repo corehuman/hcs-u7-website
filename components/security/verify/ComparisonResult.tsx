@@ -155,13 +155,13 @@ export function ComparisonResult({ profile1, profile2, comparison, onReset }: Co
             <Progress value={overallSimilarity * 100} className="h-8" />
             {/* Threshold marker */}
             <div className="absolute top-0 left-[85%] h-full w-px bg-primary">
-              <span className="absolute -top-6 -left-12 text-xs text-foreground/70">
+              <span className="absolute -top-6 -left-12 text-xs text-foreground/75">
                 85% threshold
               </span>
             </div>
           </div>
 
-          <div className="flex justify-between text-xs text-foreground/70">
+          <div className="flex justify-between text-xs text-foreground/75">
             <span>0% (Different)</span>
             <span>50% (Some similarity)</span>
             <span>85% (Match)</span>
@@ -495,7 +495,7 @@ function DimensionRow({
           <span className={`font-bold ${getColor(similarity)}`}>
             {Math.round(similarity * 100)}%
           </span>
-          <div className="text-xs text-foreground/70">Weight: {weight}%</div>
+          <div className="text-xs text-foreground/75">Weight: {weight}%</div>
         </div>
       </div>
 

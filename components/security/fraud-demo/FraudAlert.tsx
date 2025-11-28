@@ -390,7 +390,7 @@ class CognitiveMonitor {
                     <span className="font-mono">0.5%</span>
                   </div>
                 </div>
-                <p className="text-xs text-foreground/70 mt-2">
+                <p className="text-xs text-foreground/80 mt-2">
                   *Données pilote (N=150 utilisateurs, 45 simulations takeover)
                 </p>
               </Card>
@@ -531,7 +531,7 @@ function ActionCard({
         <Icon className={`w-5 h-5 ${priorityColors[priority]}`} />
         <div className="flex-1">
           <h4 className="font-medium text-sm">{title}</h4>
-          <p className="text-xs text-foreground/70 mt-1">{description}</p>
+          <p className="text-xs text-foreground/80 mt-1">{description}</p>
         </div>
         <Badge variant="outline" className="text-xs">
           {priority === 'critical' ? 'P1' : priority === 'high' ? 'P2' : 'P3'}

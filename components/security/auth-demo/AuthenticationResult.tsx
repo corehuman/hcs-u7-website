@@ -129,7 +129,7 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
               />
             </div>
 
-            <div className="flex justify-between text-xs text-foreground/70">
+            <div className="flex justify-between text-xs text-foreground/80">
               <span>0%</span>
               <span>70%</span>
               <span className="font-bold">{isFr ? '85% (seuil)' : '85% (threshold)'}</span>

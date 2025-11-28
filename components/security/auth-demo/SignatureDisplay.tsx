@@ -118,11 +118,11 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <span className="text-foreground/70">{isFr ? "ID Session:" : "Session ID:"}</span>
-                <p className="font-mono text-xs mt-1">{signature.sessionId}</p>
+                <p className="font-mono text-xs mt-1 text-foreground/80">{signature.sessionId}</p>
               </div>
               <div>
                 <span className="text-foreground/70">{isFr ? "Horodatage:" : "Timestamp:"}</span>
-                <p className="text-xs mt-1">
+                <p className="text-xs mt-1 text-foreground/80">
                   {new Date(signature.timestamp).toLocaleString()}
                 </p>
               </div>
@@ -211,7 +211,7 @@ function MetricRow({
         <span className="text-sm font-medium">{label}</span>
         <span className="font-mono font-bold">{value}</span>
       </div>
-      <p className="text-xs text-foreground/70">{description}</p>
+      <p className="text-xs text-foreground/80">{description}</p>
     </div>
   );
 }

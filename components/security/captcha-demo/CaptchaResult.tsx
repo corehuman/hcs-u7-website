@@ -125,7 +125,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             status={getMetricStatus(metrics.rtVariability, 50, 100)}
             importance="critical"
           >
-            <div className="flex justify-between text-xs text-foreground/70 mt-2">
+            <div className="flex justify-between text-xs text-foreground/80 mt-2">
               <span className="flex items-center gap-1">
                 Too consistent (&lt;40ms):
                 <Badge variant="outline" className="text-xs">Bot-like</Badge>
@@ -150,7 +150,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             status={getMetricStatus(metrics.stroopEffect, 50, 150)}
             importance="critical"
           >
-            <div className="flex justify-between text-xs text-foreground/70 mt-2">
+            <div className="flex justify-between text-xs text-foreground/80 mt-2">
               <span className="flex items-center gap-1">
                 No effect (&lt;20ms):
                 <Badge variant="outline" className="text-xs">Bot-like</Badge>
@@ -174,7 +174,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             expected="Positive (improvement)"
             status={metrics.learningSlope > 5 ? 'good' : metrics.learningSlope < -5 ? 'bad' : 'warning'}
           >
-            <div className="mt-2 text-xs text-foreground/70">
+            <div className="mt-2 text-xs text-foreground/80">
               <p>
                 {metrics.learningSlope > 5 ? (
                   <>✅ You improved over time (typical human pattern)</>
@@ -195,7 +195,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
             expected="Clustered (fatigue)"
             status={metrics.errorPattern === 'clustered' || metrics.errorPattern === 'distributed' ? 'good' : 'warning'}
           >
-            <div className="flex justify-between text-xs text-foreground/70 mt-2">
+            <div className="flex justify-between text-xs text-foreground/80 mt-2">
               <span className="flex items-center gap-1">
                 None/Perfect:
                 <Badge variant="destructive" className="text-xs">Suspicious</Badge>
@@ -383,7 +383,7 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
                       <p className="text-xl font-bold">N=250</p>
                     </div>
                   </div>
-                  <p className="text-xs text-foreground/70 mt-2">
+                  <p className="text-xs text-foreground/80 mt-2">
                     *Tested against: Selenium bots, Puppeteer scripts, GPT-4V automation, 
                     random click generators
                   </p>
@@ -484,14 +484,14 @@ function MetricCard({
               </Badge>
             )}
           </h4>
-          <p className="text-xs text-foreground/70">{description}</p>
+          <p className="text-xs text-foreground/80">{description}</p>
         </div>
         {statusIcons[status]}
       </div>
 
       <div className="space-y-1">
         <p className="text-2xl font-bold">{value}</p>
-        <p className="text-xs text-foreground/70">Expected: {expected}</p>
+        <p className="text-xs text-foreground/80">Expected: {expected}</p>
       </div>
 
       {children}

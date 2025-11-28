@@ -134,7 +134,7 @@ export function BaselineEstablishment({ onComplete }: BaselineEstablishmentProps
       <div className="text-center">
         <h2 className="text-2xl font-bold mb-2">{isFr ? 'Étape 1 : Établissement du Baseline' : 'Step 1: Baseline Establishment'}</h2>
         <p className="text-lg text-foreground/70 mb-2">{isFr ? 'Création de Votre Profil de Référence' : 'Creating Your Reference Profile'}</p>
-        <p className="text-sm text-foreground/70">
+        <p className="text-sm text-foreground/80">
           {isFr
             ? 'Effectuez ces tests rapides pour établir votre signature cognitive'
             : 'Complete these quick tests to establish your cognitive signature'}
@@ -152,7 +152,7 @@ export function BaselineEstablishment({ onComplete }: BaselineEstablishmentProps
               {phase === 'generating' && (isFr ? 'Génération du Baseline' : 'Generating Baseline')}
             </span>
           </div>
-          <span className="text-sm text-foreground/70">
+          <span className="text-sm text-foreground/80">
             {completedTrials} / {totalTrials}
           </span>
         </div>
@@ -225,7 +225,7 @@ export function BaselineEstablishment({ onComplete }: BaselineEstablishmentProps
         <Card className="p-16 text-center">
           <Zap className="w-16 h-16 mx-auto mb-4 text-primary animate-pulse" />
           <h3 className="text-xl font-bold mb-2">{isFr ? 'Génération de Votre Baseline...' : 'Generating Your Baseline...'}</h3>
-          <p className="text-sm text-foreground/70">
+          <p className="text-sm text-foreground/80">
             {isFr
               ? 'Analyse des patterns cognitifs et création du profil de référence'
               : 'Analyzing cognitive patterns and creating reference profile'}
