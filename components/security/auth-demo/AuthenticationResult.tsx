@@ -381,13 +381,13 @@ function ComparisonRow({
   const trendColor = percentDiff < 10 ? 'text-green-900 dark:text-green-100' : percentDiff < 20 ? 'text-amber-600' : 'text-red-900 dark:text-red-100';
 
   return (
-    <div className={`p-4 rounded-lg ${importance === 'critical' ? 'bg-amber-100 dark:bg-amber-900/25 border-2 border-amber-200 dark:border-amber-900' : 'bg-gray-50 dark:bg-gray-900'}`}>
+    <div className={`p-4 rounded-lg ${importance === 'critical' ? 'bg-amber-100 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40' : 'bg-gray-50 dark:bg-gray-900'}`}>
       <div className="flex justify-between items-start mb-2">
         <div className="flex items-start gap-2">
           <div>
-            <p className="font-medium text-sm">{label}</p>
+            <p className={`font-medium text-sm ${importance === 'critical' ? 'text-amber-900 dark:text-amber-100' : ''}`}>{label}</p>
             {importance === 'critical' && (
-              <Badge variant="default" className="mt-1 text-xs">
+              <Badge variant="default" className="mt-1 text-xs bg-amber-200 dark:bg-amber-800/50 text-amber-900 dark:text-amber-100">
                 Key Metric
               </Badge>
             )}
@@ -397,8 +397,8 @@ function ComparisonRow({
           )}
         </div>
         <div className="flex items-center gap-2">
-          <TrendIcon className={`h-4 w-4 ${trendColor}`} />
-          <span className={`text-sm font-bold ${trendColor}`}>
+          <TrendIcon className={`h-4 w-4 ${importance === 'critical' ? 'text-amber-900 dark:text-amber-100' : trendColor}`} />
+          <span className={`text-sm font-bold ${importance === 'critical' ? 'text-amber-950 dark:text-amber-50' : trendColor}`}>
             {percentDiff.toFixed(1)}%
           </span>
         </div>
@@ -406,12 +406,12 @@ function ComparisonRow({
 
       <div className="flex justify-between text-sm">
         <div>
-          <span className="text-foreground/70">Enrolled: </span>
-          <span className="font-mono">{Math.round(enrolled)}{unit}</span>
+          <span className={importance === 'critical' ? 'text-amber-800 dark:text-amber-200' : 'text-foreground/70'}>Enrolled: </span>
+          <span className={`font-mono ${importance === 'critical' ? 'text-amber-900 dark:text-amber-100' : ''}`}>{Math.round(enrolled)}{unit}</span>
         </div>
         <div>
-          <span className="text-foreground/70">Verification: </span>
-          <span className="font-mono">{Math.round(verify)}{unit}</span>
+          <span className={importance === 'critical' ? 'text-amber-800 dark:text-amber-200' : 'text-foreground/70'}>Verification: </span>
+          <span className={`font-mono ${importance === 'critical' ? 'text-amber-900 dark:text-amber-100' : ''}`}>{Math.round(verify)}{unit}</span>
         </div>
       </div>
     </div>

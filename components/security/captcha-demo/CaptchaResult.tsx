@@ -472,26 +472,48 @@ function MetricCard({
     bad: <XCircle className="w-5 h-5 text-red-500" />
   };
 
+  const textColors = {
+    good: {
+      title: 'text-green-900 dark:text-green-100',
+      secondary: 'text-green-800 dark:text-green-200',
+      value: 'text-green-950 dark:text-green-50'
+    },
+    warning: {
+      title: 'text-amber-900 dark:text-amber-100',
+      secondary: 'text-amber-800 dark:text-amber-200',
+      value: 'text-amber-950 dark:text-amber-50'
+    },
+    bad: {
+      title: 'text-red-900 dark:text-red-100',
+      secondary: 'text-red-800 dark:text-red-200',
+      value: 'text-red-950 dark:text-red-50'
+    }
+  };
+
   return (
     <Card className={`p-4 ${statusColors[status]}`}>
       <div className="flex justify-between items-start mb-3">
         <div>
-          <h4 className="font-medium flex items-center gap-2">
+          <h4 className={`font-medium flex items-center gap-2 ${textColors[status].title}`}>
             {title}
             {importance === 'critical' && (
-              <Badge variant="secondary" className="text-xs">
+              <Badge variant="secondary" className={`text-xs ${
+                status === 'good' ? 'bg-green-200 dark:bg-green-800/50 text-green-900 dark:text-green-100' :
+                status === 'warning' ? 'bg-amber-200 dark:bg-amber-800/50 text-amber-900 dark:text-amber-100' :
+                'bg-red-200 dark:bg-red-800/50 text-red-900 dark:text-red-100'
+              }`}>
                 Key
               </Badge>
             )}
           </h4>
-          <p className="text-xs text-amber-800 dark:text-amber-200">{description}</p>
+          <p className={`text-xs ${textColors[status].secondary}`}>{description}</p>
         </div>
         {statusIcons[status]}
       </div>
 
       <div className="space-y-1">
-        <p className="text-2xl font-bold">{value}</p>
-        <p className="text-xs text-green-800 dark:text-green-200">Expected: {expected}</p>
+        <p className={`text-2xl font-bold ${textColors[status].value}`}>{value}</p>
+        <p className={`text-xs ${textColors[status].secondary}`}>Expected: {expected}</p>
       </div>
 
       {children}

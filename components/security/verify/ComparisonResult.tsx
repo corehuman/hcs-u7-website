@@ -479,20 +479,20 @@ function DimensionRow({
   return (
     <div className={`p-4 rounded-lg border ${
       importance === 'critical' 
-        ? 'border-blue-200 dark:border-blue-900 bg-blue-100 dark:bg-blue-900/25 border border-blue-200 dark:border-blue-800/50' 
+        ? 'bg-blue-100 dark:bg-blue-900/25 border border-blue-200 dark:border-blue-800/50' 
         : 'bg-gray-50 dark:bg-gray-900'
     }`}>
       <div className="flex justify-between items-start mb-2">
         <div>
-          <span className="font-medium">{label}</span>
+          <span className={`font-medium ${importance === 'critical' ? 'text-blue-900 dark:text-blue-100' : ''}`}>{label}</span>
           {importance === 'critical' && (
-            <Badge variant="secondary" className="ml-2 text-xs">
+            <Badge variant="secondary" className="ml-2 text-xs bg-blue-200 dark:bg-blue-800/50 text-blue-900 dark:text-blue-100">
               Key Dimension
             </Badge>
           )}
         </div>
         <div className="text-right">
-          <span className={`font-bold ${getColor(similarity)}`}>
+          <span className={`font-bold ${importance === 'critical' ? 'text-blue-950 dark:text-blue-50' : getColor(similarity)}`}>
             {Math.round(similarity * 100)}%
           </span>
           <div className="text-xs text-blue-800 dark:text-blue-200">Weight: {weight}%</div>
@@ -503,12 +503,12 @@ function DimensionRow({
 
       <div className="grid md:grid-cols-2 gap-2 text-sm mt-3">
         <div className="flex items-center gap-2">
-          <Badge variant="outline" className="text-xs">Profile 1</Badge>
-          <code className="text-xs bg-secondary px-2 py-1 rounded">{profile1Value}</code>
+          <Badge variant="outline" className={`text-xs ${importance === 'critical' ? 'border-blue-300 dark:border-blue-700 text-blue-900 dark:text-blue-100' : ''}`}>Profile 1</Badge>
+          <code className={`text-xs px-2 py-1 rounded ${importance === 'critical' ? 'bg-blue-200/50 dark:bg-blue-800/30 text-blue-900 dark:text-blue-100' : 'bg-secondary'}`}>{profile1Value}</code>
         </div>
         <div className="flex items-center gap-2">
-          <Badge variant="outline" className="text-xs">Profile 2</Badge>
-          <code className="text-xs bg-secondary px-2 py-1 rounded">{profile2Value}</code>
+          <Badge variant="outline" className={`text-xs ${importance === 'critical' ? 'border-blue-300 dark:border-blue-700 text-blue-900 dark:text-blue-100' : ''}`}>Profile 2</Badge>
+          <code className={`text-xs px-2 py-1 rounded ${importance === 'critical' ? 'bg-blue-200/50 dark:bg-blue-800/30 text-blue-900 dark:text-blue-100' : 'bg-secondary'}`}>{profile2Value}</code>
         </div>
       </div>
     </div>
