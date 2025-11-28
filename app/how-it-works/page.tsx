@@ -191,46 +191,66 @@ export default function HowItWorksPage() {
                 <tr className="border-b">
                   <td className="py-3">RT Variability (SD)</td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/40 rounded text-xs">50-100ms</code>
+                    <code className="px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">
+                      50-100ms
+                    </code>
                   </td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/40 rounded text-xs">{'<'}10ms ou {'>'}150ms</code>
+                    <code className="px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">
+                      {'<'}10ms ou {'>'}150ms
+                    </code>
                   </td>
                 </tr>
                 <tr className="border-b">
                   <td className="py-3">Effet Stroop</td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/40 rounded text-xs">50-150ms</code>
+                    <code className="px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">
+                      50-150ms
+                    </code>
                   </td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/40 rounded text-xs">0ms (absence)</code>
+                    <code className="px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">
+                      0ms (absence)
+                    </code>
                   </td>
                 </tr>
                 <tr className="border-b">
                   <td className="py-3">Courbe Apprentissage</td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/40 rounded text-xs">Amélioration graduelle</code>
+                    <code className="px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">
+                      Amélioration graduelle
+                    </code>
                   </td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/40 rounded text-xs">Flat ou erratique</code>
+                    <code className="px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">
+                      Flat ou erratique
+                    </code>
                   </td>
                 </tr>
                 <tr className="border-b">
                   <td className="py-3">Pattern Erreurs</td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/40 rounded text-xs">Clustered (fatigue)</code>
+                    <code className="px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">
+                      Clustered (fatigue)
+                    </code>
                   </td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/40 rounded text-xs">Random ou none</code>
+                    <code className="px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">
+                      Random ou none
+                    </code>
                   </td>
                 </tr>
                 <tr className="border-b">
                   <td className="py-3">Précision</td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/40 rounded text-xs">85-95%</code>
+                    <code className="px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">
+                      85-95%
+                    </code>
                   </td>
                   <td className="text-center">
-                    <code className="px-2 py-1 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/40 rounded text-xs">100% (suspect) ou {'<'}70%</code>
+                    <code className="px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">
+                      100% (suspect) ou {'<'}70%
+                    </code>
                   </td>
                 </tr>
               </tbody>
