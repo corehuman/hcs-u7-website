@@ -35,7 +35,7 @@ export function UseCasesGrid() {
       ],
       demoLink: '/security/auth-demo',
       docsLink: '/docs/security/authentication',
-      status: 'available'
+      status: 'active'
     },
     {
       id: 'captcha',
