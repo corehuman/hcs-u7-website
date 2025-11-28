@@ -72,7 +72,7 @@ export function ProblemSolution() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-transparent to-primary/5">
+    <section className="py-20 section-base">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid gap-12 lg:grid-cols-2">
           
@@ -83,7 +83,7 @@ export function ProblemSolution() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full">
+            <Card className="card-base h-full">
               <CardHeader>
                 <div className="flex items-center gap-3 text-destructive mb-4">
                   <AlertTriangle className="h-6 w-6" />
@@ -112,7 +112,7 @@ export function ProblemSolution() {
                       <div className="text-xs text-foreground/85 mt-1">
                         {problem.description}
                       </div>
-                      <div className="text-[10px] text-foreground/85/70 mt-1">
+                      <div className="text-[10px] text-foreground/85 mt-1">
                         {problem.source}
                       </div>
                     </div>
@@ -151,7 +151,7 @@ export function ProblemSolution() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <Card className="h-full border-primary/20">
+            <Card className="card-base h-full border-primary/20">
               <CardHeader>
                 <div className="flex items-center gap-3 text-primary mb-4">
                   <Shield className="h-6 w-6" />

@@ -55,7 +55,7 @@ export function SecurityFeatures() {
   ];
 
   return (
-    <section className="py-20">
+    <section className="py-20 section-base">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ export function SecurityFeatures() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="h-full hover:shadow-lg transition-shadow duration-300 hover:border-primary/50">
+                  <Card className="card-interactive h-full hover:shadow-lg">
                     <CardContent className="p-6">
                       <div className="rounded-lg bg-primary/10 w-12 h-12 flex items-center justify-center mb-4">
                         <Icon className="h-6 w-6 text-primary" />

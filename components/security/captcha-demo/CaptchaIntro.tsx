@@ -207,7 +207,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
         <h3 className="font-semibold text-lg mb-4">{isFr ? 'Comparaison : Traditionnel vs HCS-Captcha' : 'Comparison: Traditional vs HCS-Captcha'}</h3>
 
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full text-sm">
             <thead>
               <tr className="border-b">
                 <th className="text-left py-2">{isFr ? 'Fonctionnalité' : 'Feature'}</th>
@@ -219,33 +219,63 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
             <tbody>
               <tr className="border-b">
                 <td className="py-2">{isFr ? 'Résistant GPT-4V' : 'GPT-4V Resistant'}</td>
-                <td className="text-center py-2">❌</td>
-                <td className="text-center py-2">❌</td>
-                <td className="text-center py-2">✅</td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">❌</span>
+                </td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">❌</span>
+                </td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">✅</span>
+                </td>
               </tr>
               <tr className="border-b">
                 <td className="py-2">{isFr ? 'Accessible' : 'Accessible'}</td>
-                <td className="text-center py-2">⚠️</td>
-                <td className="text-center py-2">⚠️</td>
-                <td className="text-center py-2">✅</td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-warning-subtle text-amber-900 dark:text-amber-100">⚠️</span>
+                </td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-warning-subtle text-amber-900 dark:text-amber-100">⚠️</span>
+                </td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">✅</span>
+                </td>
               </tr>
               <tr className="border-b">
                 <td className="py-2">{isFr ? 'Vie privée d’abord' : 'Privacy-First'}</td>
-                <td className="text-center py-2">❌</td>
-                <td className="text-center py-2">⚠️</td>
-                <td className="text-center py-2">✅</td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">❌</span>
+                </td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-warning-subtle text-amber-900 dark:text-amber-100">⚠️</span>
+                </td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">✅</span>
+                </td>
               </tr>
               <tr className="border-b">
                 <td className="py-2">{isFr ? 'Temps moyen' : 'Avg Time'}</td>
-                <td className="text-center py-2">10-20s</td>
-                <td className="text-center py-2">10-20s</td>
-                <td className="text-center py-2">~30s</td>
+                <td className="text-center py-2">
+                  <code className="px-2 py-1 rounded text-xs bg-muted/60 text-foreground/85">10-20s</code>
+                </td>
+                <td className="text-center py-2">
+                  <code className="px-2 py-1 rounded text-xs bg-muted/60 text-foreground/85">10-20s</code>
+                </td>
+                <td className="text-center py-2">
+                  <code className="px-2 py-1 rounded text-xs bg-muted/60 text-foreground/85">~30s</code>
+                </td>
               </tr>
               <tr className="border-b">
                 <td className="py-2">{isFr ? 'Faux positifs' : 'False Positive'}</td>
-                <td className="text-center py-2">5-10%</td>
-                <td className="text-center py-2">5-10%</td>
-                <td className="text-center py-2">&lt;1%</td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-warning-subtle text-amber-900 dark:text-amber-100">5-10%</span>
+                </td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-warning-subtle text-amber-900 dark:text-amber-100">5-10%</span>
+                </td>
+                <td className="text-center py-2">
+                  <span className="inline-flex px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">&lt;1%</span>
+                </td>
               </tr>
             </tbody>
           </table>

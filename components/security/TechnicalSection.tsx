@@ -112,7 +112,7 @@ async function verifyUser(userId) {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-primary/5 to-transparent">
+    <section className="py-20 section-base">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-12">
           <motion.div
@@ -136,8 +136,8 @@ async function verifyUser(userId) {
           </motion.div>
         </div>
 
-        <Card>
-          <CardContent className="p-6">
+        <Card className="card-base mb-12">
+          <CardContent className="p-8">
             <Tabs defaultValue="cryptographic" className="w-full">
               <TabsList className="grid w-full grid-cols-3 mb-6">
                 <TabsTrigger value="cryptographic" className="gap-2">
@@ -256,8 +256,16 @@ async function verifyUser(userId) {
                           {humanVsBotMetrics.map((row, idx) => (
                             <tr key={idx} className="border-t text-sm">
                               <td className="p-2">{row.metric}</td>
-                              <td className="p-2 text-foreground/85">{row.human}</td>
-                              <td className="p-2 text-foreground/85">{row.bot}</td>
+                              <td className="p-2">
+                                <span className="inline-flex px-2 py-1 rounded text-xs bg-success-subtle text-green-900 dark:text-green-100">
+                                  {row.human}
+                                </span>
+                              </td>
+                              <td className="p-2">
+                                <span className="inline-flex px-2 py-1 rounded text-xs bg-danger-subtle text-red-900 dark:text-red-100">
+                                  {row.bot}
+                                </span>
+                              </td>
                               <td className="p-2">
                                 <span className="text-green-900 dark:text-green-100">✅ {row.detection}</span>
                               </td>

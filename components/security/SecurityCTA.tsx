@@ -12,7 +12,7 @@ export function SecurityCTA() {
   const isFr = lang === 'fr';
 
   return (
-    <section className="py-20">
+    <section className="py-20 section-base">
       <div className="container mx-auto px-4 max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,7 +20,7 @@ export function SecurityCTA() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <Card className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border-primary/20">
+          <Card className="card-base bg-gradient-to-br from-primary/15 via-primary/10 to-primary/5 border-primary/25">
             <CardContent className="p-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 {isFr 
@@ -67,7 +67,7 @@ export function SecurityCTA() {
 
           {/* Additional CTAs */}
           <div className="grid gap-6 md:grid-cols-3 mt-12">
-            <Card>
+            <Card className="card-base h-full section-base">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-lg mb-2">
                   {isFr ? 'Pour les Développeurs' : 'For Developers'}
@@ -83,7 +83,7 @@ export function SecurityCTA() {
               </CardContent>
             </Card>
 
-            <Card>
+            <Card className="card-base h-full">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-lg mb-2">
                   {isFr ? 'Pour les Chercheurs' : 'For Researchers'}

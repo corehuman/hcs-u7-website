@@ -100,7 +100,7 @@ export function SecurityFAQ() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-primary/5 to-transparent">
+    <section className="py-20 section-base">
       <div className="container mx-auto px-4 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -124,7 +124,7 @@ export function SecurityFAQ() {
             </p>
           </div>
 
-          <Card>
+          <Card className="card-base">
             <CardContent className="p-6">
               <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, idx) => (
