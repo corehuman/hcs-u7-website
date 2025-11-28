@@ -6,6 +6,7 @@ import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,20 +57,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >
-        <LanguageProvider>
-          <a
-            href="#main"
-            className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:rounded-full focus-visible:bg-primary focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-primary-foreground shadow"
-          >
-            Skip to main content
-          </a>
-          <Navigation />
-          <main id="main" className="min-h-[calc(100vh-8rem)] bg-background">
-            {children}
-          </main>
-          <Footer />
-          <Analytics />
-        </LanguageProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <a
+              href="#main"
+              className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:left-4 focus-visible:top-4 focus-visible:z-50 focus-visible:rounded-full focus-visible:bg-primary focus-visible:px-4 focus-visible:py-2 focus-visible:text-sm focus-visible:font-medium focus-visible:text-primary-foreground shadow"
+            >
+              Skip to main content
+            </a>
+            <Navigation />
+            <main id="main" className="min-h-[calc(100vh-8rem)] bg-background">
+              {children}
+            </main>
+            <Footer />
+            <Analytics />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/components/LanguageProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
   { href: "/", key: "home" },
@@ -73,27 +74,30 @@ export function Navigation() {
               </Link>
             );
           })}
-          <div className="flex items-center gap-1 rounded-full border px-1 py-0.5 text-[11px]">
-            <button
-              type="button"
-              onClick={() => setLang("en")}
-              className={cn(
-                "rounded-full px-2 py-0.5 transition-colors",
-                lang === "en" ? "bg-primary text-primary-foreground" : "text-muted-foreground",
-              )}
-            >
-              EN
-            </button>
-            <button
-              type="button"
-              onClick={() => setLang("fr")}
-              className={cn(
-                "rounded-full px-2 py-0.5 transition-colors",
-                lang === "fr" ? "bg-primary text-primary-foreground" : "text-muted-foreground",
-              )}
-            >
-              FR
-            </button>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 rounded-full border px-1 py-0.5 text-[11px]">
+              <button
+                type="button"
+                onClick={() => setLang("en")}
+                className={cn(
+                  "rounded-full px-2 py-0.5 transition-colors",
+                  lang === "en" ? "bg-primary text-primary-foreground" : "text-muted-foreground",
+                )}
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLang("fr")}
+                className={cn(
+                  "rounded-full px-2 py-0.5 transition-colors",
+                  lang === "fr" ? "bg-primary text-primary-foreground" : "text-muted-foreground",
+                )}
+              >
+                FR
+              </button>
+            </div>
+            <ThemeToggle />
           </div>
           <Link href="/generate">
             <Button size="sm" className="ml-2 rounded-full">
@@ -103,6 +107,7 @@ export function Navigation() {
         </nav>
 
         <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <Button
             variant="outline"
             size="icon"

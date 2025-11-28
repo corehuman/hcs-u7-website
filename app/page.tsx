@@ -60,7 +60,7 @@ export default function HomePage() {
               {isFr ? "Système de Profil Cognitif HCS-U7" : "HCS-U7: Cognitive Profile System"}
             </h1>
             
-            <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground">
+            <p className="mx-auto mt-6 max-w-3xl text-lg text-foreground/70">
               {isFr 
                 ? "Générez votre profil cognitif scientifiquement fondé à travers des questionnaires psychométriques validés et des tests neurocognitifs objectifs"
                 : "Generate your scientifically-grounded cognitive profile through validated psychometric questionnaires and objective neurocognitive tests"}
@@ -131,17 +131,17 @@ export default function HomePage() {
               explain, reconfigure and refine your style again. Result: friction,
               wasted time and frustration.
             </p>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-2 text-sm text-foreground/80">
               <li className="flex gap-2">
-                <span className="mt-1 text-destructive">✕</span>
+                <span className="mt-1 text-red-600 dark:text-red-400">✕</span>
                 <span>The AI gives too many details… or not enough.</span>
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 text-destructive">✕</span>
+                <span className="mt-1 text-red-600 dark:text-red-400">✕</span>
                 <span>The pace does not match your cognitive style.</span>
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 text-destructive">✕</span>
+                <span className="mt-1 text-red-600 dark:text-red-400">✕</span>
                 <span>
                   You must repeat your preferences in every new session.
                 </span>
@@ -149,7 +149,7 @@ export default function HomePage() {
             </ul>
           </div>
 
-          <div className="space-y-4 rounded-2xl border bg-white/70 p-6 shadow-sm dark:bg-neutral-950/70">
+          <div className="space-y-4 rounded-2xl border bg-card p-6 shadow-sm">
             <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
               With HCS-U7
             </h2>
@@ -157,22 +157,22 @@ export default function HomePage() {
               A single compact code describes how you learn, reason and
               interact. AIs can then automatically adapt their behaviour.
             </p>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-2 text-sm text-foreground/80">
               <li className="flex gap-2">
-                <span className="mt-1 text-emerald-600">✔</span>
+                <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
                 <span>
                   The AI adapts its response style to your cognitive profile.
                 </span>
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 text-emerald-600">✔</span>
+                <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
                 <span>
                   Responses are aligned with your need for structure, visuals,
                   synthesis or creativity.
                 </span>
               </li>
               <li className="flex gap-2">
-                <span className="mt-1 text-emerald-600">✔</span>
+                <span className="mt-1 text-green-600 dark:text-green-400">✔</span>
                 <span>
                   Configure once, reuse across ChatGPT, Claude, LangChain,
                   physical robots, etc.
@@ -196,34 +196,34 @@ export default function HomePage() {
             <h2 className="text-center text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               How does it work?
             </h2>
-            <p className="mx-auto max-w-2xl text-center text-sm text-muted-foreground sm:text-base">
+            <p className="mx-auto max-w-2xl text-center text-sm text-foreground/70 sm:text-base">
               Three simple steps: a 24-question survey, an automatically
               generated HCS-U7 code, then direct integration into your AI tools.
             </p>
           </div>
 
           <div className="grid gap-5 md:grid-cols-3">
-            <div className="flex flex-col gap-3 rounded-2xl border bg-white/70 p-5 shadow-sm dark:bg-neutral-950/70">
+            <div className="flex flex-col gap-3 rounded-2xl border bg-card p-5 shadow-sm">
               <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-xs font-semibold text-primary">
                 1
               </div>
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
                 Questionnaire (10 min)
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 Answer 24 questions about your cognitive style, preferred pace,
                 tone sensitivity and tolerance to inaccuracies.
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 rounded-2xl border bg-white/70 p-5 shadow-sm dark:bg-neutral-950/70">
+            <div className="flex flex-col gap-3 rounded-2xl border bg-card p-5 shadow-sm">
               <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-secondary/10 text-xs font-semibold text-secondary">
                 2
               </div>
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
                 Code generation
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 Get a unique HCS-U7 code such as:
               </p>
               <p className="rounded-xl bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-50">
@@ -235,14 +235,14 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 rounded-2xl border bg-white/70 p-5 shadow-sm dark:bg-neutral-950/70">
+            <div className="flex flex-col gap-3 rounded-2xl border bg-card p-5 shadow-sm">
               <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-accent/10 text-xs font-semibold text-accent">
                 3
               </div>
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
                 Immediate use
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground/70">
                 Inject your HCS-U7 code into your system prompts (ChatGPT,
                 Claude, API) or applications. Responses are automatically
                 adapted.
@@ -265,7 +265,7 @@ export default function HomePage() {
               <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                 Use cases
               </h2>
-              <p className="mt-1 max-w-xl text-sm text-muted-foreground sm:text-base">
+              <p className="mt-1 max-w-xl text-sm text-foreground/70 sm:text-base">
                 HCS-U7 is designed to cover the full spectrum: from R&D to
                 consumer apps, including education and robotics.
               </p>
@@ -279,30 +279,30 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            <div className="flex flex-col gap-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+            <div className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-sm shadow-sm">
               <h3 className="font-semibold text-foreground">🧑‍💻 AI developers</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground/70">
                 Integrate HCS-U7 into your agents, assistants and copilots to
                 dynamically adapt the response style to each user.
               </p>
             </div>
-            <div className="flex flex-col gap-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+            <div className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-sm shadow-sm">
               <h3 className="font-semibold text-foreground">📚 Students & mentors</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground/70">
                 Adjust the level of detail, pace and supports (text, diagrams,
                 examples) to each learning style.
               </p>
             </div>
-            <div className="flex flex-col gap-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+            <div className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-sm shadow-sm">
               <h3 className="font-semibold text-foreground">💼 Professionals</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground/70">
                 Optimize code reviews, meeting notes, analyses and summaries to
                 your way of deciding and prioritizing.
               </p>
             </div>
-            <div className="flex flex-col gap-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+            <div className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-sm shadow-sm">
               <h3 className="font-semibold text-foreground">🤖 Robotics & HRI</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground/70">
                 Coupled with HCS-U7R (v8.0), adapt proxemics, motion and
                 feedback of robots to the human cognitive signature.
               </p>
@@ -336,7 +336,7 @@ export default function HomePage() {
                       {isFr ? "Sécurité Cognitive" : "Cognitive Security"}
                     </h2>
                   </div>
-                  <p className="text-base text-muted-foreground">
+                  <p className="text-base text-foreground/70">
                     {isFr
                       ? "Utilisez les profils HCS-U7 pour l'authentification, la détection de fraude et la prévention des bots. Remplacez les mots de passe par des signatures cognitives biométriques."
                       : "Use HCS-U7 profiles for authentication, fraud detection, and bot prevention. Replace passwords with cognitive biometric signatures."}
@@ -375,46 +375,46 @@ export default function HomePage() {
                 {/* Security illustration/grid */}
                 <div className="hidden lg:block">
                   <div className="grid grid-cols-2 gap-3">
-                    <Card className="p-4 bg-white/50 dark:bg-neutral-950/50 border-primary/20">
+                    <Card className="p-4 bg-card/90 border-primary/20">
                       <div className="space-y-2">
                         <div className="rounded-lg bg-blue-100 dark:bg-blue-900/30 p-2 w-fit">
                           <Shield className="h-5 w-5 text-blue-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Authentification" : "Authentication"}</h4>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-foreground/70">
                           {isFr ? "Tests cognitifs de 2 min" : "2-min cognitive tests"}
                         </p>
                       </div>
                     </Card>
-                    <Card className="p-4 bg-white/50 dark:bg-neutral-950/50 border-primary/20">
+                    <Card className="p-4 bg-card/90 border-primary/20">
                       <div className="space-y-2">
                         <div className="rounded-lg bg-purple-100 dark:bg-purple-900/30 p-2 w-fit">
                           <Bot className="h-5 w-5 text-purple-600" />
                         </div>
                         <h4 className="font-medium text-sm">CAPTCHA</h4>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-foreground/70">
                           {isFr ? "Résistant GPT-4V" : "GPT-4V resistant"}
                         </p>
                       </div>
                     </Card>
-                    <Card className="p-4 bg-white/50 dark:bg-neutral-950/50 border-primary/20">
+                    <Card className="p-4 bg-card/90 border-primary/20">
                       <div className="space-y-2">
                         <div className="rounded-lg bg-green-100 dark:bg-green-900/30 p-2 w-fit">
                           <Fingerprint className="h-5 w-5 text-green-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Vérification" : "Verification"}</h4>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-foreground/70">
                           {isFr ? "Comparaison de profils" : "Profile comparison"}
                         </p>
                       </div>
                     </Card>
-                    <Card className="p-4 bg-white/50 dark:bg-neutral-950/50 border-primary/20">
+                    <Card className="p-4 bg-card/90 border-primary/20">
                       <div className="space-y-2">
                         <div className="rounded-lg bg-orange-100 dark:bg-orange-900/30 p-2 w-fit">
                           <AlertTriangle className="h-5 w-5 text-orange-600" />
                         </div>
                         <h4 className="font-medium text-sm">{isFr ? "Détection Fraude" : "Fraud Detection"}</h4>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-foreground/70">
                           {isFr ? "Temps réel" : "Real-time"}
                         </p>
                       </div>
@@ -428,7 +428,7 @@ export default function HomePage() {
 
         {/* Open source & validated */}
         <motion.section
-          className="mt-20 rounded-3xl border bg-white/80 p-6 shadow-sm dark:bg-neutral-950/80 sm:p-8"
+          className="mt-20 rounded-3xl border bg-card p-6 shadow-sm sm:p-8"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
@@ -440,7 +440,7 @@ export default function HomePage() {
               <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
                 Open source & empirically validated
               </h2>
-              <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
+              <p className="max-w-2xl text-sm text-foreground/70 sm:text-base">
                 HCS-U7 is distributed under the MIT license with official
                 parsers (Python, JavaScript, ROS2) and an experimental
                 validation protocol focused on human–AI interaction quality.
@@ -457,27 +457,27 @@ export default function HomePage() {
               </a>
             </Button>
           </div>
-          <div className="mt-6 grid gap-4 text-sm text-muted-foreground sm:grid-cols-4">
+          <div className="mt-6 grid gap-4 text-sm text-foreground/70 sm:grid-cols-4">
             <div className="space-y-1">
-              <p className="text-xs font-medium uppercase tracking-wide text-foreground/80">
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
                 License
               </p>
               <p>100% Open source (MIT)</p>
             </div>
             <div className="space-y-1">
-              <p className="text-xs font-medium uppercase tracking-wide text-foreground/80">
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
                 Official parsers
               </p>
               <p>Python, JavaScript, ROS2 (HCS-U7R)</p>
             </div>
             <div className="space-y-1">
-              <p className="text-xs font-medium uppercase tracking-wide text-foreground/80">
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
                 Validation
               </p>
               <p>Empirical protocol N=50 (randomized crossover)</p>
             </div>
             <div className="space-y-1">
-              <p className="text-xs font-medium uppercase tracking-wide text-foreground/80">
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/90">
                 Social signal
               </p>
               <p>GitHub ~1.2k⭐ · preprint available on arXiv</p>
@@ -500,7 +500,7 @@ export default function HomePage() {
                 <Zap className="h-4 w-4" />
                 Ready to personalize your AI interactions?
               </p>
-              <p className="max-w-xl text-sm text-muted-foreground sm:text-base">
+              <p className="max-w-xl text-sm text-foreground/70 sm:text-base">
                 Start the HCS-U7 generator, get your cognitive code in a few
                 minutes and begin tailoring your prompts right away.
               </p>
