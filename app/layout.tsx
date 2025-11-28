@@ -65,12 +65,17 @@ export default function RootLayout({
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url(/images/background.png)' }}
               />
-              {/* Light mode overlay - balanced for visibility */}
-              <div className="absolute inset-0 bg-white/80 dark:hidden backdrop-blur-[2px]" />
-              {/* Dark mode overlay - darker for better contrast */}
-              <div className="absolute inset-0 hidden dark:block bg-neutral-950/85 backdrop-blur-[2px]" />
-              {/* Additional gradient overlay for depth */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/60" />
+              {/* Light mode overlay - high opacity for readability */}
+              <div className="absolute inset-0 bg-white/95 dark:hidden" />
+              {/* Dark mode overlay - high opacity for contrast */}
+              <div className="absolute inset-0 hidden dark:block bg-neutral-950/95" />
+              {/* Subtle pattern overlay */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `radial-gradient(circle at 1px 1px, rgb(0 0 0 / 0.05) 1px, transparent 1px)`,
+                  backgroundSize: '40px 40px'
+                }} />
+              </div>
             </div>
             
             {/* Content wrapper */}

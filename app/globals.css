@@ -178,3 +178,68 @@ html {
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-500 { animation-delay: 500ms; }
+
+/* Global contrast and background system */
+@layer components {
+  /* Section backgrounds - high contrast */
+  .section-base {
+    @apply bg-background/95 backdrop-blur-sm;
+  }
+  
+  .section-muted {
+    @apply bg-muted/95 backdrop-blur-sm;
+  }
+  
+  /* Card backgrounds - consistent opacity */
+  .card-base {
+    @apply bg-card/98 backdrop-blur-sm border-border/50;
+  }
+  
+  .card-interactive {
+    @apply bg-card/98 backdrop-blur-sm border-border/50 hover:bg-card hover:border-border transition-colors;
+  }
+  
+  /* Text contrast utilities */
+  .text-high-contrast {
+    @apply text-foreground;
+  }
+  
+  .text-medium-contrast {
+    @apply text-foreground/85;
+  }
+  
+  .text-low-contrast {
+    @apply text-foreground/70;
+  }
+  
+  /* For small text (xs), enforce minimum contrast */
+  .text-xs-safe {
+    @apply text-xs text-foreground/90;
+  }
+  
+  /* Colored backgrounds with proper contrast */
+  .bg-success-subtle {
+    @apply bg-green-100 dark:bg-green-900/40 border border-green-200 dark:border-green-800/60;
+  }
+  
+  .bg-danger-subtle {
+    @apply bg-red-100 dark:bg-red-900/40 border border-red-200 dark:border-red-800/60;
+  }
+  
+  .bg-warning-subtle {
+    @apply bg-amber-100 dark:bg-amber-900/40 border border-amber-200 dark:border-amber-800/60;
+  }
+  
+  .bg-info-subtle {
+    @apply bg-blue-100 dark:bg-blue-900/40 border border-blue-200 dark:border-blue-800/60;
+  }
+  
+  /* Dark overlays for images/patterns */
+  .overlay-light {
+    @apply bg-white/90 dark:bg-neutral-950/90;
+  }
+  
+  .overlay-heavy {
+    @apply bg-white/95 dark:bg-neutral-950/95;
+  }
+}

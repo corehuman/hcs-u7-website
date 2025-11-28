@@ -17,7 +17,7 @@ export default function IntegrationsPage() {
       </div>
 
       <section className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        <div className="space-y-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+        <div className="space-y-2 rounded-2xl border bg-card/98 backdrop-blur-sm p-4 text-sm shadow-sm">
           <h2 className="font-semibold text-foreground">OpenAI / ChatGPT</h2>
           <ul className="list-disc space-y-1 pl-4 text-xs text-foreground/85">
             <li>Use as a system prompt.</li>
@@ -25,7 +25,7 @@ export default function IntegrationsPage() {
             <li>Compatible with GPT assistants.</li>
           </ul>
         </div>
-        <div className="space-y-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+        <div className="space-y-2 rounded-2xl border bg-card/98 backdrop-blur-sm p-4 text-sm shadow-sm">
           <h2 className="font-semibold text-foreground">Anthropic / Claude</h2>
           <ul className="list-disc space-y-1 pl-4 text-xs text-foreground/85">
             <li>Persistent system instruction.</li>
@@ -33,7 +33,7 @@ export default function IntegrationsPage() {
             <li>Support via Python / JS SDKs.</li>
           </ul>
         </div>
-        <div className="space-y-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+        <div className="space-y-2 rounded-2xl border bg-card/98 backdrop-blur-sm p-4 text-sm shadow-sm">
           <h2 className="font-semibold text-foreground">LangChain</h2>
           <ul className="list-disc space-y-1 pl-4 text-xs text-foreground/85">
             <li>Custom prompt templates.</li>
@@ -41,7 +41,7 @@ export default function IntegrationsPage() {
             <li>Composable with multi-AI toolchains.</li>
           </ul>
         </div>
-        <div className="space-y-2 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+        <div className="space-y-2 rounded-2xl border bg-card/98 backdrop-blur-sm p-4 text-sm shadow-sm">
           <h2 className="font-semibold text-foreground">Robotics</h2>
           <ul className="list-disc space-y-1 pl-4 text-xs text-foreground/85">
             <li>HCS-U7R extension (v8.0).</li>

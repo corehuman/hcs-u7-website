@@ -65,7 +65,7 @@ export default function ExamplesPage() {
             <Dialog key={example.id}>
               <DialogTrigger asChild>
                 <button className="h-full w-full text-left">
-                  <div className="flex h-full flex-col gap-3 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm transition hover:border-primary/60 hover:bg-primary/5 dark:bg-neutral-950/70">
+                  <div className="flex h-full flex-col gap-3 rounded-2xl border bg-card/98 backdrop-blur-sm p-4 text-sm shadow-sm transition hover:border-primary/60 hover:bg-card">
                     <div>
                       <p className="text-xs font-medium uppercase tracking-wide text-foreground/85">
                         Profile archetype

@@ -37,18 +37,16 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
       </div>
 
       {/* Problem with Traditional CAPTCHAs */}
-      <Card className="p-6">
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <Bot className="w-5 h-5 text-red-500" />
-            <div>
-              <h3 className="font-semibold text-lg">{isFr ? 'Les CAPTCHAs Traditionnels Sont Cassés' : 'Traditional CAPTCHAs Are Broken'}</h3>
-              <p className="text-sm text-foreground/85">
-                {isFr
-                  ? 'Les CAPTCHAs basés sur les images (reCAPTCHA, hCaptcha) sont maintenant facilement résolus par l’IA'
-                  : 'Image-based CAPTCHAs (reCAPTCHA, hCaptcha) are now easily solved by AI'}
-              </p>
-            </div>
+      <Card className="p-6 bg-card/98 backdrop-blur-sm border-border">
+        <div className="flex items-center gap-3">
+          <Bot className="w-5 h-5 text-red-500" />
+          <div>
+            <h3 className="font-semibold text-lg">{isFr ? 'Les CAPTCHAs Traditionnels Sont Cassés' : 'Traditional CAPTCHAs Are Broken'}</h3>
+            <p className="text-sm text-foreground/85">
+              {isFr
+                ? 'Les CAPTCHAs basés sur les images (reCAPTCHA, hCaptcha) sont maintenant facilement résolus par l’IA'
+                : 'Image-based CAPTCHAs (reCAPTCHA, hCaptcha) are now easily solved by AI'}
+            </p>
           </div>
         </div>
 
@@ -81,16 +79,14 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
       </Card>
 
       {/* HCS-Captcha Solution */}
-      <Card className="p-6 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50">
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <Shield className="w-5 h-5 text-green-500" />
-            <div>
-              <h3 className="font-semibold text-lg">{isFr ? 'HCS-Captcha : Détection Cognitive' : 'HCS-Captcha: Cognitive Detection'}</h3>
-              <p className="text-sm text-green-800 dark:text-green-200">
-                {isFr ? 'Détecte les bots en analysant des modèles que l’IA ne peut pas répliquer' : 'Detects bots by analyzing patterns AI cannot replicate'}
-              </p>
-            </div>
+      <Card className="p-6 bg-green-100/95 dark:bg-green-900/40 border-2 border-green-200 dark:border-green-800/70 backdrop-blur-sm">
+        <div className="flex items-center gap-3">
+          <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
+          <div>
+            <h3 className="font-semibold text-lg text-green-900 dark:text-green-100">{isFr ? 'HCS-Captcha : Détection Cognitive' : 'HCS-Captcha: Cognitive Detection'}</h3>
+            <p className="text-sm text-green-800 dark:text-green-200">
+              {isFr ? "Détecte les bots en analysant des modèles que l'IA ne peut pas répliquer" : 'Detects bots by analyzing patterns AI cannot replicate'}
+            </p>
           </div>
         </div>
 
@@ -123,7 +119,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
       </Card>
 
       {/* How It Works */}
-      <Card className="p-6">
+      <Card className="p-6 bg-card/98 backdrop-blur-sm border-border">
         <h3 className="font-semibold text-lg mb-4">{isFr ? 'Comment ça Fonctionne' : 'How It Works'}</h3>
 
         <div className="space-y-4">
@@ -173,23 +169,23 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4">
-        <Card className="p-4 text-center">
+        <Card className="p-4 text-center bg-card/98 backdrop-blur-sm">
           <p className="text-2xl font-bold">~30s</p>
           <p className="text-sm text-foreground/85">{isFr ? 'Temps moyen' : 'Avg completion time'}</p>
         </Card>
 
-        <Card className="p-4 text-center">
+        <Card className="p-4 text-center bg-card/98 backdrop-blur-sm">
           <p className="text-2xl font-bold">99.2%</p>
           <p className="text-sm text-foreground/85">{isFr ? 'Précision de détection' : 'Bot detection accuracy'}</p>
         </Card>
 
-        <Card className="p-4 text-center">
+        <Card className="p-4 text-center bg-card/98 backdrop-blur-sm">
           <p className="text-2xl font-bold">&lt;1%</p>
           <p className="text-sm text-foreground/85">{isFr ? 'Taux de faux positifs' : 'False positive rate'}</p>
         </Card>
       </div>
 
-      <Alert className="border-amber-200 dark:border-amber-900 bg-amber-100 dark:bg-amber-900/25 border border-amber-200 dark:border-amber-800/40">
+      <Alert className="bg-amber-100/95 dark:bg-amber-900/50 border-2 border-amber-200 dark:border-amber-800/70 backdrop-blur-sm">
         <Info className="h-4 w-4" />
         <AlertDescription>
           <span className="font-medium">{isFr ? 'Essayez de "tromper" le système :' : 'Try to "game" the system:'}</span> {isFr
@@ -207,7 +203,7 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
       </div>
 
       {/* Comparison Table */}
-      <Card className="p-6">
+      <Card className="p-6 bg-card/98 backdrop-blur-sm border-border">
         <h3 className="font-semibold text-lg mb-4">{isFr ? 'Comparaison : Traditionnel vs HCS-Captcha' : 'Comparison: Traditional vs HCS-Captcha'}</h3>
 
         <div className="overflow-x-auto">
