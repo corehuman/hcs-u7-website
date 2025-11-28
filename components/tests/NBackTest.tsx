@@ -42,6 +42,8 @@ export function NBackTest({ onComplete }: NBackTestProps) {
   }[]>([]);
   const [showStimulus, setShowStimulus] = useState(false);
   const [waitingForResponse, setWaitingForResponse] = useState(false);
+  const [demoStep, setDemoStep] = useState(0);
+  const [isDemoRunning, setIsDemoRunning] = useState(true);
 
   const generateSequence = () => {
     const seq: string[] = [];
@@ -97,6 +99,24 @@ export function NBackTest({ onComplete }: NBackTestProps) {
       setPhase("complete");
     }
   }, [phase, currentTrial, sequence, waitingForResponse]);
+
+  useEffect(() => {
+    if (!isDemoRunning || phase !== "instructions") return;
+
+    const DEMO_STEPS = 6;
+    const isLastStep = demoStep >= DEMO_STEPS - 1;
+
+    const timer = setTimeout(() => {
+      if (isLastStep) {
+        setIsDemoRunning(false);
+        setDemoStep(0);
+      } else {
+        setDemoStep((prev) => prev + 1);
+      }
+    }, 900);
+
+    return () => clearTimeout(timer);
+  }, [isDemoRunning, demoStep, phase]);
 
   const handleResponse = (isMatch: boolean) => {
     if (currentTrial < N || !waitingForResponse) return; // Can't respond for first N trials or if not waiting
@@ -168,6 +188,78 @@ export function NBackTest({ onComplete }: NBackTestProps) {
   }, [phase]);
 
   if (phase === "instructions") {
+    const demoConfig = (() => {
+      if (demoStep === 0) {
+        return {
+          trialLabel: "1. A",
+          display: "A",
+          phase: "memorize",
+          explanation: isFr
+            ? "Étape 1 : mémorisez simplement la lettre A."
+            : "Step 1: just memorize the letter A.",
+        };
+      }
+      if (demoStep === 1) {
+        return {
+          trialLabel: "2. B",
+          display: "B",
+          phase: "memorize",
+          explanation: isFr
+            ? "Étape 2 : mémorisez maintenant la lettre B (vous gardez A et B en mémoire)."
+            : "Step 2: now memorize letter B (you keep A and B in memory).",
+        };
+      }
+      if (demoStep === 2) {
+        return {
+          trialLabel: isFr ? "3. A → MATCH (identique à #1)" : "3. A → MATCH (same as #1)",
+          display: "+",
+          phase: "respond",
+          explanation: isFr
+            ? "Étape 3 : le + apparaît sur fond vert. La lettre juste avant était A, identique à celle d'il y a 2 lettres (#1) → cliquez MATCH."
+            : "Step 3: the + appears on a green background. The previous letter was A, the same as 2 positions ago (#1) → click MATCH.",
+        };
+      }
+      if (demoStep === 3) {
+        return {
+          trialLabel: "4. C",
+          display: "C",
+          phase: "memorize",
+          explanation: isFr
+            ? "Étape 4 : nouvelle lettre C à mémoriser."
+            : "Step 4: new letter C to memorize.",
+        };
+      }
+      if (demoStep === 4) {
+        return {
+          trialLabel: isFr ? "5. B → MATCH (identique à #2)" : "5. B → MATCH (same as #2)",
+          display: "+",
+          phase: "respond",
+          explanation: isFr
+            ? "Étape 5 : le + est de nouveau sur fond vert. La lettre précédente était B, identique à celle d'il y a 2 lettres (#2) → cliquez MATCH."
+            : "Step 5: the + is again on a green background. The previous letter was B, the same as 2 positions ago (#2) → click MATCH.",
+        };
+      }
+      if (demoStep === 5) {
+        return {
+          trialLabel: isFr ? "6. D → NO MATCH" : "6. D → NO MATCH",
+          display: "+",
+          phase: "respond",
+          explanation: isFr
+            ? "Étape 6 : le + est sur fond vert mais la lettre précédente (D) est différente de celle d'il y a 2 lettres → cliquez NO MATCH."
+            : "Step 6: the + is on a green background but the previous letter (D) is different from the one 2 positions ago → click NO MATCH.",
+        };
+      }
+      return {
+        trialLabel: "",
+        display: "+",
+        phase: "memorize",
+        explanation: "",
+      };
+    })();
+
+    const demoBgClass =
+      demoConfig.phase === "respond" ? "bg-success-subtle" : "bg-muted/40";
+
     return (
       <Card className="mx-auto max-w-2xl p-8">
         <div className="space-y-6">
@@ -203,6 +295,45 @@ export function NBackTest({ onComplete }: NBackTestProps) {
                 5. B → MATCH {isFr ? "(identique à #2)" : "(same as #2)"}
               </div>
               <div>6. D → NO MATCH</div>
+            </div>
+          </div>
+
+          <div className="space-y-3 rounded-lg bg-muted/40 p-4">
+            <div className="flex items-center justify-between text-xs text-foreground/85">
+              <span>
+                {isFr
+                  ? "Exemple animé : suivez les étapes 1 → 6"
+                  : "Animated example: follow steps 1 → 6"}
+              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-[11px]">
+                  {demoStep + 1} / 6
+                </span>
+                <Button
+                  type="button"
+                  size="sm"
+                  variant="outline"
+                  className="h-7 px-2 text-[11px]"
+                  onClick={() => {
+                    setDemoStep(0);
+                    setIsDemoRunning(true);
+                  }}
+                  disabled={isDemoRunning}
+                >
+                  {isFr ? "Rejouer" : "Replay"}
+                </Button>
+              </div>
+            </div>
+
+            <div className={`flex items-center justify-center rounded-xl py-6 ${demoBgClass}`}>
+              <span className="text-5xl font-bold">
+                {demoConfig.display}
+              </span>
+            </div>
+
+            <div className="space-y-1 text-xs text-foreground/85">
+              <p className="font-mono">{demoConfig.trialLabel}</p>
+              <p>{demoConfig.explanation}</p>
             </div>
           </div>
 
