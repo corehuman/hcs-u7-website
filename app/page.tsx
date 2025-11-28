@@ -231,7 +231,7 @@ export default function HomePage() {
               <p className="text-sm text-foreground/70">
                 {isFr ? 'Obtenez un code HCS-U7 unique tel que :' : 'Get a unique HCS-U7 code such as:'}
               </p>
-              <p className="rounded-xl bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-50">
+              <p className="rounded-xl bg-neutral-950 px-3 py-2 font-mono text-[11px] text-neutral-50 overflow-x-auto whitespace-nowrap scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-900">
                 HCS-U7|V:7.0|ALG:QS|E:E|MOD:c30f40m30|COG:F15C70V20S25Cr20|INT:PB=B,SM=M,TN=L|QSIG:...
               </p>
               <p className="text-xs text-muted-foreground">

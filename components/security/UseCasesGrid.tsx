@@ -105,9 +105,9 @@ export function UseCasesGrid() {
         'Session hijacking alerts',
         'Zero-knowledge proofs'
       ],
-      demoLink: null,
+      demoLink: '/security/fraud-demo',
       docsLink: '/docs/security/fraud-detection',
-      status: 'coming-soon'
+      status: 'available'
     }
   ];
 
