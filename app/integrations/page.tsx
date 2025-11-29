@@ -205,14 +205,7 @@ app.post('/api/verify-human', async (req, res) => {
             <h3 className="text-sm font-semibold text-foreground">
               {isFr ? "Python (open-core)" : "Python (open-core)"}
             </h3>
-            <CodeBlock
-              language="bash"
-              code={`# Install from GitHub (current)
-pip install "git+https://github.com/corehuman/hcs-u7-python.git"
-
-# PyPI package (coming soon)
-# pip install hcs-u7`}
-            />
+            <CodeBlock language="bash" code={`pip install hcs-u7`} />
             <CodeBlock
               language="python"
               code={`from hcs_u7 import parse_hcs_code
