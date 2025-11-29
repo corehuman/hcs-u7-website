@@ -31,11 +31,15 @@ const COLORS_FR = ['rouge', 'vert', 'bleu', 'jaune', 'orange', 'violet'];
 const TOTAL_ITEMS = 20;
 const HESITATION_MARKERS = ['euh', 'hmm', 'heu', 'ah', 'ben'];
 
+interface SpeechRecognitionResultLike {
+  0: { transcript: string };
+  length: number;
+  // Indique si le segment est final (Web Speech API)
+  isFinal?: boolean;
+}
+
 interface SpeechRecognitionEventLike {
-  results: ArrayLike<{
-    0: { transcript: string };
-    length: number;
-  }>;
+  results: ArrayLike<SpeechRecognitionResultLike>;
 }
 
 interface SpeechRecognitionErrorEventLike {
@@ -150,8 +154,15 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
 
       // Handler: Résultats reconnaissance
       recognition.onresult = (event: SpeechRecognitionEventLike) => {
-        const now = performance.now();
         const result = event.results[event.results.length - 1];
+
+        // Ignorer les résultats intermédiaires pour ne compter qu'un item
+        // par segment final, sinon le test s'accélère artificiellement.
+        if (result && result.isFinal === false) {
+          return;
+        }
+
+        const now = performance.now();
         const transcript: string = result[0].transcript.toLowerCase().trim();
 
         console.log('[RAN] Transcription:', transcript);
