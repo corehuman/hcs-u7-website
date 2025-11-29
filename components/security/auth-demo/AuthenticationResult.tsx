@@ -322,16 +322,16 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                   <li>• {isFr ? 'Membres de la famille (frères/sœurs) : 55-70%' : 'Family members (siblings): 55-70%'}</li>
                   <li>• {isFr ? 'Personnes non liées : 20-50%' : 'Unrelated individuals: 20-50%'}</li>
                 </ul>
-                <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-800 rounded">
-                  <p className="text-sm font-semibold text-foreground mb-2">
+                <div className="mt-3 p-4 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-lg">
+                  <p className="text-sm font-semibold text-foreground dark:text-foreground mb-2">
                     {isFr ? 'Balance optimale :' : 'Optimal balance:'}
                   </p>
-                  <ul className="space-y-1 text-xs text-foreground/80">
+                  <ul className="space-y-1 text-xs text-foreground/80 dark:text-foreground">
                     <li>• {isFr ? 'Seuil 70% → Taux de faux rejet < 5% (excellent UX)' : '70% threshold → False rejection rate < 5% (excellent UX)'}</li>
                     <li>• {isFr ? 'Seuil 85% → Taux de faux rejet ~ 40-50% (inacceptable)' : '85% threshold → False rejection rate ~ 40-50% (unacceptable)'}</li>
                     <li>• {isFr ? 'Seuil 60% → Taux de faux positifs ~ 8% (risque sécurité)' : '60% threshold → False positive rate ~ 8% (security risk)'}</li>
                   </ul>
-                  <p className="text-xs text-foreground/70 mt-2">
+                  <p className="text-xs text-foreground/70 dark:text-foreground/90 mt-2">
                     {isFr
                       ? 'Références : Wechsler WAIS-IV (test-retest r=0.70-0.80), Stroop test (r=0.65-0.85), RT simple (ICC=0.75-0.85)'
                       : 'References: Wechsler WAIS-IV (test-retest r=0.70-0.80), Stroop test (r=0.65-0.85), Simple RT (ICC=0.75-0.85)'}

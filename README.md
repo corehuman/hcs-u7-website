@@ -27,8 +27,14 @@ Site web officiel du système **HCS-U7 (Human Cognitive Signature)**, une platef
 - **CAPTCHA résistant à l'IA** : Détection de bots basée sur les patterns cognitifs
 - **Vérification de profil** : Comparaison cryptographique de signatures
 - **Détection de fraude** : Surveillance en temps réel des anomalies comportementales
-- **Démos interactives** : `/security/auth-demo`, `/security/captcha-demo`, `/security/verify`, `/security/fraud-demo`
-- API et SDKs pour intégration facile
+- **Pare-feu cognitif HCS-U7** : Middleware Next.js qui bloque les bots et requêtes suspectes avant l'accès aux routes sensibles
+- **Démos interactives** : `/security/auth-demo`, `/security/captcha-demo`, `/security/verify`, `/security/fraud-demo`, `/secure-login-demo`
+- **API & SDKs officiels** :
+  - Endpoint `/api/verify-human` pour vérifier un jeton HCS-U7 côté serveur
+  - Route métier `/api/secure-login` protégée par le middleware HCS-U7 (cas d'usage bancaire)
+  - SDK Python sur PyPI : `hcs-u7`
+  - SDK JavaScript/TypeScript sur npm : `hcs-u7`
+  - Page `/developers/api-key` pour générer une clé API de développement locale
 
 ### 🌐 Support Multilingue
 - Interface **entièrement bilingue** (EN/FR)
@@ -69,20 +75,26 @@ Site web officiel du système **HCS-U7 (Human Cognitive Signature)**, une platef
 
 ### 🔒 Sécurité
 - `/security` – **Page sécurité** : Solutions d'authentification cognitive
+- `/security/hcs-code` – Plongée technique dans le code HCS-U7 & pare-feu cognitif (démos techniques + ProtectionTester)
 - `/security/auth-demo` – Démo d'authentification biométrique cognitive
 - `/security/captcha-demo` – Démo CAPTCHA cognitif résistant à l'IA
 - `/security/verify` – Outil de vérification de profils HCS-U7
 - `/security/fraud-demo` – Démo de détection de fraude en temps réel
+- `/secure-login-demo` – Démo de login bancaire protégé par le middleware HCS-U7
 
 ### 📚 Documentation & Ressources
 - `/docs` – Documentation technique complète
 - `/examples` – 6 profils types avec dialogues avant/après
-- `/integrations` – OpenAI, Claude, LangChain, SDKs
+- `/integrations` – Hub développeur (LLMs, SDKs, Quickstart, widget + backend `/api/verify-human`)
+- `/developers/api-key` – Génération d'une clé API de développement locale (stockée dans le navigateur)
 - `/research` – Protocole empirique, études, publications
 - `/pricing` – Gratuit & open-source + Enterprise
 
 ### 🔌 API
 - `/api/generate-prompt` – Endpoint REST pour générer les prompts ChatGPT / Claude à partir d’un profil HCS-U7
+- `/api/verify-human` – Endpoint de vérification de jeton HCS-U7 (heuristiques anti-bot + support de clé API)
+- `/api/secure-login` – Exemple de route métier (login bancaire) protégée par le middleware HCS-U7
+- `middleware.ts` – Pare-feu cognitif global qui protège certaines routes (`/api/protected-demo`, `/api/secure-login`) en exigeant un jeton HCS-U7 + clé API
 
 ---
 
@@ -156,12 +168,14 @@ hcs-u7-website/
 │   │   ├── trail-making/     
 │   │   ├── digit-span/       
 │   │   └── reaction-time/    
-│   ├── security/              # Page sécurité cognitive
-│   ├── generate/              # Générateur HCS-U7
+│   ├── security/              # Pages sécurité cognitive & démos (auth, CAPTCHA, fraude, HCS code)
+│   ├── secure-login-demo/      # Démo de login bancaire protégé HCS-U7
+│   ├── developers/api-key/    # Gestion de clé API de développement
+│   ├── integrations/          # Hub développeurs & Quickstart
 │   ├── docs/                  # Documentation
 │   └── ...                    
 ├── components/                
-│   ├── security/              # 9 composants sécurité
+│   ├── security/              # Composants sécurité (démos, CTA, pare-feu, etc.)
 │   │   ├── SecurityHero.tsx
 │   │   ├── ProblemSolution.tsx
 │   │   ├── UseCasesGrid.tsx
@@ -169,10 +183,11 @@ hcs-u7-website/
 │   │   └── ...
 │   ├── tests/                 # Tests cognitifs
 │   │   ├── StroopTest.tsx
-│   │   └── NBackTest.tsx
+│   │   └── DigitSpanTest.tsx
 │   ├── ui/                    # shadcn/ui + Radix UI
 │   └── LanguageProvider.tsx   # Gestion EN/FR
-├── lib/                       # Utilitaires
+├── lib/                       # Utilitaires (par ex. analyse HCS-U7, pare-feu cognitif)
+├── sdk/                       # Squelettes des SDK Python & JS (hcs-u7)
 └── public/                    # Assets statiques
 ```
 
