@@ -82,12 +82,12 @@ export default function GenerateResultPage() {
           </h1>
           <p className="max-w-2xl text-sm text-foreground/70 sm:text-base">
             {isFr
-              ? "Ce code représente votre signature cognitive. Conservez-le et réutilisez-le dans toutes vos interactions avec l'IA."
-              : "This code encodes your cognitive signature. Keep it and reuse it in all your AI interactions."}
+              ? "Ce code est votre signature cognitive HCS-U7. Il sert à la fois de profil pour vos IA et de secret extrêmement difficile à deviner pour un bot ou une IA (voir la page Sécurité)."
+              : "This code is your HCS-U7 cognitive signature. It acts both as a profile for AI systems and as a secret that is extremely hard for bots or AI to guess (see the Security page)."}
           </p>
         </div>
 
-        <section className="space-y-4 rounded-2xl border bg-white/70 p-5 shadow-sm dark:bg-neutral-950/70">
+        <section className="space-y-4 rounded-2xl card-base p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-1">
               <p className="text-xs font-medium uppercase tracking-wide text-foreground/60">
@@ -137,7 +137,7 @@ export default function GenerateResultPage() {
               <p>{interpretation.interactionSummary[isFr ? "fr" : "en"]}</p>
             </div>
           </div>
-          <div className="space-y-3 rounded-2xl border bg-white/70 p-4 text-sm shadow-sm dark:bg-neutral-950/70">
+          <div className="space-y-3 rounded-2xl card-base p-4 text-sm">
             <h3 className="font-semibold text-foreground">
               {isFr ? "Profil cognitif (radar)" : "Cognitive profile (radar)"}
             </h3>
@@ -145,7 +145,42 @@ export default function GenerateResultPage() {
           </div>
         </section>
 
-        <section className="space-y-4 rounded-2xl border bg-white/70 p-5 shadow-sm dark:bg-neutral-950/70">
+        <section className="space-y-3 rounded-2xl card-base p-6">
+          <h2 className="text-lg font-semibold tracking-tight text-foreground">
+            {isFr
+              ? "À quoi sert votre code HCS-U7 ?"
+              : "What can you do with your HCS-U7 code?"}
+          </h2>
+          <p className="text-sm text-foreground/70">
+            {isFr
+              ? "Voici quelques usages concrets possibles de votre code :"
+              : "Here are a few concrete ways you can use your code:"}
+          </p>
+          <ul className="list-disc space-y-1 pl-5 text-sm text-foreground/80">
+            <li>
+              {isFr
+                ? "Renforcer l'authentification : l'utiliser côté serveur comme secret ou clé d'accès supplémentaire, très difficile à deviner pour des bots ou des scripts."
+                : "Strengthen authentication: use it server-side as an additional secret or access key, extremely hard for bots or scripts to guess."}
+            </li>
+            <li>
+              {isFr
+                ? "Personnaliser vos IA : coller le code dans vos prompts (ChatGPT, Claude, etc.) pour adapter le style, le rythme et le niveau d'abstraction à votre profil cognitif."
+                : "Personalize your AIs: paste the code into your prompts (ChatGPT, Claude, etc.) to adapt style, pacing and abstraction level to your cognitive profile."}
+            </li>
+            <li>
+              {isFr
+                ? "Gérer plusieurs contextes : générer plusieurs codes HCS-U7 (travail, apprentissage, création) et les utiliser selon le contexte."
+                : "Manage multiple contexts: generate multiple HCS-U7 codes (work, learning, creativity) and use them depending on the context."}
+            </li>
+            <li>
+              {isFr
+                ? "Préparer des intégrations futures : lier ce code à des comptes ou services qui souhaitent un identifiant humain résistant aux bots."
+                : "Prepare future integrations: link this code to accounts or services that want a human, bot-resistant identifier."}
+            </li>
+          </ul>
+        </section>
+
+        <section className="space-y-4 rounded-2xl card-base p-6">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="text-lg font-semibold tracking-tight text-foreground">
@@ -236,7 +271,7 @@ console.log(data.chatgptPrompt);
           </Tabs>
         </section>
 
-        <section className="space-y-4 rounded-2xl border bg-white/70 p-5 shadow-sm dark:bg-neutral-950/70">
+        <section className="space-y-4 rounded-2xl card-base p-6">
           <h2 className="text-lg font-semibold tracking-tight text-foreground">
             {isFr ? "Enregistrer votre profil" : "Save your profile"}
           </h2>

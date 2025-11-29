@@ -87,7 +87,7 @@ export default function ExamplesPage() {
                   </div>
                 </button>
               </DialogTrigger>
-              <DialogContent className="max-w-3xl">
+              <DialogContent className="max-w-xl sm:max-w-2xl lg:max-w-3xl max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
                   <DialogTitle>{example.name.en}</DialogTitle>
                 </DialogHeader>

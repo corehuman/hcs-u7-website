@@ -23,14 +23,14 @@ export function SecurityCTA() {
           <Card className="card-base bg-gradient-to-br from-primary/15 via-primary/10 to-primary/5 border-primary/25">
             <CardContent className="p-12 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                {isFr 
-                  ? 'Prêt à Améliorer Votre Sécurité ?'
-                  : 'Ready to Upgrade Your Security?'}
+                {isFr
+                  ? 'Créez votre sécurité avec un code HCS-U7 inviolable par un bot ou une IA'
+                  : 'Create your security with an HCS-U7 code that bots and AI cannot brute-force'}
               </h2>
               <p className="text-lg text-foreground/85 mb-8 max-w-2xl mx-auto">
                 {isFr
-                  ? 'Essayez nos démos interactives ou intégrez HCS-U7 dans votre application aujourd\'hui'
-                  : 'Try our interactive demos or integrate HCS-U7 into your application today'}
+                  ? 'Votre code HCS-U7 est un secret cognitif unique, impraticable à deviner pour un bot ou une IA, et très difficile à rejouer exactement, même par vous-même. Essayez nos démos interactives ou intégrez HCS-U7 dans votre application aujourd\'hui.'
+                  : 'Your HCS-U7 code is a unique cognitive secret, impractical for bots or AI to guess and extremely hard to replay exactly—even for you. Try our interactive demos or integrate HCS-U7 into your application today.'}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

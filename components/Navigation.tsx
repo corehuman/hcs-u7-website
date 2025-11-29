@@ -14,7 +14,7 @@ const navItems = [
   { href: "/", key: "home" },
   { href: "/generate", key: "generator" },
   { href: "/cognitive-tests", key: "tests" },
-  { href: "/security", key: "security", badge: "NEW" },
+  { href: "/security", key: "security" },
   { href: "/docs", key: "docs" },
   { href: "/examples", key: "examples" },
   { href: "/integrations", key: "integrations" },
@@ -42,35 +42,41 @@ export function Navigation() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition group">
           <svg
-            width="40"
-            height="40"
+            width="34"
+            height="34"
             viewBox="0 0 32 32"
             fill="none"
             className="logo-glow"
             aria-hidden="true"
           >
             <defs>
-              <linearGradient id="header-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="rgb(56, 189, 248)" />
-                <stop offset="100%" stopColor="rgb(147, 51, 234)" />
+              <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#22d3ee" />
+                <stop offset="100%" stopColor="#a855f7" />
               </linearGradient>
             </defs>
-            
-            <rect x="6" y="6" width="4" height="20" rx="2" fill="url(#header-grad)" />
-            <rect x="6" y="14" width="12" height="4" rx="2" fill="url(#header-grad)" />
-            <rect x="18" y="6" width="8" height="4" rx="2" fill="url(#header-grad)" />
-            <rect
-              x="19"
-              y="10"
-              width="4"
-              height="16"
-              rx="2"
-              transform="rotate(15 21 18)"
-              fill="url(#header-grad)"
+
+            {/* Contour du bouclier */}
+            <path
+              d="M16 3.5L7 7v7c0 6 3.4 9.6 9 11.5 5.6-1.9 9-5.5 9-11.5V7L16 3.5z"
+              stroke="url(#shield-grad)"
+              strokeWidth="1.8"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+
+            {/* Check interne (sécurité / bots) */}
+            <path
+              d="M12 14.5l3 3.2 5-5.7"
+              stroke="url(#shield-grad)"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col leading-tight">
             <span className="text-xl font-bold bg-linear-to-r from-sky-500 to-purple-600 bg-clip-text text-transparent">
               HCS-U7
             </span>
@@ -94,11 +100,6 @@ export function Navigation() {
                 )}
               >
                 {label}
-                {item.badge && (
-                  <span className="bg-primary/10 text-primary text-[10px] px-1.5 py-0.5 rounded-full font-semibold">
-                    {item.badge}
-                  </span>
-                )}
               </Link>
             );
           })}
@@ -167,14 +168,41 @@ export function Navigation() {
                   onClick={() => setOpen(false)}
                 >
                   <span>{label}</span>
-                  {item.badge && (
-                    <span className="bg-primary/10 text-primary text-[10px] px-1.5 py-0.5 rounded-full font-semibold ml-2">
-                      {item.badge}
-                    </span>
-                  )}
                 </Link>
               );
             })}
+
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-1 rounded-full border px-1 py-0.5 text-[11px]">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLang("en");
+                    setOpen(false);
+                  }}
+                  className={cn(
+                    "rounded-full px-2 py-0.5 transition-colors",
+                    lang === "en" ? "bg-primary text-primary-foreground" : "text-foreground/85",
+                  )}
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLang("fr");
+                    setOpen(false);
+                  }}
+                  className={cn(
+                    "rounded-full px-2 py-0.5 transition-colors",
+                    lang === "fr" ? "bg-primary text-primary-foreground" : "text-foreground/85",
+                  )}
+                >
+                  FR
+                </button>
+              </div>
+            </div>
+
             <Link href="/generate" onClick={() => setOpen(false)}>
               <Button className="mt-2 w-full rounded-full" size="sm">
                 {lang === "fr" ? "Générer mon profil" : "Generate my profile"}

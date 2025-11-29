@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { AuthDemoContainer } from '@/components/security/auth-demo/AuthDemoContainer';
+import { SecuritySubnav } from '@/components/security/SecuritySubnav';
 
 export const metadata: Metadata = {
   title: 'Cognitive Authentication Demo | HCS-U7',
@@ -13,5 +14,10 @@ export const metadata: Metadata = {
 };
 
 export default function AuthDemoPage() {
-  return <AuthDemoContainer />;
+  return (
+    <main className="flex flex-col">
+      <SecuritySubnav />
+      <AuthDemoContainer />
+    </main>
+  );
 }

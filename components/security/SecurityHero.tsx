@@ -65,8 +65,8 @@ export function SecurityHero() {
             className="text-xl md:text-2xl text-foreground/85 max-w-3xl mx-auto"
           >
             {isFr 
-              ? 'Authentification et détection de fraude de nouvelle génération utilisant des signatures cognitives validées scientifiquement. Impossible à voler, deviner ou hameçonner.'
-              : 'Next-generation authentication and fraud detection using scientifically-validated cognitive signatures. Impossible to steal, guess, or phish.'}
+              ? 'Générez un code HCS-U7 à partir de profils cognitifs validés scientifiquement pour l\'authentification et la détection de fraude. Conçu pour résister aux bots et à l\'IA, impossible à voler ou deviner.'
+              : 'Generate an HCS-U7 code from scientifically grounded cognitive profiles for authentication and fraud detection. Designed to resist bots and AI, impossible to steal or guess.'}
           </motion.p>
           
           <motion.p
@@ -76,8 +76,8 @@ export function SecurityHero() {
             className="text-lg text-foreground/85 max-w-2xl mx-auto"
           >
             {isFr
-              ? 'Exploitez les profils cognitifs HCS-U7 pour l\'authentification, la détection de bots et la vérification d\'identité.'
-              : 'Leverage HCS-U7 cognitive profiles for authentication, bot detection, and identity verification.'}
+              ? 'Utilisez votre code HCS-U7 comme profil cognitif pour l\'authentification, la détection de bots et la personnalisation d\'IA.'
+              : 'Use your HCS-U7 code as a cognitive profile for authentication, bot detection, and AI personalization.'}
           </motion.p>
           
           {/* CTAs */}

@@ -37,6 +37,15 @@ export function IntroScreen({ onStart }: IntroScreenProps) {
         </CardHeader>
 
         <CardContent className="space-y-6">
+          <Alert>
+            <Info className="h-4 w-4" />
+            <AlertDescription className="text-sm">
+              {isFr
+                ? "Cette démo d'authentification compare deux sessions humaines pour illustrer la variabilité des signatures cognitives. Même pour la même personne, les temps de réaction, l'attention et la fatigue changent d'une session à l'autre : on n'obtient donc jamais 100 % de correspondance mais un score de similarité. Pour un attaquant (bot/IA), la protection équivaut à un seuil de 100 % : il doit deviner exactement votre code HCS-U7. Le produit HCS-U7 sert avant tout à générer ce code HCS-U7 anti-bot à partir de vos tests, presque impossible à reproduire ou à deviner pour un bot ou une IA."
+                : "This authentication demo compares two human sessions to illustrate the natural variability of cognitive signatures. Even for the same person, reaction times, attention and fatigue change from session to session, so you never get a perfect 100% match, only a similarity score. For an attacker (bot/AI), protection is equivalent to a 100% threshold: they must guess your HCS-U7 code exactly. The main HCS-U7 product is about generating this anti-bot HCS-U7 code from your tests, which is virtually impossible for bots or AI to reproduce or guess."}
+            </AlertDescription>
+          </Alert>
+
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">{isFr ? 'Comment ça marche' : 'How It Works'}</h3>
             

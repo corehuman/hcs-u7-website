@@ -2,11 +2,8 @@ import { Metadata } from 'next';
 import { SecurityHero } from '@/components/security/SecurityHero';
 import { ProblemSolution } from '@/components/security/ProblemSolution';
 import { UseCasesGrid } from '@/components/security/UseCasesGrid';
-import { TechnicalSection } from '@/components/security/TechnicalSection';
-import { SecurityAdvantages } from '@/components/security/SecurityAdvantages';
-import { SecurityFeatures } from '@/components/security/SecurityFeatures';
-import { SecurityFAQ } from '@/components/security/SecurityFAQ';
 import { SecurityCTA } from '@/components/security/SecurityCTA';
+import { SecuritySubnav } from '@/components/security/SecuritySubnav';
 
 export const metadata: Metadata = {
   title: 'Cognitive Security Solutions | HCS-U7',
@@ -38,25 +35,16 @@ export default function SecurityPage() {
     <main className="flex flex-col">
       {/* Hero Section */}
       <SecurityHero />
+
+      {/* Security sub-navigation */}
+      <SecuritySubnav />
       
       {/* Problem/Solution */}
       <ProblemSolution />
       
       {/* Use Cases Grid */}
       <UseCasesGrid />
-      
-      {/* Technical Explanation */}
-      <TechnicalSection />
-      
-      {/* Advantages vs Competitors */}
-      <SecurityAdvantages />
-      
-      {/* Features Highlights */}
-      <SecurityFeatures />
-      
-      {/* FAQ */}
-      <SecurityFAQ />
-      
+
       {/* Final CTA */}
       <SecurityCTA />
     </main>

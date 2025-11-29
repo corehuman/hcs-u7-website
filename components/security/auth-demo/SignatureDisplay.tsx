@@ -45,6 +45,11 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
           <CardTitle className="text-lg">
             {isFr ? 'Votre Signature Cognitive' : 'Your Cognitive Signature'}
           </CardTitle>
+          <CardDescription className="text-sm text-foreground/80 mt-1">
+            {isFr
+              ? "Ces mesures forment un petit code HCS-U7 de référence. Lors de la vérification, nous comparerons une nouvelle signature à celle-ci avec un score de similarité (en %, pas un match parfait à 100 %)."
+              : 'These measures form a small reference HCS-U7 code. During verification, we will compare a new signature to this one using a similarity score (in %, not a perfect 100% match).'}
+          </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-6">
@@ -95,9 +100,11 @@ export function SignatureDisplay({ signature, onProceed }: SignatureDisplayProps
                 description={isFr ? "Temps de réaction moyen" : "Mean reaction time"}
               />
               <MetricRow 
-                label={isFr ? "Variabilité (SD)" : "Variability (SD)"} 
+                label={isFr ? 'Variabilité (SD)' : 'Variability (SD)'} 
                 value={`${Math.round(signature.rtSD)}ms`}
-                description={isFr ? "Signature biologique unique" : "Unique biological signature"}
+                description={isFr 
+                  ? "Paramètre clé de votre code HCS-U7 : variabilité de vos temps de réaction, quasi impossible à rejouer exactement."
+                  : 'Key parameter of your HCS-U7 code: the variability of your reaction times, almost impossible to replay exactly.'}
                 highlight={true}
               />
               <MetricRow 

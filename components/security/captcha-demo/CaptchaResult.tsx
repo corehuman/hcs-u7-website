@@ -66,19 +66,47 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
         </p>
 
         {isHuman ? (
-          <Alert className="mt-4 border-green-200 dark:border-green-900 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/50">
-            <CheckCircle2 className="h-4 w-4" />
-            <AlertDescription>
-              Your cognitive patterns match expected human behavior. In a real system, 
-              you would be verified and granted access.
+          <Alert className="mt-4 bg-green-50 dark:bg-green-900/70 border border-green-300 dark:border-green-700 text-green-950 dark:text-green-50 shadow-sm">
+            <CheckCircle2 className="h-4 w-4 text-green-700 dark:text-green-300" />
+            <AlertDescription className="text-sm leading-relaxed">
+              {isFr ? (
+                <>
+                  Ce test vient de générer une mini signature cognitive HCS-U7. Si vous recommencez, vous ne
+                  referez jamais exactement le même code&nbsp;: le système compare vos essais avec un score de
+                  similarité (70&nbsp;%, 80&nbsp;%, etc.), pas avec un match parfait à 100&nbsp;%. Pour un bot ou une IA, la
+                  protection est réglée sur 100&nbsp;% de match, ce qui rend ce code pratiquement inviolable.
+                </>
+              ) : (
+                <>
+                  This test has just generated a small HCS-U7 cognitive signature. If you run it again, you will
+                  never reproduce exactly the same code: the system compares attempts with a similarity score
+                  (70%, 80%, etc.), not a perfect 100% match. For a bot or an AI, protection is tuned to a 100%
+                  match requirement, which makes this code practically unbreakable.
+                </>
+              )}
             </AlertDescription>
           </Alert>
         ) : (
-          <Alert className="mt-4 border-red-200 dark:border-red-900 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/50">
-            <AlertTriangle className="h-4 w-4" />
-            <AlertDescription>
-              Your response patterns are inconsistent with human cognition. 
-              This could indicate bot automation or intentional gaming of the system.
+          <Alert className="mt-4 bg-red-50 dark:bg-red-900/70 border border-red-300 dark:border-red-700 text-red-950 dark:text-red-50 shadow-sm">
+            <AlertTriangle className="h-4 w-4 text-red-700 dark:text-red-300" />
+            <AlertDescription className="text-sm leading-relaxed">
+              {isFr ? (
+                <>
+                  Les motifs que vous venez de produire ressemblent davantage à un comportement mécanique qu’à un
+                  humain stable (temps de réaction trop constants ou trop erratiques, pas d’effet Stroop, etc.).
+                  C’est exactement le type de signature qu’un bot ou une IA générerait en essayant de forcer un code
+                  cognitif HCS-U7. Pour être accepté, un attaquant devrait deviner un match cognitif à 100&nbsp;%, ce qui
+                  est pratiquement impossible à reproduire.
+                </>
+              ) : (
+                <>
+                  The patterns you just produced look more like mechanical behavior than a stable human profile
+                  (reaction times too consistent or too erratic, no Stroop effect, etc.). This is exactly the kind of
+                  signature a bot or AI would generate while trying to brute-force an HCS-U7 cognitive code. To be
+                  accepted, an attacker would need a 100% cognitive match, which is practically impossible to
+                  reproduce.
+                </>
+              )}
             </AlertDescription>
           </Alert>
         )}
@@ -89,14 +117,17 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
         <Card className="p-6">
           <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-amber-500" />
-            Detection Flags ({flags.length})
+            {isFr ? `Indicateurs de détection (${flags.length})` : `Detection Flags (${flags.length})`}
           </h3>
 
           <div className="space-y-3">
             {flags.map((flag, idx) => (
-              <Alert key={idx} className="border-amber-200 dark:border-amber-900 bg-amber-100 dark:bg-amber-900/25 border border-amber-200 dark:border-amber-800/40">
-                <AlertTriangle className="h-4 w-4" />
-                <AlertDescription>
+              <Alert
+                key={idx}
+                className="bg-amber-50 dark:bg-amber-900/70 border border-amber-300 dark:border-amber-700 text-amber-950 dark:text-amber-50 shadow-sm"
+              >
+                <AlertTriangle className="h-4 w-4 text-amber-700 dark:text-amber-300" />
+                <AlertDescription className="text-sm leading-relaxed">
                   <span className="font-medium">{formatFlagName(flag)}</span>
                   <span className="block text-sm mt-1">
                     {getFlagDescription(flag)}
@@ -112,102 +143,140 @@ export function CaptchaResult({ analysis, onReset }: CaptchaResultProps) {
       <Card className="p-6">
         <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
           <Activity className="w-5 h-5" />
-          Cognitive Metrics Analysis
+          {isFr ? 'Analyse des métriques cognitives' : 'Cognitive Metrics Analysis'}
         </h3>
 
         <div className="grid md:grid-cols-2 gap-4">
           {/* RT Variability */}
           <MetricCard
-            title="RT Variability"
+            title={isFr ? 'Variabilité des temps de réaction' : 'RT Variability'}
             value={`${Math.round(metrics.rtVariability)}ms SD`}
-            description="Consistency of reaction times"
-            expected="50-100ms"
+            description={
+              isFr
+                ? 'À quel point vos temps de réaction varient entre les essais'
+                : 'How much your reaction times vary between trials'
+            }
+            expected={
+              isFr
+                ? 'Zone humaine typique : 50–100ms'
+                : 'Typical human zone: 50–100ms'
+            }
             status={getMetricStatus(metrics.rtVariability, 50, 100)}
             importance="critical"
           >
-            <div className="flex justify-between text-xs text-amber-800 dark:text-amber-200 mt-2">
-              <span className="flex items-center gap-1">
-                Too consistent (&lt;40ms):
-                <Badge variant="outline" className="text-xs">Bot-like</Badge>
-              </span>
-              <span className="flex items-center gap-1">
-                Normal (50-100ms):
-                <Badge variant="default" className="text-xs">Human</Badge>
-              </span>
-              <span className="flex items-center gap-1">
-                Too random (&gt;150ms):
-                <Badge variant="destructive" className="text-xs">Suspicious</Badge>
-              </span>
+            <div className="mt-2 text-xs text-amber-800 dark:text-amber-200 space-y-1">
+              <p>
+                {isFr
+                  ? 'Les humains ont une variabilité "chaotique mais limitée" : ni parfaite, ni totalement aléatoire.'
+                  : 'Humans show "chaotic but limited" variability: neither perfectly stable nor completely random.'}
+              </p>
+              <p>
+                {isFr
+                  ? 'Les bots / scripts tombent souvent dans les extrêmes (temps ultra réguliers ou chaotiques), ce qui trahit un code non humain.'
+                  : 'Bots and scripts often fall into extremes (ultra-stable or very chaotic timings), which reveals a non-human code.'}
+              </p>
             </div>
           </MetricCard>
 
           {/* Stroop Effect */}
           <MetricCard
-            title="Stroop Interference"
+            title={isFr ? 'Interférence Stroop' : 'Stroop Interference'}
             value={`${Math.round(metrics.stroopEffect)}ms`}
-            description="Cognitive interference from incongruent stimuli"
-            expected="50-150ms"
+            description={
+              isFr
+                ? 'Délai cognitif quand la couleur et le mot ne correspondent pas'
+                : 'Cognitive delay when color and word do not match'
+            }
+            expected={
+              isFr
+                ? 'Zone humaine typique : 50–150ms'
+                : 'Typical human zone: 50–150ms'
+            }
             status={getMetricStatus(metrics.stroopEffect, 50, 150)}
             importance="critical"
           >
-            <div className="flex justify-between text-xs text-green-800 dark:text-green-200 mt-2">
-              <span className="flex items-center gap-1">
-                No effect (&lt;20ms):
-                <Badge variant="outline" className="text-xs">Bot-like</Badge>
-              </span>
-              <span className="flex items-center gap-1">
-                Normal (50-150ms):
-                <Badge variant="default" className="text-xs">Human</Badge>
-              </span>
-              <span className="flex items-center gap-1">
-                Excessive (&gt;250ms):
-                <Badge variant="destructive" className="text-xs">Unusual</Badge>
-              </span>
+            <div className="mt-2 text-xs text-green-800 dark:text-green-200 space-y-1">
+              <p>
+                {isFr
+                  ? "L'effet Stroop est une petite signature humaine : le cerveau met un peu plus de temps quand il doit inhiber la lecture du mot."
+                  : 'The Stroop effect is a small human "signature": your brain slows down slightly when it has to inhibit reading the word.'}
+              </p>
+              <p>
+                {isFr
+                  ? "Un bot ou une IA peut donner la bonne réponse, mais sans ce coût cognitif mesurable – c'est une différence clé dans le code HCS-U7."
+                  : 'A bot or AI can give the right answer, but usually without this measurable cognitive cost – that difference is part of the HCS-U7 code.'}
+              </p>
             </div>
           </MetricCard>
 
           {/* Learning Curve */}
           <MetricCard
-            title="Learning Curve"
+            title={isFr ? 'Courbe d’apprentissage' : 'Learning Curve'}
             value={`${metrics.learningSlope >= 0 ? '+' : ''}${Math.round(metrics.learningSlope)}ms`}
-            description="Performance improvement over trials"
-            expected="Positive (improvement)"
-            status={metrics.learningSlope > 5 ? 'good' : metrics.learningSlope < -5 ? 'bad' : 'warning'}
+            description={
+              isFr
+                ? 'Comment vos temps de réaction évoluent au fil des essais'
+                : 'How your reaction times evolve across trials'
+            }
+            expected={
+              isFr
+                ? 'Humain : légère amélioration progressive'
+                : 'Human: gradual positive improvement'
+            }
+            status={
+              metrics.learningSlope > 5
+                ? 'good'
+                : metrics.learningSlope < -5
+                ? 'bad'
+                : 'warning'
+            }
           >
-            <div className="mt-2 text-xs text-red-800 dark:text-red-200">
+            <div className="mt-2 text-xs text-red-800 dark:text-red-200 space-y-1">
               <p>
-                {metrics.learningSlope > 5 ? (
-                  <>✅ You improved over time (typical human pattern)</>
-                ) : metrics.learningSlope < -5 ? (
-                  <>⚠️ You got slower (fatigue or intentional)</>
-                ) : (
-                  <>⚠️ Flat performance (bot-like)</>
-                )}
+                {isFr
+                  ? "Une légère amélioration au fil des essais est typique d'un humain qui s'habitue à la tâche."
+                  : 'A slight improvement across trials is typical of a human adapting to the task.'}
+              </p>
+              <p>
+                {isFr
+                  ? "Les bots restent souvent plats (pas d'apprentissage) ou deviennent plus lents de façon artificielle quand quelqu'un essaie de jouer avec le test."
+                  : 'Bots often stay flat (no learning) or become slower in an artificial way when someone tries to "game" the test.'}
               </p>
             </div>
           </MetricCard>
 
           {/* Error Pattern */}
           <MetricCard
-            title="Error Distribution"
-            value={formatErrorPattern(metrics.errorPattern)}
-            description="How mistakes were distributed"
-            expected="Clustered (fatigue)"
-            status={metrics.errorPattern === 'clustered' || metrics.errorPattern === 'distributed' ? 'good' : 'warning'}
+            title={isFr ? 'Répartition des erreurs' : 'Error Distribution'}
+            value={formatErrorPattern(metrics.errorPattern, isFr)}
+            description={
+              isFr
+                ? 'Comment vos erreurs se répartissent pendant le test'
+                : 'How your mistakes were distributed during the test'
+            }
+            expected={
+              isFr
+                ? 'Humain : erreurs regroupées (fatigue, inattention)'
+                : 'Human: clustered errors (fatigue, inattention)'
+            }
+            status={
+              metrics.errorPattern === 'clustered' ||
+              metrics.errorPattern === 'distributed'
+                ? 'good'
+                : 'warning'
+            }
           >
-            <div className="flex justify-between text-xs text-foreground/80 mt-2">
-              <span className="flex items-center gap-1">
-                None/Perfect:
-                <Badge variant="destructive" className="text-xs">Suspicious</Badge>
-              </span>
-              <span className="flex items-center gap-1">
-                Clustered:
-                <Badge variant="default" className="text-xs">Human (fatigue)</Badge>
-              </span>
-              <span className="flex items-center gap-1">
-                Random:
-                <Badge variant="outline" className="text-xs">Bot-like</Badge>
-              </span>
+            <div className="mt-2 text-xs text-foreground/80 space-y-1">
+              <p>
+                {isFr
+                  ? 'Les humains font rarement un parcours parfait : les erreurs ont tendance à se regrouper (fatigue, inattention passagère).'
+                  : 'Humans rarely produce a perfect run: errors tend to cluster (fatigue, momentary inattention).'}
+              </p>
+              <p>
+                {isFr
+                  ? "Un profil sans erreur ou avec des erreurs réparties de façon trop régulière ressemble davantage à un script qu'à un humain réel."
+                  : 'A profile with no errors, or errors distributed too evenly, looks more like a script than a real human.'}
+              </p>
             </div>
           </MetricCard>
         </div>
@@ -542,15 +611,25 @@ function getFlagDescription(flag: string): string {
   return descriptions[flag] || flag;
 }
 
-function formatErrorPattern(pattern: string): string {
-  const formatted: Record<string, string> = {
-    'none': 'Perfect (no errors)',
-    'single': 'Single error',
-    'clustered': 'Clustered (fatigue)',
-    'distributed': 'Distributed',
-    'random': 'Random'
+function formatErrorPattern(pattern: string, isFr: boolean): string {
+  const formattedEn: Record<string, string> = {
+    none: 'Perfect (no errors)',
+    single: 'Single error',
+    clustered: 'Clustered (fatigue)',
+    distributed: 'Distributed',
+    random: 'Random',
   };
-  return formatted[pattern] || pattern;
+
+  const formattedFr: Record<string, string> = {
+    none: 'Parfait (aucune erreur)',
+    single: 'Erreur unique',
+    clustered: 'Regroupées (fatigue)',
+    distributed: 'Distribuées',
+    random: 'Aléatoires',
+  };
+
+  const dict = isFr ? formattedFr : formattedEn;
+  return dict[pattern] || pattern;
 }
 
 function getMetricStatus(value: number, min: number, max: number): 'good' | 'warning' | 'bad' {

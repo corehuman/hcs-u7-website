@@ -185,10 +185,11 @@ export function CaptchaIntro({ onStart }: CaptchaIntroProps) {
         </Card>
       </div>
 
-      <Alert className="bg-amber-100/95 dark:bg-amber-900/50 border-2 border-amber-200 dark:border-amber-800/70 backdrop-blur-sm">
-        <Info className="h-4 w-4" />
-        <AlertDescription>
-          <span className="font-medium">{isFr ? 'Essayez de "tromper" le système :' : 'Try to "game" the system:'}</span> {isFr
+      <Alert className="bg-amber-50 dark:bg-amber-900/70 border border-amber-300 dark:border-amber-700 text-amber-950 dark:text-amber-50 shadow-sm">
+        <Info className="h-4 w-4 text-amber-700 dark:text-amber-300" />
+        <AlertDescription className="text-sm leading-relaxed">
+          <span className="font-medium">{isFr ? 'Essayez de "tromper" le système :' : 'Try to "game" the system:'}</span>{' '}
+          {isFr
             ? 'Répondez intentionnellement trop vite, trop lentement ou avec une précision parfaite. Voyez si vous pouvez tromper le détecteur de bots !'
             : 'Intentionally respond too fast, too slow, or with perfect accuracy. See if you can trick the bot detector!'}
         </AlertDescription>

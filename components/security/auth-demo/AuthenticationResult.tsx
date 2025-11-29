@@ -440,7 +440,11 @@ function ComparisonRow({
   const trendColor = percentDiff < 10 ? 'text-green-900 dark:text-green-100' : percentDiff < 20 ? 'text-amber-600' : 'text-red-900 dark:text-red-100';
 
   return (
-    <div className={`p-4 rounded-lg ${importance === 'critical' ? 'bg-amber-100 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40' : 'bg-gray-50 dark:bg-gray-900'}`}>
+    <div
+      className={`rounded-xl p-4 ${
+        importance === 'critical' ? 'card-warning' : 'card-base'
+      }`}
+    >
       <div className="flex justify-between items-start mb-2">
         <div className="flex items-start gap-2">
           <div>

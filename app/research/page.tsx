@@ -16,7 +16,7 @@ export default function ResearchPage() {
         </p>
       </div>
 
-      <section className="space-y-3 rounded-2xl border bg-white/70 p-5 text-sm shadow-sm dark:bg-neutral-950/70">
+      <section className="space-y-4 rounded-2xl card-base p-6 text-sm">
         <h2 className="text-lg font-semibold text-foreground">
           Empirical validation protocol
         </h2>
@@ -40,7 +40,7 @@ export default function ResearchPage() {
         </Button>
       </section>
 
-      <section className="mt-10 space-y-4 rounded-2xl border bg-white/70 p-5 text-sm shadow-sm dark:bg-neutral-950/70">
+      <section className="mt-10 space-y-4 rounded-2xl card-base p-6 text-sm">
         <h2 className="text-lg font-semibold text-foreground">
           Study results (timeline)
         </h2>
@@ -60,7 +60,7 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      <section className="mt-10 space-y-4 rounded-2xl border bg-white/70 p-5 text-sm shadow-sm dark:bg-neutral-950/70">
+      <section className="mt-10 space-y-4 rounded-2xl card-base p-6 text-sm">
         <h2 className="text-lg font-semibold text-foreground">Publications</h2>
         <ul className="list-disc space-y-1 pl-5 text-foreground/85">
           <li>HCS-U7 Technical Specification (arXiv, 2025).</li>
@@ -72,7 +72,7 @@ export default function ResearchPage() {
         </ul>
       </section>
 
-      <section className="mt-10 space-y-4 rounded-2xl border bg-white/70 p-5 text-sm shadow-sm dark:bg-neutral-950/70">
+      <section className="mt-10 space-y-4 rounded-2xl card-base p-6 text-sm">
         <h2 className="text-lg font-semibold text-foreground">
           Participate in a study
         </h2>
@@ -85,10 +85,6 @@ export default function ResearchPage() {
           <li>Age between 18 and 65 years.</li>
           <li>Available for 10×30-minute sessions over 4 weeks.</li>
         </ul>
-        <p className="text-xs text-foreground/85">
-          Indicative compensation: 20€ gift card (depending on study and local
-          regulations).
-        </p>
         <Button type="button" size="sm" className="mt-2">
           I want to join (form coming soon)
         </Button>

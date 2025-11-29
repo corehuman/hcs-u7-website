@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Lock, Zap, Eye, Users, Code } from 'lucide-react';
+import { Shield, Lock, Zap, Eye, Users, Code, Fingerprint } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/LanguageProvider';
 
@@ -16,6 +16,13 @@ export function SecurityFeatures() {
       description: isFr
         ? 'Les modèles cognitifs vous sont intrinsèques—ils ne peuvent pas être volés, copiés ou transférés comme des mots de passe ou des jetons.'
         : 'Cognitive patterns are intrinsic to you—they cannot be stolen, copied, or transferred like passwords or tokens.'
+    },
+    {
+      icon: Fingerprint,
+      title: isFr ? 'Code HCS-U7 unique' : 'Unique HCS-U7 Code',
+      description: isFr
+        ? "Chaque session de tests génère un code HCS-U7 non reproductible, même par l'auteur. Il peut être stocké comme secret, servir de bouclier anti-bot et de profil cognitif portable entre vos applications."
+        : 'Each test session generates an HCS-U7 code that is not reproducible, even by its author. It can be stored as a secret, used as an anti-bot shield and as a portable cognitive profile across your applications.'
     },
     {
       icon: Lock,

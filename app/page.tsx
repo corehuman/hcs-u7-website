@@ -169,15 +169,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="space-y-4 rounded-2xl border-2 border-green-200 dark:border-green-800/50 bg-green-100/95 dark:bg-green-900/30 backdrop-blur-sm p-6 shadow-sm">
-              <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+            <div className="space-y-4 rounded-2xl card-success backdrop-blur-sm p-6 shadow-sm">
+              <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
                 {isFr ? 'Solution HCS-U7' : 'HCS-U7 Solution'}
                 <Badge className="ml-3 text-xs bg-green-600">{isFr ? 'Résistant IA' : 'AI-Resistant'}</Badge>
               </h3>
               <div className="space-y-4">
                 <div>
                   <h4 className="font-semibold text-sm mb-2">✓ {isFr ? 'Analyse de Patterns Cognitifs' : 'Cognitive Pattern Analysis'}</h4>
-                  <p className="text-sm text-foreground/75">
+                  <p className="text-sm opacity-90">
                     {isFr
                       ? "Mesure la variabilité du temps de réaction, l'effet Stroop, les courbes d'apprentissage—des patterns que les bots IA ne peuvent pas répliquer."
                       : "Measures reaction time variability, Stroop effect, learning curves—patterns that AI bots cannot replicate even with advanced models."}
@@ -186,7 +186,7 @@ export default function HomePage() {
                 
                 <div>
                   <h4 className="font-semibold text-sm mb-2">✓ {isFr ? 'Respectueux des Humains' : 'Human-Friendly'}</h4>
-                  <p className="text-sm text-foreground/75">
+                  <p className="text-sm opacity-90">
                     {isFr
                       ? "Rapide (~30s), accessible (clavier/souris/tactile), pas de puzzles visuels frustrants."
                       : "Quick (~30s), accessible (keyboard/mouse/touch), no frustrating visual puzzles."}
@@ -195,7 +195,7 @@ export default function HomePage() {
                 
                 <div>
                   <h4 className="font-semibold text-sm mb-2">✓ {isFr ? 'Vie Privée Protégée' : 'Privacy-First'}</h4>
-                  <p className="text-sm text-foreground/75">
+                  <p className="text-sm opacity-90">
                     {isFr
                       ? "Traitement côté client, pas de tracking, conforme RGPD."
                       : "Client-side processing, no tracking, GDPR compliant."}
