@@ -42,3 +42,39 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# ============================================
+# INTELLECTUAL PROPERTY PROTECTION
+# ============================================
+
+# Legal documents (private)
+docs/legal/
+docs/legal/*.pdf
+docs/legal/*.docx
+NDA_*.md
+NDA_*.pdf
+INVENTION_DISCLOSURE*.md
+STRATEGY*.md
+CONFIDENTIAL*.md
+
+# Proprietary code (to be separated later)
+lib/proprietary/
+config/production.json
+config/secrets.json
+
+# Private scripts
+scripts/private/
+
+# Business documents
+business/*.xlsx
+business/*.pdf
+financials/
+
+# Client information
+clients/
+contracts/
+
+# Brevet drafts
+patent-drafts/
+prior-art/
+ 
+# ============================================

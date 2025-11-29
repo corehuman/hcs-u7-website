@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import {
@@ -111,19 +111,25 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
               <div className="text-4xl font-bold text-primary">
                 {Math.round(comparison.similarity * 100)}%
               </div>
-              <p className="text-sm text-red-800 dark:text-red-200 mt-1">
+              <p
+                className={`text-sm mt-1 ${
+                  authenticated
+                    ? 'text-green-700 dark:text-green-200'
+                    : 'text-amber-500 dark:text-amber-200'
+                }`}
+              >
                 {isFr ? 'Score de Similarité Global' : 'Overall Similarity Score'}
               </p>
             </div>
 
-            <div className="relative h-8 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-              <div 
+            <div className="relative h-3 rounded-full bg-muted overflow-hidden">
+              <div
                 className={`absolute left-0 top-0 h-full transition-all ${
-                  comparison.similarity >= 0.70 
-                    ? 'bg-green-600' 
-                    : comparison.similarity >= 0.60 
-                    ? 'bg-amber-600' 
-                    : 'bg-red-600'
+                  comparison.similarity >= 0.8
+                    ? 'bg-green-500'
+                    : comparison.similarity >= 0.6
+                    ? 'bg-primary'
+                    : 'bg-destructive'
                 }`}
                 style={{ width: `${comparison.similarity * 100}%` }}
               />
@@ -316,22 +322,22 @@ export function AuthenticationResult({ enrolled, verify, onReset }: Authenticati
                     ? 'Le seuil de 70% a été établi par tests pilotes (N=50) et littérature psychométrique (test-retest reliability) :'
                     : 'The 70% threshold was established through pilot testing (N=50) and psychometric literature (test-retest reliability):'}
                 </p>
-                <ul className="space-y-2 text-sm text-foreground/70">
+                <ul className="space-y-2 text-sm text-medium-contrast">
                   <li>• {isFr ? 'Même personne, conditions optimales : 85-95% similarité' : 'Same person, optimal conditions: 85-95% similarity'}</li>
                   <li>• {isFr ? 'Même personne, variabilité normale (fatigue, stress, heure) : 70-85%' : 'Same person, normal variability (fatigue, stress, time): 70-85%'}</li>
                   <li>• {isFr ? 'Membres de la famille (frères/sœurs) : 55-70%' : 'Family members (siblings): 55-70%'}</li>
                   <li>• {isFr ? 'Personnes non liées : 20-50%' : 'Unrelated individuals: 20-50%'}</li>
                 </ul>
-                <div className="mt-3 p-4 bg-gray-50 dark:bg-slate-900 border border-gray-200 dark:border-slate-700 rounded-lg">
-                  <p className="text-sm font-semibold text-foreground dark:text-foreground mb-2">
+                <div className="mt-3 p-4 bg-info-subtle rounded-lg">
+                  <p className="text-sm font-semibold text-high-contrast mb-2">
                     {isFr ? 'Balance optimale :' : 'Optimal balance:'}
                   </p>
-                  <ul className="space-y-1 text-xs text-foreground/80 dark:text-foreground">
+                  <ul className="space-y-1 text-xs text-medium-contrast">
                     <li>• {isFr ? 'Seuil 70% → Taux de faux rejet < 5% (excellent UX)' : '70% threshold → False rejection rate < 5% (excellent UX)'}</li>
                     <li>• {isFr ? 'Seuil 85% → Taux de faux rejet ~ 40-50% (inacceptable)' : '85% threshold → False rejection rate ~ 40-50% (unacceptable)'}</li>
                     <li>• {isFr ? 'Seuil 60% → Taux de faux positifs ~ 8% (risque sécurité)' : '60% threshold → False positive rate ~ 8% (security risk)'}</li>
                   </ul>
-                  <p className="text-xs text-foreground/70 dark:text-foreground/90 mt-2">
+                  <p className="text-xs text-low-contrast mt-2">
                     {isFr
                       ? 'Références : Wechsler WAIS-IV (test-retest r=0.70-0.80), Stroop test (r=0.65-0.85), RT simple (ICC=0.75-0.85)'
                       : 'References: Wechsler WAIS-IV (test-retest r=0.70-0.80), Stroop test (r=0.65-0.85), Simple RT (ICC=0.75-0.85)'}
@@ -441,8 +447,10 @@ function ComparisonRow({
 
   return (
     <div
-      className={`rounded-xl p-4 ${
-        importance === 'critical' ? 'card-warning' : 'card-base'
+      className={`rounded-xl p-4 card-base ${
+        importance === 'critical'
+          ? 'border-amber-400 dark:border-amber-500'
+          : ''
       }`}
     >
       <div className="flex justify-between items-start mb-2">
@@ -485,7 +493,10 @@ function ComparisonRow({
 export function compareSignatures(
   enrolled: CognitiveSignature, 
   verify: CognitiveSignature
-): { similarity: number; details: any } {
+): {
+  similarity: number;
+  details: Record<string, { similarity: number; weighted: number; diff: number }>;
+} {
   
   // Normalize metrics to 0-1 scale
   const normalize = (value: number, min: number, max: number) => {
@@ -528,7 +539,10 @@ export function compareSignatures(
 
   // Calculate weighted similarity
   let totalSimilarity = 0;
-  const details: any = {};
+  const details: Record<
+    string,
+    { similarity: number; weighted: number; diff: number }
+  > = {};
 
   Object.entries(dimensions).forEach(([key, dim]) => {
     const diff = Math.abs(dim.enrolled - dim.verify);

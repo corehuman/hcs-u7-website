@@ -213,7 +213,13 @@ function MetricRow({
   highlight?: boolean;
 }) {
   return (
-    <div className={highlight ? 'bg-amber-100 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/40 p-3 rounded-lg' : ''}>
+    <div
+      className={
+        highlight
+          ? 'bg-warning-subtle p-3 rounded-lg'
+          : 'p-3 rounded-lg border border-border/70 bg-card/95'
+      }
+    >
       <div className="flex justify-between items-center mb-1">
         <span className={`text-sm font-medium ${highlight ? 'text-amber-900 dark:text-amber-100' : ''}`}>{label}</span>
         <span className={`font-mono font-bold ${highlight ? 'text-amber-950 dark:text-amber-50' : ''}`}>{value}</span>

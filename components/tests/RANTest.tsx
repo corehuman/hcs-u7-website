@@ -88,6 +88,7 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
   const lastWordTimeRef = useRef(0);
   const lastTranscriptRef = useRef('');
   const lastAcceptTimeRef = useRef(0);
+  const noResultTimeoutRef = useRef<number | null>(null);
 
   // Ref pour suivre l'état courant dans les callbacks
   const isRecordingRef = useRef(false);
@@ -258,6 +259,31 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
 
       recognitionRef.current = recognition;
       recognition.start();
+
+      // Si aucun résultat n'arrive dans les 8 secondes, on considère que
+      // la reco vocale ne fonctionne pas dans cet environnement et on
+      // bascule en mode "non disponible".
+      if (typeof window !== 'undefined') {
+        noResultTimeoutRef.current = window.setTimeout(() => {
+          if (!isRecordingRef.current || timingsRef.current.length > 0) {
+            return;
+          }
+
+          console.warn(
+            '[RAN] Aucun résultat vocal reçu, désactivation du module vocal'
+          );
+
+          const recognitionInstance = recognitionRef.current;
+          if (recognitionInstance) {
+            recognitionInstance.onend = null;
+            recognitionInstance.stop();
+            recognitionRef.current = null;
+          }
+
+          setIsRecording(false);
+          setHasSupport(false);
+        }, 8000);
+      }
     } catch (error) {
       console.error('[RAN] Erreur démarrage:', error);
       setHasSupport(false);
@@ -269,6 +295,11 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
    */
   const stopTest = () => {
     console.log('[RAN] Arrêt du test');
+
+    if (noResultTimeoutRef.current !== null) {
+      clearTimeout(noResultTimeoutRef.current);
+      noResultTimeoutRef.current = null;
+    }
 
     const recognition = recognitionRef.current;
     if (recognition) {
@@ -344,6 +375,11 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
   // Cleanup reconnaissance à l'unmount
   useEffect(() => {
     return () => {
+      if (noResultTimeoutRef.current !== null) {
+        clearTimeout(noResultTimeoutRef.current);
+        noResultTimeoutRef.current = null;
+      }
+
       const recognition = recognitionRef.current;
       if (recognition) {
         recognition.onend = null;
