@@ -1,9 +1,8 @@
 {
   "name": "hcs-u7",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HCS-U7 cognitive profile parser and utilities for JavaScript/TypeScript",
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json"

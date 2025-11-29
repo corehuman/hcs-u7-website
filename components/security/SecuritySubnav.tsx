@@ -8,6 +8,7 @@ const items = [
   { href: '/security', key: 'overview' },
   { href: '/security/hcs-code', key: 'code' },
   { href: '/security/auth-demo', key: 'demo' },
+  { href: '/secure-login-demo', key: 'secureLogin' },
   { href: '/security/faq', key: 'faq' },
 ];
 
@@ -21,12 +22,14 @@ export function SecuritySubnav() {
         overview: "Vue d'ensemble",
         code: 'Code HCS-U7 & Sécurité',
         demo: "Démo d'authentification",
+        secureLogin: 'Login bancaire protégé',
         faq: 'FAQ',
       }
     : {
         overview: 'Overview',
         code: 'HCS-U7 Code & Security',
         demo: 'Auth Demo',
+        secureLogin: 'Bank login demo',
         faq: 'FAQ',
       };
 

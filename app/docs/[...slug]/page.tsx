@@ -246,6 +246,11 @@ const completion = await client.chat.completions.create({
           <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             Parsers HCS-U7 (Python / JavaScript)
           </h1>
+          <p className="text-sm text-foreground/80">
+            Official SDKs are available on PyPI and npm under the same name:
+            <code className="mx-1 rounded bg-muted px-1 py-0.5 text-xs">hcs-u7</code>
+            for both Python and JavaScript/TypeScript.
+          </p>
           <CodeBlock
             language="python"
             code={`from hcs_u7 import parse_hcs_code
