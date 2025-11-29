@@ -1,0 +1,11 @@
+LICENSE
+README.md
+pyproject.toml
+src/hcs_u7/__init__.py
+src/hcs_u7/parser.py
+src/hcs_u7/types.py
+src/hcs_u7.egg-info/PKG-INFO
+src/hcs_u7.egg-info/SOURCES.txt
+src/hcs_u7.egg-info/dependency_links.txt
+src/hcs_u7.egg-info/top_level.txt
+tests/test_parser.py

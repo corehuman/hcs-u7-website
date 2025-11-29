@@ -1,0 +1,25 @@
+{
+  "name": "hcs-u7",
+  "version": "0.1.1",
+  "description": "HCS-U7 cognitive profile parser and utilities for JavaScript/TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "keywords": [
+    "hcs-u7",
+    "cognitive",
+    "profile",
+    "security"
+  ],
+  "license": "MIT",
+  "author": "CoreHuman",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/corehuman/hcs-u7-js.git"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,158 @@
+[
+  {
+    "id": "developer-analytical",
+    "name": {
+      "fr": "Développeur Analytique",
+      "en": "Analytical Developer"
+    },
+    "code": "HCS-U7|V:7.0|ALG:QS|E:E|MOD:c15f50m35|COG:F05C85V10S20Cr25|INT:PB=F,SM=L,TN=M|QSIG:abc123ef|B3:def456gh",
+    "description": {
+      "fr": "Privilégie la logique pure, rythme rapide, peu de visuels. Idéal pour le debugging, la revue de code et la conception d'architectures.",
+      "en": "Prioritizes pure logic, fast pace, few visuals. Ideal for debugging, code reviews and architecture design."
+    },
+    "goodFor": {
+      "fr": ["Debugging", "Architecture", "Code review"],
+      "en": ["Debugging", "Architecture", "Code review"]
+    },
+    "dialogue": {
+      "before": {
+        "user": "Comment fonctionne async/await en JavaScript ?",
+        "ai": "Async/await est une fonctionnalité moderne de JavaScript qui permet d'écrire du code asynchrone comme du code synchrone. Imaginez que... (explication très longue, narrative, avec de nombreux détours)."
+      },
+      "after": {
+        "user": "Comment fonctionne async/await en JavaScript ?",
+        "ai": "Async/await est une couche syntaxique au-dessus des Promises.\n\n1. Une fonction marquée `async` retourne toujours une Promise.\n2. `await` suspend l'exécution jusqu'à la résolution de la Promise.\n3. Les erreurs se gèrent avec `try/catch`.\n\nExemple minimal :\nasync function fetchData() {\n  const data = await api.get();\n  return data;\n}\n\nIntérêt principal : rendre le flot de contrôle plus lisible sans bloquer l'event loop."
+      }
+    }
+  },
+  {
+    "id": "manager-synthetic",
+    "name": {
+      "fr": "Manager Synthétique",
+      "en": "Synthetic Manager"
+    },
+    "code": "HCS-U7|V:7.0|ALG:QS|E:F|MOD:c40f30m30|COG:F10C55V10S60Cr15|INT:PB=B,SM=M,TN=M|QSIG:mng789ab|B3:cde901fg",
+    "description": {
+      "fr": "Cherche des synthèses rapides orientées décision, avec peu de détails techniques mais des recommandations actionnables.",
+      "en": "Looks for fast, decision-oriented syntheses, with few technical details but actionable recommendations."
+    },
+    "goodFor": {
+      "fr": ["Meetings", "Stratégie", "Délégation"],
+      "en": ["Meetings", "Strategy", "Delegation"]
+    },
+    "dialogue": {
+      "before": {
+        "user": "Peux-tu m'aider à préparer une réunion produit ?",
+        "ai": "Bien sûr. Pour commencer, définissons l'historique complet du projet, puis nous verrons les différents scénarios possibles... (long récit peu structuré)."
+      },
+      "after": {
+        "user": "Peux-tu m'aider à préparer une réunion produit ?",
+        "ai": "Objectif : décider des priorités pour le prochain sprint.\n\n1. Contexte (2 phrases max).\n2. 3 décisions clés à prendre.\n3. Options par décision (avec avantages / risques).\n4. Agenda proposé (45 min).\n\nJe peux ensuite générer un support de réunion en bullet points."
+      }
+    }
+  },
+  {
+    "id": "creative-exploratory",
+    "name": {
+      "fr": "Créatif Exploratoire",
+      "en": "Creative Exploratory"
+    },
+    "code": "HCS-U7|V:7.0|ALG:QS|E:W|MOD:c25f25m50|COG:F05C35V30S35Cr70|INT:PB=B,SM=H,TN=H|QSIG:crea55xy|B3:ijk234lm",
+    "description": {
+      "fr": "Aime explorer de nombreuses idées, métaphores et analogies. Tolérant au flou, préfère la diversité à la rigidité.",
+      "en": "Likes to explore many ideas, metaphors and analogies. Tolerant to fuzziness, prefers diversity over rigidity."
+    },
+    "goodFor": {
+      "fr": ["Brainstorming", "Idéation", "Storytelling"],
+      "en": ["Brainstorming", "Ideation", "Storytelling"]
+    },
+    "dialogue": {
+      "before": {
+        "user": "Inspire-moi pour un concept de jeu vidéo original.",
+        "ai": "Nous pourrions imaginer un jeu de plateforme classique avec quelques variations mineures..."
+      },
+      "after": {
+        "user": "Inspire-moi pour un concept de jeu vidéo original.",
+        "ai": "Je te propose 3 directions très différentes :\n\n1. Cartographe de rêves : tu explores des rêves générés procéduralement, chaque décision altère la topologie du monde.\n2. Symphonie quantique : puzzle musical où chaque action modifie simultanément plusieurs timelines.\n3. Archives du futur : jeu narratif où tu reconstruis l'histoire à partir de fragments contradictoires.\n\nOn peut ensuite développer en profondeur celle que tu préfères."
+      }
+    }
+  },
+  {
+    "id": "teacher-pedagogical",
+    "name": {
+      "fr": "Enseignant Pédagogue",
+      "en": "Pedagogical Teacher"
+    },
+    "code": "HCS-U7|V:7.0|ALG:QS|E:A|MOD:c20f50m30|COG:F20C45V25S60Cr30|INT:PB=S,SM=H,TN=M|QSIG:teach77no|B3:nop567qr",
+    "description": {
+      "fr": "Préfère des explications progressives, structurées, avec des analogies et des vérifications de compréhension.",
+      "en": "Prefers progressive, structured explanations with analogies and understanding checks."
+    },
+    "goodFor": {
+      "fr": ["Formation", "Mentorat", "Onboarding"],
+      "en": ["Training", "Mentoring", "Onboarding"]
+    },
+    "dialogue": {
+      "before": {
+        "user": "Explique-moi le backpropagation pour l'enseigner à un étudiant.",
+        "ai": "Le backpropagation est un algorithme d'optimisation basé sur le gradient qui... (explication dense, peu progressive)."
+      },
+      "after": {
+        "user": "Explique-moi le backpropagation pour l'enseigner à un étudiant.",
+        "ai": "Je vais l'expliquer en 4 niveaux : intuition, équations, pseudo-code, puis exemple.\n\n1. Intuition : on mesure l'erreur en sortie et on remonte pour ajuster chaque connexion.\n2. Équations : dérivées partielles de la loss par rapport aux poids.\n3. Pseudo-code commenté.\n4. Exemple numérique simple avec 1 neurone caché.\n\nJe peux m'arrêter à n'importe quel niveau selon ton besoin."
+      }
+    }
+  },
+  {
+    "id": "researcher-methodical",
+    "name": {
+      "fr": "Chercheur Méthodique",
+      "en": "Methodical Researcher"
+    },
+    "code": "HCS-U7|V:7.0|ALG:QS|E:E|MOD:c30f40m30|COG:F25C80V20S40Cr20|INT:PB=S,SM=M,TN=L|QSIG:res902ab|B3:stu890vw",
+    "description": {
+      "fr": "Très sensible à la rigueur méthodologique, préfère les preuves, les protocoles et les métriques claires.",
+      "en": "Highly sensitive to methodological rigor, prefers proofs, protocols and clear metrics."
+    },
+    "goodFor": {
+      "fr": ["Recherche", "Validation", "Revue scientifique"],
+      "en": ["Research", "Validation", "Scientific review"]
+    },
+    "dialogue": {
+      "before": {
+        "user": "Comment valider empiriquement un nouveau système de recommandation ?",
+        "ai": "On peut simplement vérifier si les utilisateurs semblent satisfaits après quelques essais..."
+      },
+      "after": {
+        "user": "Comment valider empiriquement un nouveau système de recommandation ?",
+        "ai": "Je propose un protocole en 5 points :\n1. Définir des métriques cibles (NDCG, CTR, temps de session).\n2. Mettre en place un A/B test randomisé sur une population définie.\n3. Fixer la taille d'échantillon pour une puissance statistique suffisante.\n4. Analyser les résultats (tests d'hypothèses, intervalles de confiance).\n5. Prévoir une réplication sur un autre segment d'utilisateurs."
+      }
+    }
+  },
+  {
+    "id": "senior-calm",
+    "name": {
+      "fr": "Senior Calme",
+      "en": "Calm Senior"
+    },
+    "code": "HCS-U7|V:7.0|ALG:QS|E:A|MOD:c10f60m30|COG:F30C50V15S40Cr15|INT:PB=S,SM=L,TN=H|QSIG:sen333kl|B3:xyz123op",
+    "description": {
+      "fr": "Privilégie la stabilité, les explications posées et les recommandations pragmatiques, sans surcharger de détails.",
+      "en": "Values stability, calm explanations and pragmatic recommendations, without too much detail."
+    },
+    "goodFor": {
+      "fr": ["Décision long terme", "Coaching", "Gestion de crise"],
+      "en": ["Long-term decision", "Coaching", "Crisis management"]
+    },
+    "dialogue": {
+      "before": {
+        "user": "J'hésite entre plusieurs options de carrière.",
+        "ai": "Voici une liste exhaustive de toutes les possibilités, avec de très nombreux critères à comparer..."
+      },
+      "after": {
+        "user": "J'hésite entre plusieurs options de carrière.",
+        "ai": "Je vais t'aider à clarifier en douceur, sans surcharge :\n\n1. On identifie 3 critères principaux pour toi (valeurs, rythme, apprentissage).\n2. On compare chaque option sur ces 3 axes.\n3. Je propose ensuite 2 scénarios réalistes et leurs compromis.\n\nObjectif : te donner un cadre simple pour décider sereinement."
+      }
+    }
+  }
+]
