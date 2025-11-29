@@ -176,45 +176,61 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
           console.log('[RAN] Hésitation détectée:', transcript);
         }
 
-        // Détecter couleurs prononcées (en français)
-        COLORS_FR.forEach((colorName, colorIdx) => {
-          if (!transcript.includes(colorName)) return;
+        // Détecter au plus UNE couleur prononcée pour ce segment
+        let detectedColorIdx: number | null = null;
+        let detectedColorName: string | null = null;
 
-          setCurrentIndex((prev) => {
-            const expectedColorIdx = sequence[prev];
+        for (let i = 0; i < COLORS_FR.length; i += 1) {
+          const colorName = COLORS_FR[i];
+          if (transcript.includes(colorName)) {
+            detectedColorIdx = i;
+            detectedColorName = colorName;
+            break;
+          }
+        }
 
-            if (colorIdx === expectedColorIdx) {
-              correctCountRef.current += 1;
-              console.log(
-                `[RAN] Correct! ${colorName} (${prev + 1}/${TOTAL_ITEMS})`
-              );
-            } else {
-              console.log(
-                `[RAN] Erreur: dit "${colorName}", attendu "${COLORS_FR[expectedColorIdx]}"`
-              );
-            }
+        // Aucun nom de couleur détecté dans ce segment final
+        if (detectedColorIdx === null || !detectedColorName) {
+          return;
+        }
 
-            // Calculer timing inter-item
-            const interItemPause = now - lastWordTimeRef.current;
-            timingsRef.current.push(interItemPause);
+        const colorIdx = detectedColorIdx;
+        const colorName = detectedColorName;
 
-            // Détecter pauses respiratoires (>500ms)
-            if (interItemPause > 500) {
-              breathingPausesRef.current.push(interItemPause);
-              console.log(
-                `[RAN] Pause respiratoire détectée: ${interItemPause}ms`
-              );
-            }
+        setCurrentIndex((prev) => {
+          const expectedColorIdx = sequence[prev];
 
-            lastWordTimeRef.current = now;
+          if (colorIdx === expectedColorIdx) {
+            correctCountRef.current += 1;
+            console.log(
+              `[RAN] Correct! ${colorName} (${prev + 1}/${TOTAL_ITEMS})`
+            );
+          } else {
+            console.log(
+              `[RAN] Erreur: dit "${colorName}", attendu "${COLORS_FR[expectedColorIdx]}"`
+            );
+          }
 
-            const nextIndex = prev + 1;
-            if (nextIndex >= TOTAL_ITEMS) {
-              setTimeout(() => stopTest(), 500);
-            }
+          // Calculer timing inter-item
+          const interItemPause = now - lastWordTimeRef.current;
+          timingsRef.current.push(interItemPause);
 
-            return nextIndex;
-          });
+          // Détecter pauses respiratoires (>500ms)
+          if (interItemPause > 500) {
+            breathingPausesRef.current.push(interItemPause);
+            console.log(
+              `[RAN] Pause respiratoire détectée: ${interItemPause}ms`
+            );
+          }
+
+          lastWordTimeRef.current = now;
+
+          const nextIndex = prev + 1;
+          if (nextIndex >= TOTAL_ITEMS) {
+            setTimeout(() => stopTest(), 500);
+          }
+
+          return nextIndex;
         });
       };
 
