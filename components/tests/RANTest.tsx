@@ -87,13 +87,20 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
   const hesitationCountRef = useRef(0);
   const breathingPausesRef = useRef<number[]>([]);
   const lastWordTimeRef = useRef(0);
+  const lastTranscriptRef = useRef('');
+  const lastAcceptTimeRef = useRef(0);
 
   // Ref pour suivre l'état courant dans les callbacks
   const isRecordingRef = useRef(false);
+  const currentIndexRef = useRef(0);
 
   useEffect(() => {
     isRecordingRef.current = isRecording;
   }, [isRecording]);
+
+  useEffect(() => {
+    currentIndexRef.current = currentIndex;
+  }, [currentIndex]);
 
   // Détection support navigateur (côté client uniquement)
   useEffect(() => {
@@ -140,8 +147,11 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
 
       // Configuration reconnaissance vocale
       recognition.lang = 'fr-FR';
-      recognition.continuous = true;
-      recognition.interimResults = true;
+      // On utilise des segments courts: une phrase => un résultat final,
+      // puis on relance automatiquement la reco dans onend tant que
+      // le test n'est pas terminé.
+      recognition.continuous = false;
+      recognition.interimResults = false;
       recognition.maxAlternatives = 1;
 
       // Handler: Démarrage
@@ -149,6 +159,8 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
         console.log('[RAN] Test démarré');
         const now = performance.now();
         lastWordTimeRef.current = now;
+        lastTranscriptRef.current = '';
+        lastAcceptTimeRef.current = now;
         setIsRecording(true);
       };
 
@@ -156,48 +168,80 @@ export default function RANTest({ onComplete, onSkip }: RANTestProps) {
       recognition.onresult = (event: SpeechRecognitionEventLike) => {
         const result = event.results[event.results.length - 1];
 
+        if (!result) {
+          return;
+        }
+
         // Ignorer les résultats intermédiaires pour ne compter qu'un item
         // par segment final, sinon le test s'accélère artificiellement.
-        if (result && result.isFinal === false) {
+        if (typeof result.isFinal !== 'undefined' && result.isFinal === false) {
           return;
         }
 
         const now = performance.now();
-        const transcript: string = result[0].transcript.toLowerCase().trim();
+        const transcriptRaw: string = result[0].transcript.toLowerCase().trim();
 
-        console.log('[RAN] Transcription:', transcript);
-
-        // Détecter hésitations
-        const hasHesitation = HESITATION_MARKERS.some((marker) =>
-          transcript.includes(marker)
-        );
-        if (hasHesitation) {
-          hesitationCountRef.current += 1;
-          console.log('[RAN] Hésitation détectée:', transcript);
-        }
-
-        // Détecter au plus UNE couleur prononcée pour ce segment
-        let detectedColorIdx: number | null = null;
-        let detectedColorName: string | null = null;
-
-        for (let i = 0; i < COLORS_FR.length; i += 1) {
-          const colorName = COLORS_FR[i];
-          if (transcript.includes(colorName)) {
-            detectedColorIdx = i;
-            detectedColorName = colorName;
-            break;
-          }
-        }
-
-        // Aucun nom de couleur détecté dans ce segment final
-        if (detectedColorIdx === null || !detectedColorName) {
+        if (!transcriptRaw) {
           return;
         }
 
-        const colorIdx = detectedColorIdx;
-        const colorName = detectedColorName;
+        // Ignorer si la transcription n'a pas changé
+        if (transcriptRaw === lastTranscriptRef.current) {
+          return;
+        }
+
+        // Nouvelle partie par rapport à la transcription précédente
+        let newPart = transcriptRaw;
+        if (
+          lastTranscriptRef.current &&
+          transcriptRaw.startsWith(lastTranscriptRef.current)
+        ) {
+          newPart = transcriptRaw.slice(lastTranscriptRef.current.length).trim();
+        }
+
+        console.log('[RAN] Transcription:', transcriptRaw);
+
+        // Détecter hésitations (sur la transcription complète)
+        const hasHesitation = HESITATION_MARKERS.some((marker) =>
+          transcriptRaw.includes(marker)
+        );
+        if (hasHesitation) {
+          hesitationCountRef.current += 1;
+          console.log('[RAN] Hésitation détectée:', transcriptRaw);
+        }
+
+        const expectedIdx = sequence[currentIndexRef.current];
+        const expectedName =
+          typeof expectedIdx === 'number' ? COLORS_FR[expectedIdx] : undefined;
+
+        if (typeof expectedIdx !== 'number' || !expectedName) {
+          lastTranscriptRef.current = transcriptRaw;
+          return;
+        }
+
+        if (!newPart.includes(expectedName)) {
+          lastTranscriptRef.current = transcriptRaw;
+          return;
+        }
+
+        const MIN_DELTA_MS = 200;
+        const sinceLastAccept = now - lastAcceptTimeRef.current;
+        if (lastAcceptTimeRef.current !== 0 && sinceLastAccept < MIN_DELTA_MS) {
+          lastTranscriptRef.current = transcriptRaw;
+          return;
+        }
+
+        lastTranscriptRef.current = transcriptRaw;
+        lastAcceptTimeRef.current = now;
+
+        const colorIdx = expectedIdx;
+        const colorName = expectedName;
 
         setCurrentIndex((prev) => {
+          if (prev >= TOTAL_ITEMS) {
+            return prev;
+          }
+
           const expectedColorIdx = sequence[prev];
 
           if (colorIdx === expectedColorIdx) {
