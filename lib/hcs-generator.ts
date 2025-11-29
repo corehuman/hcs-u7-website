@@ -1,3 +1,6 @@
+import type { VocalMetrics } from "./vocal-metrics";
+import { encodeVocalMetrics } from "./vocal-metrics";
+
 export type ElementKey = "E" | "F" | "W" | "A";
 
 export type ModalKey = "cardinal" | "fixed" | "mutable";
@@ -75,8 +78,23 @@ export interface HCSProfile {
   interaction: HCSInteraction;
   qsig: string;
   b3: string;
+  vocal?: VocalMetrics;
   interpretation: HCSInterpretation;
   chart: { dimension: string; value: number }[];
+}
+
+export function generateHCSCode(profile: HCSProfile): string {
+  return formatHCSCode({
+    version: profile.version,
+    algorithm: profile.algorithm,
+    element: profile.element,
+    modal: profile.modal,
+    cognition: profile.cognition,
+    interaction: profile.interaction,
+    qsig: profile.qsig,
+    b3: profile.b3,
+    vocal: profile.vocal,
+  });
 }
 
 function pickMaxKey<T extends string>(scores: Record<T, number>): T {
@@ -113,20 +131,37 @@ function formatHCSCode(params: {
   interaction: HCSInteraction;
   qsig: string;
   b3: string;
+  vocal?: VocalMetrics;
 }): string {
-  const { version, algorithm, element, modal, cognition, interaction, qsig, b3 } = params;
+  const { version, algorithm, element, modal, cognition, interaction, qsig, b3, vocal } = params;
 
-  return [
+  const modPart = `MOD:c${modal.cardinal}f${modal.fixed}m${modal.mutable}`;
+  const cogPart = `COG:F${cognition.form}C${cognition.logic}V${cognition.visual}S${cognition.synthesis}Cr${cognition.creativity}`;
+
+  const parts: string[] = [
     "HCS-U7",
     `V:${version}`,
     `ALG:${algorithm}`,
     `E:${element}`,
-    `MOD:c${modal.cardinal}f${modal.fixed}m${modal.mutable}`,
-    `COG:F${cognition.form}C${cognition.logic}V${cognition.visual}S${cognition.synthesis}Cr${cognition.creativity}`,
-    `INT:PB=${interaction.pace},SM=${interaction.sensitivity},TN=${interaction.tolerance}`,
-    `QSIG:${qsig}`,
-    `B3:${b3}`,
-  ].join("|");
+    modPart,
+    cogPart,
+  ];
+
+  if (vocal) {
+    const vocalCode = encodeVocalMetrics(vocal);
+    parts.push(vocalCode);
+  }
+
+  let intPart = `INT:PB=${interaction.pace},SM=${interaction.sensitivity},TN=${interaction.tolerance}`;
+
+  if (vocal) {
+    const vocalInterp = vocal.isLikelyBot ? "VO=B" : "VO=H";
+    intPart = `${intPart},${vocalInterp}`;
+  }
+
+  parts.push(intPart, `QSIG:${qsig}`, `B3:${b3}`);
+
+  return parts.join("|");
 }
 
 function generateInterpretation(
@@ -357,7 +392,7 @@ export function calculateHCSProfile(answers: HCSAnswer[]): HCSProfile {
 
   const profile: HCSProfile = {
     code: formatHCSCode({
-      version: "7.0",
+      version: "8.0",
       algorithm: "QS",
       element: dominantElement,
       modal: modalNormalized,
@@ -366,7 +401,7 @@ export function calculateHCSProfile(answers: HCSAnswer[]): HCSProfile {
       qsig,
       b3,
     }),
-    version: "7.0",
+    version: "8.0",
     algorithm: "QS",
     element: dominantElement,
     modal: modalNormalized,

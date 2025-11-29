@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
@@ -13,13 +13,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { ProfileChart } from "@/components/ProfileChart";
 import { CodeBlock } from "@/components/CodeBlock";
-import type { HCSProfile } from "@/lib/hcs-generator";
+import HCSCodeDisplay from "@/components/HCSCodeDisplay";
+import type { RotatingHCSCode } from "@/lib/hcs-rotating-code";
 import { loadProfile, clearProfile } from "@/lib/profile-storage";
 import {
   generateChatGPTPrompt,
   generateClaudePrompt,
 } from "@/lib/prompt-generator";
 import { useLanguage } from "@/components/LanguageProvider";
+import { getClientId } from "@/lib/client-id";
 
 function downloadTextFile(filename: string, content: string) {
   const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
@@ -38,6 +40,8 @@ export default function GenerateResultPage() {
   const { lang } = useLanguage();
   const isFr = lang === "fr";
   const profile = loadProfile();
+  const clientId = getClientId();
+  const [rotatingCode, setRotatingCode] = useState<RotatingHCSCode | null>(null);
 
   useEffect(() => {
     if (!profile) {
@@ -53,6 +57,49 @@ export default function GenerateResultPage() {
     () => (profile ? generateClaudePrompt(profile) : ""),
     [profile],
   );
+
+  useEffect(() => {
+    if (!profile) return;
+
+    const userId = clientId;
+
+    const syncProfileAndCode = async () => {
+      try {
+        await fetch("/api/profile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId, profile }),
+        });
+
+        const response = await fetch("/api/issue-rotating-code", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId }),
+        });
+
+        if (!response.ok) return;
+
+        const data = (await response.json()) as {
+          currentCode: string;
+          currentWindow: number;
+          expiresAt: number;
+          rotationPeriod: number;
+        };
+
+        setRotatingCode({
+          baseProfile: profile,
+          currentCode: data.currentCode,
+          currentWindow: data.currentWindow,
+          expiresAt: data.expiresAt,
+          rotationPeriod: data.rotationPeriod,
+        });
+      } catch (error) {
+        console.error("[GenerateResultPage] Failed to sync profile / rotating code:", error);
+      }
+    };
+
+    void syncProfileAndCode();
+  }, [profile, clientId]);
 
   if (!profile) {
     return (
@@ -117,6 +164,53 @@ export default function GenerateResultPage() {
             </div>
           </div>
         </section>
+
+        {rotatingCode && (
+          <section className="space-y-4 rounded-2xl card-base p-6">
+            <h2 className="text-lg font-semibold tracking-tight text-foreground">
+              {isFr
+                ? "Code HCS-U7 rotatif (anti-replay)"
+                : "Rotating HCS-U7 code (anti-replay)"}
+            </h2>
+            <p className="text-sm text-foreground/70">
+              {isFr
+                ? "Ce code ajoute une fenêtre temporelle (TW) de 10 minutes pour rendre les attaques par rejeu et la revente de codes beaucoup plus coûteuses."
+                : "This code adds a 10-minute time window (TW) to make replay attacks and code resale economically unattractive."}
+            </p>
+            <HCSCodeDisplay
+              rotatingCode={rotatingCode}
+              onRefresh={async () => {
+                const response = await fetch("/api/issue-rotating-code", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ userId: clientId }),
+                });
+
+                if (!response.ok) {
+                  return rotatingCode;
+                }
+
+                const data = (await response.json()) as {
+                  currentCode: string;
+                  currentWindow: number;
+                  expiresAt: number;
+                  rotationPeriod: number;
+                };
+
+                const next: RotatingHCSCode = {
+                  baseProfile: profile,
+                  currentCode: data.currentCode,
+                  currentWindow: data.currentWindow,
+                  expiresAt: data.expiresAt,
+                  rotationPeriod: data.rotationPeriod,
+                };
+
+                setRotatingCode(next);
+                return next;
+              }}
+            />
+          </section>
+        )}
 
         <section className="grid gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           <div className="space-y-4">

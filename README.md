@@ -13,12 +13,13 @@ Site web officiel du système **HCS-U7 (Human Cognitive Signature)**, une platef
 - Consulter la documentation technique, exemples, intégrations et recherche
 
 ### 🧠 Tests Neurocognitifs
-- **5 tests validés scientifiquement** pour mesurer les capacités cognitives :
+- **6 tests validés scientifiquement** pour mesurer les capacités cognitives :
   - **Stroop Test** : Contrôle inhibiteur et attention sélective
   - **N-Back Test** : Mémoire de travail et mise à jour
   - **Trail Making Test** : Flexibilité cognitive (parties A & B)
   - **Digit Span Test** : Mémoire à court terme (forward/backward)
   - **Reaction Time Test** : Vitesse de traitement (simple/choice RT)
+  - **RAN Vocal** : Dénomination rapide de couleurs (timings vocaux, hésitations, prosodie)
 - Sauvegarde automatique des résultats en sessionStorage
 - Interface moderne avec animations, feedback en temps réel et contraste optimisé
 
@@ -66,12 +67,91 @@ Site web officiel du système **HCS-U7 (Human Cognitive Signature)**, une platef
 - `/generate/result` – **Résultat** : Code HCS-U7, interprétation, radar chart, prompts IA
 
 ### 🧪 Tests Cognitifs
-- `/cognitive-tests` – **Hub principal** : Suite complète de 5 tests neurocognitifs
+- `/cognitive-tests` – **Hub principal** : Suite complète de 6 tests neurocognitifs
 - `/cognitive-tests/stroop` – Test de Stroop (contrôle inhibiteur)
 - `/cognitive-tests/nback` – Test N-Back (mémoire de travail)
 - `/cognitive-tests/trail-making` – Trail Making Test (flexibilité cognitive)
 - `/cognitive-tests/digit-span` – Digit Span Test (mémoire court terme)
 - `/cognitive-tests/reaction-time` – Reaction Time Test (vitesse de traitement)
+- `/cognitive-tests/ran-vocal` – Test vocal RAN (dénomination rapide de couleurs, timings & prosodie)
+
+## 🎤 Test Vocal (Nouveau dans v8.0)
+
+HCS-U7 v8.0 introduit un **test vocal de dénomination rapide (RAN)** pour renforcer la détection de bots.
+
+### Principe
+
+L'utilisateur nomme à voix haute une séquence de 20 couleurs. Le système analyse :
+
+- ⏱️ **Timings inter-items** (humains : variables, bots : quasi constants)
+- 🗣️ **Hésitations naturelles** (humains : présentes, bots : absentes)
+- 😴 **Effet fatigue** (humains : ralentissent, bots : vitesse constante)
+- 🫁 **Pauses respiratoires** (humains : présentes, bots : absentes)
+
+### Compatibilité Navigateurs
+
+| Navigateur     | Support       |
+|----------------|--------------|
+| Chrome 25+     | ✅ Excellent  |
+| Edge 79+       | ✅ Excellent  |
+| Safari 14.5+   | ⚠️ Partiel (iOS OK, macOS limité) |
+| Firefox        | ❌ Non supporté |
+
+Le test vocal est **optionnel** :
+
+- Si le navigateur ne supporte pas la reconnaissance vocale ou si l'utilisateur refuse le micro, il peut **continuer sans ce test**.
+- La sécurité globale est légèrement réduite (~10%), mais le reste de la batterie HCS-U7 reste pleinement fonctionnel.
+
+### Format Code HCS v8.0
+
+Les nouveaux profils utilisent le format **HCS-U7 v8.0** avec une section vocale compacte :
+
+```text
+HCS-U7|V:8.0|ALG:QS|E:F|MOD:c40f30m30|COG:F72C65V40S55Cr48|VOC:R18v72h2f22|INT:PB=F,SM=H,TN=L,VO=H|QSIG:...|B3:...
+                      └─ VOC (signature vocale)
+                         ├─ R18  : 18/20 réponses correctes
+                         ├─ v72  : 72ms de variance entre items
+                         ├─ h2   : 2% d'hésitations naturelles
+                         └─ f22  : +22ms de fatigue en fin de séquence
+```
+
+- `VOC:...` est généré à partir de `VocalMetrics` via `encodeVocalMetrics`.
+- `VO=H` / `VO=B` est ajouté à la partie `INT:` pour indiquer une **interprétation vocale** :
+  - `VO=H` : profil vocal cohérent avec un humain (variance, hésitations, fatigue, pauses respiratoires)
+  - `VO=B` : profil fortement suspect de bot (timings trop réguliers, zéro hésitation, pas de fatigue)
+
+### Confidentialité
+
+- 🔒 **Aucun audio n'est enregistré ni envoyé** : seul un flux de timings (ex : `250ms, 320ms, 410ms…`) et quelques marqueurs d'hésitation sont utilisés.
+- 🧮 Les métriques sont agrégées dans un vecteur `VocalMetrics` puis compressées dans `VOC:...`.
+- 🗑️ Les transcriptions brutes et buffers audio sont immédiatement jetés après calcul des timings.
+
+### Exemples de détection
+
+Humain typique :
+
+```ts
+{
+  varianceInterItemPause: 72,  // Variabilité naturelle
+  hesitationRate: 0.02,        // ~2% d'hésitations ("euh", "hmm")
+  fatigueEffect: 22,           // Ralentissement modéré en fin de séquence
+  isLikelyBot: false,
+  confidence: 0.9,
+}
+```
+
+Bot / synthèse vocale parfaite :
+
+```ts
+{
+  varianceInterItemPause: 12,  // Timings quasi constants
+  hesitationRate: 0,           // Zéro hésitation
+  fatigueEffect: -2,           // Aucune fatigue
+  isLikelyBot: true,
+  confidence: 0.96,
+  flags: ['low-variance', 'no-hesitation', 'no-fatigue']
+}
+```
 
 ### 🔒 Sécurité
 - `/security` – **Page sécurité** : Solutions d'authentification cognitive
@@ -167,7 +247,8 @@ hcs-u7-website/
 │   │   ├── nback/            
 │   │   ├── trail-making/     
 │   │   ├── digit-span/       
-│   │   └── reaction-time/    
+│   │   ├── reaction-time/    
+│   │   └── ran-vocal/        
 │   ├── security/              # Pages sécurité cognitive & démos (auth, CAPTCHA, fraude, HCS code)
 │   ├── secure-login-demo/      # Démo de login bancaire protégé HCS-U7
 │   ├── developers/api-key/    # Gestion de clé API de développement
@@ -204,7 +285,7 @@ hcs-u7-website/
 - FAQ complète avec 10 questions détaillées
 
 ### 🧪 Tests Cognitifs Complets (Nov 2024)
-- Suite de 5 tests neurocognitifs validés scientifiquement
+- Suite de 6 tests neurocognitifs validés scientifiquement
 - Interface unifiée avec suivi de progression
 - Sauvegarde automatique des résultats
 - Support bilingue complet (EN/FR)
@@ -276,7 +357,7 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ## 📊 Statistiques (approx.)
 
 - **Pages** : une vingtaine de routes (statiques + dynamiques)
-- **Tests cognitifs** : 5 tests neurocognitifs principaux
+- **Tests cognitifs** : 6 tests neurocognitifs principaux (dont 1 vocal RAN)
 - **Composants** : 50+ composants React réutilisables
 - **Langues** : 2 (EN/FR) avec support complet
 

@@ -7,6 +7,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Progress } from "@/components/ui/progress";
 import { Info, Brain } from "lucide-react";
 import { useLanguage } from "@/components/LanguageProvider";
+import { HardwareFingerprinter, type HardwareFingerprintResult } from "@/lib/hardware-fingerprinting";
 
 const COLORS = ["red", "blue", "green", "yellow"];
 const WORDS = ["RED", "BLUE", "GREEN", "YELLOW"];
@@ -18,6 +19,7 @@ interface StroopResult {
   accuracy: number;
   avgCongruent: number;
   avgIncongruent: number;
+  hardwareFingerprint?: HardwareFingerprintResult;
 }
 
 interface TrialResult {
@@ -39,6 +41,19 @@ export function StroopTest({ onComplete }: StroopTestProps) {
   const [trial, setTrial] = useState<{ word: string; color: string; congruent: boolean } | null>(null);
   const [results, setResults] = useState<TrialResult[]>([]);
   const [startTime, setStartTime] = useState<number | null>(null);
+  const fingerprinterRef = useRef<HardwareFingerprinter | null>(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!fingerprinterRef.current) {
+      fingerprinterRef.current = new HardwareFingerprinter();
+    }
+
+    return () => {
+      fingerprinterRef.current?.dispose();
+      fingerprinterRef.current = null;
+    };
+  }, []);
 
   const generateTrial = () => {
     const wordIndex = Math.floor(Math.random() * WORDS.length);
@@ -107,8 +122,13 @@ export function StroopTest({ onComplete }: StroopTestProps) {
 
   useEffect(() => {
     if (phase === "complete") {
-      const score = calculateScore();
-      onComplete(score);
+      const baseScore = calculateScore();
+      const hardwareAnalysis: HardwareFingerprintResult | undefined =
+        fingerprinterRef.current?.analyzePatterns();
+      const result: StroopResult = hardwareAnalysis
+        ? { ...baseScore, hardwareFingerprint: hardwareAnalysis }
+        : baseScore;
+      onComplete(result);
     }
   }, [phase]);
 

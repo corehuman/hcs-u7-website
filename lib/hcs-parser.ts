@@ -1,3 +1,6 @@
+import { decodeVocalMetrics } from "./vocal-metrics";
+import type { VocalMetrics } from "./vocal-metrics";
+
 export interface HCSProfile {
   version: string;
   algorithm: string;
@@ -23,6 +26,7 @@ export interface HCSProfile {
     QSIG: string;
     B3: string;
   };
+  vocal?: (Partial<VocalMetrics> & { code: string }) | null;
   raw: string;
 }
 
@@ -112,6 +116,12 @@ export function parseHCS(code: string): HCSProfile | null {
       B3: b3Part ? b3Part.split(':')[1] : ''
     };
 
+    const vocalPart = parts.find((p) => p.startsWith('VOC:'));
+    const decodedVocal = vocalPart ? decodeVocalMetrics(vocalPart) : null;
+    const vocal = decodedVocal
+      ? { code: vocalPart as string, ...decodedVocal }
+      : null;
+
     return {
       version,
       algorithm,
@@ -120,6 +130,7 @@ export function parseHCS(code: string): HCSProfile | null {
       cognition,
       interaction,
       signatures,
+      vocal,
       raw: cleaned
     };
 

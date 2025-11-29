@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ComponentType } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -17,9 +17,9 @@ import {
   Check,
   Zap,
   Hash,
-  Timer,
   Workflow,
-  ArrowLeft
+  ArrowLeft,
+  Mic
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/LanguageProvider';
@@ -27,14 +27,16 @@ import { useLanguage } from '@/components/LanguageProvider';
 interface TestResult {
   score?: number;
   accuracy?: number;
-  [key: string]: any;
+  cognitiveFlexibility?: number;
+  workingMemory?: number;
+  processingSpeed?: number;
 }
 
 interface Test {
   id: string;
   name: string;
   nameFr: string;
-  icon: any;
+  icon: ComponentType<{ className?: string }>;
   color: string;
   duration: string;
   measures: string;
@@ -46,12 +48,7 @@ interface Test {
   result?: TestResult;
 }
 
-export default function CognitiveTestsPage() {
-  const router = useRouter();
-  const { lang } = useLanguage();
-  const isFr = lang === 'fr';
-  
-  const [tests, setTests] = useState<Test[]>([
+const INITIAL_TESTS: Test[] = [
     {
       id: 'stroop',
       name: 'Stroop Task',
@@ -79,6 +76,20 @@ export default function CognitiveTestsPage() {
       descriptionFr: 'Mesurez votre capacité de mémoire de travail',
       status: 'available',
       href: '/cognitive-tests/nback'
+    },
+    {
+      id: 'ranvocal',
+      name: 'RAN Vocal',
+      nameFr: 'Dénomination Rapide (Vocal)',
+      icon: Mic,
+      color: 'purple',
+      duration: '30 s',
+      measures: 'Vocal naming speed & prosody',
+      measuresFr: 'Vitesse de dénomination vocale & prosodie',
+      description: 'Name colors out loud to analyze human vocal timing and hesitations (no audio stored).',
+      descriptionFr: 'Nommez des couleurs à voix haute pour analyser le timing et les hésitations vocales (sans stocker l’audio).',
+      status: 'available',
+      href: '/cognitive-tests/ran-vocal'
     },
     {
       id: 'trail',
@@ -122,48 +133,58 @@ export default function CognitiveTestsPage() {
       status: 'available',
       href: '/cognitive-tests/reaction-time'
     }
-  ]);
+  ];
+
+export default function CognitiveTestsPage() {
+  const router = useRouter();
+  const { lang } = useLanguage();
+  const isFr = lang === 'fr';
+  
+  const [tests, setTests] = useState<Test[]>(() => INITIAL_TESTS);
 
   // Check for test results in sessionStorage
   useEffect(() => {
     const updateTestResults = () => {
-      const updatedTests = tests.map(test => {
-        const resultKey = `${test.id}Result`;
-        const storedResult = sessionStorage.getItem(resultKey);
-        
-        // Check specific result keys based on test type
-        let specificResultKey = '';
-        switch(test.id) {
-          case 'trail':
-            specificResultKey = 'trailMakingResult';
-            break;
-          case 'digit':
-            specificResultKey = 'digitSpanResult';
-            break;
-          case 'reaction':
-            specificResultKey = 'reactionTimeResult';
-            break;
-          case 'stroop':
-            specificResultKey = 'stroopResult';
-            break;
-          case 'nback':
-            specificResultKey = 'nbackResult';
-            break;
-        }
-        
-        const specificResult = sessionStorage.getItem(specificResultKey);
-        
-        if (storedResult || specificResult) {
-          const result = JSON.parse(storedResult || specificResult || '{}');
-          return {
-            ...test,
-            status: 'completed' as const,
-            result
-          };
-        }
-        return test;
-      });
-      setTests(updatedTests);
+      setTests(prevTests =>
+        prevTests.map(test => {
+          const resultKey = `${test.id}Result`;
+          const storedResult = sessionStorage.getItem(resultKey);
+
+          let specificResultKey = '';
+          switch (test.id) {
+            case 'trail':
+              specificResultKey = 'trailMakingResult';
+              break;
+            case 'digit':
+              specificResultKey = 'digitSpanResult';
+              break;
+            case 'reaction':
+              specificResultKey = 'reactionTimeResult';
+              break;
+            case 'stroop':
+              specificResultKey = 'stroopResult';
+              break;
+            case 'nback':
+              specificResultKey = 'nbackResult';
+              break;
+            case 'ranvocal':
+              specificResultKey = 'ranVocalResult';
+              break;
+          }
+
+          const specificResult = sessionStorage.getItem(specificResultKey);
+
+          if (storedResult || specificResult) {
+            const result = JSON.parse(storedResult || specificResult || '{}');
+            return {
+              ...test,
+              status: 'completed' as const,
+              result,
+            };
+          }
+          return test;
+        })
+      );
     };
 
     // Check on mount
@@ -198,7 +219,7 @@ export default function CognitiveTestsPage() {
 
   const clearAllResults = () => {
     // Clear all test results
-    ['stroopResult', 'nbackResult', 'trailMakingResult', 'digitSpanResult', 'reactionTimeResult'].forEach(key => {
+    ['stroopResult', 'nbackResult', 'trailMakingResult', 'digitSpanResult', 'reactionTimeResult', 'ranVocalResult'].forEach(key => {
       sessionStorage.removeItem(key);
     });
     
