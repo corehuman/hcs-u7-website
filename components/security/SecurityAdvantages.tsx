@@ -18,6 +18,13 @@ export function SecurityAdvantages() {
       hcs: true
     },
     {
+      feature: isFr ? 'Sécurité post-quantique' : 'Post-quantum security',
+      password: false,
+      sms2fa: false,
+      biometric: false,
+      hcs: true
+    },
+    {
       feature: isFr ? 'Ne peut pas être volé' : 'Cannot be stolen',
       password: false,
       sms2fa: false,

@@ -57,13 +57,13 @@ export default function HowItWorksPage() {
                 trop aléatoires ({'>'}150ms).
               </p>
               <div className="space-y-2 text-xs">
-                <div className="flex justify-between p-2 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/40 rounded">
+                <div className="flex items-center justify-between p-2 rounded bg-emerald-600 text-emerald-50 dark:bg-emerald-500">
                   <span>✅ Humain:</span>
-                  <code>SD = 65ms</code>
+                  <code className="bg-transparent">SD = 65ms</code>
                 </div>
-                <div className="flex justify-between p-2 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/40 rounded">
+                <div className="flex items-center justify-between p-2 rounded bg-red-600 text-red-50 dark:bg-red-500">
                   <span>❌ Bot:</span>
-                  <code>SD = 3ms</code>
+                  <code className="bg-transparent">SD = 3ms</code>
                 </div>
               </div>
             </div>
@@ -80,13 +80,13 @@ export default function HowItWorksPage() {
                 interférence.
               </p>
               <div className="space-y-2 text-xs">
-                <div className="flex justify-between p-2 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/40 rounded">
+                <div className="flex items-center justify-between p-2 rounded bg-emerald-600 text-emerald-50 dark:bg-emerald-500">
                   <span>✅ Humain:</span>
-                  <code>+80ms</code>
+                  <code className="bg-transparent">+80ms</code>
                 </div>
-                <div className="flex justify-between p-2 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/40 rounded">
+                <div className="flex items-center justify-between p-2 rounded bg-red-600 text-red-50 dark:bg-red-500">
                   <span>❌ Bot:</span>
-                  <code>+0ms</code>
+                  <code className="bg-transparent">+0ms</code>
                 </div>
               </div>
             </div>
@@ -102,13 +102,13 @@ export default function HowItWorksPage() {
                 Les bots ont une performance plate ou erratique.
               </p>
               <div className="space-y-2 text-xs">
-                <div className="flex justify-between p-2 bg-green-100 dark:bg-green-900/25 border border-green-200 dark:border-green-800/40 rounded">
+                <div className="flex items-center justify-between p-2 rounded bg-emerald-600 text-emerald-50 dark:bg-emerald-500">
                   <span>✅ Humain:</span>
-                  <code>-15ms après 10 trials</code>
+                  <code className="bg-transparent">-15ms après 10 trials</code>
                 </div>
-                <div className="flex justify-between p-2 bg-red-100 dark:bg-red-900/25 border border-red-200 dark:border-red-800/40 rounded">
+                <div className="flex items-center justify-between p-2 rounded bg-red-600 text-red-50 dark:bg-red-500">
                   <span>❌ Bot:</span>
-                  <code>Flat ou random</code>
+                  <code className="bg-transparent">Flat ou random</code>
                 </div>
               </div>
             </div>

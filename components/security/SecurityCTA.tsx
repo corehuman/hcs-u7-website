@@ -73,7 +73,7 @@ export function SecurityCTA() {
                   {isFr ? 'Pour les Développeurs' : 'For Developers'}
                 </h3>
                 <p className="text-sm text-foreground/85 mb-4">
-                  {isFr ? 'Niveau gratuit : 100 auth/mois' : 'Free tier: 100 auths/month'}
+                  {isFr ? 'Niveau gratuit : 1 000 vérifications/mois' : 'Free tier: 1,000 verifications/month'}
                 </p>
                 <Link href="/developers/api-key">
                   <Button className="w-full" size="sm">

@@ -3,6 +3,7 @@ import { TechnicalSection } from "@/components/security/TechnicalSection";
 import { SecurityAdvantages } from "@/components/security/SecurityAdvantages";
 import { SecurityFeatures } from "@/components/security/SecurityFeatures";
 import { BotAttackSimulator } from "@/components/security/BotAttackSimulator";
+import { SecurityRoadmap } from "@/components/security/SecurityRoadmap";
 import { SecurityCTA } from "@/components/security/SecurityCTA";
 import { SecuritySubnav } from "@/components/security/SecuritySubnav";
 
@@ -20,6 +21,7 @@ export default function SecurityHcsCodePage() {
       <SecurityAdvantages />
       <SecurityFeatures />
       <BotAttackSimulator />
+      <SecurityRoadmap />
       <SecurityCTA />
     </main>
   );

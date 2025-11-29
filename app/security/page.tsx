@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { SecurityHero } from '@/components/security/SecurityHero';
 import { ProblemSolution } from '@/components/security/ProblemSolution';
 import { UseCasesGrid } from '@/components/security/UseCasesGrid';
+import { SecurityCompliance } from '@/components/security/SecurityCompliance';
 import { SecurityCTA } from '@/components/security/SecurityCTA';
 import { SecuritySubnav } from '@/components/security/SecuritySubnav';
 
@@ -44,6 +45,9 @@ export default function SecurityPage() {
       
       {/* Use Cases Grid */}
       <UseCasesGrid />
+
+      {/* Compliance & standards */}
+      <SecurityCompliance />
 
       {/* Final CTA */}
       <SecurityCTA />

@@ -75,7 +75,60 @@ async function verifyUser(userId) {
     return { success: true, token: generateJWT(userId) };
   }
   return { success: false, reason: 'Cognitive mismatch' };
-}`
+}`,
+    widget: `<!-- 1. Include the SDK -->
+<script src="https://cdn.hcs-u7.com/v1.js"></script>
+
+<!-- 2. CAPTCHA container -->
+<div id="hcs-captcha"></div>
+
+<!-- 3. Initialization -->
+<script>
+  HCSCaptcha.render('#hcs-captcha', {
+    siteKey: 'YOUR_SITE_KEY_HERE',
+    onVerify: function(token) {
+      // Send token to your backend
+      console.log('Human verified:', token);
+      const hiddenInput = document.getElementById('hcs-token');
+      if (hiddenInput) hiddenInput.value = token;
+    },
+    onError: function(error) {
+      console.error('Verification failed:', error);
+    }
+  });
+</script>`,
+    backend: `// Example: Node.js / Express endpoint
+import fetch from 'node-fetch';
+
+app.post('/api/verify-human', async (req, res) => {
+  const { hcsToken } = req.body;
+
+  try {
+    const response = await fetch('https://api.hcs-u7.com/v1/verify', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_SECRET_KEY',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        token: hcsToken,
+        userIP: req.ip
+      })
+    });
+
+    const result = await response.json();
+
+    if (result.isHuman && result.confidence > 0.95) {
+      // Human verified → continue your business logic
+      return res.json({ success: true });
+    }
+
+    return res.status(403).json({ error: 'Bot detected', details: result });
+  } catch (err) {
+    console.error('HCS-U7 verification error', err);
+    return res.status(500).json({ error: 'Verification service unavailable' });
+  }
+});`
   };
 
   const humanVsBotMetrics = [
@@ -130,8 +183,8 @@ async function verifyUser(userId) {
             </h2>
             <p className="text-lg text-foreground/85 max-w-3xl mx-auto">
               {isFr
-                ? 'Trois couches de sécurité : signatures cryptographiques, modèles comportementaux et protocoles d\'intégration'
-                : 'Three layers of security: cryptographic signatures, behavioral patterns, and integration protocols'}
+                ? 'Trois couches de sécurité : signatures cryptographiques post-quantiques, modèles comportementaux humains et protocoles d\'intégration'
+                : 'Three security layers: post-quantum cryptographic signatures, human behavioral patterns, and integration protocols'}
             </p>
           </motion.div>
         </div>
@@ -218,6 +271,19 @@ async function verifyUser(userId) {
                       </p>
                     </div>
                   </div>
+
+                  <div className="mt-6 text-sm text-foreground/85 space-y-2">
+                    <p>
+                      {isFr
+                        ? 'La couche cryptographique combine une signature post-quantique (QSIG, inspirée des schémas lattice du NIST) et un hash BLAKE3 classique. Un attaquant doit casser simultanément les deux, ce qui rend les attaques même assistées par un ordinateur quantique économiquement irréalistes.'
+                        : 'The cryptographic layer combines a post-quantum signature (QSIG, inspired by NIST lattice schemes) with a classical BLAKE3 hash. An attacker must break both at the same time, making attacks economically unrealistic even with quantum assistance.'}
+                    </p>
+                    <p>
+                      {isFr
+                        ? 'De plus, le profil cognitif brut est compressé avec perte en une signature d’environ 96 bits d’entropie : même si un hash était inversé, les données de tests originales ne pourraient pas être reconstruites exactement.'
+                        : 'In addition, the raw cognitive profile is compressed with controlled loss into a signature of about 96 bits of entropy: even if a hash were inverted, the original test data cannot be reconstructed exactly.'}
+                    </p>
+                  </div>
                 </div>
               </TabsContent>
 
@@ -236,6 +302,12 @@ async function verifyUser(userId) {
                         : 'Cognitive tests measure patterns that are unique to humans and nearly impossible for AI or automation to replicate accurately.'}
                     </AlertDescription>
                   </Alert>
+
+                  <p className="text-sm text-foreground/85 mb-4">
+                    {isFr
+                      ? 'Cette couche s’appuie explicitement sur l’entropie biologique : bruit neuronal (5–15 ms), variabilité musculaire et fluctuations d’attention. Ces micro-variations sont non déterministes et ne peuvent pas être pré-calculées, même par un modèle d’IA ou un ordinateur quantique.'
+                      : 'This layer explicitly leverages biological entropy: neural noise (5–15 ms), motor variability and attention fluctuations. These micro-variations are non-deterministic and cannot be pre-computed, even by an AI model or a quantum computer.'}
+                  </p>
 
                   {/* Human vs Bot Table */}
                   <div className="mb-6">
@@ -322,6 +394,34 @@ async function verifyUser(userId) {
 
                   <div className="space-y-4">
                     <div>
+                      <h4 className="font-semibold mb-2 text-sm">
+                        {isFr ? 'Widget JavaScript (Frontend)' : 'JavaScript Widget (Frontend)'}
+                      </h4>
+                      <p className="mb-2 text-xs text-foreground/85">
+                        {isFr
+                          ? 'Ajoutez un widget HCS-U7 à n\'importe quel formulaire comme CAPTCHA cognitif résistant aux bots.'
+                          : 'Add an HCS-U7 widget to any form as an AI-resistant cognitive CAPTCHA.'}
+                      </p>
+                      <div className="bg-muted/50 rounded-lg p-4 font-mono text-xs sm:text-sm overflow-x-auto">
+                        <pre>{codeExamples.widget}</pre>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold mb-2 text-sm">
+                        {isFr ? 'Endpoint de validation (Backend Node.js)' : 'Validation endpoint (Node.js backend)'}
+                      </h4>
+                      <p className="mb-2 text-xs text-foreground/85">
+                        {isFr
+                          ? 'Côté serveur, validez le token HCS-U7 avant d\'accepter une action sensible (création de compte, paiement, changement de mot de passe, etc.).'
+                          : 'On the server, validate the HCS-U7 token before accepting any sensitive action (account creation, payment, password change, etc.).'}
+                      </p>
+                      <div className="bg-muted/50 rounded-lg p-4 font-mono text-xs sm:text-sm overflow-x-auto">
+                        <pre>{codeExamples.backend}</pre>
+                      </div>
+                    </div>
+
+                    <div>
                       <h4 className="font-semibold mb-2 text-sm">JavaScript/TypeScript SDK</h4>
                       <div className="bg-muted/50 rounded-lg p-4 font-mono text-sm overflow-x-auto">
                         <pre>{codeExamples.integration}</pre>
@@ -348,7 +448,9 @@ async function verifyUser(userId) {
                           </li>
                           <li className="flex gap-2">
                             <span className="font-semibold">4.</span>
-                            {isFr ? 'Déployez et testez (100 auth gratuites/mois)' : 'Deploy and test (100 free auths/month)'}
+                            {isFr
+                              ? 'Déployez et testez (1 000 vérifications gratuites/mois)'
+                              : 'Deploy and test (1,000 free verifications/month)'}
                           </li>
                         </ol>
                       </CardContent>

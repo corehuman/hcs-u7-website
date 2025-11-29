@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -17,7 +17,7 @@ import {
   Info
 } from "lucide-react";
 import { StroopTest } from "./tests/StroopTest";
-import { NBackTest } from "./tests/NBackTest";
+import { DigitSpanTest } from "./tests/DigitSpanTest";
 import { useLanguage } from "@/components/LanguageProvider";
 
 interface Test {
@@ -45,15 +45,15 @@ const tests: Test[] = [
     descriptionFr: "Nommez la couleur de l'encre, pas le mot lui-même",
   },
   {
-    id: "nback",
-    name: "N-Back Task",
-    nameFr: "Test N-Back",
-    component: NBackTest,
-    duration: "5 min",
-    measures: "Working memory capacity",
-    measuresFr: "Capacité de mémoire de travail",
-    description: "Remember and match stimuli from N steps back",
-    descriptionFr: "Mémoriser et faire correspondre les stimuli de N étapes en arrière",
+    id: "digit",
+    name: "Digit Span",
+    nameFr: "Empan de chiffres",
+    component: DigitSpanTest,
+    duration: "4 min",
+    measures: "Short-term & working memory",
+    measuresFr: "Mémoire à court terme & mémoire de travail",
+    description: "Recall digit sequences that gradually increase in length",
+    descriptionFr: "Retenez des séquences de chiffres qui s'allongent progressivement",
   },
 ];
 
@@ -70,6 +70,13 @@ export function CognitiveTestsSuite({ onComplete, onSkip }: CognitiveTestsSuiteP
 
   const isIntro = currentTestIndex === -1;
   const isComplete = currentTestIndex >= tests.length;
+
+  // Trigger parent callback once when all tests are complete
+  useEffect(() => {
+    if (isComplete) {
+      onComplete(results);
+    }
+  }, [isComplete, results, onComplete]);
 
   if (isIntro) {
     return (
@@ -155,7 +162,6 @@ export function CognitiveTestsSuite({ onComplete, onSkip }: CognitiveTestsSuiteP
   }
 
   if (isComplete) {
-    onComplete(results);
     return null;
   }
 

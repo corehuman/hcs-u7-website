@@ -28,8 +28,8 @@ export function SecurityFeatures() {
       icon: Lock,
       title: isFr ? 'Preuve Cryptographique' : 'Cryptographic Proof',
       description: isFr
-        ? 'Chaque profil inclut des signatures Blake3 garantissant l\'intégrité et la non-répudiation. L\'altération est immédiatement détectée.'
-        : 'Every profile includes Blake3 signatures ensuring integrity and non-repudiation. Tampering is immediately detected.'
+        ? 'Chaque profil inclut une double signature : QSIG post-quantique (lattice) + hash BLAKE3. L\'intégrité et la non-répudiation sont garanties, et toute altération est immédiatement détectée.'
+        : 'Every profile includes a dual signature: post-quantum QSIG (lattice-inspired) plus a BLAKE3 hash. Integrity and non-repudiation are guaranteed, and any tampering is immediately detected.'
     },
     {
       icon: Zap,
